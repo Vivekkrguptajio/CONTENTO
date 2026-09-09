@@ -1,0 +1,479 @@
+/* ════════════════════════════════════════════════════════════════════
+   HERO SECTION ("The Operating System for your Marketing Spend")
+   Matching user reference screenshot (media_1788963080106.png)
+   ════════════════════════════════════════════════════════════════════ */
+
+.hero-section {
+  width: 100%;
+  background: 
+    radial-gradient(ellipse 100% 65% at 50% 75%, rgba(254, 215, 170, 0.65) 0%, rgba(255, 237, 213, 0.45) 45%, rgba(254, 215, 170, 0.2) 70%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 32%, rgba(255, 247, 237, 0.4) 48%, rgba(254, 226, 195, 0.7) 72%, rgba(253, 222, 195, 0.88) 100%);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── 1. Top Announcement Bar ─────────────────────────────────────── */
+.hero-announcement {
+  width: 100%;
+  background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
+  color: #ffffff;
+  padding: 8.5px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  z-index: 20;
+}
+
+.hero-announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-announcement-bold {
+  font-weight: 700;
+}
+
+.hero-announcement-divider {
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.hero-announcement-link {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.hero-announcement-link:hover {
+  text-decoration: underline;
+  opacity: 0.95;
+}
+
+.hero-announcement-close {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.hero-announcement-close:hover {
+  opacity: 1;
+}
+
+/* ── 2. Header / Navigation ──────────────────────────────────────── */
+.hero-header {
+  width: 100%;
+  padding: 16px 24px;
+  box-sizing: border-box;
+}
+
+.hero-nav-container {
+  max-width: 1218px; /* Strict uniform layout width */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Logo Brand */
+.hero-brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.hero-logo-stars {
+  flex-shrink: 0;
+}
+
+.hero-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.hero-logo-line {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+/* Navigation Links */
+.hero-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.hero-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hero-nav-link:hover {
+  color: #0f172a;
+}
+
+.hero-nav-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Right Nav Actions */
+.hero-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-signin-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  margin-right: 4px;
+  transition: color 0.15s ease;
+}
+
+.hero-signin-link:hover {
+  color: #f97316;
+}
+
+.hero-btn {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.hero-btn--nav-primary {
+  background: linear-gradient(180deg, #ff7a00 0%, #ea580c 100%);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 20px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.32);
+}
+
+.hero-btn--nav-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.42);
+}
+
+.hero-btn--nav-secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 20px;
+}
+
+.hero-btn--nav-secondary:hover {
+  background: #e2e8f0;
+}
+
+/* ── 3. Main Hero Typography & CTAs ──────────────────────────────── */
+.hero-content {
+  max-width: 860px;
+  margin: 42px auto 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-headline {
+  font-size: 52px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.hero-subheadline {
+  font-size: 18px;
+  font-weight: 450;
+  color: #475569;
+  margin: 18px 0 34px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.hero-btn--cta-primary {
+  background: linear-gradient(180deg, #ff7a00 0%, #ea580c 100%);
+  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 13px 30px;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.38);
+}
+
+.hero-btn--cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(234, 88, 12, 0.48);
+}
+
+.hero-btn--cta-secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 13px 30px;
+}
+
+.hero-btn--cta-secondary:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+/* ── 4. Glowing Globe Visualization ──────────────────────────────── */
+.hero-globe-wrapper {
+  width: 100%;
+  position: relative;
+  margin-top: 16px;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.hero-globe-container {
+  width: 100%;
+  max-width: 580px;
+  height: 580px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-globe-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* ── Floating Badges Rotating With Globe in 3D ───────────────────── */
+.hero-float {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  will-change: transform, opacity;
+  user-select: none;
+}
+
+.hero-float:hover {
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.15));
+}
+
+.hero-float:hover .hero-badge-card,
+.hero-float:hover .hero-profile-card,
+.hero-float:hover .hero-payout-pill {
+  transform: scale(1.08);
+}
+
+/* Speech Bubble */
+.hero-speech-bubble {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 6px 13px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.hero-bubble-tail {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Rounded Square Badge Cards */
+.hero-badge-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-badge-card--f1 {
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.hero-f1-img {
+  display: block;
+  object-fit: contain;
+}
+
+/* Payout Pill */
+.hero-payout-pill {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  padding: 4px 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #d97706;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Ethan Cole Profile Card */
+.hero-profile-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  padding: 5px 14px 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.hero-profile-avatar {
+  border-radius: 50%;
+}
+
+.hero-profile-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.hero-profile-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.hero-profile-handle {
+  font-size: 9.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-headline {
+    font-size: 46px;
+  }
+
+  .hero-nav-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 36px;
+  }
+
+  .hero-subheadline {
+    font-size: 16px;
+    margin: 14px 0 24px;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-btn--cta-primary,
+  .hero-btn--cta-secondary {
+    width: 100%;
+  }
+
+  .hero-globe-container {
+    max-width: 420px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-globe-container {
+    max-width: 320px;
+    height: 320px;
+  }
+}

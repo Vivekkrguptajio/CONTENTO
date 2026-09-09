@@ -1,0 +1,15 @@
+<svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="22" fill="#ffffff" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.08))" />
+  <g transform="translate(16, 16) scale(0.68)">
+    <circle cx="50" cy="50" r="46" fill="#f8fafc" stroke="#f97316" stroke-width="3.5" />
+    <!-- Creator character avatar -->
+    <ellipse cx="50" cy="40" rx="18" ry="20" fill="#fed7aa" />
+    <!-- Hair / Cap -->
+    <path d="M30 36 C30 20 40 16 50 16 C60 16 70 20 70 36 C66 32 60 30 50 30 C40 30 34 32 30 36 Z" fill="#0f172a" />
+    <!-- Shoulders / Jacket -->
+    <path d="M20 84 C20 62 34 58 50 58 C66 58 80 62 80 84 Z" fill="#0f172a" />
+    <!-- Star badge -->
+    <circle cx="72" cy="72" r="14" fill="#f97316" />
+    <polygon points="72,63 75,69 81,70 76,74 78,80 72,77 66,80 68,74 63,70 69,69" fill="#ffffff" />
+  </g>
+</svg>

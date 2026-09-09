@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Content Rewards — Testimonial Card (Pixel-Perfect Matching)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.tc-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 60px 24px 60px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.tc-container {
+  width: 100%;
+  max-width: 1218px;
+  margin: 0 auto;
+}
+
+/* ── The Large Rounded Gradient Testimonial Card ─────────────────── */
+.tc-card {
+  width: 100%;
+  min-height: 380px;
+  border-radius: 46px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 22%,
+    #fff0de 42%,
+    #fdb46c 66%,
+    #f66e0d 88%,
+    #ea580c 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 24px 60px -20px rgba(234, 88, 12, 0.18),
+    0 8px 24px -5px rgba(0, 0, 0, 0.03);
+  padding: 96px 56px 84px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Main Quote ──────────────────────────────────────────────────── */
+.tc-quote {
+  margin: 0 0 36px 0;
+  max-width: 780px;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -0.015em;
+  color: #2b303a;
+}
+
+/* ── Author Meta ─────────────────────────────────────────────────── */
+.tc-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.tc-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.tc-author__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.tc-author__name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+.tc-author__role {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+/* ── Responsive adjustments ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tc-card {
+    padding: 64px 28px 56px;
+    border-radius: 32px;
+    min-height: 320px;
+  }
+
+  .tc-quote {
+    font-size: 1.45rem;
+    margin-bottom: 28px;
+  }
+}

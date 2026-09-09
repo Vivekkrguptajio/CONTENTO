@@ -1,0 +1,248 @@
+/* ════════════════════════════════════════════════════════════════════
+   STICKY NAVBAR & TOP ANNOUNCEMENT BAR
+   Firmly attached to the top of the viewport across the entire page
+   ════════════════════════════════════════════════════════════════════ */
+
+.nav-sticky-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: box-shadow 0.2s ease, border-bottom 0.2s ease, background 0.2s ease;
+}
+
+.nav-fixed-spacer {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.nav-sticky-wrapper.is-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ── 1. Top Orange Announcement Bar ─────────────────────────────── */
+.nav-announcement {
+  width: 100%;
+  background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
+  color: #ffffff;
+  padding: 8px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.nav-announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-announcement-bold {
+  font-weight: 700;
+}
+
+.nav-announcement-divider {
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.nav-announcement-link {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.nav-announcement-link:hover {
+  text-decoration: underline;
+  opacity: 0.95;
+}
+
+.nav-announcement-close {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.85;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.nav-announcement-close:hover {
+  opacity: 1;
+}
+
+/* ── 2. Navigation Header ────────────────────────────────────────── */
+.nav-header {
+  width: 100%;
+  padding: 14px 24px;
+  box-sizing: border-box;
+}
+
+.nav-container {
+  max-width: 1218px; /* Strict uniform layout width */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Brand Logo */
+.nav-brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.nav-logo-stars {
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.nav-logo-line {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+/* Navigation Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link:hover {
+  color: #0f172a;
+}
+
+.nav-btn-dropdown {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Right Nav Actions */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-signin-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  margin-right: 4px;
+  transition: color 0.15s ease;
+}
+
+.nav-signin-link:hover {
+  color: #f97316;
+}
+
+.nav-btn {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.nav-btn--primary {
+  background: linear-gradient(180deg, #ff7a00 0%, #ea580c 100%);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 20px;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.32);
+}
+
+.nav-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.42);
+}
+
+.nav-btn--secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 20px;
+}
+
+.nav-btn--secondary:hover {
+  background: #e2e8f0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-header {
+    padding: 12px 16px;
+  }
+
+  .nav-btn--secondary {
+    display: none;
+  }
+}

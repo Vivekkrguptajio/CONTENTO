@@ -1,0 +1,380 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Content Rewards — Exact Footer Styling (Pixel-Perfect)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Outer Section with pure white background ────────────── */
+.cr-footer-section {
+  width: 100%;
+  padding: 80px 40px 0;
+  margin-top: auto;
+  margin-bottom: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  box-sizing: border-box;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Inner wrapper for card ─────────────────────── */
+.cr-footer-container {
+  position: relative;
+  width: 100%;
+  max-width: 1218px;
+  margin: 0 auto;
+}
+
+/* ── Soft orange color spread strictly on the left & right sides (NO orange on top) ── */
+.cr-footer-container::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: -130px;
+  width: 200px;
+  height: 280px;
+  background: radial-gradient(ellipse at 35% 50%, rgba(255, 135, 15, 0.45) 0%, rgba(255, 160, 45, 0.22) 50%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cr-footer-container::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  right: -130px;
+  width: 200px;
+  height: 280px;
+  background: radial-gradient(ellipse at 65% 50%, rgba(255, 135, 15, 0.45) 0%, rgba(255, 160, 45, 0.22) 50%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 3D Orange Ribbon Corner SVGs ────────────────────────────────── */
+.cr-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cr-shape--tl {
+  top: -42px;
+  left: -48px;
+  width: 252px;
+  height: 252px;
+}
+
+.cr-shape--tr {
+  top: -42px;
+  right: -48px;
+  width: 252px;
+  height: 252px;
+}
+
+.cr-shape--bl {
+  bottom: -42px;
+  left: -48px;
+  width: 252px;
+  height: 252px;
+}
+
+.cr-shape--br {
+  bottom: -42px;
+  right: -48px;
+  width: 252px;
+  height: 252px;
+}
+
+/* ── The White Floating Card ─────────────────────────────────────── */
+.cr-card {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 46px 46px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: none;
+  box-shadow: 
+    0 -8px 30px -5px rgba(0, 0, 0, 0.04),
+    0 4px 20px -5px rgba(0, 0, 0, 0.02);
+  padding: 94px 70px 36px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── CTA Heading & Buttons ───────────────────────────────────────── */
+.cr-card__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 78px;
+}
+
+.cr-card__heading {
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #111827;
+  margin: 0 0 28px 0;
+  max-width: 630px;
+}
+
+.cr-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Buttons matching the image */
+.cr-btn {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+}
+
+.cr-btn--primary {
+  background: #111827;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+.cr-btn--primary:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.cr-btn--secondary {
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 500;
+}
+.cr-btn--secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* ── Navigation & Logo Bar ───────────────────────────────────────── */
+.cr-card__nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 34px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cr-card__nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+/* Logo link */
+.cr-logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.cr-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cr-brand__stars {
+  flex-shrink: 0;
+}
+
+.cr-brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.cr-brand__line {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #111827;
+}
+
+/* Social icons list */
+.cr-socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cr-socials__item {
+  color: #6b7280;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.cr-socials__item:hover {
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+/* Navigation links */
+.cr-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.cr-links__item {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.cr-links__item:hover {
+  color: #111827;
+}
+
+/* ── Bottom Copyright Row ────────────────────────────────────────── */
+.cr-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  font-size: 13.5px;
+  color: #6b7280;
+  padding-top: 12px;
+  flex-wrap: wrap;
+}
+
+.cr-copyright {
+  color: #6b7280;
+}
+
+.cr-legal {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cr-legal__link {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.cr-legal__link:hover {
+  color: #111827;
+}
+
+/* ── FAB Chat Icon ───────────────────────────────────────────────── */
+.cr-fab-chat {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  z-index: 50;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+}
+.cr-fab-chat:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Responsive adjustments ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cr-card {
+    padding: 80px 48px 36px;
+    border-radius: 40px 40px 0 0;
+  }
+
+  .cr-shape--tl,
+  .cr-shape--tr,
+  .cr-shape--bl,
+  .cr-shape--br {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cr-footer-section {
+    padding: 60px 24px 0;
+  }
+
+  .cr-card__nav-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .cr-card__nav-left {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .cr-footer-section {
+    padding: 40px 16px 0;
+  }
+  .cr-card {
+    padding: 56px 24px 28px;
+    border-radius: 32px 32px 0 0;
+  }
+  .cr-card__heading {
+    font-size: 2rem;
+    margin-bottom: 28px;
+  }
+  .cr-card__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cr-btn {
+    width: 100%;
+  }
+  .cr-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .cr-card__bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .cr-fab-chat {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+  }
+}

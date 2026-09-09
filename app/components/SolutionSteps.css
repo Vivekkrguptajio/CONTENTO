@@ -1,0 +1,374 @@
+/* ════════════════════════════════════════════════════════════════════
+   SOLUTIONS STEPS SECTION ("Introducing the new Solution")
+   Pixel-perfect matching user reference screenshot
+   ════════════════════════════════════════════════════════════════════ */
+
+.sol-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 20px 50px;
+  box-sizing: border-box;
+}
+
+.sol-container {
+  max-width: 1218px; /* Strict uniform width across all landing page cards */
+  margin: 0 auto;
+}
+
+/* Main Section Heading */
+.sol-main-heading {
+  font-size: 40px;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  letter-spacing: -0.025em;
+  margin: 0 0 46px 0;
+  line-height: 1.18;
+}
+
+/* 3-Column Grid */
+.sol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Card Base */
+.sol-card {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 28px;
+  padding: 34px 26px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 520px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sol-card:hover {
+  border-color: #e2e8f0;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.04);
+}
+
+.sol-card__visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CARD 1: LAUNCH YOUR CAMPAIGN
+   ════════════════════════════════════════════════════════════════════ */
+.sol-platform-modal {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 18px 18px 14px;
+  width: 100%;
+  max-width: 310px;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-modal-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.sol-modal-sub {
+  font-size: 9.5px;
+  color: #94a3b8;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.sol-platform-input {
+  background: #e2e8f0;
+  border-radius: 12px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.sol-pill-badge {
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.sol-pill-badge--mini {
+  padding: 4px 6px;
+  gap: 3px;
+}
+
+.sol-x-icon {
+  font-size: 9px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* Black Cursor */
+.sol-cursor-pointer {
+  position: absolute;
+  bottom: 24px;
+  left: 45%;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.25));
+  animation: solCursorFloat 2s infinite ease-in-out;
+}
+
+@keyframes solCursorFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.sol-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.sol-modal-cancel {
+  background: none;
+  border: none;
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sol-modal-continue {
+  background: #334155;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.sol-modal-continue:hover {
+  background: #0f172a;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CARD 2: CREATORS MAKE THE CONTENT (Phone Reels)
+   ════════════════════════════════════════════════════════════════════ */
+.sol-card__visual--creators {
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.sol-reels-container {
+  display: flex;
+  gap: 8px;
+  height: 250px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.sol-reel {
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sol-reel--left,
+.sol-reel--right {
+  width: 52px;
+  opacity: 0.65;
+}
+
+.sol-reel--center-1,
+.sol-reel--center-2 {
+  width: 82px;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.12);
+}
+
+.sol-reel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fade out at bottom */
+.sol-reels-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0) 0%, #f8fafc 100%);
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CARD 3: WE HANDLE EVERYTHING ELSE (Graph Analytics)
+   ════════════════════════════════════════════════════════════════════ */
+.sol-analytics-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px 16px 12px;
+  width: 100%;
+  max-width: 310px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+  box-sizing: border-box;
+}
+
+.sol-analytics-head {
+  margin-bottom: 8px;
+}
+
+.sol-analytics-label {
+  font-size: 10.5px;
+  color: #94a3b8;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.sol-analytics-ctr-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.sol-analytics-ctr {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sol-analytics-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.sol-analytics-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.sol-legend-pill {
+  padding: 2px 7px;
+  border-radius: 9999px;
+  font-size: 9.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.sol-legend-check {
+  font-size: 8.5px;
+}
+
+.sol-legend-pill--views {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.sol-legend-pill--apps {
+  background: #fdf2f8;
+  color: #db2777;
+}
+
+.sol-legend-pill--joined {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.sol-analytics-chart {
+  width: 100%;
+  height: 105px;
+  margin-top: 4px;
+}
+
+.sol-chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sol-chart-dates {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  color: #94a3b8;
+  font-weight: 500;
+  padding-top: 4px;
+}
+
+/* ── Card Bottom Texts ───────────────────────────────────────────── */
+.sol-card__text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sol-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.015em;
+}
+
+.sol-card__desc {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.48;
+  margin: 0 auto;
+  max-width: 275px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .sol-grid {
+    grid-template-columns: 1fr;
+  }
+  .sol-card {
+    height: auto;
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sol-main-heading {
+    font-size: 32px;
+    margin-bottom: 36px;
+  }
+  .sol-card {
+    padding: 24px 20px 28px;
+  }
+}

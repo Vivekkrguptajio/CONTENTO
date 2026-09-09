@@ -1,0 +1,132 @@
+/* ════════════════════════════════════════════════════════════════════
+   TRADITIONAL MARKETING SECTION ("Traditional Marketing is dying")
+   Pixel-perfect matching user reference screenshot
+   ════════════════════════════════════════════════════════════════════ */
+
+.tm-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 84px 20px 50px;
+  box-sizing: border-box;
+}
+
+.tm-container {
+  max-width: 1218px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section Title */
+.tm-heading {
+  font-size: 40px;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  letter-spacing: -0.025em;
+  margin: 0 0 44px 0;
+  line-height: 1.18;
+}
+
+/* Video Player Card */
+.tm-video-card {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  aspect-ratio: 762 / 404;
+  background: #0f172a;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tm-video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 54px -10px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tm-video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 28px;
+}
+
+/* Interactive Play Overlay */
+.tm-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.0);
+  transition: background 0.2s ease;
+}
+
+.tm-video-card:hover .tm-play-overlay {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.tm-play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding-left: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.25s ease;
+}
+
+.tm-video-card:hover .tm-play-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tm-play-btn:hover {
+  transform: scale(1.1) !important;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .tm-video-card {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  .tm-video-img {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tm-heading {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+  .tm-video-card {
+    border-radius: 16px;
+  }
+  .tm-video-img {
+    border-radius: 16px;
+  }
+  .tm-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+}

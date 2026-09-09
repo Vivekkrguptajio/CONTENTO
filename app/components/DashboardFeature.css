@@ -1,0 +1,1433 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Content Rewards — Dashboard Feature (Pixel-Perfect Submissions UI)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.df-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 24px 60px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.df-container {
+  width: 100%;
+  max-width: 1218px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Heading ─────────────────────────────────────────────────────── */
+.df-heading {
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 44px 0;
+}
+
+/* ── Top Tabs Stepper ────────────────────────────────────────────── */
+.df-tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  width: 100%;
+  max-width: 580px;
+}
+
+.df-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.df-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-family: inherit;
+  outline: none;
+  flex: 1;
+}
+
+.df-tab__icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f4f4f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #71717a;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.df-tab--active .df-tab__icon-bubble {
+  background: #f4f4f5;
+  color: #111827;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.df-tab__label {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.df-tab--active .df-tab__label {
+  font-weight: 700;
+  color: #111827;
+}
+
+.df-tabs__divider {
+  width: 1px;
+  height: 28px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* Tab indicator track */
+.df-tabs-track {
+  width: 100%;
+  height: 2px;
+  background: #f3f4f6;
+  margin-top: 20px;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.df-tabs-indicator {
+  position: absolute;
+  top: 0;
+  height: 2px;
+  background: #ea580c;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+/* ── Dashboard Mockup Card (1218px width to match campaign card) ── */
+.df-dashboard {
+  width: 100%;
+  max-width: 1218px;
+  min-height: 600px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 28px;
+  box-shadow: 
+    0 14px 40px -10px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Left Sidebar ────────────────────────────────────────────────── */
+.df-sidebar {
+  width: 205px;
+  border-right: 1px solid #f1f5f9;
+  padding: 24px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  flex-shrink: 0;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.df-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px;
+}
+
+.df-sidebar__logo-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.df-sidebar__brand-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.df-sidebar__brand-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+}
+
+.df-sidebar__brand-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.df-sidebar__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.df-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.df-menu-item:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.df-menu-item--active {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.df-menu-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.df-menu-item__label {
+  flex: 1;
+}
+
+.df-menu-item__badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+.df-menu-item--active .df-menu-item__badge {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.df-menu-item__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ea580c;
+  margin-left: auto;
+}
+
+/* ── Right Main Canvas: Submissions View ─────────────────────────── */
+.df-submissions {
+  flex: 1;
+  padding: 24px 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Top Toolbar */
+.df-sub-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.df-sub-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.df-sub-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.df-sub-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+.df-sub-link-btn:hover {
+  color: #0f172a;
+}
+
+.df-sub-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.df-sub-pill-btn--dark {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+}
+.df-sub-pill-btn--dark:hover {
+  background: #000000;
+}
+
+.df-sub-pill-btn--outline {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+.df-sub-pill-btn--outline:hover {
+  background: #f8fafc;
+}
+
+/* Filter Bar */
+.df-sub-filterbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.df-sub-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8fafc;
+  padding: 3px;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.df-filter-pill {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.df-filter-pill--active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.df-sub-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.df-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 5px 14px;
+}
+
+.df-search-input {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  outline: none;
+  width: 100px;
+  color: #0f172a;
+  font-family: inherit;
+}
+
+.df-filter-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.df-filter-icon-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* Submissions List */
+.df-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual Card */
+.df-sub-card {
+  border: 1px solid #f1f5f9;
+  border-radius: 18px;
+  padding: 18px 22px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.df-sub-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.df-creator-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.df-creator-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.df-creator-avatar--kaizen {
+  background: linear-gradient(135deg, #1e293b, #475569);
+}
+
+.df-creator-avatar--crypto {
+  background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.df-creator-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.df-creator-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.df-creator-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.df-sub-card__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.df-badge-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ea580c;
+  background: #fff7ed;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid #ffedd5;
+}
+
+.df-badge-pending__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ea580c;
+}
+
+.df-btn-dots {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.df-btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.df-btn-action--reject {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+}
+.df-btn-action--reject:hover {
+  background: #fee2e2;
+}
+
+.df-btn-action--approve {
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+}
+.df-btn-action--approve:hover {
+  background: #dcfce7;
+}
+
+/* Card Body (Phone + Analytics) */
+.df-sub-card__body {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 205px 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Phone Mockup */
+.df-phone-mockup {
+  width: 195px;
+  height: 305px;
+  background: linear-gradient(135deg, #fefce8, #fffbeb);
+  border: 2px solid #0f172a;
+  border-radius: 36px;
+  padding: 7px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.df-phone-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0f172a;
+  position: relative;
+}
+
+.df-phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px;
+  height: 12px;
+  background: #0f172a;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+}
+
+.df-phone-video-frame {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1e293b 0%, #334155 50%, #0f172a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.df-video-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  gap: 8px;
+  z-index: 2;
+}
+
+.df-video-spark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.df-video-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.df-video-stat {
+  font-size: 26px;
+  font-weight: 900;
+  color: #facc15;
+  letter-spacing: -0.02em;
+}
+
+.df-video-label {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+}
+
+.df-video-platform {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fde047;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Analytics */
+.df-analytics {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.df-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.df-stat-card {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.df-stat-card__val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.df-stat-card__val--red {
+  color: #ef4444;
+}
+
+.df-stat-card__lbl {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Legend */
+.df-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.df-legend-pill {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.df-legend-pill--blue {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+}
+
+.df-legend-pill--pink {
+  background: #fdf2f8;
+  color: #db2777;
+  border: 1px solid #fce7f3;
+}
+
+.df-legend-pill--orange {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #ffedd5;
+}
+
+.df-legend-pill--gray {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+/* Chart SVG */
+.df-chart-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.df-chart-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 140px;
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-align: right;
+  width: 32px;
+  padding-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.df-chart-svg-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.df-chart-svg {
+  width: 100%;
+  height: 130px;
+}
+
+.df-chart-x {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  padding-top: 4px;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   PAYOUTS VIEW (Exact match to user reference screenshot)
+   ════════════════════════════════════════════════════════════════════ */
+.df-payouts-view {
+  flex: 1;
+  background: #ffffff;
+  padding: 22px 32px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Top Header */
+.df-payouts-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.df-payouts-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.df-payouts-time-capsule {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 9999px;
+  gap: 2px;
+}
+
+.df-payouts-time-btn {
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.df-payouts-time-btn:hover {
+  color: #0f172a;
+}
+
+.df-payouts-time-btn--active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* 6 Summary Stat Cards */
+.df-payouts-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.df-payout-stat-card {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.df-payout-stat-card__val {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.df-payout-stat-card__lbl {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Filter Bar */
+.df-payouts-filterbar {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.df-payouts-filter-pills {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 9999px;
+  gap: 2px;
+}
+
+.df-payout-pill {
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.df-payout-pill:hover {
+  color: #0f172a;
+}
+
+.df-payout-pill--active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Payouts Table */
+.df-payouts-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.df-th--check,
+.df-td--check {
+  width: 22px;
+  text-align: center;
+  padding-left: 6px;
+}
+
+.df-table-radio {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.df-th--p-creator {
+  text-align: left;
+}
+
+.df-th--p-platforms {
+  text-align: center;
+  width: 115px;
+}
+
+.df-th--p-campaign {
+  text-align: center;
+}
+
+.df-th--p-views {
+  text-align: right;
+}
+
+.df-th--p-est {
+  text-align: right;
+}
+
+.df-th--p-net {
+  text-align: right;
+}
+
+.df-th--p-status {
+  text-align: right;
+  padding-right: 6px;
+}
+
+.df-payout-tr {
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.df-payout-tr:hover {
+  background: #f8fafc;
+}
+
+.df-payout-tr:last-child {
+  opacity: 0.4;
+}
+
+.df-payout-tr--blocked {
+  background: #fff5f5 !important;
+  border-bottom: 1px solid #fee2e2;
+}
+
+.df-payout-tr--blocked:hover {
+  background: #fee2e2 !important;
+}
+
+.df-table-avatar--gradient {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.df-td--p-campaign {
+  text-align: center;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.df-td--p-views {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--p-est {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--est-green {
+  color: #10b981;
+}
+
+.df-td--p-net {
+  text-align: right;
+  font-weight: 600;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--blocked-val {
+  color: #ef4444 !important;
+}
+
+.df-td--p-status {
+  text-align: right;
+  padding-right: 6px;
+}
+
+/* Status Badges */
+.df-payout-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.df-payout-badge--pending {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #ffedd5;
+}
+
+.df-payout-badge__dot--pending {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ea580c;
+}
+
+.df-payout-badge--paid {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #dcfce7;
+}
+
+.df-payout-badge__icon-paid {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.df-payout-badge--blocked {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.df-payout-badge__icon-blocked {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.df-payout-badge--upcoming {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+}
+
+.df-payout-badge__dot--upcoming {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CREATORS TABLE VIEW (Pixel-perfect matching screenshot)
+   ════════════════════════════════════════════════════════════════════ */
+.df-creators-view {
+  flex: 1;
+  background: #ffffff;
+  padding: 22px 32px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Top Sub-navigation Bar */
+.df-creators-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0px;
+  margin-bottom: 18px;
+}
+
+.df-creators-tabs {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.df-creators-tab {
+  background: none;
+  border: none;
+  padding: 0 2px 14px 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.df-creators-tab:hover {
+  color: #0f172a;
+}
+
+.df-creators-tab--active {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.df-creators-tab--active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0f172a;
+  border-radius: 2px 2px 0 0;
+}
+
+.df-creators-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 10px;
+}
+
+/* Sub Filter Pills Row */
+.df-creators-filterbar {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.df-creators-filter-pills {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 9999px;
+  gap: 2px;
+}
+
+.df-creator-pill {
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.df-creator-pill:hover {
+  color: #0f172a;
+}
+
+.df-creator-pill--active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Container & Table */
+.df-table-container {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+.df-creators-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.df-th {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #94a3b8;
+  padding: 6px 12px 14px 12px;
+  white-space: nowrap;
+  letter-spacing: normal;
+}
+
+.df-th--num {
+  width: 24px;
+  text-align: left;
+  padding-left: 6px;
+}
+
+.df-th--creator {
+  text-align: left;
+}
+
+.df-th--platforms {
+  text-align: center;
+  width: 105px;
+}
+
+.df-th--earned {
+  text-align: right;
+}
+
+.df-th--views {
+  text-align: right;
+}
+
+.df-th--match {
+  text-align: right;
+}
+
+.df-th--eng-rate {
+  text-align: right;
+}
+
+.df-th--eng-score {
+  text-align: right;
+  padding-right: 6px;
+}
+
+.df-tr {
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.df-tr:hover {
+  background: #f8fafc;
+}
+
+.df-tr:last-child {
+  opacity: 0.4;
+}
+
+.df-td {
+  padding: 9.5px 12px;
+  font-size: 13px;
+  color: #0f172a;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.df-td--num {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+  padding-left: 6px;
+}
+
+.df-table-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.df-table-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.df-table-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.df-table-meta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.df-table-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.df-table-joined {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.df-table-platforms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.df-platform-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.df-td--earned {
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--views {
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--match {
+  text-align: right;
+}
+
+.df-match-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #10b981;
+  font-weight: 600;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--eng-rate {
+  text-align: right;
+  color: #0f172a;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.df-td--eng-score {
+  text-align: right;
+  padding-right: 6px;
+}
+
+.df-score-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .df-sub-card__body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .df-dashboard {
+    flex-direction: column;
+  }
+  .df-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .df-submissions,
+  .df-creators-view {
+    padding: 18px 16px;
+  }
+  .df-sub-filterbar,
+  .df-creators-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
