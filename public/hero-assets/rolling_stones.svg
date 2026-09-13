@@ -1,14 +1,13 @@
-<svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" rx="22" fill="#ffffff" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.08))" />
-  <g transform="translate(14, 12) scale(0.72)">
+<svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 6) scale(0.8)">
     <!-- Dark mouth interior -->
     <ellipse cx="50" cy="50" rx="36" ry="24" fill="#111827" />
     <!-- White teeth bar -->
     <path d="M22 46 C32 38 68 38 78 46 C68 41 32 41 22 46 Z" fill="#ffffff" />
     <!-- Red Lips -->
-    <path d="M14 46 C14 26 34 16 50 26 C66 16 86 26 86 46 C84 64 70 74 50 74 C30 74 16 64 14 46 Z" fill="#dc2626" stroke="#000000" stroke-width="3" />
+    <path d="M14 46 C14 26 34 16 50 26 C66 16 86 26 86 46 C84 64 70 74 50 74 C30 74 16 64 14 46 Z" fill="#dc2626" stroke="#000000" stroke-width="2.5" />
     <!-- Iconic Red Tongue -->
-    <path d="M30 46 C30 46 32 82 50 90 C68 82 70 46 70 46 C62 56 38 56 30 46 Z" fill="#ef4444" stroke="#000000" stroke-width="3" />
-    <path d="M50 50 L50 82" stroke="#991b1b" stroke-width="3" stroke-linecap="round" />
+    <path d="M30 46 C30 46 32 82 50 90 C68 82 70 46 70 46 C62 56 38 56 30 46 Z" fill="#ef4444" stroke="#000000" stroke-width="2.5" />
+    <path d="M50 50 L50 82" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round" />
   </g>
 </svg>

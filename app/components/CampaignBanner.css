@@ -1,11 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Content Rewards — Campaign Banner Component (Pixel-Perfect)
+   Content Rewards — Campaign Banner Component (1:1 Exact Match)
+   "Run your next campaign with the best tech"
    ═══════════════════════════════════════════════════════════════════ */
 
 .cb-section {
   width: 100%;
   background: #ffffff;
-  padding: 80px 24px 60px;
+  padding: 64px 24px 70px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -14,77 +15,73 @@
 
 .cb-container {
   width: 100%;
-  max-width: 1218px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
-/* ── The Large Rounded Gradient Card ─────────────────────────────── */
+/* ── The Large Rounded Sunset Gradient Card (Exact from ContentRewards) ── */
 .cb-card {
   width: 100%;
-  min-height: 520px;
-  border-radius: 46px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 25%,
-    #ffeedb 45%,
-    #fdb56e 68%,
-    #f66f0e 88%,
-    #ea580c 100%
-  );
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 
-    0 24px 60px -20px rgba(234, 88, 12, 0.18),
-    0 8px 24px -5px rgba(0, 0, 0, 0.03);
-  padding: 84px 76px 68px;
+  border-radius: 44px;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FCEAD2 45%, #EE8227 100%);
+  border: none;
+  box-shadow: none;
+  padding: 56px 64px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.cb-content {
+  max-width: 540px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 /* ── Main Heading ────────────────────────────────────────────────── */
 .cb-heading {
-  font-size: clamp(2.2rem, 3.8vw, 3rem);
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  color: #111827;
-  margin: 0 0 44px 0;
-  max-width: 560px;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #110D0C;
+  margin: 0 0 48px 0;
 }
 
 /* ── Features 2x2 Grid ───────────────────────────────────────────── */
 .cb-features {
   display: grid;
-  grid-template-columns: repeat(2, minmax(180px, max-content));
-  gap: 28px 56px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 28px;
+  row-gap: 16px;
   margin-bottom: 48px;
   align-items: start;
 }
 
 .cb-feature-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 
 .cb-feature-item__icon {
-  color: #1f2937;
+  color: #110D0C;
+  opacity: 0.82;
   flex-shrink: 0;
-  margin-top: 1px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 .cb-feature-item__text {
-  font-size: 15.5px;
-  font-weight: 600;
-  color: #1f2937;
-  line-height: 1.35;
+  font-size: 17px;
+  font-weight: 500;
+  color: #110D0C;
+  opacity: 0.85;
+  line-height: 1.3;
   letter-spacing: -0.01em;
 }
 
@@ -92,92 +89,102 @@
 .cb-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .cb-btn {
-  height: 48px;
-  padding: 0 28px;
+  padding: 14px 24px;
   border-radius: 9999px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
   outline: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
+  line-height: 1.25;
 }
 
 .cb-btn--primary {
-  background: #111827;
+  background: #110D0C;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  border: 1px solid #110D0C;
 }
 
 .cb-btn--primary:hover {
   background: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .cb-btn--secondary {
-  background: #fca75a;
+  background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(246, 111, 14, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-weight: 500;
 }
 
 .cb-btn--secondary:hover {
-  background: #fb9540;
+  background: rgba(255, 255, 255, 0.32);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(246, 111, 14, 0.28);
 }
 
 /* ── Responsive adjustments ──────────────────────────────────────── */
 @media (max-width: 860px) {
   .cb-card {
-    padding: 60px 40px 50px;
+    padding: 44px 36px;
     border-radius: 36px;
   }
 
   .cb-heading {
-    font-size: 2.3rem;
+    font-size: 44px;
     margin-bottom: 36px;
   }
 
   .cb-features {
-    gap: 22px 36px;
-    margin-bottom: 40px;
+    column-gap: 20px;
+    row-gap: 16px;
+    margin-bottom: 38px;
+  }
+
+  .cb-feature-item__text {
+    font-size: 15px;
   }
 }
 
 @media (max-width: 600px) {
   .cb-section {
-    padding: 50px 16px 40px;
+    padding: 40px 16px 48px;
   }
 
   .cb-card {
-    padding: 48px 24px 40px;
-    border-radius: 28px;
+    padding: 36px 20px 32px;
+    border-radius: 24px;
   }
 
   .cb-heading {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 36px;
+    margin-bottom: 32px;
   }
 
   .cb-features {
     grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 34px;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .cb-feature-item__text {
+    font-size: 15px;
   }
 
   .cb-actions {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
 
   .cb-btn {

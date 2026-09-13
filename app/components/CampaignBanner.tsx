@@ -34,61 +34,63 @@ export default function CampaignBanner() {
     <section className="cb-section" aria-label="Campaign Overview">
       <div className="cb-container">
         <div className="cb-card">
-          
-          {/* Main Heading */}
-          <h2 className="cb-heading">
-            Run your next<br />
-            campaign with the<br />
-            best tech
-          </h2>
+          <div className="cb-content">
+            
+            {/* Main Heading */}
+            <h2 className="cb-heading">
+              Run your next<br />
+              campaign with the<br />
+              best tech
+            </h2>
 
-          {/* Stats & Features (2x2 grid) */}
-          <div className="cb-features">
-            {/* 200 agencies */}
-            <div className="cb-feature-item">
-              <span className="cb-feature-item__icon">
-                <MegaphoneIcon />
-              </span>
-              <span className="cb-feature-item__text">200 agencies</span>
+            {/* Stats & Features (2x2 grid) */}
+            <div className="cb-features">
+              {/* 200 agencies */}
+              <div className="cb-feature-item">
+                <span className="cb-feature-item__icon">
+                  <MegaphoneIcon />
+                </span>
+                <span className="cb-feature-item__text">200 agencies</span>
+              </div>
+
+              {/* 1M+ creators */}
+              <div className="cb-feature-item">
+                <span className="cb-feature-item__icon">
+                  <UsersIcon />
+                </span>
+                <span className="cb-feature-item__text">1M+ creators</span>
+              </div>
+
+              {/* 24/7 support */}
+              <div className="cb-feature-item">
+                <span className="cb-feature-item__icon">
+                  <HeadsetIcon />
+                </span>
+                <span className="cb-feature-item__text">24/7 support</span>
+              </div>
+
+              {/* Real-time campaign analytics */}
+              <div className="cb-feature-item">
+                <span className="cb-feature-item__icon">
+                  <ChartIcon />
+                </span>
+                <span className="cb-feature-item__text">
+                  Real-time campaign<br />analytics
+                </span>
+              </div>
             </div>
 
-            {/* 1M+ creators */}
-            <div className="cb-feature-item">
-              <span className="cb-feature-item__icon">
-                <UsersIcon />
-              </span>
-              <span className="cb-feature-item__text">1M+ creators</span>
+            {/* Action Buttons */}
+            <div className="cb-actions">
+              <button type="button" className="cb-btn cb-btn--primary">
+                Launch a campaign
+              </button>
+              <button type="button" className="cb-btn cb-btn--secondary">
+                See a demo
+              </button>
             </div>
 
-            {/* 24/7 support */}
-            <div className="cb-feature-item">
-              <span className="cb-feature-item__icon">
-                <HeadsetIcon />
-              </span>
-              <span className="cb-feature-item__text">24/7 support</span>
-            </div>
-
-            {/* Real-time campaign analytics */}
-            <div className="cb-feature-item">
-              <span className="cb-feature-item__icon">
-                <ChartIcon />
-              </span>
-              <span className="cb-feature-item__text">
-                Real-time campaign<br />analytics
-              </span>
-            </div>
           </div>
-
-          {/* Action Buttons */}
-          <div className="cb-actions">
-            <button type="button" className="cb-btn cb-btn--primary">
-              Launch a campaign
-            </button>
-            <button type="button" className="cb-btn cb-btn--secondary">
-              See a demo
-            </button>
-          </div>
-
         </div>
       </div>
     </section>

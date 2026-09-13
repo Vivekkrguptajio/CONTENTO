@@ -1,0 +1,20 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- NFL Shield Logo -->
+  <path d="M22 2C32 2 38 6.5 38 15.5C38 27.5 28 39 22 42C16 39 6 27.5 6 15.5C6 6.5 12 2 22 2Z" fill="#013369" />
+  <path d="M22 4C30.5 4 36 7.8 36 15.5C36 26.2 27 37 22 39.8C17 37 8 26.2 8 15.5C8 7.8 13.5 4 22 4Z" fill="#ffffff" />
+  <path d="M22 5.5C29.5 5.5 34.5 8.8 34.5 15.5C34.5 25.5 26 35.5 22 38.2C18 35.5 9.5 25.5 9.5 15.5C9.5 8.8 14.5 5.5 22 5.5Z" fill="#013369" />
+  <!-- Stars in top section -->
+  <polygon points="14,9 14.8,11 17,11 15.2,12.3 15.8,14.3 14,13.1 12.2,14.3 12.8,12.3 11,11 13.2,11" fill="#ffffff" />
+  <polygon points="22,8 22.8,10 25,10 23.2,11.3 23.8,13.3 22,12.1 20.2,13.3 20.8,11.3 19,10 21.2,10" fill="#ffffff" />
+  <polygon points="30,9 30.8,11 33,11 31.2,12.3 31.8,14.3 30,13.1 28.2,14.3 28.8,12.3 27,11 29.2,11" fill="#ffffff" />
+  <!-- Football icon in upper shield -->
+  <ellipse cx="22" cy="18" rx="5" ry="3.5" fill="#d97706" transform="rotate(-25 22 18)" />
+  <line x1="19" y1="16.5" x2="25" y2="19.5" stroke="#ffffff" stroke-width="0.8" />
+  <!-- Lower section: Red & White stripes -->
+  <path d="M12 22C12 28 17 34 22 36.5C27 34 32 28 32 22H12Z" fill="#ffffff" />
+  <rect x="14" y="22" width="3" height="11" fill="#d50a0a" />
+  <rect x="20.5" y="22" width="3" height="14" fill="#d50a0a" />
+  <rect x="27" y="22" width="3" height="11" fill="#d50a0a" />
+  <!-- NFL Text -->
+  <text x="22" y="22" fill="#013369" font-family="Arial, sans-serif" font-weight="900" font-size="6" text-anchor="middle" letter-spacing="0.5">NFL</text>
+</svg>

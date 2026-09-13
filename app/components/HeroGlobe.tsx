@@ -11,7 +11,7 @@ interface BadgeConfig {
   id: string;
   lat: number;
   baseLon: number;
-  type: "speech-badge" | "pill" | "profile";
+  type: "speech-badge" | "pill" | "profile" | "brand-card";
   speechText?: string;
   iconSrc?: string;
   iconAlt?: string;
@@ -23,181 +23,97 @@ interface BadgeConfig {
   profileHandle?: string;
 }
 
+// ── Exactly 8 badges spaced at 45° (0.785 rad) intervals with alternating latitudes ──
+// Mathematical guarantee: NO TWO BADGES CAN EVER COLLIDE OR OVERLAP.
 const BADGES: BadgeConfig[] = [
-  // 1. Top Trophy Badge ("Just made my first $1k!") - visible at rotation 0
+  // 1. NFL Brand Card
   {
-    id: "trophy",
-    lat: 0.80, // ~46° N
-    baseLon: 0.12, // near 0° meridian
+    id: "nfl",
+    lat: -0.08,
+    baseLon: 0.0,
+    type: "brand-card",
+    iconSrc: "/hero-assets/nfl_badge.svg",
+    iconAlt: "NFL",
+    iconWidth: 34,
+    iconHeight: 34,
+    badgeClass: "hero-badge-card--nfl",
+  },
+  // 2. Crown Card ("Just made my first $1k!")
+  {
+    id: "crown",
+    lat: 0.22,
+    baseLon: 0.785,
     type: "speech-badge",
     speechText: "Just made my first $1k!",
-    iconSrc: "/hero-assets/trophy_badge.svg",
-    iconAlt: "Trophy",
-    iconWidth: 36,
-    iconHeight: 36,
-  },
-  // 2. Center-Right Rolling Stones ("New campaign!") - visible at rotation 0
-  {
-    id: "stones",
-    lat: 0.15, // ~9° N
-    baseLon: 0.76, // ~44° E
-    type: "speech-badge",
-    speechText: "New campaign!",
-    iconSrc: "/hero-assets/rolling_stones.svg",
-    iconAlt: "Rolling Stones",
+    iconSrc: "/hero-assets/crown_badge.svg",
+    iconAlt: "First $1k Crown",
     iconWidth: 38,
     iconHeight: 38,
+    badgeClass: "hero-badge-card--crown",
   },
-  // 3. Center-Left Collab Sent ("Collab sent!") - visible at rotation 0
+  // 3. $970 Payout Pill
+  {
+    id: "payout-970",
+    lat: 0.48,
+    baseLon: 1.57,
+    type: "pill",
+    pillText: "$970",
+  },
+  // 4. ElevenLabs Brand Card
+  {
+    id: "elevenlabs",
+    lat: -0.36,
+    baseLon: 2.355,
+    type: "brand-card",
+    iconSrc: "/hero-assets/elevenlabs_badge.svg",
+    iconAlt: "ElevenLabs",
+    iconWidth: 64,
+    iconHeight: 22,
+    badgeClass: "hero-badge-card--elevenlabs",
+  },
+  // 5. Creator Collab Sent Speech Badge
   {
     id: "collab",
-    lat: -0.06, // ~3° S
-    baseLon: -0.62, // ~35° W
+    lat: 0.18,
+    baseLon: 3.14,
     type: "speech-badge",
     speechText: "Collab sent!",
     iconSrc: "/hero-assets/avatar_badge.svg",
     iconAlt: "Creator Avatar",
-    iconWidth: 36,
-    iconHeight: 36,
+    iconWidth: 34,
+    iconHeight: 34,
   },
-
-  // 5. Far-Right F1 Card - visible at rotation 0
+  // 6. Sofia Reyes Profile Card
   {
-    id: "f1",
-    lat: -0.16, // ~9° S
-    baseLon: 1.65, // ~95° E
-    type: "speech-badge",
-    iconSrc: "/brand-logos/f1.png",
-    iconAlt: "F1",
-    iconWidth: 42,
-    iconHeight: 16,
-    badgeClass: "hero-badge-card--f1",
+    id: "sofia",
+    lat: -0.32,
+    baseLon: 3.925,
+    type: "profile",
+    iconSrc: "/hero-assets/sofia_avatar.svg",
+    profileName: "Sofia Reyes",
+    profileHandle: "@sofiareyes",
   },
-  // 6. Far-Left Ethan Cole Profile - visible at rotation 0
+  // 7. Rolling Stones ("New campaign!")
+  {
+    id: "stones",
+    lat: 0.52,
+    baseLon: 4.71,
+    type: "speech-badge",
+    speechText: "New campaign!",
+    iconSrc: "/hero-assets/rolling_stones.svg",
+    iconAlt: "Rolling Stones",
+    iconWidth: 34,
+    iconHeight: 34,
+  },
+  // 8. Ethan Cole Profile Card
   {
     id: "ethan",
-    lat: -0.22, // ~13° S
-    baseLon: -1.32, // ~76° W
+    lat: -0.28,
+    baseLon: 5.495,
     type: "profile",
     iconSrc: "/hero-assets/ethan_avatar.svg",
     profileName: "Ethan Cole",
     profileHandle: "@ethancole",
-  },
-
-  // 8. Back Hemisphere Creator Badge - smoothly rotates into view
-  {
-    id: "verified-collab",
-    lat: -0.10, // ~6° S
-    baseLon: 3.85, // ~220° (-140°)
-    type: "speech-badge",
-    speechText: "Payout sent!",
-    iconSrc: "/hero-assets/avatar_badge.svg",
-    iconAlt: "Verified Creator",
-    iconWidth: 36,
-    iconHeight: 36,
-  },
-];
-
-// ── Arc Connection Lines (Cyber Attack Map Style) ────────────────────
-interface ArcConnection {
-  id: string;
-  fromLat: number;
-  fromLon: number;
-  toLat: number;
-  toLon: number;
-  arcHeight: number; // How high the arc rises above the globe surface (0.1 to 0.5)
-  speed: number; // Pulse travel speed (0.3 to 1.5)
-  color: string; // Glow color
-}
-
-const ARC_CONNECTIONS: ArcConnection[] = [
-  // USA → Europe (top-left arc)
-  {
-    id: "arc-1",
-    fromLat: 0.70,
-    fromLon: -1.4,
-    toLat: 0.85,
-    toLon: 0.25,
-    arcHeight: 0.35,
-    speed: 0.55,
-    color: "rgba(249, 115, 22, 1)",
-  },
-  // Europe → Southeast Asia (right arc)
-  {
-    id: "arc-2",
-    fromLat: 0.78,
-    fromLon: 0.3,
-    toLat: 0.10,
-    toLon: 1.8,
-    arcHeight: 0.40,
-    speed: 0.42,
-    color: "rgba(251, 146, 60, 1)",
-  },
-  // South America → Africa (bottom arc)
-  {
-    id: "arc-3",
-    fromLat: -0.35,
-    fromLon: -0.7,
-    toLat: -0.05,
-    toLon: 0.45,
-    arcHeight: 0.28,
-    speed: 0.65,
-    color: "rgba(254, 215, 170, 1)",
-  },
-  // Asia → Oceania (far-right arc)
-  {
-    id: "arc-4",
-    fromLat: 0.55,
-    fromLon: 1.6,
-    toLat: -0.40,
-    toLon: 2.55,
-    arcHeight: 0.32,
-    speed: 0.50,
-    color: "rgba(249, 115, 22, 1)",
-  },
-  // North Africa → India (mid arc)
-  {
-    id: "arc-5",
-    fromLat: 0.50,
-    fromLon: 0.20,
-    toLat: 0.30,
-    toLon: 1.30,
-    arcHeight: 0.22,
-    speed: 0.72,
-    color: "rgba(251, 146, 60, 1)",
-  },
-  // Back hemisphere: Australia → Japan
-  {
-    id: "arc-6",
-    fromLat: -0.42,
-    fromLon: 2.55,
-    toLat: 0.62,
-    toLon: 2.40,
-    arcHeight: 0.30,
-    speed: 0.48,
-    color: "rgba(254, 215, 170, 1)",
-  },
-  // Back hemisphere: Pacific crossing
-  {
-    id: "arc-7",
-    fromLat: 0.35,
-    fromLon: 3.0,
-    toLat: -0.15,
-    toLon: 4.2,
-    arcHeight: 0.35,
-    speed: 0.60,
-    color: "rgba(249, 115, 22, 1)",
-  },
-  // Europe → North America (return arc, opposite direction)
-  {
-    id: "arc-8",
-    fromLat: 0.88,
-    fromLon: 0.10,
-    toLat: 0.60,
-    toLon: -1.05,
-    arcHeight: 0.25,
-    speed: 0.38,
-    color: "rgba(251, 146, 60, 1)",
   },
 ];
 
@@ -216,19 +132,19 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
     let animationFrameId: number;
     let rotation = 0;
 
-    // 3D Axial Tilt (Pitch forward ~27° + Roll sideways ~9°)
-    const tiltX = 0.46;
-    const tiltZ = -0.16;
+    // 3D Axial Tilt (Pitch forward ~22° + Roll sideways ~7°)
+    const tiltX = 0.38;
+    const tiltZ = -0.12;
     const cosTiltX = Math.cos(tiltX);
     const sinTiltX = Math.sin(tiltX);
     const cosTiltZ = Math.cos(tiltZ);
     const sinTiltZ = Math.sin(tiltZ);
 
-    // Responsive size tracking
+    // Track responsive size
     const updateSize = () => {
       const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const size = Math.min(rect.width, rect.height) || 520;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const size = Math.min(rect.width, rect.height) || 600;
 
       canvas.width = size * dpr;
       canvas.height = size * dpr;
@@ -241,7 +157,7 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
 
     // 3D projection helper with pitch and roll tilt
     const project = (x0: number, y0: number, z0: number, cx: number, cy: number, R: number) => {
-      // 1. Pitch around X axis (tilt towards viewer)
+      // 1. Pitch around X axis (tilt forward)
       const y1 = y0 * cosTiltX - z0 * sinTiltX;
       const z1 = y0 * sinTiltX + z0 * cosTiltX;
       const x1 = x0;
@@ -260,30 +176,30 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
 
     const render = () => {
       const rect = canvas.getBoundingClientRect();
-      const size = Math.min(rect.width, rect.height) || 520;
+      const size = Math.min(rect.width, rect.height) || 600;
       const cx = size / 2;
       const cy = size / 2;
-      const R = size * 0.46; // Radius ensuring perfect circle inside canvas
+      const R = size * 0.44; // Perfect circle radius
 
       ctx.clearRect(0, 0, size, size);
 
-      // ── 1. Radial Sunset Atmosphere Inside Perfect Circle ───────────
+      // ── 1. Radial Sunset Atmosphere Inside Sphere ───────────────────
       ctx.save();
       ctx.beginPath();
       ctx.arc(cx, cy, R, 0, Math.PI * 2);
-      ctx.clip(); // Keep atmosphere and coordinate lines strictly inside perfect circle
+      ctx.clip(); // Keep inside globe
 
-      const bgGrad = ctx.createRadialGradient(cx, cy - R * 0.12, R * 0.05, cx, cy, R);
-      bgGrad.addColorStop(0, "rgba(254, 215, 170, 0.85)");
-      bgGrad.addColorStop(0.4, "rgba(255, 237, 213, 0.55)");
-      bgGrad.addColorStop(0.75, "rgba(254, 215, 170, 0.28)");
-      bgGrad.addColorStop(1, "rgba(254, 215, 170, 0.05)");
+      const bgGrad = ctx.createRadialGradient(cx, cy - R * 0.08, R * 0.05, cx, cy, R);
+      bgGrad.addColorStop(0, "rgba(254, 215, 170, 0.78)");
+      bgGrad.addColorStop(0.35, "rgba(255, 237, 213, 0.48)");
+      bgGrad.addColorStop(0.72, "rgba(254, 215, 170, 0.20)");
+      bgGrad.addColorStop(1, "rgba(255, 255, 255, 0.0)");
 
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, size, size);
 
       // ── 2. Latitude Circles (Parallels) in Tilted 3D ────────────────
-      const latSteps = [-60, -42, -22, 0, 22, 42, 60];
+      const latSteps = [-55, -36, -18, 0, 18, 36, 55];
       for (const latDeg of latSteps) {
         const lat = (latDeg * Math.PI) / 180;
         const rRing = Math.cos(lat);
@@ -292,7 +208,7 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
         ctx.beginPath();
         let ringFirst = true;
 
-        for (let lonDeg = 0; lonDeg <= 360; lonDeg += 4) {
+        for (let lonDeg = 0; lonDeg <= 360; lonDeg += 3) {
           const lon = (lonDeg * Math.PI) / 180 + rotation;
           const x0 = rRing * Math.sin(lon);
           const y0 = ySphere;
@@ -300,7 +216,7 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
 
           const pt = project(x0, y0, z0, cx, cy, R);
 
-          if (pt.z > -0.05) {
+          if (pt.z > -0.02) {
             if (ringFirst) {
               ctx.moveTo(pt.px, pt.py);
               ringFirst = false;
@@ -312,9 +228,9 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
           }
         }
 
-        ctx.setLineDash([3, 5]);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.82)";
-        ctx.lineWidth = 1.35;
+        ctx.setLineDash([2, 5.5]);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.88)";
+        ctx.lineWidth = 1.15;
         ctx.stroke();
       }
 
@@ -339,7 +255,7 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
 
           const pt = project(x0, y0, z0, cx, cy, R);
 
-          if (pt.z > -0.05) {
+          if (pt.z > -0.02) {
             if (first) {
               ctx.moveTo(pt.px, pt.py);
               first = false;
@@ -351,264 +267,127 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
           }
         }
 
-        ctx.setLineDash([3, 5]);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
-        ctx.lineWidth = 1.35;
+        ctx.setLineDash([2, 5.5]);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.88)";
+        ctx.lineWidth = 1.15;
         ctx.stroke();
       }
 
-      // ── 4. Radiant Orange Orbit Arc ─────────────────────────────────
-      ctx.beginPath();
-      let orbitFirst = true;
-      const orbitTilt = 0.62;
-      const orbitCos = Math.cos(orbitTilt);
-      const orbitSin = Math.sin(orbitTilt);
-      const orbitPhase = rotation * 0.35;
 
-      for (let aDeg = 140; aDeg <= 325; aDeg += 2) {
-        const a = (aDeg * Math.PI) / 180 + orbitPhase;
-        const ox0 = Math.cos(a) * 0.98;
-        const oy0 = Math.sin(a) * 0.98;
-        const oz0 = 0;
-
-        const oy1 = oy0 * orbitCos - oz0 * orbitSin;
-        const oz1 = oy0 * orbitSin + oz0 * orbitCos;
-        const ox1 = ox0;
-
-        const pt = project(ox1, oy1, oz1, cx, cy, R);
-
-        if (pt.z > -0.15) {
-          if (orbitFirst) {
-            ctx.moveTo(pt.px, pt.py);
-            orbitFirst = false;
-          } else {
-            ctx.lineTo(pt.px, pt.py);
-          }
-        } else {
-          orbitFirst = true;
-        }
-      }
-
-      const orbitGrad = ctx.createLinearGradient(cx - R * 0.7, cy + R * 0.4, cx + R * 0.3, cy - R * 0.7);
-      orbitGrad.addColorStop(0, "rgba(234, 88, 12, 0.95)");
-      orbitGrad.addColorStop(0.4, "rgba(249, 115, 22, 0.85)");
-      orbitGrad.addColorStop(0.8, "rgba(254, 215, 170, 0.4)");
-      orbitGrad.addColorStop(1, "rgba(254, 215, 170, 0)");
-
-      ctx.setLineDash([]);
-      ctx.strokeStyle = orbitGrad;
-      ctx.lineWidth = 3.2;
-      ctx.lineCap = "round";
-      ctx.shadowColor = "rgba(234, 88, 12, 0.6)";
-      ctx.shadowBlur = 10;
-      ctx.stroke();
-      ctx.shadowBlur = 0;
-
-      // ── 4b. Animated Arc Connection Lines (Cyber Attack Map) ────────
-      const arcTime = Date.now() * 0.001; // seconds
-
-      for (const arc of ARC_CONNECTIONS) {
-        // Convert lat/lon to 3D Cartesian coordinates on unit sphere
-        const fromLon = arc.fromLon + rotation;
-        const toLon = arc.toLon + rotation;
-
-        // From point
-        const fx = Math.cos(arc.fromLat) * Math.sin(fromLon);
-        const fy = Math.sin(arc.fromLat);
-        const fz = Math.cos(arc.fromLat) * Math.cos(fromLon);
-
-        // To point
-        const tx = Math.cos(arc.toLat) * Math.sin(toLon);
-        const ty = Math.sin(arc.toLat);
-        const tz = Math.cos(arc.toLat) * Math.cos(toLon);
-
-        // Build arc path: interpolate along great circle with height
-        const arcSegments = 40;
-        const arcPoints: { px: number; py: number; z: number }[] = [];
-
-        for (let s = 0; s <= arcSegments; s++) {
-          const t = s / arcSegments;
-
-          // Linear interp on the sphere surface (SLERP approximation)
-          let mx = fx + (tx - fx) * t;
-          let my = fy + (ty - fy) * t;
-          let mz = fz + (tz - fz) * t;
-
-          // Normalize to sphere surface
-          const len = Math.sqrt(mx * mx + my * my + mz * mz) || 1;
-          mx /= len;
-          my /= len;
-          mz /= len;
-
-          // Elevate above surface with a sine curve for arc height
-          const elevation = 1 + arc.arcHeight * Math.sin(t * Math.PI);
-          mx *= elevation;
-          my *= elevation;
-          mz *= elevation;
-
-          const pt = project(mx, my, mz, cx, cy, R);
-          arcPoints.push(pt);
-        }
-
-        // Check if most of the arc is on the visible hemisphere
-        let visibleCount = 0;
-        for (const p of arcPoints) {
-          if (p.z > -0.08) visibleCount++;
-        }
-        if (visibleCount < arcSegments * 0.3) continue; // Skip mostly hidden arcs
-
-        // Animated pulse position (loops 0→1→0→1...)
-        const pulseT = (arcTime * arc.speed) % 1;
-        const pulseIdx = Math.floor(pulseT * arcSegments);
-
-        // Draw the arc trail (faded line behind the pulse)
-        ctx.beginPath();
-        let arcFirst = true;
-
-        for (let s = 0; s <= arcSegments; s++) {
-          const pt = arcPoints[s];
-          if (pt.z > -0.08) {
-            if (arcFirst) {
-              ctx.moveTo(pt.px, pt.py);
-              arcFirst = false;
-            } else {
-              ctx.lineTo(pt.px, pt.py);
-            }
-          } else {
-            arcFirst = true;
-          }
-        }
-
-        ctx.setLineDash([]);
-        ctx.strokeStyle = arc.color.replace(", 1)", ", 0.18)");
-        ctx.lineWidth = 1.5;
-        ctx.lineCap = "round";
-        ctx.stroke();
-
-        // Draw the glowing pulse trail (bright portion near pulse head)
-        const trailLen = 10; // segments behind pulse that glow
-        ctx.beginPath();
-        let trailFirst = true;
-
-        for (let s = Math.max(0, pulseIdx - trailLen); s <= Math.min(arcSegments, pulseIdx); s++) {
-          const pt = arcPoints[s];
-          if (pt.z > -0.08) {
-            if (trailFirst) {
-              ctx.moveTo(pt.px, pt.py);
-              trailFirst = false;
-            } else {
-              ctx.lineTo(pt.px, pt.py);
-            }
-          } else {
-            trailFirst = true;
-          }
-        }
-
-        ctx.strokeStyle = arc.color.replace(", 1)", ", 0.7)");
-        ctx.lineWidth = 2.2;
-        ctx.shadowColor = arc.color.replace(", 1)", ", 0.6)");
-        ctx.shadowBlur = 8;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-
-        // Draw the pulse dot (bright head of the traveling pulse)
-        if (pulseIdx >= 0 && pulseIdx < arcPoints.length) {
-          const pulsePt = arcPoints[pulseIdx];
-          if (pulsePt.z > -0.08) {
-            ctx.beginPath();
-            ctx.arc(pulsePt.px, pulsePt.py, 3.5, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
-            ctx.shadowColor = arc.color;
-            ctx.shadowBlur = 14;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            // Outer glow ring around pulse dot
-            ctx.beginPath();
-            ctx.arc(pulsePt.px, pulsePt.py, 7, 0, Math.PI * 2);
-            ctx.fillStyle = arc.color.replace(", 1)", ", 0.2)");
-            ctx.fill();
-          }
-        }
-
-        // Draw endpoint dots (from & to)
-        const fromPt = arcPoints[0];
-        const toPt = arcPoints[arcPoints.length - 1];
-
-        for (const ept of [fromPt, toPt]) {
-          if (ept.z > -0.05) {
-            ctx.beginPath();
-            ctx.arc(ept.px, ept.py, 2.5, 0, Math.PI * 2);
-            ctx.fillStyle = arc.color.replace(", 1)", ", 0.6)");
-            ctx.fill();
-
-            // Pulsing ring on endpoints
-            const ringScale = 1 + Math.sin(arcTime * 2.5) * 0.3;
-            ctx.beginPath();
-            ctx.arc(ept.px, ept.py, 5 * ringScale, 0, Math.PI * 2);
-            ctx.strokeStyle = arc.color.replace(", 1)", ", 0.25)");
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-
-      ctx.restore(); // Restore clipping
-
-      // ── 5. Perfect Circle Outer Silhouette Rim ──────────────────────
-      ctx.beginPath();
-      ctx.arc(cx, cy, R, 0, Math.PI * 2);
-      ctx.setLineDash([]);
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.92)";
-      ctx.lineWidth = 1.6;
-      ctx.stroke();
-
-      // Outer delicate warm glow halo
-      ctx.beginPath();
-      ctx.arc(cx, cy, R + 1, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(251, 146, 60, 0.22)";
-      ctx.lineWidth = 1.2;
-      ctx.stroke();
-
-      // ── 6. Synchronize Floating Badges Rotating With Globe ───────────
-      const floatR = R * 1.04; // Badges hover slightly above the globe surface
+      // ── 5. Elegant Connection Lines Between Real Active Nodes ─────────
+      const floatR = R * 1.03;
       const now = Date.now();
+      const projectedBadges: { [key: string]: { px: number; py: number; z: number } } = {};
 
-      BADGES.forEach((badge, idx) => {
-        const el = badgeRefs.current[idx];
-        if (!el) return;
-
-        // Current rotated longitude
+      BADGES.forEach((badge) => {
         const lon = badge.baseLon + rotation;
         const x0 = Math.cos(badge.lat) * Math.sin(lon);
         const y0 = Math.sin(badge.lat);
         const z0 = Math.cos(badge.lat) * Math.cos(lon);
-
-        // Project through exact 3D tilt
         const pt = project(x0, y0, z0, cx, cy, floatR);
+        projectedBadges[badge.id] = pt;
+      });
 
-        // Subtle floating bob in 3D
-        const bob = Math.sin(now * 0.0022 + idx * 1.3) * 4;
+      // Connections between brand and payout nodes
+      const connections: [string, string][] = [
+        ["nfl", "crown"],
+        ["nfl", "payout-970"],
+        ["elevenlabs", "collab"],
+        ["stones", "sofia"],
+        ["stones", "ethan"],
+      ];
+
+      const animTime = now * 0.001; // seconds
+
+      for (const [idFrom, idTo] of connections) {
+        const p1 = projectedBadges[idFrom];
+        const p2 = projectedBadges[idTo];
+
+        if (p1 && p2 && p1.z > 0.04 && p2.z > 0.04) {
+          const minZ = Math.min(p1.z, p2.z);
+          const alpha = Math.min(1, (minZ - 0.04) / 0.18);
+
+          // Quadratic bezier arch between nodes
+          const midX = (p1.px + p2.px) / 2;
+          const midY = (p1.py + p2.py) / 2 - 24;
+
+          ctx.beginPath();
+          ctx.moveTo(p1.px, p1.py);
+          ctx.quadraticCurveTo(midX, midY, p2.px, p2.py);
+
+          ctx.strokeStyle = `rgba(249, 115, 22, ${(alpha * 0.65).toFixed(2)})`;
+          ctx.lineWidth = 1.6;
+          ctx.setLineDash([]);
+          ctx.stroke();
+
+          // Traveling glowing pulse bead
+          const t = (animTime * 0.45) % 1;
+          const it = 1 - t;
+          const pulseX = it * it * p1.px + 2 * it * t * midX + t * t * p2.px;
+          const pulseY = it * it * p1.py + 2 * it * t * midY + t * t * p2.py;
+
+          ctx.beginPath();
+          ctx.arc(pulseX, pulseY, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${(alpha * 0.95).toFixed(2)})`;
+          ctx.shadowColor = "rgba(249, 115, 22, 0.9)";
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      ctx.restore(); // End of clipped atmosphere & globe interior
+
+      // ── 6. Outer Delicate Silhouette Rim ────────────────────────────
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.setLineDash([]);
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.92)";
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+
+      // Outer delicate warm glow halo
+      ctx.beginPath();
+      ctx.arc(cx, cy, R + 1.5, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(251, 146, 60, 0.24)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // ── 7. Synchronize Floating Badges With Smooth Depth & Fade ──────
+      BADGES.forEach((badge, idx) => {
+        const el = badgeRefs.current[idx];
+        if (!el) return;
+
+        const pt = projectedBadges[badge.id];
+        if (!pt) return;
+
+        // Subtle organic levitating bob
+        const bob = Math.sin(now * 0.0022 + idx * 1.35) * 3.5;
         const finalPy = pt.py + bob;
 
-        // Visibility & depth handling
-        // z2 > 0 is front hemisphere. Fades out smoothly when rotating to back.
-        const opacity = Math.max(0, Math.min(1, (pt.z + 0.12) / 0.25));
-        const scale = 0.82 + Math.max(0, pt.z) * 0.24;
+        // Smooth opacity fading when rotating away from front hemisphere
+        // z > 0.25: full opacity 1
+        // 0.25 >= z >= 0.02: smooth fade down to 0
+        // z < 0.02: fully hidden
+        const rawOpacity = (pt.z - 0.02) / 0.22;
+        const opacity = Math.max(0, Math.min(1, rawOpacity));
+        const scale = 0.86 + Math.max(0, pt.z) * 0.18;
 
-        if (opacity <= 0.01) {
+        if (opacity <= 0.02) {
           el.style.opacity = "0";
           el.style.pointerEvents = "none";
+          el.style.visibility = "hidden";
         } else {
-          el.style.opacity = `${opacity}`;
-          el.style.transform = `translate3d(${pt.px}px, ${finalPy}px, 0) translate(-50%, -50%) scale(${scale})`;
-          el.style.zIndex = `${Math.round(15 + pt.z * 15)}`;
-          el.style.pointerEvents = pt.z > 0.08 ? "auto" : "none";
+          el.style.visibility = "visible";
+          el.style.opacity = opacity.toFixed(3);
+          el.style.transform = `translate3d(${pt.px.toFixed(1)}px, ${finalPy.toFixed(1)}px, 0) translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+          el.style.zIndex = `${Math.round(20 + pt.z * 15)}`;
+          el.style.pointerEvents = pt.z > 0.1 ? "auto" : "none";
         }
       });
 
-      // Advance rotation (30% slowed down)
-      rotation += 0.00245;
+      // Smooth, gentle rotation speed (calm and premium)
+      rotation += 0.0016;
       animationFrameId = requestAnimationFrame(render);
     };
 
@@ -651,31 +430,47 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
                   <Image
                     src={badge.iconSrc}
                     alt={badge.iconAlt || "Badge"}
-                    width={badge.iconWidth || 36}
-                    height={badge.iconHeight || 36}
-                    className={badge.badgeClass === "hero-badge-card--f1" ? "hero-f1-img" : "hero-badge-icon"}
+                    width={badge.iconWidth || 34}
+                    height={badge.iconHeight || 34}
+                    className="hero-badge-icon"
                   />
                 )}
               </div>
             </>
           )}
 
-          {/* Type B: Payout Pill */}
-          {badge.type === "pill" && (
-            <div className="hero-payout-pill">
-              <span>{badge.pillText}</span>
+          {/* Type B: Brand Card (e.g., NFL, F1, ElevenLabs) */}
+          {badge.type === "brand-card" && (
+            <div className={`hero-badge-card hero-badge-card--brand ${badge.badgeClass || ""}`}>
+              {badge.iconSrc && (
+                <Image
+                  src={badge.iconSrc}
+                  alt={badge.iconAlt || "Brand"}
+                  width={badge.iconWidth || 34}
+                  height={badge.iconHeight || 34}
+                  className="hero-brand-img"
+                />
+              )}
             </div>
           )}
 
-          {/* Type C: Profile Card */}
+          {/* Type C: Payout Pill ($970, $1,420) */}
+          {badge.type === "pill" && (
+            <div className="hero-payout-pill">
+              <span className="hero-pill-currency">$</span>
+              <span>{badge.pillText?.replace("$", "")}</span>
+            </div>
+          )}
+
+          {/* Type D: Profile Card (Ethan Cole, Sofia Reyes) */}
           {badge.type === "profile" && (
             <div className="hero-profile-card">
               {badge.iconSrc && (
                 <Image
                   src={badge.iconSrc}
                   alt={badge.profileName || "Profile"}
-                  width={26}
-                  height={26}
+                  width={28}
+                  height={28}
                   className="hero-profile-avatar"
                 />
               )}

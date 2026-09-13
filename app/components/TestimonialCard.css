@@ -1,11 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Content Rewards — Testimonial Card (Pixel-Perfect Matching)
+   Content Rewards — Testimonial Card (Grand Wide & Tall)
+   "The volume coming through Content Rewards holds quality..."
    ═══════════════════════════════════════════════════════════════════ */
 
 .tc-section {
   width: 100%;
   background: #ffffff;
-  padding: 60px 24px 60px;
+  padding: 50px 24px 80px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -14,29 +15,19 @@
 
 .tc-container {
   width: 100%;
-  max-width: 1218px;
+  max-width: 1400px; /* Grand wide width matching VerificationLayer */
   margin: 0 auto;
 }
 
-/* ── The Large Rounded Gradient Testimonial Card ─────────────────── */
+/* ── The Large Rounded Gradient Card ─────────────────────────────── */
 .tc-card {
   width: 100%;
-  min-height: 380px;
-  border-radius: 46px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 22%,
-    #fff0de 42%,
-    #fdb46c 66%,
-    #f66e0d 88%,
-    #ea580c 100%
-  );
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 
-    0 24px 60px -20px rgba(234, 88, 12, 0.18),
-    0 8px 24px -5px rgba(0, 0, 0, 0.03);
-  padding: 96px 56px 84px;
+  min-height: 560px; /* Substantially increased tall height */
+  border-radius: 48px;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FCEAD2 45%, #EE8227 100%);
+  border: none;
+  box-shadow: none;
+  padding: 110px 80px 96px; /* Generous airy top and bottom padding */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -49,62 +40,139 @@
 
 /* ── Main Quote ──────────────────────────────────────────────────── */
 .tc-quote {
-  margin: 0 0 36px 0;
-  max-width: 780px;
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  margin: 0;
+  max-width: 1120px; /* Wider text container for majestic wide layout */
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 52px; /* Grander serif headline size */
   font-weight: 400;
-  line-height: 1.38;
-  letter-spacing: -0.015em;
-  color: #2b303a;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: #110D0C;
+  text-align: center;
 }
 
 /* ── Author Meta ─────────────────────────────────────────────────── */
 .tc-author {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  text-align: left;
+  gap: 18px;
+  margin-top: 48px; /* Spacious gap below quote */
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.tc-author:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
 .tc-avatar {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tc-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 .tc-author__info {
   display: flex;
   flex-direction: column;
-  line-height: 1.25;
+  text-align: left;
+  line-height: 1.35;
 }
 
 .tc-author__name {
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 17px;
+  font-weight: 600;
+  color: #110D0C;
   letter-spacing: -0.01em;
 }
 
 .tc-author__role {
-  font-size: 13px;
-  color: #4b5563;
+  font-size: 15px;
+  color: rgba(17, 13, 12, 0.72);
   font-weight: 400;
 }
 
-/* ── Responsive adjustments ──────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ── Responsive Adjustments ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .tc-container {
+    max-width: 100%;
+  }
+
   .tc-card {
-    padding: 64px 28px 56px;
-    border-radius: 32px;
-    min-height: 320px;
+    min-height: 480px;
+    padding: 84px 48px 72px;
+    border-radius: 40px;
   }
 
   .tc-quote {
-    font-size: 1.45rem;
-    margin-bottom: 28px;
+    font-size: 42px;
+    max-width: 860px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tc-card {
+    min-height: 420px;
+    padding: 64px 32px 56px;
+    border-radius: 32px;
+  }
+
+  .tc-quote {
+    font-size: 34px;
+    line-height: 1.28;
+  }
+
+  .tc-author {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tc-section {
+    padding: 36px 16px 50px;
+  }
+
+  .tc-card {
+    min-height: auto;
+    padding: 52px 20px 48px;
+    border-radius: 24px;
+  }
+
+  .tc-quote {
+    font-size: 26px;
+    line-height: 1.32;
+  }
+
+  .tc-author {
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .tc-avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tc-author__name {
+    font-size: 15px;
+  }
+
+  .tc-author__role {
+    font-size: 13.5px;
   }
 }

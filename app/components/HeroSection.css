@@ -220,7 +220,7 @@
 /* ── 3. Main Hero Typography & CTAs ──────────────────────────────── */
 .hero-content {
   max-width: 860px;
-  margin: 42px auto 0;
+  margin: 32px auto 0;
   padding: 0 20px;
   box-sizing: border-box;
   text-align: center;
@@ -229,19 +229,19 @@
 }
 
 .hero-headline {
-  font-size: 52px;
+  font-size: 50px;
   font-weight: 600;
   color: #0f172a;
-  line-height: 1.15;
+  line-height: 1.14;
   letter-spacing: -0.03em;
   margin: 0;
 }
 
 .hero-subheadline {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 450;
   color: #475569;
-  margin: 18px 0 34px;
+  margin: 14px 0 24px;
   letter-spacing: -0.01em;
   line-height: 1.45;
 }
@@ -284,15 +284,18 @@
 .hero-globe-wrapper {
   width: 100%;
   position: relative;
-  margin-top: 16px;
+  margin-top: 6px;
   padding-bottom: 24px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-globe-container {
   width: 100%;
-  max-width: 580px;
-  height: 580px;
+  max-width: 660px;
+  height: 660px;
   margin: 0 auto;
   position: relative;
   display: flex;
@@ -321,30 +324,31 @@
   cursor: pointer;
   will-change: transform, opacity;
   user-select: none;
+  transition: filter 0.2s ease;
 }
 
 .hero-float:hover {
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.14));
 }
 
 .hero-float:hover .hero-badge-card,
 .hero-float:hover .hero-profile-card,
 .hero-float:hover .hero-payout-pill {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 /* Speech Bubble */
 .hero-speech-bubble {
   background: #ffffff;
   border-radius: 14px;
-  padding: 6px 13px;
+  padding: 5.5px 13px;
   font-size: 11.5px;
   font-weight: 600;
   color: #1e293b;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   white-space: nowrap;
 }
 
@@ -356,7 +360,8 @@
   width: 8px;
   height: 8px;
   background: #ffffff;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Rounded Square Badge Cards */
@@ -364,11 +369,23 @@
   background: #ffffff;
   border-radius: 14px;
   padding: 6px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  display: flex;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-badge-card--crown {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
+}
+
+.hero-badge-card--nfl {
+  padding: 6px 8px;
 }
 
 .hero-badge-card--f1 {
@@ -376,41 +393,54 @@
   border-radius: 12px;
 }
 
-.hero-f1-img {
+.hero-badge-card--elevenlabs {
+  padding: 7px 12px;
+  border-radius: 12px;
+}
+
+.hero-badge-icon,
+.hero-brand-img {
   display: block;
   object-fit: contain;
 }
 
 /* Payout Pill */
 .hero-payout-pill {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #ffffff;
   border-radius: 9999px;
-  padding: 4px 11px;
-  font-size: 11.5px;
+  padding: 4.5px 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #d97706;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.16), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Ethan Cole Profile Card */
+.hero-pill-currency {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* Ethan Cole & Sofia Reyes Profile Cards */
 .hero-profile-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #ffffff;
   border-radius: 9999px;
-  padding: 5px 14px 5px 6px;
+  padding: 4px 14px 4px 5px;
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-profile-avatar {
   border-radius: 50%;
+  display: block;
 }
 
 .hero-profile-meta {
@@ -441,6 +471,11 @@
   .hero-nav-menu {
     display: none;
   }
+
+  .hero-globe-container {
+    max-width: 540px;
+    height: 540px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -466,14 +501,14 @@
   }
 
   .hero-globe-container {
-    max-width: 420px;
-    height: 420px;
+    max-width: 440px;
+    height: 440px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-globe-container {
-    max-width: 320px;
-    height: 320px;
+    max-width: 330px;
+    height: 330px;
   }
 }

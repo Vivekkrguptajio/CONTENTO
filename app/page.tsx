@@ -6,6 +6,7 @@ import TrustVerification from "./components/TrustVerification";
 import TraditionalMarketing from "./components/TraditionalMarketing";
 import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
+import TestimonialCard from "./components/TestimonialCard";
 import DashboardFeature from "./components/DashboardFeature";
 import CampaignBanner from "./components/CampaignBanner";
 import Faq from "./components/Faq";
@@ -23,6 +24,7 @@ export default function Home() {
         <TraditionalMarketing />
         <SolutionSteps />
         <BentoFeatures />
+        <TestimonialCard />
         <DashboardFeature />
         <CampaignBanner />
         <Faq />

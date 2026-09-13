@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════════
-   STICKY NAVBAR & TOP ANNOUNCEMENT BAR
-   Firmly attached to the top of the viewport across the entire page
+   STICKY NAVBAR & TOP ANNOUNCEMENT BAR (1:1 with Content Rewards)
+   Featuring Solutions & Resources Dropdowns
    ════════════════════════════════════════════════════════════════════ */
 
 .nav-sticky-wrapper {
@@ -100,7 +100,7 @@
 }
 
 .nav-container {
-  max-width: 1218px; /* Strict uniform layout width */
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -139,7 +139,7 @@
 .nav-logo-line {
   font-size: 13.5px;
   font-weight: 800;
-  color: #0f172a;
+  color: #110D0C;
   letter-spacing: -0.02em;
 }
 
@@ -147,30 +147,211 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 16px;
+  position: relative;
 }
 
 .nav-link {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 500;
-  color: #334155;
+  color: #110D0C;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-link:hover,
+.nav-btn-dropdown.is-active {
+  background: #F3F2EE;
+  color: #110D0C;
+}
+
+.nav-chevron {
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.nav-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* ── Seamless Shared Morphing Dropdown Container ────────────────── */
+/* The card adjusts its width, height, and left position without unmounting */
+.nav-morph-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 1001;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  
+  /* Buttery smooth morphing transitions for width, height, and position */
+  transition: left 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              min-height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.2s;
+}
+
+/* Invisible hover bridge connecting trigger buttons to the morphing card */
+.nav-morph-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: transparent;
+}
+
+/* Active visible state */
+.nav-morph-dropdown.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Viewport holding sliding content panes */
+.nav-morph-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual Content Panes inside the Morph Card */
+.nav-morph-pane {
+  width: 100%;
+  padding: 24px 22px 20px;
+  box-sizing: border-box;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-morph-pane.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.nav-morph-pane.is-inactive-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav-morph-pane.is-inactive-right {
+  opacity: 0;
+  transform: translateX(32px);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav-morph-pane.is-hidden {
+  display: none;
+}
+
+.nav-dropdown-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+}
+
+.nav-dropdown-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Category Label (e.g. "By role", "Resources", "Company") */
+.nav-dropdown-section-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8C8B88;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  letter-spacing: -0.01em;
+}
+
+.nav-dropdown-list {
+  display: flex;
+  flex-direction: column;
   gap: 4px;
 }
 
-.nav-link:hover {
-  color: #0f172a;
+/* Individual Dropdown Item */
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 10px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  box-sizing: border-box;
 }
 
-.nav-btn-dropdown {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
+.nav-dropdown-item:hover {
+  background: #F8F7F4;
+}
+
+/* Icon Badge */
+.nav-dropdown-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #F3F2EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-icon {
+  transform: scale(1.05);
+}
+
+.nav-dropdown-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.nav-dropdown-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #110D0C;
+  letter-spacing: -0.01em;
+}
+
+.nav-dropdown-desc {
+  font-size: 13.5px;
+  color: #73716D;
+  font-weight: 400;
+  margin-top: 2px;
 }
 
 /* Right Nav Actions */
@@ -181,9 +362,9 @@
 }
 
 .nav-signin-link {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
-  color: #0f172a;
+  color: #110D0C;
   text-decoration: none;
   margin-right: 4px;
   transition: color 0.15s ease;
