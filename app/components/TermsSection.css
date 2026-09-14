@@ -1,0 +1,358 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   TERMS & FTC COMPLIANCE SECTION STYLING (#1c1d1d background & #ededed text)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.cr-terms-section {
+  position: relative;
+  width: 100%;
+  background-color: #1c1d1d;
+  color: #ededed;
+  font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  scroll-margin-top: 100px;
+  overflow: hidden;
+  margin-top: -68px;
+  padding-top: 68px;
+}
+
+#term,
+#terms,
+#ftc-compliance,
+#privacy-policy,
+#brands-terms {
+  scroll-margin-top: 90px;
+}
+
+.cr-terms-anchor {
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+  height: 0;
+}
+
+/* ── Top Ambient Glow Mesh Background ──────────────────────────────────────── */
+.cr-terms-ambient-bg {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 703px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cr-terms-ambient-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.cr-terms-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+@media (min-width: 768px) {
+  .cr-terms-container {
+    padding: 80px 48px 120px;
+  }
+}
+
+.cr-terms-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cr-terms-wrapper {
+    gap: 56px;
+  }
+}
+
+/* ── HEADER & PILLS ────────────────────────────────────────────────────────── */
+
+.cr-terms-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cr-terms-title {
+  max-width: 100%;
+  font-size: 32px;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ededed;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .cr-terms-title {
+    font-size: 40px;
+    line-height: 45px;
+  }
+}
+
+.cr-terms-date {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #929292 !important;
+  margin: 0;
+}
+
+.cr-terms-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+
+@media (max-width: 640px) {
+  .cr-terms-section {
+    margin-top: -56px;
+    padding-top: 56px;
+  }
+
+  .cr-terms-container {
+    padding: 32px 16px 80px;
+  }
+
+  .cr-terms-wrapper {
+    gap: 36px;
+  }
+
+  .cr-terms-title {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .cr-terms-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 4px 0 8px;
+    padding: 0 0 6px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cr-terms-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cr-terms-pill {
+    flex-shrink: 0;
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}
+
+.cr-terms-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cr-terms-pill--inactive {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #a3a3a3;
+}
+
+.cr-terms-pill--inactive:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #ededed;
+  transform: translateY(-1px);
+}
+
+.cr-terms-pill--active {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ── DOCUMENT BODY & TYPOGRAPHY (#929292 paragraphs, #ffffff headings) ────── */
+
+.cr-terms-section p,
+.cr-terms-section li,
+.cr-terms-intro p,
+.cr-terms-content p,
+.cr-terms-content li,
+.cr-terms-content .text-\[\#6D6D6D\],
+.cr-terms-intro .text-\[\#6D6D6D\],
+.cr-terms-content .font-medium,
+.cr-terms-intro .font-medium,
+.cr-terms-section .dark\:text-page-text-muted {
+  color: #929292 !important;
+}
+
+.cr-terms-intro p {
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 8px 0 0 0;
+}
+
+.cr-terms-content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  animation: crFadeIn 0.3s ease-in-out;
+}
+
+@keyframes crFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cr-terms-content p {
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.cr-terms-section h1,
+.cr-terms-section h2,
+.cr-terms-section h3,
+.cr-terms-section h4,
+.cr-terms-section strong,
+.cr-terms-section .font-semibold,
+.cr-terms-section .text-\[\#252525\],
+.cr-terms-section .dark\:text-page-text {
+  color: #ffffff !important;
+}
+
+.cr-terms-content h3 {
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 16px 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .cr-terms-content h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.cr-terms-content span.font-semibold {
+  font-weight: 600;
+}
+
+.cr-terms-content strong {
+  font-weight: 600;
+}
+
+.cr-terms-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 24px;
+  list-style: none;
+  margin: 4px 0 8px;
+}
+
+.cr-terms-content li {
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.cr-terms-content .flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.cr-terms-content .gap-3 {
+  gap: 12px;
+}
+
+.cr-terms-content .gap-4 {
+  gap: 16px;
+}
+
+.cr-terms-content .gap-5 {
+  gap: 20px;
+}
+
+.cr-terms-content .gap-1 {
+  gap: 4px;
+}
+
+.cr-terms-content .pl-6 {
+  padding-left: 24px;
+}
+
+.cr-terms-content .list-none {
+  list-style-type: none;
+}
+
+.cr-terms-content .font-semibold {
+  font-weight: 600;
+}
+
+.cr-terms-content .font-medium {
+  font-weight: 500;
+}
+
+.cr-terms-content .text-\[14px\] {
+  font-size: 14px;
+}
+
+.cr-terms-content .leading-\[25px\] {
+  line-height: 25px;
+}
+
+.cr-terms-content .tracking-\[-0\.01em\] {
+  letter-spacing: -0.01em;
+}
+
+.cr-terms-content .text-\[24px\] {
+  font-size: 24px;
+}
+
+.cr-terms-content .leading-\[28px\] {
+  line-height: 28px;
+}
+
+.cr-terms-content .tracking-\[-0\.02em\] {
+  letter-spacing: -0.02em;
+}
+
+.cr-terms-content .max-w-full {
+  max-width: 100%;
+}

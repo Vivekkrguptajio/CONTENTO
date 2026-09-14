@@ -1,0 +1,225 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Content Rewards — Changelog Section Styling (Pixel-Perfect Replica)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.cr-changelog-section {
+  width: 100%;
+  background-color: #fffdfb;
+  color: #261d18;
+  font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  padding: 120px 24px 100px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-section {
+    padding: 150px 48px 140px;
+  }
+}
+
+.cr-changelog-container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.cr-changelog-header {
+  margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-header {
+    margin-bottom: 96px;
+  }
+}
+
+.cr-changelog-main-title {
+  font-size: 36px;
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #261d18;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-main-title {
+    font-size: 46px;
+  }
+}
+
+.cr-changelog-title-muted {
+  opacity: 0.45;
+  font-weight: 400;
+}
+
+/* ── Changelog List / Articles ───────────────────────────────────── */
+.cr-changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-list {
+    gap: 112px;
+  }
+}
+
+.cr-changelog-article {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-article {
+    grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+/* ── Left Sidebar (Sticky Date & Version) ────────────────────────── */
+.cr-changelog-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .cr-changelog-meta {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+}
+
+.cr-changelog-version {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #261d18;
+  margin: 0;
+}
+
+.cr-changelog-date {
+  margin: 4px 0 0 0;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: #261d18;
+  opacity: 0.5;
+}
+
+/* ── Right Content Column ────────────────────────────────────────── */
+.cr-changelog-body {
+  max-width: 730px;
+}
+
+.cr-changelog-img-wrap {
+  margin: 20px 0 28px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(38, 29, 24, 0.1);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.cr-changelog-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.cr-changelog-p {
+  margin: 18px 0 0 0;
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: #261d18;
+  opacity: 0.65;
+}
+
+.cr-changelog-body h3 {
+  margin: 36px 0 0 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #261d18;
+}
+
+.cr-changelog-list-items {
+  margin: 12px 0 0 0;
+  padding-left: 24px;
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cr-changelog-list-items li {
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: #261d18;
+  opacity: 0.65;
+}
+
+.cr-changelog-list-items li strong {
+  font-weight: 600;
+  opacity: 1;
+  color: #261d18;
+}
+
+.cr-changelog-readmore-btn {
+  margin-top: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: rgba(38, 29, 24, 0.06);
+  padding: 12px 28px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #261d18;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.cr-changelog-readmore-btn:hover {
+  background-color: rgba(38, 29, 24, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ── Mobile Responsive Rules for Changelog ───────────────────────── */
+@media (max-width: 640px) {
+  .cr-changelog-section {
+    padding: 40px 16px 60px;
+  }
+
+  .cr-changelog-header {
+    margin-bottom: 36px;
+  }
+
+  .cr-changelog-main-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .cr-changelog-list {
+    gap: 48px;
+  }
+
+  .cr-changelog-body h2 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .cr-changelog-img {
+    width: 100%;
+    height: auto;
+  }
+}

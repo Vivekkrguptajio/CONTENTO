@@ -2,19 +2,21 @@
    Content Rewards — Exact Footer Styling (Pixel-Perfect)
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ── Outer Section with pure white background ────────────── */
+/* ── Outer Section with background ────────────── */
 .cr-footer-section {
   width: 100%;
+  max-width: 100vw;
   padding: 80px 40px 0;
   margin-top: auto;
   margin-bottom: 0;
-  background: #ffffff;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   box-sizing: border-box;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -53,43 +55,15 @@
   z-index: 1;
 }
 
-/* ── 3D Orange Ribbon Corner SVGs ────────────────────────────────── */
-.cr-shape {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.cr-shape--tl {
-  top: -42px;
-  left: -48px;
-  width: 252px;
-  height: 252px;
-}
-
-.cr-shape--tr {
-  top: -42px;
-  right: -48px;
-  width: 252px;
-  height: 252px;
-}
-
-.cr-shape--bl {
-  bottom: -42px;
-  left: -48px;
-  width: 252px;
-  height: 252px;
-}
-
-.cr-shape--br {
-  bottom: -42px;
-  right: -48px;
-  width: 252px;
-  height: 252px;
+@media (max-width: 640px) {
+  .cr-footer-container::before,
+  .cr-footer-container::after {
+    display: none;
+  }
 }
 
 /* ── The White Floating Card ─────────────────────────────────────── */
-.cr-card {
+.cr-footer-card {
   position: relative;
   z-index: 2;
   background: #ffffff;
@@ -101,11 +75,12 @@
     0 4px 20px -5px rgba(0, 0, 0, 0.02);
   padding: 94px 70px 36px;
   box-sizing: border-box;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100%;
 }
 
 /* ── CTA Heading & Buttons ───────────────────────────────────────── */
-.cr-card__cta {
+.cr-footer-card__cta {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +88,7 @@
   margin-bottom: 78px;
 }
 
-.cr-card__heading {
+.cr-footer-card__heading {
   font-size: clamp(2.5rem, 4.5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.15;
@@ -123,7 +98,7 @@
   max-width: 630px;
 }
 
-.cr-card__actions {
+.cr-footer-card__actions {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -132,7 +107,7 @@
 }
 
 /* Buttons matching the image */
-.cr-btn {
+.cr-footer-btn {
   height: 48px;
   padding: 0 28px;
   border-radius: 9999px;
@@ -146,30 +121,30 @@
   outline: none;
 }
 
-.cr-btn--primary {
+.cr-footer-btn--primary {
   background: #111827;
   color: #ffffff;
   font-weight: 600;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
-.cr-btn--primary:hover {
+.cr-footer-btn--primary:hover {
   background: #000000;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
-.cr-btn--secondary {
+.cr-footer-btn--secondary {
   background: #f3f4f6;
   color: #111827;
   font-weight: 500;
 }
-.cr-btn--secondary:hover {
+.cr-footer-btn--secondary:hover {
   background: #e5e7eb;
   transform: translateY(-1px);
 }
 
 /* ── Navigation & Logo Bar ───────────────────────────────────────── */
-.cr-card__nav-bar {
+.cr-footer-card__nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -178,7 +153,7 @@
   flex-wrap: wrap;
 }
 
-.cr-card__nav-left {
+.cr-footer-card__nav-left {
   display: flex;
   align-items: center;
   gap: 28px;
@@ -186,29 +161,29 @@
 }
 
 /* Logo link */
-.cr-logo-link {
+.cr-footer-logo-link {
   text-decoration: none;
   display: flex;
   align-items: center;
 }
 
-.cr-brand {
+.cr-footer-brand {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.cr-brand__stars {
+.cr-footer-brand__stars {
   flex-shrink: 0;
 }
 
-.cr-brand__text {
+.cr-footer-brand__text {
   display: flex;
   flex-direction: column;
   line-height: 1.05;
 }
 
-.cr-brand__line {
+.cr-footer-brand__line {
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -216,13 +191,13 @@
 }
 
 /* Social icons list */
-.cr-socials {
+.cr-footer-socials {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-.cr-socials__item {
+.cr-footer-socials__item {
   color: #6b7280;
   display: inline-flex;
   align-items: center;
@@ -230,31 +205,31 @@
   text-decoration: none;
   transition: color 0.18s ease, transform 0.18s ease;
 }
-.cr-socials__item:hover {
+.cr-footer-socials__item:hover {
   color: #111827;
   transform: translateY(-1px);
 }
 
 /* Navigation links */
-.cr-links {
+.cr-footer-links {
   display: flex;
   align-items: center;
   gap: 32px;
 }
 
-.cr-links__item {
+.cr-footer-links__item {
   font-size: 14.5px;
   font-weight: 500;
   color: #6b7280;
   text-decoration: none;
   transition: color 0.18s ease;
 }
-.cr-links__item:hover {
+.cr-footer-links__item:hover {
   color: #111827;
 }
 
 /* ── Bottom Copyright Row ────────────────────────────────────────── */
-.cr-card__bottom {
+.cr-footer-card__bottom {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -265,22 +240,22 @@
   flex-wrap: wrap;
 }
 
-.cr-copyright {
+.cr-footer-copyright {
   color: #6b7280;
 }
 
-.cr-legal {
+.cr-footer-legal {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-.cr-legal__link {
+.cr-footer-legal__link {
   color: #6b7280;
   text-decoration: none;
   transition: color 0.18s ease;
 }
-.cr-legal__link:hover {
+.cr-footer-legal__link:hover {
   color: #111827;
 }
 
@@ -310,17 +285,9 @@
 
 /* ── Responsive adjustments ──────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .cr-card {
+  .cr-footer-card {
     padding: 80px 48px 36px;
     border-radius: 40px 40px 0 0;
-  }
-
-  .cr-shape--tl,
-  .cr-shape--tr,
-  .cr-shape--bl,
-  .cr-shape--br {
-    width: 200px;
-    height: 200px;
   }
 }
 
@@ -329,14 +296,14 @@
     padding: 60px 24px 0;
   }
 
-  .cr-card__nav-bar {
+  .cr-footer-card__nav-bar {
     flex-direction: column;
     align-items: center;
     gap: 28px;
     text-align: center;
   }
 
-  .cr-card__nav-left {
+  .cr-footer-card__nav-left {
     flex-direction: column;
     gap: 20px;
   }
@@ -346,27 +313,27 @@
   .cr-footer-section {
     padding: 40px 16px 0;
   }
-  .cr-card {
+  .cr-footer-card {
     padding: 56px 24px 28px;
     border-radius: 32px 32px 0 0;
   }
-  .cr-card__heading {
+  .cr-footer-card__heading {
     font-size: 2rem;
     margin-bottom: 28px;
   }
-  .cr-card__actions {
+  .cr-footer-card__actions {
     flex-direction: column;
     width: 100%;
   }
-  .cr-btn {
+  .cr-footer-btn {
     width: 100%;
   }
-  .cr-links {
+  .cr-footer-links {
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
   }
-  .cr-card__bottom {
+  .cr-footer-card__bottom {
     flex-direction: column;
     gap: 12px;
     text-align: center;

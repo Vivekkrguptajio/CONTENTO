@@ -5,9 +5,9 @@ import "./Footer.css";
 
 /* ── Star constellation logo icon (Content Rewards) ─────────────── */
 const ContentRewardsLogo = () => (
-  <div className="cr-brand">
+  <div className="cr-footer-brand">
     <svg
-      className="cr-brand__stars"
+      className="cr-footer-brand__stars"
       width="36"
       height="36"
       viewBox="0 0 36 36"
@@ -40,9 +40,9 @@ const ContentRewardsLogo = () => (
         fill="#111827"
       />
     </svg>
-    <div className="cr-brand__text">
-      <span className="cr-brand__line">Content</span>
-      <span className="cr-brand__line">Rewards</span>
+    <div className="cr-footer-brand__text">
+      <span className="cr-footer-brand__line">Content</span>
+      <span className="cr-footer-brand__line">Rewards</span>
     </div>
   </div>
 );
@@ -96,189 +96,15 @@ const ChatIcon = () => (
   </svg>
 );
 
-/* ── 3D Orange Curved Ribbon SVGs ────────────────────────────────── */
-
-const ShapeTopLeft = () => (
-  <svg
-    className="cr-shape cr-shape--tl"
-    width="260"
-    height="260"
-    viewBox="0 0 260 260"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="tlGradMain" x1="20" y1="220" x2="240" y2="40" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FF7A00" />
-        <stop offset="35%" stopColor="#FFA633" />
-        <stop offset="70%" stopColor="#FF8500" />
-        <stop offset="100%" stopColor="#E65800" />
-      </linearGradient>
-      <linearGradient id="tlCapGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#FFC87C" />
-        <stop offset="100%" stopColor="#E65100" />
-      </linearGradient>
-      <filter id="tlShadow" x="-30%" y="-30%" width="170%" height="170%">
-        <feDropShadow dx="6" dy="16" stdDeviation="16" floodColor="#ea580c" floodOpacity="0.35" />
-      </filter>
-    </defs>
-    <g filter="url(#tlShadow)">
-      <path
-        d="M 38 215 C 38 112 118 36 225 36 L 245 78 C 158 78 86 132 86 215 Z"
-        fill="url(#tlGradMain)"
-      />
-      <ellipse
-        cx="62" cy="215" rx="24" ry="10" transform="rotate(-16 62 215)" fill="url(#tlCapGrad)"
-      />
-      <ellipse
-        cx="235" cy="57" rx="10" ry="21" transform="rotate(16 235 57)" fill="url(#tlCapGrad)"
-      />
-      <path
-        d="M 54 200 C 54 122 120 52 218 52"
-        stroke="rgba(255, 255, 255, 0.45)" strokeWidth="5" strokeLinecap="round" fill="none"
-      />
-    </g>
-  </svg>
-);
-
-const ShapeTopRight = () => (
-  <svg
-    className="cr-shape cr-shape--tr"
-    width="260"
-    height="260"
-    viewBox="0 0 260 260"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="trGradMain" x1="240" y1="20" x2="30" y2="210" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#E65800" />
-        <stop offset="35%" stopColor="#FF8500" />
-        <stop offset="70%" stopColor="#FFA633" />
-        <stop offset="100%" stopColor="#FF7A00" />
-      </linearGradient>
-      <linearGradient id="trCapGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#FFC87C" />
-        <stop offset="100%" stopColor="#E65100" />
-      </linearGradient>
-      <filter id="trShadow" x="-30%" y="-30%" width="170%" height="170%">
-        <feDropShadow dx="-6" dy="16" stdDeviation="16" floodColor="#ea580c" floodOpacity="0.35" />
-      </filter>
-    </defs>
-    <g filter="url(#trShadow)">
-      <path
-        d="M 222 36 C 222 143 142 218 35 218 L 15 176 C 102 176 174 122 174 36 Z"
-        fill="url(#trGradMain)"
-      />
-      <ellipse
-        cx="25" cy="197" rx="10" ry="21" transform="rotate(-16 25 197)" fill="url(#trCapGrad)"
-      />
-      <ellipse
-        cx="198" cy="36" rx="24" ry="10" transform="rotate(16 198 36)" fill="url(#trCapGrad)"
-      />
-      <path
-        d="M 206 52 C 140 52 74 122 42 200"
-        stroke="rgba(255, 255, 255, 0.45)" strokeWidth="5" strokeLinecap="round" fill="none"
-      />
-    </g>
-  </svg>
-);
-
-const ShapeBottomLeft = () => (
-  <svg
-    className="cr-shape cr-shape--bl"
-    width="260"
-    height="260"
-    viewBox="0 0 260 260"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="blGradMain" x1="210" y1="210" x2="30" y2="40" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#E65800" />
-        <stop offset="40%" stopColor="#FF7A00" />
-        <stop offset="75%" stopColor="#FFA633" />
-        <stop offset="100%" stopColor="#FF8500" />
-      </linearGradient>
-      <linearGradient id="blCapGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#FFB85C" />
-        <stop offset="100%" stopColor="#E65100" />
-      </linearGradient>
-      <filter id="blShadow" x="-30%" y="-30%" width="170%" height="170%">
-        <feDropShadow dx="6" dy="16" stdDeviation="16" floodColor="#ea580c" floodOpacity="0.35" />
-      </filter>
-    </defs>
-    <g filter="url(#blShadow)">
-      <path
-        d="M 225 224 C 118 224 38 148 38 45 L 86 25 C 86 108 138 176 225 176 Z"
-        fill="url(#blGradMain)"
-      />
-      <ellipse
-        cx="62" cy="35" rx="24" ry="10" transform="rotate(16 62 35)" fill="url(#blCapGrad)"
-      />
-      <ellipse
-        cx="225" cy="200" rx="10" ry="24" transform="rotate(-16 225 200)" fill="url(#blCapGrad)"
-      />
-      <path
-        d="M 62 48 C 62 126 130 204 215 204"
-        stroke="rgba(255, 255, 255, 0.45)" strokeWidth="5" strokeLinecap="round" fill="none"
-      />
-    </g>
-  </svg>
-);
-
-const ShapeBottomRight = () => (
-  <svg
-    className="cr-shape cr-shape--br"
-    width="260"
-    height="260"
-    viewBox="0 0 260 260"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="brGradMain" x1="40" y1="40" x2="230" y2="230" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FFA633" />
-        <stop offset="40%" stopColor="#FF7A00" />
-        <stop offset="80%" stopColor="#E65800" />
-        <stop offset="100%" stopColor="#C2410C" />
-      </linearGradient>
-      <linearGradient id="brCapGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#FFB85C" />
-        <stop offset="100%" stopColor="#E65100" />
-      </linearGradient>
-      <filter id="brShadow" x="-30%" y="-30%" width="170%" height="170%">
-        <feDropShadow dx="-6" dy="16" stdDeviation="16" floodColor="#ea580c" floodOpacity="0.35" />
-      </filter>
-    </defs>
-    <g filter="url(#brShadow)">
-      <path
-        d="M 35 36 C 142 36 222 112 222 215 L 174 235 C 174 152 122 84 35 84 Z"
-        fill="url(#brGradMain)"
-      />
-      <ellipse
-        cx="35" cy="60" rx="10" ry="24" transform="rotate(16 35 60)" fill="url(#brCapGrad)"
-      />
-      <ellipse
-        cx="198" cy="225" rx="24" ry="10" transform="rotate(-16 198 225)" fill="url(#brCapGrad)"
-      />
-      <path
-        d="M 48 60 C 126 60 204 128 204 205"
-        stroke="rgba(255, 255, 255, 0.45)" strokeWidth="5" strokeLinecap="round" fill="none"
-      />
-    </g>
-  </svg>
-);
-
 /* ═══════════════════════════════════════════════════════════════════
    Main Footer Component
    ═══════════════════════════════════════════════════════════════════ */
 export default function Footer() {
   const navLinks = [
-    { label: "Creators", href: "#" },
-    { label: "Agencies", href: "#" },
-    { label: "Brand Kit", href: "#" },
-    { label: "Pricing", href: "#" },
+    { label: "Creators", href: "/creator" },
+    { label: "Agencies", href: "/creator#for-agencies" },
+    { label: "Brand Kit", href: "/creator#brand-kit" },
+    { label: "Pricing", href: "/creator#pricing" },
   ];
 
   const socialLinks = [
@@ -297,39 +123,39 @@ export default function Footer() {
         <div className="cr-footer-container">
 
           {/* ── The White Floating Card ────────────────────────── */}
-          <div className="cr-card">
+          <div className="cr-footer-card">
             
             {/* Top CTA area */}
-            <div className="cr-card__cta">
-              <h2 className="cr-card__heading">
+            <div className="cr-footer-card__cta">
+              <h2 className="cr-footer-card__heading">
                 Ready to launch<br />your campaign?
               </h2>
 
-              <div className="cr-card__actions">
-                <button type="button" className="cr-btn cr-btn--primary">
+              <div className="cr-footer-card__actions">
+                <button type="button" className="cr-footer-btn cr-footer-btn--primary">
                   Launch a campaign
                 </button>
-                <button type="button" className="cr-btn cr-btn--secondary">
+                <button type="button" className="cr-footer-btn cr-footer-btn--secondary">
                   See a Demo
                 </button>
               </div>
             </div>
 
             {/* Middle Nav & Branding bar */}
-            <div className="cr-card__nav-bar">
+            <div className="cr-footer-card__nav-bar">
               {/* Left side: Logo + Social icons */}
-              <div className="cr-card__nav-left">
-                <a href="/" className="cr-logo-link" aria-label="Content Rewards Home">
+              <div className="cr-footer-card__nav-left">
+                <a href="/" className="cr-footer-logo-link" aria-label="Content Rewards Home">
                   <ContentRewardsLogo />
                 </a>
 
-                <div className="cr-socials">
+                <div className="cr-footer-socials">
                   {socialLinks.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
                       aria-label={item.label}
-                      className="cr-socials__item"
+                      className="cr-footer-socials__item"
                     >
                       {item.icon}
                     </a>
@@ -338,9 +164,9 @@ export default function Footer() {
               </div>
 
               {/* Right side: Navigation links */}
-              <nav className="cr-links" aria-label="Footer navigation">
+              <nav className="cr-footer-links" aria-label="Footer navigation">
                 {navLinks.map((link) => (
-                  <a key={link.label} href={link.href} className="cr-links__item">
+                  <a key={link.label} href={link.href} className="cr-footer-links__item">
                     {link.label}
                   </a>
                 ))}
@@ -348,13 +174,13 @@ export default function Footer() {
             </div>
 
             {/* Bottom Copyright & Legal line */}
-            <div className="cr-card__bottom">
-              <span className="cr-copyright">
+            <div className="cr-footer-card__bottom">
+              <span className="cr-footer-copyright">
                 © 2026 Content Rewards Inc. All rights reserved.
               </span>
-              <div className="cr-legal">
-                <a href="#" className="cr-legal__link">Privacy policy</a>
-                <a href="#" className="cr-legal__link">Terms of service</a>
+              <div className="cr-footer-legal">
+                <a href="/privacy-policy" className="cr-footer-legal__link">Privacy policy</a>
+                <a href="/terms" className="cr-footer-legal__link">Terms of service</a>
               </div>
             </div>
 
