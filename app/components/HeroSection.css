@@ -11,6 +11,7 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  touch-action: pan-y;
 }
 
 /* ── 1. Top Announcement Bar ─────────────────────────────────────── */
@@ -301,6 +302,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: pan-y;
 }
 
 .hero-globe-canvas {
