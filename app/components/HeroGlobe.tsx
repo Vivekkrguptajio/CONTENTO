@@ -228,8 +228,8 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
           }
         }
 
-        ctx.setLineDash([2, 5.5]);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.88)";
+        ctx.setLineDash([2, 5]);
+        ctx.strokeStyle = "rgba(245, 158, 11, 0.48)";
         ctx.lineWidth = 1.15;
         ctx.stroke();
       }
@@ -267,14 +267,14 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
           }
         }
 
-        ctx.setLineDash([2, 5.5]);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.88)";
+        ctx.setLineDash([2, 5]);
+        ctx.strokeStyle = "rgba(245, 158, 11, 0.48)";
         ctx.lineWidth = 1.15;
         ctx.stroke();
       }
 
 
-      // ── 5. Elegant Connection Lines Between Real Active Nodes ─────────
+      // ── 5. Project Badge Positions on Globe Surface ─────────
       const floatR = R * 1.03;
       const now = Date.now();
       const projectedBadges: { [key: string]: { px: number; py: number; z: number } } = {};
@@ -288,53 +288,7 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
         projectedBadges[badge.id] = pt;
       });
 
-      // Connections between brand and payout nodes
-      const connections: [string, string][] = [
-        ["nfl", "crown"],
-        ["nfl", "payout-970"],
-        ["elevenlabs", "collab"],
-        ["stones", "sofia"],
-        ["stones", "ethan"],
-      ];
-
-      const animTime = now * 0.001; // seconds
-
-      for (const [idFrom, idTo] of connections) {
-        const p1 = projectedBadges[idFrom];
-        const p2 = projectedBadges[idTo];
-
-        if (p1 && p2 && p1.z > 0.04 && p2.z > 0.04) {
-          const minZ = Math.min(p1.z, p2.z);
-          const alpha = Math.min(1, (minZ - 0.04) / 0.18);
-
-          // Quadratic bezier arch between nodes
-          const midX = (p1.px + p2.px) / 2;
-          const midY = (p1.py + p2.py) / 2 - 24;
-
-          ctx.beginPath();
-          ctx.moveTo(p1.px, p1.py);
-          ctx.quadraticCurveTo(midX, midY, p2.px, p2.py);
-
-          ctx.strokeStyle = `rgba(249, 115, 22, ${(alpha * 0.65).toFixed(2)})`;
-          ctx.lineWidth = 1.6;
-          ctx.setLineDash([]);
-          ctx.stroke();
-
-          // Traveling glowing pulse bead
-          const t = (animTime * 0.45) % 1;
-          const it = 1 - t;
-          const pulseX = it * it * p1.px + 2 * it * t * midX + t * t * p2.px;
-          const pulseY = it * it * p1.py + 2 * it * t * midY + t * t * p2.py;
-
-          ctx.beginPath();
-          ctx.arc(pulseX, pulseY, 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${(alpha * 0.95).toFixed(2)})`;
-          ctx.shadowColor = "rgba(249, 115, 22, 0.9)";
-          ctx.shadowBlur = 8;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      }
+      // (No connection lines — removed per user request)
 
       ctx.restore(); // End of clipped atmosphere & globe interior
 
@@ -342,14 +296,14 @@ export default function HeroGlobe({ className }: HeroGlobeProps) {
       ctx.beginPath();
       ctx.arc(cx, cy, R, 0, Math.PI * 2);
       ctx.setLineDash([]);
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.92)";
-      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = "rgba(254, 215, 170, 0.45)";
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
       // Outer delicate warm glow halo
       ctx.beginPath();
       ctx.arc(cx, cy, R + 1.5, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(251, 146, 60, 0.24)";
+      ctx.strokeStyle = "rgba(251, 146, 60, 0.20)";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 

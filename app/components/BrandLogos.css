@@ -7,18 +7,8 @@
 
 .brand-logos-section {
   width: 100%;
-  /* Seamless top transition from Hero section peach down to pure white */
-  background: 
-    radial-gradient(ellipse 90% 70% at 50% 20%, rgba(254, 215, 170, 0.35) 0%, rgba(255, 237, 213, 0.18) 50%, transparent 100%),
-    linear-gradient(180deg, 
-      rgba(253, 222, 195, 0.88) 0%, 
-      rgba(254, 226, 204, 0.82) 25%, 
-      rgba(254, 234, 220, 0.65) 50%, 
-      rgba(255, 246, 240, 0.38) 75%, 
-      rgba(255, 255, 255, 0.85) 92%, 
-      #ffffff 100%
-    );
-  padding: 48px 24px 64px;
+  background: #ffffff;
+  padding: 36px 24px 60px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -121,42 +111,48 @@
 
 @media (max-width: 768px) {
   .brand-logos-section {
-    padding: 40px 16px 52px;
+    padding: 16px 16px 48px;
+    background: #ffffff;
   }
 
   .brand-logos-grid {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 32px;
-    column-gap: 40px;
-    max-width: 500px;
+    row-gap: 36px;
+    column-gap: 32px;
+    max-width: 360px;
   }
 
   .brand-logo-item {
-    height: 48px;
+    height: 46px;
   }
 
   .brand-logo-capcut { width: 34px; }
-  .brand-logo-netflix { width: 96px; }
-  .brand-logo-higgsfield { width: 118px; }
-  .brand-logo-coinbase { width: 110px; }
+  .brand-logo-netflix { width: 94px; }
+  .brand-logo-higgsfield { width: 114px; }
+  .brand-logo-coinbase { width: 106px; }
   .brand-logo-mms { width: 78px; }
-  .brand-logo-doordash { width: 116px; }
-  .brand-logo-f1 { width: 110px; }
-  .brand-logo-ebay { width: 84px; }
+  .brand-logo-doordash { width: 112px; }
+  .brand-logo-f1 { width: 104px; }
+  .brand-logo-ebay { width: 80px; }
 }
 
 @media (max-width: 480px) {
-  .brand-logos-grid {
-    column-gap: 24px;
-    row-gap: 26px;
+  .brand-logos-section {
+    padding: 12px 16px 42px;
   }
 
-  .brand-logo-capcut { width: 30px; }
-  .brand-logo-netflix { width: 82px; }
-  .brand-logo-higgsfield { width: 100px; }
-  .brand-logo-coinbase { width: 95px; }
-  .brand-logo-mms { width: 68px; }
-  .brand-logo-doordash { width: 100px; }
-  .brand-logo-f1 { width: 95px; }
-  .brand-logo-ebay { width: 72px; }
+  .brand-logos-grid {
+    column-gap: 28px;
+    row-gap: 32px;
+    max-width: 320px;
+  }
+
+  .brand-logo-capcut { width: 32px; }
+  .brand-logo-netflix { width: 88px; }
+  .brand-logo-higgsfield { width: 106px; }
+  .brand-logo-coinbase { width: 98px; }
+  .brand-logo-mms { width: 72px; }
+  .brand-logo-doordash { width: 104px; }
+  .brand-logo-f1 { width: 98px; }
+  .brand-logo-ebay { width: 76px; }
 }
