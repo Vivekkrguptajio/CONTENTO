@@ -132,12 +132,12 @@ export default function Footer() {
               </h2>
 
               <div className="cr-footer-card__actions">
-                <button type="button" className="cr-footer-btn cr-footer-btn--primary">
+                <a href="/launch-a-campaign" className="cr-footer-btn cr-footer-btn--primary">
                   Launch a campaign
-                </button>
-                <button type="button" className="cr-footer-btn cr-footer-btn--secondary">
-                  See a Demo
-                </button>
+                </a>
+                <a href="/book-a-demo" className="cr-footer-btn cr-footer-btn--secondary">
+                  See a demo
+                </a>
               </div>
             </div>
 

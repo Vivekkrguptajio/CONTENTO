@@ -18,11 +18,10 @@ export default function Home() {
       <Navbar />
       <main className="w-full flex-grow bg-white">
         <HeroSection />
-        <BrandLogos />
-        <VerificationLayer />
-        <TrustVerification />
         <TraditionalMarketing />
         <SolutionSteps />
+        <VerificationLayer />
+        <TrustVerification />
         <BentoFeatures />
         <TestimonialCard />
         <DashboardFeature />

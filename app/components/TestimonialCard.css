@@ -6,7 +6,7 @@
 .tc-section {
   width: 100%;
   background: #ffffff;
-  padding: 50px 24px 80px;
+  padding: 96px 24px 110px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@
   border-radius: 48px;
   background: linear-gradient(180deg, #FFFDF8 0%, #FCEAD2 45%, #EE8227 100%);
   border: none;
-  box-shadow: none;
+  box-shadow: 0 20px 48px -12px rgba(238, 130, 39, 0.16);
   padding: 110px 80px 96px; /* Generous airy top and bottom padding */
   box-sizing: border-box;
   display: flex;
@@ -36,6 +36,12 @@
   text-align: center;
   overflow: hidden;
   position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 64px -10px rgba(238, 130, 39, 0.28);
 }
 
 /* ── Main Quote ──────────────────────────────────────────────────── */
@@ -59,12 +65,12 @@
   margin-top: 48px; /* Spacious gap below quote */
   text-decoration: none;
   cursor: pointer;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tc-author:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
+  opacity: 0.95;
+  transform: translateY(-2px) scale(1.02);
 }
 
 .tc-avatar {
@@ -77,6 +83,12 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.tc-author:hover .tc-avatar {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .tc-avatar-img {
@@ -109,6 +121,10 @@
 
 /* ── Responsive Adjustments ──────────────────────────────────────── */
 @media (max-width: 1024px) {
+  .tc-section {
+    padding: 80px 24px 90px;
+  }
+
   .tc-container {
     max-width: 100%;
   }
@@ -126,9 +142,13 @@
 }
 
 @media (max-width: 768px) {
+  .tc-section {
+    padding: 72px 20px 84px;
+  }
+
   .tc-card {
     min-height: 420px;
-    padding: 64px 32px 56px;
+    padding: 70px 32px 64px;
     border-radius: 32px;
   }
 
@@ -144,12 +164,12 @@
 
 @media (max-width: 600px) {
   .tc-section {
-    padding: 36px 16px 50px;
+    padding: 64px 16px 76px;
   }
 
   .tc-card {
     min-height: auto;
-    padding: 52px 20px 48px;
+    padding: 60px 22px 56px;
     border-radius: 24px;
   }
 
@@ -159,7 +179,7 @@
   }
 
   .tc-author {
-    margin-top: 30px;
+    margin-top: 32px;
     gap: 12px;
   }
 

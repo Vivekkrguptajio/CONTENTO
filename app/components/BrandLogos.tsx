@@ -1,89 +1,98 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import "./BrandLogos.css";
 
-const BRAND_LOGOS = [
-  // Row 1
+const ROW_1 = [
   {
     name: "CapCut",
-    src: "/brand-logos/capcut.png",
-    width: 60,
-    height: 48,
-    className: "brand-logo-capcut",
+    src: "/assets/brand-wall/capcut.svg",
+    h: 42,
+    w: 55,
   },
   {
     name: "Netflix",
-    src: "/brand-logos/netflix.png",
-    width: 160,
-    height: 90,
-    className: "brand-logo-netflix",
+    src: "/assets/brand-wall/netflix.svg",
+    h: 41.67,
+    w: 154.6,
   },
   {
     name: "Higgsfield",
-    src: "/brand-logos/higgsfield.png",
-    width: 190,
-    height: 50,
-    className: "brand-logo-higgsfield",
+    src: "/assets/brand-wall/higgsfield.svg",
+    h: 43.16,
+    w: 211,
   },
   {
     name: "Coinbase",
-    src: "/brand-logos/coinbase.png",
-    width: 180,
-    height: 45,
-    className: "brand-logo-coinbase",
+    src: "/assets/brand-wall/coinbase.svg",
+    h: 40,
+    w: 227,
   },
-  // Row 2
+];
+
+const ROW_2 = [
   {
     name: "M&M's",
-    src: "/brand-logos/mms.png",
-    width: 130,
-    height: 56,
-    className: "brand-logo-mms",
+    src: "/assets/brand-wall/mms.svg",
+    h: 46,
+    w: 127,
   },
   {
     name: "DoorDash",
-    src: "/brand-logos/doordash.png",
-    width: 180,
-    height: 60,
-    className: "brand-logo-doordash",
+    src: "/assets/brand-wall/doordash.svg",
+    h: 32,
+    w: 268,
   },
   {
-    name: "Formula 1",
-    src: "/brand-logos/f1.png",
-    width: 175,
-    height: 60,
-    className: "brand-logo-f1",
+    name: "F1",
+    src: "/assets/brand-wall/f1.svg",
+    h: 30.5,
+    w: 122,
   },
   {
     name: "eBay",
-    src: "/brand-logos/ebay.png",
-    width: 130,
-    height: 58,
-    className: "brand-logo-ebay",
+    src: "/assets/brand-wall/ebay.svg",
+    h: 54,
+    w: 134.7,
   },
 ];
 
 export default function BrandLogos() {
   return (
-    <section className="brand-logos-section" aria-label="Trusted Brands">
-      <div className="brand-logos-container">
-        <div className="brand-logos-grid">
-          {BRAND_LOGOS.map((brand) => (
-            <div key={brand.name} className="brand-logo-item">
-              <Image
-                src={brand.src}
-                alt={brand.name}
-                width={brand.width}
-                height={brand.height}
-                className={`brand-logo-img ${brand.className}`}
-                priority
-              />
-            </div>
+    <div className="brand-wall-wrapper">
+      <div className="brand-wall-container">
+        {/* Row 1: CapCut, Netflix, Higgsfield, Coinbase */}
+        <div className="grid grid-cols-2 items-center gap-x-[24px] gap-y-[32px] sm:grid-cols-4 sm:gap-[24px]">
+          {ROW_1.map((brand) => (
+            <img
+              key={brand.name}
+              alt={brand.name}
+              className="max-w-full justify-self-center object-contain opacity-40 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+              src={brand.src}
+              style={{
+                height: `calc(${brand.h} * var(--logo-scale) * 1px)`,
+                width: `calc(${brand.w} * var(--logo-scale) * 1px)`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Row 2: M&M's, DoorDash, F1, eBay */}
+        <div className="grid grid-cols-2 items-center gap-x-[24px] gap-y-[32px] sm:grid-cols-4 sm:gap-[24px]">
+          {ROW_2.map((brand) => (
+            <img
+              key={brand.name}
+              alt={brand.name}
+              className="max-w-full justify-self-center object-contain opacity-40 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+              src={brand.src}
+              style={{
+                height: `calc(${brand.h} * var(--logo-scale) * 1px)`,
+                width: `calc(${brand.w} * var(--logo-scale) * 1px)`,
+              }}
+            />
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

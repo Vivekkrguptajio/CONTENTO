@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: [
+    "192.168.1.111",
+    "192.168.1.111:3000",
+    "localhost:3000",
+    "*.loca.lt",
+    "*.ngrok-free.app",
+    "*.ngrok.io",
+  ],
 };
 
 export default nextConfig;

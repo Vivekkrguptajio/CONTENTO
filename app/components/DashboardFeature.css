@@ -1413,6 +1413,11 @@
 }
 
 @media (max-width: 768px) {
+  /* Hide the entire 'Launch & manage campaigns' section on phone view */
+  .df-section {
+    display: none !important;
+  }
+
   .df-dashboard {
     flex-direction: column;
   }

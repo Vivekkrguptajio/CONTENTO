@@ -34,8 +34,8 @@ export default function VerificationLayer() {
           
           {/* Main Heading */}
           <h2 className="vl-main-heading">
-            The Verification Layer that<br />
-            Protects every Campaign
+            The verification layer that<br />
+            protects every campaign
           </h2>
 
           {/* Top Visual Interactive Flow */}
@@ -45,6 +45,10 @@ export default function VerificationLayer() {
 
             {/* Station I: Platform Data Card */}
             <div className="vl-station vl-station--1">
+              <div className="vl-station-mobile-header">
+                <span className="vl-station-mobile-num">I</span>
+                <span className="vl-station-mobile-lbl">Platform data</span>
+              </div>
               <div className="vl-modal-card">
                 <div className="vl-platform-row">
                   <span className="vl-platform-icon"><TikTokIcon /></span>
@@ -74,6 +78,19 @@ export default function VerificationLayer() {
 
             {/* Station II: Concentric Radar Verification */}
             <div className="vl-station vl-station--2">
+              <div className="vl-station-mobile-header">
+                <span className="vl-station-mobile-num">II</span>
+                <span className="vl-station-mobile-lbl vl-station-mobile-lbl--underlined">
+                  Independent verification
+                  <span className="vl-station-mobile-info">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                      <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                  </span>
+                </span>
+              </div>
               <div className="vl-radar-wrap">
                 <div className="vl-radar-ring-outer" />
                 <div className="vl-radar-ring-mid" />
@@ -89,13 +106,17 @@ export default function VerificationLayer() {
 
             {/* Station III: Fraud Analysis Staggered Notes */}
             <div className="vl-station vl-station--3">
+              <div className="vl-station-mobile-header">
+                <span className="vl-station-mobile-num">III</span>
+                <span className="vl-station-mobile-lbl">Fraud analysis</span>
+              </div>
               <div className="vl-notes-stack">
                 {/* Note 1 */}
                 <div className="vl-note-card vl-note-card--1">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2">
                     <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
                   </svg>
-                  <span>Engagment patterns</span>
+                  <span>Engagement patterns</span>
                 </div>
 
                 {/* Note 2 */}
@@ -119,6 +140,10 @@ export default function VerificationLayer() {
 
             {/* Station IV: Verified Reporting Flag Card */}
             <div className="vl-station vl-station--4">
+              <div className="vl-station-mobile-header">
+                <span className="vl-station-mobile-num">IV</span>
+                <span className="vl-station-mobile-lbl">Verified reporting</span>
+              </div>
               <div className="vl-flag-card">
                 <div className="vl-flag-icon-wrap">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="#1e293b">
@@ -134,7 +159,7 @@ export default function VerificationLayer() {
 
           </div>
 
-          {/* Bottom 4 Columns Navigation (100px height) */}
+          {/* Bottom 4 Columns Navigation (Desktop only) */}
           <div className="vl-columns-bar">
             
             <div className="vl-col">
@@ -157,7 +182,7 @@ export default function VerificationLayer() {
 
             <div className="vl-col">
               <span className="vl-col-num">IV</span>
-              <span className="vl-col-lbl">Verified Reporting</span>
+              <span className="vl-col-lbl">Verified reporting</span>
             </div>
 
           </div>

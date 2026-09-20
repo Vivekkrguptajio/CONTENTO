@@ -67,19 +67,20 @@
   border: 1px solid #e5e7eb;
   border-radius: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .faq-card:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
 .faq-card--open {
-  border-color: #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Header Trigger Button */
@@ -105,6 +106,11 @@
   letter-spacing: -0.02em;
   color: #111827;
   line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.faq-card__trigger:hover .faq-card__question {
+  color: #ea580c;
 }
 
 .faq-card__chevron {
@@ -112,8 +118,12 @@
   align-items: center;
   justify-content: center;
   color: #111827;
-  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
   flex-shrink: 0;
+}
+
+.faq-card__trigger:hover .faq-card__chevron {
+  color: #ea580c;
 }
 
 .faq-card__chevron--rotated {
@@ -124,13 +134,13 @@
 .faq-card__content {
   padding: 0 28px 24px 28px;
   box-sizing: border-box;
-  animation: faqFadeIn 0.2s ease-out;
+  animation: faqFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes faqFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;

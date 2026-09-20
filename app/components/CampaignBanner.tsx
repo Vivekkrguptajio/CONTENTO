@@ -75,19 +75,19 @@ export default function CampaignBanner() {
                   <ChartIcon />
                 </span>
                 <span className="cb-feature-item__text">
-                  Real-time campaign<br />analytics
+                  Real-time campaign analytics
                 </span>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="cb-actions">
-              <button type="button" className="cb-btn cb-btn--primary">
+              <a href="/launch-a-campaign" className="cb-btn cb-btn--primary">
                 Launch a campaign
-              </button>
-              <button type="button" className="cb-btn cb-btn--secondary">
+              </a>
+              <a href="/book-a-demo" className="cb-btn cb-btn--secondary">
                 See a demo
-              </button>
+              </a>
             </div>
 
           </div>

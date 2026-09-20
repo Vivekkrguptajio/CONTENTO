@@ -11,7 +11,7 @@ export default function TraditionalMarketing() {
       <div className="tm-container">
         
         {/* Main Section Heading */}
-        <h2 className="tm-heading">Traditional Marketing is dying</h2>
+        <h2 className="tm-heading">Traditional marketing is dying</h2>
 
         {/* Video Card */}
         <div 
