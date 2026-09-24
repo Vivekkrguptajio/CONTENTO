@@ -125,25 +125,39 @@ const defaultMarkers: PolaroidMarker[] = [
     rotate: 3 
   },
   { 
+    id: "reel-chile", 
+    location: [-33.4489, -70.6693], 
+    video: "/videos/reel-snow.mp4", 
+    caption: "Chile", 
+    rotate: -4 
+  },
+  { 
     id: "reel-sydney", 
-    location: [-33.87, 151.21], 
+    location: [-33.8688, 151.2093], 
     video: "/videos/reel-rafting.mp4", 
-    caption: "Sydney", 
+    caption: "Australia", 
     rotate: 5 
   },
   { 
     id: "reel-rio", 
-    location: [-22.906, -43.172], 
+    location: [-22.9068, -43.1729], 
     video: "/videos/clip1.mp4", 
     caption: "Rio de Janeiro", 
     rotate: -4 
   },
   { 
     id: "reel-capetown", 
-    location: [-33.924, 18.424], 
+    location: [-33.9249, 18.4241], 
     video: "/videos/reel-bike.mp4", 
     caption: "Cape Town", 
     rotate: 4 
+  },
+  { 
+    id: "reel-buenosaires", 
+    location: [-34.6037, -58.3816], 
+    video: "/videos/reel-dog.mp4", 
+    caption: "Buenos Aires", 
+    rotate: -3 
   },
 ]
 
@@ -170,15 +184,23 @@ export function GlobePolaroids({
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
-  // On mobile view: show only 4 cards evenly distributed across the globe (SF, London, Mumbai, Tokyo)
+  // Balanced selection: includes northern creator hubs + prominent southern portion cards (Australia, Chile, Cape Town, Rio)
   const activeMarkers = useMemo(() => {
-    if (!isMobile || markers.length <= 4) return markers
-    return [
-      markers.find((m) => m.id === "reel-sf") || markers[0],
-      markers.find((m) => m.id === "reel-london") || markers[1],
-      markers.find((m) => m.id === "reel-mumbai") || markers[2],
-      markers.find((m) => m.id === "reel-tokyo") || markers[3],
-    ].filter(Boolean) as PolaroidMarker[]
+    if (!isMobile) return markers
+    const mobileIds = [
+      // Northern portion
+      "reel-sf",
+      "reel-london",
+      "reel-mumbai",
+      "reel-tokyo",
+      // Southern / bottom portion
+      "reel-sydney",
+      "reel-chile",
+      "reel-capetown",
+      "reel-rio",
+    ]
+    const filtered = markers.filter((m) => mobileIds.includes(m.id))
+    return filtered.length > 0 ? filtered : markers.slice(0, 8)
   }, [isMobile, markers])
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
@@ -232,7 +254,7 @@ export function GlobePolaroids({
           width,
           height: width,
           phi: 0,
-          theta: 0.2,
+          theta: 0.04, // Perfectly centered equator to show bottom portion (Chile, Australia, etc.)
           dark: 0,
           diffuse: 1.5,
           mapSamples: 8000,
@@ -252,7 +274,7 @@ export function GlobePolaroids({
           if (!isPausedRef.current) phi += speed
           globe!.update({
             phi: phi + phiOffsetRef.current + dragOffset.current.phi,
-            theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
+            theta: 0.04 + thetaOffsetRef.current + dragOffset.current.theta,
           })
           animationId = requestAnimationFrame(animate)
         }
