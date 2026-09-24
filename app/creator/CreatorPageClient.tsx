@@ -70,7 +70,12 @@ export default function CreatorPageClient() {
   }, [viewMode]);
 
   if (!mounted) {
-    return null;
+    return (
+      <>
+        <CreatorsSection />
+        <Footer />
+      </>
+    );
   }
 
   // When #changelog hash → show ONLY Changelog section + Footer
@@ -95,15 +100,17 @@ export default function CreatorPageClient() {
     );
   }
 
-  // When #for-agencies hash → show ONLY Agencies section + Footer
+  // When #for-agencies hash → redirect directly to dedicated /agencies route
   if (viewMode === "for-agencies") {
+    if (typeof window !== "undefined") {
+      window.location.replace("/agencies");
+      return null;
+    }
     return (
-      <>
-        <section id="for-agencies" className="w-full bg-white">
-          <AgenciesSection />
-        </section>
+      <div className="w-full">
+        <AgenciesSection />
         <Footer />
-      </>
+      </div>
     );
   }
 

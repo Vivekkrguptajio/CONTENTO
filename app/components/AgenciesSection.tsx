@@ -698,68 +698,41 @@ export default function AgenciesSection() {
                 <div className="agencies-payouts-grid">
                   {/* CPM Card */}
                   <div className="agencies-payout-box agencies-payout-box--cpm">
-                    <div className="agencies-payout-box__top">
-                      <div className="agencies-payout-box__icon-circle">
-                        <img
-                          src="/assets/agencies/stat-icon-views.svg"
-                          alt=""
-                          width="18"
-                          height="18"
-                        />
-                      </div>
-                      <h4 className="agencies-payout-box__title">CPM</h4>
-                    </div>
-                    <div className="agencies-payout-box__img-wrap">
+                    <div className="agencies-payout-box__icon-circle">
                       <img
-                        src="/assets/agencies/bento-grid-1.webp"
-                        alt="CPM"
-                        className="agencies-payout-box__img"
+                        src="/assets/agencies/stat-icon-views.svg"
+                        alt=""
+                        width="18"
+                        height="18"
                       />
                     </div>
+                    <h4 className="agencies-payout-box__title">CPM</h4>
                   </div>
 
                   {/* Retainer Card */}
                   <div className="agencies-payout-box agencies-payout-box--retainer">
-                    <div className="agencies-payout-box__top">
-                      <div className="agencies-payout-box__icon-circle">
-                        <img
-                          src="/assets/agencies/stat-icon-payouts.svg"
-                          alt=""
-                          width="18"
-                          height="18"
-                        />
-                      </div>
-                      <h4 className="agencies-payout-box__title">Retainer</h4>
-                    </div>
-                    <div className="agencies-payout-box__img-wrap">
+                    <div className="agencies-payout-box__icon-circle">
                       <img
-                        src="/assets/agencies/bento-grid-2.webp"
-                        alt="Retainer"
-                        className="agencies-payout-box__img"
+                        src="/assets/agencies/stat-icon-payouts.svg"
+                        alt=""
+                        width="18"
+                        height="18"
                       />
                     </div>
+                    <h4 className="agencies-payout-box__title">Retainer</h4>
                   </div>
 
                   {/* Per post Card */}
                   <div className="agencies-payout-box agencies-payout-box--post">
-                    <div className="agencies-payout-box__top">
-                      <div className="agencies-payout-box__icon-circle">
-                        <img
-                          src="/assets/agencies/stat-icon-subs.svg"
-                          alt=""
-                          width="18"
-                          height="18"
-                        />
-                      </div>
-                      <h4 className="agencies-payout-box__title">Per post</h4>
-                    </div>
-                    <div className="agencies-payout-box__img-wrap">
+                    <div className="agencies-payout-box__icon-circle">
                       <img
-                        src="/assets/agencies/bento-grid-3.webp"
-                        alt="Per post"
-                        className="agencies-payout-box__img"
+                        src="/assets/agencies/stat-icon-subs.svg"
+                        alt=""
+                        width="18"
+                        height="18"
                       />
                     </div>
+                    <h4 className="agencies-payout-box__title">Per post</h4>
                   </div>
                 </div>
               </div>

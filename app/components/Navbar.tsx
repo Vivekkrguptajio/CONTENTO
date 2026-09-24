@@ -36,12 +36,18 @@ export default function Navbar() {
   const pathname = usePathname();
   const isCreatorPage = pathname === "/creators" || pathname === "/creator" || pathname.startsWith("/creator/") || pathname.startsWith("/creators/");
   const isHomePage = pathname === "/";
+  const [currentHash, setCurrentHash] = useState("");
+  const isAgenciesPage =
+    pathname === "/agencies" ||
+    pathname === "/agency" ||
+    pathname.startsWith("/agencies/") ||
+    pathname.startsWith("/agency/") ||
+    (isCreatorPage && currentHash.includes("agenc"));
 
   const [bannerVisible, setBannerVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<ActiveMenu>(null);
   const [dropdownPos, setDropdownPos] = useState({ left: 100, width: 330, height: 265 });
-  const [currentHash, setCurrentHash] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileActiveTab, setMobileActiveTab] = useState<"brands" | "creators">(
     isCreatorPage ? "creators" : "brands"
@@ -206,11 +212,13 @@ export default function Navbar() {
     };
   }, []);
 
+  const isAgencyTheme = isAgenciesPage && !isScrolled && !mobileMenuOpen;
+
   return (
     <>
-      <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
-        {/* ── 1. Top Orange Announcement Bar (hidden on creator pages) ── */}
-        {bannerVisible && !isCreatorPage && (
+      <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgencyTheme ? "nav-theme-agency" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
+        {/* ── 1. Top Orange Announcement Bar (hidden on creator & agencies pages) ── */}
+        {bannerVisible && !isCreatorPage && !isAgenciesPage && (
           <aside className="nav-announcement" aria-label="Announcement">
             <div className="nav-announcement-content">
               <span className="nav-announcement-bold">Are you a creator?</span>
@@ -236,7 +244,7 @@ export default function Navbar() {
             {/* Left: Logo & Nav Links */}
             <div className="nav-left flex items-center">
               <a href="/" className="nav-brand-link flex items-center gap-[7px]" aria-label="Content Rewards Home">
-                <ContentRewardsLogo isDark={isLegalMode} />
+                <ContentRewardsLogo isDark={isLegalMode || isAgencyTheme} />
               </a>
 
               {/* ── MAIN NAV MENU WITH MORPHING DROPDOWN CONTAINER ──── */}
@@ -384,7 +392,7 @@ export default function Navbar() {
                         </a>
 
                         <a
-                          href="/creator#for-agencies"
+                          href="/agencies"
                           className="nav-dropdown-item"
                           onClick={() => setActiveMenu(null)}
                         >
@@ -578,7 +586,7 @@ export default function Navbar() {
       >
         <div
           className="nav-mobile-content"
-          style={{ paddingTop: bannerVisible && !isCreatorPage ? 110 : 68 }}
+          style={{ paddingTop: bannerVisible && !isCreatorPage && !isAgenciesPage ? 110 : 68 }}
         >
           {/* Segmented Switcher: Brands | Creators */}
           <div className="nav-mobile-tab-switch" role="tablist" aria-label="Audience Switcher">
@@ -695,7 +703,7 @@ export default function Navbar() {
                   </a>
 
                   <a
-                    href="/creator#for-agencies"
+                    href="/agencies"
                     className="nav-mobile-card"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -905,8 +913,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Spacer so page content starts naturally below the fixed navbar (omitted on home page where HeroSection has pt-[calc(var(--header-height)+4rem)]) */}
-      {!isHomePage && (
+      {/* Spacer so page content starts naturally below the fixed navbar (omitted on home page and agencies page where hero extends behind transparent navbar) */}
+      {!isHomePage && !isAgenciesPage && (
         <div
           className={`nav-fixed-spacer ${isLegalMode ? "nav-fixed-spacer--dark" : ""}`}
           style={{ height: (bannerVisible && !isCreatorPage) ? 110 : 68 }}

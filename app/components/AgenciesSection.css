@@ -25,6 +25,7 @@
   background: linear-gradient(180deg, #ff6c03 0%, #fbc433 56.73%, #ffffff 99.04%);
   display: flex;
   align-items: center;
+  padding-top: 68px;
 }
 
 .agencies-hero__bg-wrap {
@@ -675,7 +676,7 @@
 
 @media (min-width: 1024px) {
   .agencies-bento__row-1 {
-    grid-template-columns: 7fr 5fr;
+    grid-template-columns: 5fr 7fr;
   }
 }
 
@@ -687,26 +688,27 @@
 
 @media (min-width: 1024px) {
   .agencies-bento__row-2 {
-    grid-template-columns: 5fr 7fr;
+    grid-template-columns: 7fr 5fr;
   }
 }
 
 .agencies-bento__card {
   background-color: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 28px;
-  padding: 28px;
+  border-radius: 24px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  min-height: 420px;
 }
 
 .agencies-bento__text {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.45;
   letter-spacing: -0.01em;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .agencies-bento__strong {
@@ -722,27 +724,30 @@
 /* Row 1 Card 1: Stat pills */
 .agencies-bento__stat-pills {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
   margin-top: auto;
-  padding-top: 20px;
 }
 
 .agencies-stat-pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 12px;
+  width: 100%;
+  height: 60px;
   border-radius: 18px;
-  padding: 8px 18px 8px 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 0 12px 0 0;
+  overflow: hidden;
+  user-select: none;
+  gap: 12px;
+  box-shadow: none;
   color: #ffffff;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .agencies-stat-pill:hover {
   transform: translateY(-2px);
+  filter: brightness(1.03);
 }
 
 .agencies-stat-pill--green {
@@ -762,46 +767,56 @@
 }
 
 .agencies-stat-pill__icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
+  width: 58px;
+  height: 100%;
+  border-radius: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
+.agencies-stat-pill__icon-wrap img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
 .agencies-stat-pill__texts {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  justify-content: center;
 }
 
 .agencies-stat-pill__val {
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.15;
+  color: #ffffff;
 }
 
 .agencies-stat-pill__lbl {
   font-size: 12px;
   font-weight: 500;
-  opacity: 0.85;
-  line-height: 1;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.15;
 }
 
 .agencies-stat-pill__dual {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 .agencies-stat-pill__sep {
   width: 1px;
-  height: 24px;
-  background-color: rgba(255, 255, 255, 0.3);
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
 }
 
 /* Row 1 Card 2: Scale Graph */
@@ -935,88 +950,70 @@
   margin: 0;
 }
 
-/* Row 2 Card 2: Payouts 3-card grid */
+/* Row 2 Card 2: Payouts 3-card stack */
 .agencies-payouts-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: auto;
-}
-
-@media (min-width: 640px) {
-  .agencies-payouts-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.agencies-payout-box {
-  border-radius: 22px;
-  padding: 20px 20px 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  min-height: 220px;
-  transition: transform 0.25s ease;
-}
-
-.agencies-payout-box:hover {
-  transform: translateY(-4px);
-}
-
-.agencies-payout-box--cpm {
-  background: #ff6c03;
-}
-
-.agencies-payout-box--retainer {
-  background: linear-gradient(180deg, #1a67e5 0%, #4d8eff 100%);
-}
-
-.agencies-payout-box--post {
-  background: #009e49;
-}
-
-.agencies-payout-box__top {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 2;
+  width: 100%;
+  margin-top: auto;
+}
+
+.agencies-payout-box {
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  height: 96px;
+  min-height: 96px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.agencies-payout-box:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.agencies-payout-box--cpm {
+  background-color: #e57100;
+}
+
+.agencies-payout-box--retainer {
+  background: linear-gradient(180deg, #1a67e5 0%, #6096f0 100%);
+}
+
+.agencies-payout-box--post {
+  background-color: #059669;
 }
 
 .agencies-payout-box__icon-circle {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.agencies-payout-box__icon-circle img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
 }
 
 .agencies-payout-box__title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
   margin: 0;
-}
-
-.agencies-payout-box__img-wrap {
-  margin-top: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.agencies-payout-box__img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.agencies-payout-box:hover .agencies-payout-box__img {
-  transform: scale(1.06);
+  line-height: 1.1;
 }
 
 /* ── 7. AGENCY FAQS SECTION ───────────────────────────────────────────────── */
@@ -1280,13 +1277,18 @@
 /* ── Mobile Responsive Rules for Agencies ────────────────────────── */
 @media (max-width: 640px) {
   .agencies-hero {
-    min-height: auto;
+    min-height: 480px;
     height: auto;
-    padding: 32px 0 54px;
+    padding: 100px 0 80px;
   }
 
   .agencies-hero__container {
     padding: 0 16px;
+  }
+
+  .agencies-hero__map {
+    transform: scale(1.6);
+    transform-origin: center center;
   }
 
   .agencies-hero__heading {

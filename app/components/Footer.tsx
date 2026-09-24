@@ -102,7 +102,7 @@ const ChatIcon = () => (
 export default function Footer() {
   const navLinks = [
     { label: "Creators", href: "/creator" },
-    { label: "Agencies", href: "/creator#for-agencies" },
+    { label: "Agencies", href: "/agencies" },
     { label: "Brand Kit", href: "/creator#brand-kit" },
     { label: "Pricing", href: "/creator#pricing" },
   ];

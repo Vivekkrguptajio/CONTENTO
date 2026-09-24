@@ -27,11 +27,11 @@
 }
 
 .nav-sticky-wrapper.is-scrolled {
-  background: #ffffff;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none !important;
-  border-bottom: none !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
 /* ── 1. Top Orange Announcement Bar ─────────────────────────────── */
@@ -566,6 +566,7 @@
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+  background-color: #ffffff !important;
 }
 
 .nav-mobile-content {
@@ -627,18 +628,21 @@
 .nav-mobile-links-list {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 32px;
   margin-top: 36px;
 }
 
 .nav-mobile-large-link {
-  font-size: 30.4px;
-  font-weight: 700;
-  color: #110d0c;
+  font-size: 28px;
+  font-weight: 600;
+  color: #252525;
   text-decoration: none;
   letter-spacing: -0.025em;
   transition: color 0.15s ease;
   display: block;
+  padding: 8px 0;
+  line-height: 36px;
+  text-align: left;
 }
 
 .nav-mobile-large-link:hover {
@@ -656,14 +660,15 @@
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 0;
-  font-size: 30.4px;
-  font-weight: 700;
-  color: #110d0c;
+  padding: 8px 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #252525;
   letter-spacing: -0.025em;
   cursor: pointer;
   font-family: inherit;
   text-align: left;
+  line-height: 36px;
   transition: color 0.2s ease, transform 0.2s ease;
   width: fit-content;
   outline: none;
@@ -699,7 +704,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 14px;
+  padding: 4px 0 12px;
   width: 100%;
   animation: submenuSlideDown 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
   transform-origin: top center;
@@ -825,7 +830,8 @@
   padding-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 18px;
   width: 100%;
 }
 
@@ -1082,5 +1088,72 @@
 
 .nav-sticky-wrapper.nav-theme-dark .nav-mobile-toggle:hover {
   background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Transparent Navbar for Agencies over Orange Hero ─────────────── */
+.nav-sticky-wrapper.nav-theme-agency {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-mobile-bar {
+  background-color: #ffffff !important;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-mobile-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-brand-link svg path,
+.nav-sticky-wrapper.nav-theme-agency svg.dark\:\[\&_path\]\:\!fill-\[\#FCFBF8\] path {
+  fill: #FCFBF8 !important;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-link {
+  color: rgba(252, 251, 248, 0.85);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-link:hover,
+.nav-sticky-wrapper.nav-theme-agency .nav-btn-dropdown.is-active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-chevron {
+  color: rgba(252, 251, 248, 0.85);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-signin-link {
+  color: #ffffff;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-signin-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-btn--secondary {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-btn--primary {
+  background: #ffffff;
+  color: #110d0c;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-btn--primary:hover {
+  background: #f7f7f7;
+  color: #110d0c;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 

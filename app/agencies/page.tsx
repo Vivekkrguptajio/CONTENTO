@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function AgenciesPage() {
   return (
-    <div className="min-h-screen bg-white font-sans flex flex-col justify-between">
+    <div className="min-h-screen font-sans flex flex-col justify-between">
       <Navbar />
-      <main className="w-full flex-grow bg-white pt-20">
+      <main className="w-full flex-grow">
         <AgenciesSection />
       </main>
       <Footer />
