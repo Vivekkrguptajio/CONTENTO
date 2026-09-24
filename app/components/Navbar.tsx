@@ -126,14 +126,16 @@ export default function Navbar() {
   const resourcesBtnRef = useRef<HTMLButtonElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Measure and adjust dropdown position & dimensions
+  // Measure and adjust dropdown position & dimensions (Matches ContentRewards DevTools: 400x228.6 and 680x170)
   const updateDropdownPos = useCallback((menu: "solutions" | "resources") => {
     if (menu === "solutions") {
-      const left = solutionsBtnRef.current ? solutionsBtnRef.current.offsetLeft - 12 : 110;
-      setDropdownPos({ left, width: 330, height: 265 });
+      const btnLeft = solutionsBtnRef.current ? solutionsBtnRef.current.offsetLeft : 120;
+      const left = Math.max(0, btnLeft - 20);
+      setDropdownPos({ left, width: 400, height: 228.6 });
     } else if (menu === "resources") {
-      const left = resourcesBtnRef.current ? resourcesBtnRef.current.offsetLeft - 70 : 180;
-      setDropdownPos({ left, width: 580, height: 220 });
+      const btnLeft = resourcesBtnRef.current ? resourcesBtnRef.current.offsetLeft : 200;
+      const left = Math.max(0, btnLeft - 180);
+      setDropdownPos({ left, width: 680, height: 170 });
     }
   }, []);
 
@@ -441,7 +443,7 @@ export default function Navbar() {
                           <div className="nav-dropdown-list">
                             
                             <a
-                              href="/creator#pricing"
+                              href="/pricing"
                               className="nav-dropdown-item"
                               onClick={() => setActiveMenu(null)}
                             >
@@ -463,7 +465,7 @@ export default function Navbar() {
                             </a>
 
                             <a
-                              href="#changelog"
+                              href="/changelog"
                               className="nav-dropdown-item"
                               onClick={() => setActiveMenu(null)}
                             >
@@ -491,7 +493,7 @@ export default function Navbar() {
                           <div className="nav-dropdown-list">
                             
                             <a
-                              href="/creator#brand-kit"
+                              href="/branding"
                               className="nav-dropdown-item"
                               onClick={() => setActiveMenu(null)}
                             >
@@ -510,7 +512,7 @@ export default function Navbar() {
                             </a>
 
                             <a
-                              href="/creator#term"
+                              href="/ftc-compliance"
                               className="nav-dropdown-item"
                               onClick={() => setActiveMenu(null)}
                             >
