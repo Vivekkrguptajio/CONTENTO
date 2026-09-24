@@ -363,42 +363,6 @@ export function GlobePolaroids({
                 />
               )}
 
-              {/* Top Reels Live Badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 5,
-                  left: 6,
-                  right: 6,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  zIndex: 2,
-                  pointerEvents: "none",
-                }}
-              >
-                <span
-                  style={{
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    background: "#ff3b30",
-                    boxShadow: "0 0 6px #ff3b30",
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: "6px",
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.9)",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                    textShadow: "0 1px 2px rgba(0,0,0,0.8)",
-                  }}
-                >
-                  REEL
-                </span>
-              </div>
 
               {/* Bottom Gradient Overlay with Location Caption */}
               <div
