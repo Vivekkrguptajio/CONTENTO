@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState, useMemo } from "react"
 import createGlobe from "cobe"
 
 export interface PolaroidMarker {
@@ -159,6 +159,28 @@ export function GlobePolaroids({
   const thetaOffsetRef = useRef(0)
   const isPausedRef = useRef(false)
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // On mobile view: show only 4 cards evenly distributed across the globe (SF, London, Mumbai, Tokyo)
+  const activeMarkers = useMemo(() => {
+    if (!isMobile || markers.length <= 4) return markers
+    return [
+      markers.find((m) => m.id === "reel-sf") || markers[0],
+      markers.find((m) => m.id === "reel-london") || markers[1],
+      markers.find((m) => m.id === "reel-mumbai") || markers[2],
+      markers.find((m) => m.id === "reel-tokyo") || markers[3],
+    ].filter(Boolean) as PolaroidMarker[]
+  }, [isMobile, markers])
+
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     pointerInteracting.current = { x: e.clientX, y: e.clientY }
     if (canvasRef.current) canvasRef.current.style.cursor = "grabbing"
@@ -219,7 +241,7 @@ export function GlobePolaroids({
           markerColor: [0.4, 0.6, 0.9],
           glowColor: [0.94, 0.93, 0.91],
           markerElevation: 0,
-          markers: markers.map((m) => ({ location: m.location, size: 0.02, id: m.id })),
+          markers: activeMarkers.map((m) => ({ location: m.location, size: 0.02, id: m.id })),
           arcs: [],
           arcColor: [0.5, 0.7, 1],
           arcWidth: 0.5,
@@ -261,7 +283,7 @@ export function GlobePolaroids({
       if (animationId) cancelAnimationFrame(animationId)
       if (globe) globe.destroy()
     }
-  }, [markers, speed])
+  }, [activeMarkers, speed])
 
   return (
     <div className={`relative aspect-square select-none ${className}`}>
@@ -278,7 +300,7 @@ export function GlobePolaroids({
           touchAction: "none",
         }}
       />
-      {markers.map((m) => {
+      {activeMarkers.map((m) => {
         const ytEmbed = m.video ? getYoutubeEmbedUrl(m.video) : null
         return (
           <div
@@ -300,10 +322,10 @@ export function GlobePolaroids({
             {/* Reels Phone-Style Vertical Card (9:16 Aspect Ratio) */}
             <div
               style={{
-                width: 56,
-                height: 96,
+                width: isMobile ? 48 : 56,
+                height: isMobile ? 84 : 96,
                 position: "relative",
-                borderRadius: "10px",
+                borderRadius: isMobile ? "8px" : "10px",
                 overflow: "hidden",
                 background: "#050505",
                 boxShadow:
@@ -363,7 +385,6 @@ export function GlobePolaroids({
                 />
               )}
 
-
               {/* Bottom Gradient Overlay with Location Caption */}
               <div
                 style={{
@@ -371,7 +392,7 @@ export function GlobePolaroids({
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  padding: "16px 4px 5px",
+                  padding: isMobile ? "12px 2px 4px" : "16px 4px 5px",
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%)",
                   zIndex: 2,
@@ -383,7 +404,7 @@ export function GlobePolaroids({
                   style={{
                     display: "block",
                     fontFamily: "system-ui, -apple-system, sans-serif",
-                    fontSize: "7.5px",
+                    fontSize: isMobile ? "6.5px" : "7.5px",
                     fontWeight: 600,
                     color: "#ffffff",
                     letterSpacing: "0.01em",
