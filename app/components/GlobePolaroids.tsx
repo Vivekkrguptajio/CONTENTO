@@ -34,84 +34,116 @@ function getYoutubeEmbedUrl(src: string): string | null {
 
 const defaultMarkers: PolaroidMarker[] = [
   { 
-    id: "polaroid-sf", 
+    id: "reel-sf", 
     location: [37.78, -122.44], 
-    video: "M7lc1UVf-VE", // YouTube video
-    image: "https://cdn.21st.dev/assets/mirror/c6/c6d80a573edd25cbf4156d5fa5ac1a92f3464d868610a66e42b6f2504ad20754.jpg", 
+    video: "/videos/reel-bike.mp4", 
     caption: "San Francisco", 
-    rotate: -5 
+    rotate: -4 
   },
   { 
-    id: "polaroid-nyc", 
+    id: "reel-nyc", 
     location: [40.71, -74.01], 
-    video: "jNQXAC9IVRw", // YouTube video ("Me at the zoo")
-    image: "https://cdn.21st.dev/assets/mirror/df/dfb431480f9ad523c4d95d687e3ad9ab26527f92390df4e29f05e1d18d593915.jpg", 
+    video: "/videos/reel-dog.mp4", 
     caption: "New York", 
-    rotate: 4 
+    rotate: 3 
   },
   { 
-    id: "polaroid-tokyo", 
-    location: [35.68, 139.65], 
-    video: "aqz-KE-bpKQ", // YouTube video (Big Buck Bunny)
-    image: "https://cdn.21st.dev/assets/mirror/34/34ae66f2d60a75fff0dde6adb9e8bce7b7794c0013feec4db1bce28fb58aaacf.jpg", 
-    caption: "Tokyo", 
+    id: "reel-la", 
+    location: [34.05, -118.24], 
+    video: "/videos/reel-snow.mp4", 
+    caption: "Los Angeles", 
+    rotate: 5 
+  },
+  { 
+    id: "reel-miami", 
+    location: [25.76, -80.19], 
+    video: "/videos/reel-rafting.mp4", 
+    caption: "Miami", 
     rotate: -3 
   },
   { 
-    id: "polaroid-sydney", 
-    location: [-33.87, 151.21], 
-    video: "M7lc1UVf-VE", // YouTube video
-    image: "https://cdn.21st.dev/assets/mirror/88/88b7dfb3a21786d682f68d5fea837cb3dc85344ade84f54c416b83353fabffce.jpg", 
-    caption: "Sydney", 
-    rotate: 6 
+    id: "reel-london", 
+    location: [51.51, -0.13], 
+    video: "/videos/clip1.mp4", 
+    caption: "London", 
+    rotate: 4 
   },
   { 
-    id: "polaroid-paris", 
+    id: "reel-paris", 
     location: [48.86, 2.35], 
-    video: "aqz-KE-bpKQ", // YouTube video
-    image: "https://cdn.21st.dev/assets/mirror/70/7068d8f556e9c004940e37c9af3712a1bb2e2d659db000344d6b1d422dfaa994.jpg", 
+    video: "/videos/reel-bike.mp4", 
     caption: "Paris", 
     rotate: -4 
   },
   { 
-    id: "polaroid-london", 
-    location: [51.51, -0.13], 
-    video: "jNQXAC9IVRw", // YouTube video
-    image: "https://cdn.21st.dev/assets/mirror/22/227d573eee27dd0ee533cf260d68c6269d9c232c1def19ce5213de8d32cee45f.jpg", 
-    caption: "London", 
+    id: "reel-berlin", 
+    location: [52.52, 13.40], 
+    video: "/videos/reel-snow.mp4", 
+    caption: "Berlin", 
     rotate: 3 
   },
   { 
-    id: "polaroid-mumbai", 
-    location: [19.076, 72.877], 
-    video: "M7lc1UVf-VE", // YouTube video
-    image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=300&q=80", 
-    caption: "Mumbai", 
+    id: "reel-dubai", 
+    location: [25.204, 55.270], 
+    video: "/videos/reel-dog.mp4", 
+    caption: "Dubai", 
     rotate: -5 
   },
   { 
-    id: "polaroid-dubai", 
-    location: [25.204, 55.270], 
-    video: "aqz-KE-bpKQ", // YouTube video
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&q=80", 
-    caption: "Dubai", 
+    id: "reel-mumbai", 
+    location: [19.076, 72.877], 
+    video: "/videos/reel-rafting.mp4", 
+    caption: "Mumbai", 
     rotate: 4 
   },
   { 
-    id: "polaroid-rio", 
-    location: [-22.906, -43.172], 
-    video: "jNQXAC9IVRw", // YouTube video
-    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&q=80", 
-    caption: "Rio de Janeiro", 
+    id: "reel-delhi", 
+    location: [28.613, 77.209], 
+    video: "/videos/clip1.mp4", 
+    caption: "New Delhi", 
     rotate: -3 
   },
   { 
-    id: "polaroid-singapore", 
+    id: "reel-singapore", 
     location: [1.352, 103.819], 
-    video: "M7lc1UVf-VE", // YouTube video
-    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=300&q=80", 
+    video: "/videos/reel-bike.mp4", 
     caption: "Singapore", 
     rotate: 5 
+  },
+  { 
+    id: "reel-tokyo", 
+    location: [35.68, 139.65], 
+    video: "/videos/reel-snow.mp4", 
+    caption: "Tokyo", 
+    rotate: -4 
+  },
+  { 
+    id: "reel-seoul", 
+    location: [37.566, 126.978], 
+    video: "/videos/reel-dog.mp4", 
+    caption: "Seoul", 
+    rotate: 3 
+  },
+  { 
+    id: "reel-sydney", 
+    location: [-33.87, 151.21], 
+    video: "/videos/reel-rafting.mp4", 
+    caption: "Sydney", 
+    rotate: 5 
+  },
+  { 
+    id: "reel-rio", 
+    location: [-22.906, -43.172], 
+    video: "/videos/clip1.mp4", 
+    caption: "Rio de Janeiro", 
+    rotate: -4 
+  },
+  { 
+    id: "reel-capetown", 
+    location: [-33.924, 18.424], 
+    video: "/videos/reel-bike.mp4", 
+    caption: "Cape Town", 
+    rotate: 4 
   },
 ]
 
@@ -257,28 +289,28 @@ export function GlobePolaroids({
               bottom: "anchor(top)",
               left: "anchor(center)",
               translate: "-50% 0",
-              marginBottom: 8,
-              background: "#fff",
-              padding: "6px 6px 24px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1)",
-              transform: `rotate(${m.rotate}deg)`,
+              marginBottom: 10,
               pointerEvents: "none" as const,
               opacity: `var(--cobe-visible-${m.id}, 0)`,
               filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
               transition: "opacity 0.3s, filter 0.3s",
-              borderRadius: "2px",
+              transform: `rotate(${m.rotate}deg)`,
             }}
           >
+            {/* Reels Phone-Style Vertical Card (9:16 Aspect Ratio) */}
             <div
               style={{
-                width: 60,
-                height: 60,
-                overflow: "hidden",
+                width: 56,
+                height: 96,
                 position: "relative",
-                background: "#000",
-                borderRadius: "2px",
+                borderRadius: "10px",
+                overflow: "hidden",
+                background: "#050505",
+                boxShadow:
+                  "0 10px 24px -4px rgba(0,0,0,0.32), 0 3px 8px rgba(0,0,0,0.18), inset 0 0 0 1.5px rgba(255,255,255,0.75)",
               }}
             >
+              {/* Pure Video - Zero Controls, Instant Autoplay */}
               {ytEmbed ? (
                 <iframe
                   src={ytEmbed}
@@ -288,7 +320,7 @@ export function GlobePolaroids({
                     position: "absolute",
                     top: "50%",
                     left: "50%",
-                    width: "178%",
+                    width: "280%",
                     height: "100%",
                     transform: "translate(-50%, -50%)",
                     border: 0,
@@ -302,11 +334,19 @@ export function GlobePolaroids({
                   loop
                   muted
                   playsInline
+                  preload="auto"
+                  controls={false}
+                  // @ts-ignore
+                  disablePictureInPicture
+                  disableRemotePlayback
                   style={{
-                    display: "block",
+                    position: "absolute",
+                    inset: 0,
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                    display: "block",
+                    pointerEvents: "none",
                   }}
                 />
               ) : (
@@ -314,29 +354,85 @@ export function GlobePolaroids({
                   src={m.image}
                   alt={m.caption}
                   style={{
-                    display: "block",
+                    position: "absolute",
+                    inset: 0,
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
                   }}
                 />
               )}
+
+              {/* Top Reels Live Badge */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 5,
+                  left: 6,
+                  right: 6,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  zIndex: 2,
+                  pointerEvents: "none",
+                }}
+              >
+                <span
+                  style={{
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    background: "#ff3b30",
+                    boxShadow: "0 0 6px #ff3b30",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: "6px",
+                    fontWeight: 700,
+                    color: "rgba(255,255,255,0.9)",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                    textShadow: "0 1px 2px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  REEL
+                </span>
+              </div>
+
+              {/* Bottom Gradient Overlay with Location Caption */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "16px 4px 5px",
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%)",
+                  zIndex: 2,
+                  textAlign: "center",
+                  pointerEvents: "none",
+                }}
+              >
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "system-ui, -apple-system, sans-serif",
+                    fontSize: "7.5px",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    letterSpacing: "0.01em",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    textShadow: "0 1px 3px rgba(0,0,0,0.9)",
+                  }}
+                >
+                  {m.caption}
+                </span>
+              </div>
             </div>
-            <span
-              style={{
-                position: "absolute",
-                bottom: 5,
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.5rem",
-                color: "#333",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {m.caption}
-            </span>
           </div>
         )
       })}
