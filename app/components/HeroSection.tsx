@@ -13,7 +13,7 @@ const AUDIENCES = [
   "Personal Brands",
   "Marketplaces",
   "Mobile Apps",
-  "DTC Brands",
+  "D2C Brands",
 ];
 
 const TYPE_MS = 70;

@@ -3,9 +3,9 @@ import CreatorPageClient from "./CreatorPageClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Content Rewards | Creators, Agencies, Pricing, Brand Kit & Legal",
+  title: "Pomera for Publishers | Paid per view, not per follower",
   description:
-    "Simple pricing, no subscriptions. A 10% platform fee, 8% once verified, charged only on work you approve. Official brand kit and FTC compliance guides.",
+    "Get paid per verified view for posting brand videos from your own account. Weekly UPI payouts, no follower minimum.",
 };
 
 export default function CreatorPage() {

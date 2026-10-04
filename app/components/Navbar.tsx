@@ -13,7 +13,7 @@ const BrandLogo = ({
   className?: string;
 }) => (
   <img
-    src={isDark ? "/assets/logo/pomera_logo_white.png" : "/assets/logo/pomera_logo_light.png"}
+    src={isDark ? "/assets/logo/pomera_logo_white_nav.webp" : "/assets/logo/pomera_logo_light_nav.webp"}
     alt="Pomera"
     width={108}
     height={24}
@@ -94,11 +94,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isAgencyTheme = isAgenciesPage && !isScrolled && !mobileMenuOpen;
 
   return (
     <>
-      <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgencyTheme ? "nav-theme-agency" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
+      <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgenciesPage && !isScrolled && !mobileMenuOpen ? "nav-over-hero" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
         {/* ── 1. Top Announcement Bar (Explicit Publisher Routing) ── */}
         {bannerVisible && !isCreatorPage && !isAgenciesPage && (
           <aside className="nav-announcement" aria-label="Announcement">
@@ -126,7 +125,7 @@ export default function Navbar() {
             {/* Left: Logo & Nav Links */}
             <div className="nav-left flex items-center">
               <a href="/" className="nav-brand-link flex items-center gap-[7px]" aria-label="Home">
-                <BrandLogo isDark={isLegalMode || isAgencyTheme} />
+                <BrandLogo isDark={isLegalMode} />
               </a>
 
               {/* ── MAIN NAV MENU WITH DIRECT LINKS ──── */}

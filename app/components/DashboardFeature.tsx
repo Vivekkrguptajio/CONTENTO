@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./DashboardFeature.css";
 import "./DashboardMockup.css";
 import { PomeraMark } from "./pomeraMark";
+import LazyVideo from "./LazyVideo";
 
 /* ── Top Tabs SVGs ────────────────────────────────────────────────── */
 const TabReviewIcon = () => (
@@ -192,7 +193,7 @@ export default function DashboardFeature() {
 
                 <div className="dfx-review__body">
                   <div className="dfx-video">
-                    <video src="/videos/reel-bike.mp4" autoPlay loop muted playsInline preload="metadata" aria-hidden="true" />
+                    <LazyVideo src="/videos/reel-bike.mp4" />
                     <div className="dfx-video__shade" />
                     <div className="dfx-video__stat">
                       <span className="pm-num">6,40,000</span>

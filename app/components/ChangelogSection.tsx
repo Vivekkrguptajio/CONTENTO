@@ -29,7 +29,7 @@ export default function ChangelogSection() {
               {/* Hero Banner Image */}
               <div className="cr-changelog-img-wrap">
                 <img
-                  src="/assets/changelog/v2-hero.png"
+                  src="/assets/changelog/v2-hero.webp"
                   alt="V2 is here"
                   className="cr-changelog-img"
                   loading="lazy"
@@ -139,7 +139,7 @@ export default function ChangelogSection() {
               {/* Fee Breakdown Diagram Image */}
               <div className="cr-changelog-img-wrap">
                 <img
-                  src="/assets/changelog/fee-breakdown.png"
+                  src="/assets/changelog/fee-breakdown.webp"
                   alt="Fee breakdown by campaign type"
                   className="cr-changelog-img"
                   loading="lazy"

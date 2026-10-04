@@ -47,16 +47,7 @@ const INCORRECT_EXAMPLES = [
 
 export default function BrandKitSection() {
   const [activeTab, setActiveTab] = useState<string>("01");
-  const [copiedHex, setCopiedHex] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const copyToClipboard = (hex: string) => {
-    navigator.clipboard.writeText(hex);
-    setCopiedHex(hex);
-    setTimeout(() => {
-      setCopiedHex(null);
-    }, 1800);
-  };
 
   const handleDownload = (filePath: string, fileName?: string) => {
     const a = document.createElement("a");
@@ -78,7 +69,7 @@ export default function BrandKitSection() {
             className="cr-bk-banner-img"
           />
           <img
-            src="/assets/branding/banner-stars.png"
+            src="/assets/branding/banner-stars.webp"
             alt=""
             aria-hidden="true"
             className="cr-bk-banner-stars"
@@ -117,7 +108,7 @@ export default function BrandKitSection() {
         </div>
         <div className="cr-bk-mobile-banner-wrap">
           <img
-            src="/assets/branding/mobile-banner.png"
+            src="/assets/branding/mobile-banner.webp"
             alt="Brand Guidelines"
             className="cr-bk-mobile-banner-img"
           />

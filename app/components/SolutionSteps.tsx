@@ -50,7 +50,6 @@ const STEPS = [
 
 export default function SolutionSteps() {
   const outerRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0); // 0..1 across the whole pinned scroll
   const [active, setActive] = useState(0);
 
   /*
@@ -66,7 +65,6 @@ export default function SolutionSteps() {
       const rect = outer.getBoundingClientRect();
       const runway = outer.offsetHeight - window.innerHeight;
       const p = runway > 0 ? Math.min(1, Math.max(0, -rect.top / runway)) : 0;
-      setProgress(p);
       setActive(Math.min(STEPS.length - 1, Math.floor(p * STEPS.length)));
     };
     const onScroll = () => {
@@ -105,26 +103,6 @@ export default function SolutionSteps() {
               billing risk.
             </p>
 
-            {/* Rail: six stops joined by a line that fills as you scroll */}
-            <div className="sp-rail" role="tablist" aria-label="Campaign steps">
-              <div className="sp-rail__line" aria-hidden="true">
-                <div className="sp-rail__fill" style={{ transform: `scaleX(${progress})` }} />
-              </div>
-              {STEPS.map((item, i) => (
-                <button
-                  key={item.step}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === active}
-                  aria-label={`Step ${item.step}: ${item.title}`}
-                  onClick={() => goTo(i)}
-                  className={`sp-dot ${i < active ? "is-done" : i === active ? "is-current" : ""}`}
-                >
-                  {item.step}
-                </button>
-              ))}
-            </div>
-
             {/* Stage: one step at a time, swapped by scroll */}
             <div className="sp-stage">
               {STEPS.map((item, i) => {
@@ -144,9 +122,6 @@ export default function SolutionSteps() {
                         Phase {item.step} / 0{STEPS.length}
                       </span>
                       <span className="sp-badge">{item.badge}</span>
-                    </div>
-                    <div className="sp-step__num" aria-hidden="true">
-                      {item.step}
                     </div>
                     <div className="sp-step__body">
                       <h3 className="sp-step__title">{item.title}</h3>

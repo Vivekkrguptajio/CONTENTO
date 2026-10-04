@@ -1,11 +1,11 @@
 import Navbar from "../components/Navbar";
-import CreatorsSection from "../components/CreatorsSection";
+import PublishersSection from "../components/PublishersSection";
 import Footer from "../components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Get Paid for Posting Content | Content Rewards Creators",
-  description: "Join live campaigns, submit your work, and get paid fast. Work with the biggest brands alongside 1M+ creators.",
+  title: "Pomera for Publishers | Paid per view, not per follower",
+  description: "Get paid per verified view for posting brand videos from your own account. Weekly UPI payouts, no follower minimum.",
 };
 
 export default function CreatorsPage() {
@@ -13,7 +13,7 @@ export default function CreatorsPage() {
     <div className="min-h-screen font-sans flex flex-col justify-between" style={{ backgroundColor: '#ffffff' }}>
       <Navbar />
       <main className="w-full flex-grow" style={{ backgroundColor: '#ffffff', paddingTop: '0' }}>
-        <CreatorsSection />
+        <PublishersSection />
       </main>
       <Footer />
     </div>

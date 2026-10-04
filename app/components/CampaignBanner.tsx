@@ -25,11 +25,10 @@ function ReelCard({ reel }: { reel: Reel }) {
       <video
         className="cb-reel__video"
         src={reel.src}
-        autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
       />
       <span className="cb-reel__avatar" />

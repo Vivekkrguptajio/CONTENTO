@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import CreatorsSection from "../components/CreatorsSection";
-import AgenciesSection from "../components/AgenciesSection";
+import PublishersSection from "../components/PublishersSection";
 import PricingSection from "../components/PricingSection";
 import BrandKitSection from "../components/BrandKitSection";
 import TermsSection from "../components/TermsSection";
@@ -72,7 +71,7 @@ export default function CreatorPageClient() {
   if (!mounted) {
     return (
       <>
-        <CreatorsSection />
+        <PublishersSection />
         <Footer />
       </>
     );
@@ -102,16 +101,8 @@ export default function CreatorPageClient() {
 
   // When #for-agencies hash → redirect directly to dedicated /agencies route
   if (viewMode === "for-agencies") {
-    if (typeof window !== "undefined") {
-      window.location.replace("/agencies");
-      return null;
-    }
-    return (
-      <div className="w-full">
-        <AgenciesSection />
-        <Footer />
-      </div>
-    );
+    window.location.replace("/agencies");
+    return null;
   }
 
   // When #term hash → show Legal section + Footer in dark theme (#1c1d1d & #ededed)
@@ -133,10 +124,10 @@ export default function CreatorPageClient() {
     );
   }
 
-  // For Creators: show ONLY CreatorsSection + Footer
+  // For publishers: show ONLY PublishersSection + Footer
   return (
     <>
-      <CreatorsSection />
+      <PublishersSection />
       <Footer />
     </>
   );

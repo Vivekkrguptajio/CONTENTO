@@ -16,210 +16,14 @@
 }
 
 /* ── 1. Top Announcement Bar ─────────────────────────────────────── */
-.hero-announcement {
-  width: 100%;
-  background: var(--pomera-lime, #C8F135);
-  color: var(--pomera-ink, #111210);
-  font-weight: 500;
-  padding: 8.5px 24px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-size: 13px;
-  letter-spacing: -0.01em;
-  z-index: 20;
-}
-
-.hero-announcement-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hero-announcement-bold {
-  font-weight: 700;
-}
-
-.hero-announcement-divider {
-  opacity: 0.6;
-  font-weight: 300;
-}
-
-.hero-announcement-link {
-  color: #ffffff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: opacity 0.15s ease;
-}
-
-.hero-announcement-link:hover {
-  text-decoration: underline;
-  opacity: 0.95;
-}
-
-.hero-announcement-close {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  opacity: 0.8;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.15s ease;
-}
-
-.hero-announcement-close:hover {
-  opacity: 1;
-}
 
 /* ── 2. Header / Navigation ──────────────────────────────────────── */
-.hero-header {
-  width: 100%;
-  padding: 16px 24px;
-  box-sizing: border-box;
-}
-
-.hero-nav-container {
-  max-width: 1218px; /* Strict uniform layout width */
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hero-nav-left {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
 
 /* Logo Brand */
-.hero-brand-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.hero-logo-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  user-select: none;
-}
-
-.hero-logo-stars {
-  flex-shrink: 0;
-}
-
-.hero-logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
-}
-
-.hero-logo-line {
-  font-size: 13.5px;
-  font-weight: 800;
-  color: #0f172a;
-  letter-spacing: -0.02em;
-}
 
 /* Navigation Links */
-.hero-nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-}
-
-.hero-nav-link {
-  font-size: 14px;
-  font-weight: 500;
-  color: #334155;
-  text-decoration: none;
-  transition: color 0.15s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.hero-nav-link:hover {
-  color: #0f172a;
-}
-
-.hero-nav-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
-}
 
 /* Right Nav Actions */
-.hero-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.hero-signin-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: #0f172a;
-  text-decoration: none;
-  margin-right: 4px;
-  transition: color 0.15s ease;
-}
-
-.hero-signin-link:hover {
-  color: var(--pomera-ink, #111210);
-  opacity: 0.75;
-}
-
-.hero-btn {
-  font-family: inherit;
-  cursor: pointer;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  border: none;
-}
-
-.hero-btn--nav-primary {
-  background: var(--pomera-ink, #111210);
-  color: #ffffff;
-  font-size: 13.5px;
-  font-weight: 600;
-  padding: 9px 20px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
-
-.hero-btn--nav-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-}
-
-.hero-btn--nav-secondary {
-  background: #f1f5f9;
-  color: #0f172a;
-  font-size: 13.5px;
-  font-weight: 600;
-  padding: 9px 20px;
-}
-
-.hero-btn--nav-secondary:hover {
-  background: #e2e8f0;
-}
 
 @keyframes heroFadeUp {
   0% {
@@ -232,16 +36,6 @@
   }
 }
 
-.hero-content {
-  max-width: 860px;
-  margin: 32px auto 0;
-  padding: 0 20px;
-  box-sizing: border-box;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-}
-
 .hero-headline {
   font-family: var(--font-geist-sans), sans-serif;
   font-size: clamp(48px, 6.8vw, 76px);
@@ -251,10 +45,6 @@
   letter-spacing: -0.035em;
   margin: 0;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.hero-headline-line {
-  display: block;
 }
 
 .hero-subheadline {
@@ -279,66 +69,11 @@
   }
 }
 
-.hero-subheadline-br {
-  display: none;
-}
-
 .hero-cta-row {
   display: flex;
   align-items: center;
   justify-content: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
-}
-
-.cr-button-main {
-  background: var(--pomera-ink, #111210);
-  border: 1px solid var(--pomera-ink, #111210);
-  box-shadow: 0px 4px 14px 0px rgba(17, 18, 16, 0.18);
-  color: #ffffff;
-  font-family: var(--font-geist-sans), sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease, transform 0.15s ease;
-}
-
-.cr-button-main:hover {
-  background: #252624;
-  border-color: #252624;
-  transform: translateY(-1px);
-  box-shadow: 0px 6px 18px 0px rgba(17, 18, 16, 0.25);
-}
-
-.cr-button-main:active {
-  transform: scale(0.98);
-}
-
-.hero-btn-secondary {
-  background: #ffffff;
-  color: var(--pomera-ink, #111210);
-  border: 1px solid rgba(17, 18, 16, 0.15);
-  font-family: var(--font-geist-sans), sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease, transform 0.15s ease;
-}
-
-.hero-btn-secondary:hover {
-  background: var(--pomera-paper, #fafaf7);
-  border-color: rgba(17, 18, 16, 0.25);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.hero-btn-secondary:active {
-  transform: scale(0.98);
 }
 
 /* ── 4. Glowing Globe Visualization ──────────────────────────────── */
@@ -359,205 +94,15 @@
   }
 }
 
-.hero-globe-container {
-  position: relative;
-  width: min(100%, 360px);
-  height: min(100%, 360px);
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  touch-action: pan-y;
-}
-
-@media (min-width: 768px) {
-  .hero-globe-container {
-    width: min(100%, 660px);
-    height: min(100%, 660px);
-    max-width: 660px;
-    max-height: 660px;
-  }
-}
-
-.hero-globe-canvas {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  display: block;
-}
-
-@keyframes badgeBobbing {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
 /* ── Floating Badges Rotating With Globe in 3D ───────────────────── */
-.hero-float {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  cursor: pointer;
-  will-change: transform, opacity;
-  user-select: none;
-  transition: filter 0.25s ease;
-}
-
-.hero-float:hover {
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.16));
-  z-index: 25;
-}
-
-.hero-float:hover .hero-badge-card,
-.hero-float:hover .hero-profile-card,
-.hero-float:hover .hero-payout-pill,
-.hero-float:hover .hero-speech-bubble {
-  transform: scale(1.08);
-  animation-play-state: paused;
-}
 
 /* Speech Bubble */
-.hero-speech-bubble {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 5.5px 13px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #1e293b;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  margin-bottom: 7px;
-  white-space: nowrap;
-  animation: badgeBobbing 4s ease-in-out infinite;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-}
-
-.hero-bubble-tail {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 8px;
-  height: 8px;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-}
 
 /* Rounded Square Badge Cards */
-.hero-badge-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 6px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  animation: badgeBobbing 4.2s ease-in-out infinite 0.4s;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-}
-
-.hero-badge-card--crown {
-  padding: 4px;
-  background: transparent;
-  border: none;
-  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
-}
-
-.hero-badge-card--nfl {
-  padding: 6px 8px;
-}
-
-.hero-badge-card--f1 {
-  padding: 10px 14px;
-  border-radius: 12px;
-}
-
-.hero-badge-card--elevenlabs {
-  padding: 7px 12px;
-  border-radius: 12px;
-}
-
-.hero-badge-icon,
-.hero-brand-img {
-  display: block;
-  object-fit: contain;
-}
 
 /* Payout Pill */
-.hero-payout-pill {
-  background: var(--pomera-lime-tint, #F2FBD6);
-  border-radius: 9999px;
-  padding: 4.5px 13px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--pomera-ink, #111210);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(200, 241, 53, 0.5);
-  display: inline-flex;
-  align-items: center;
-  gap: 1px;
-  animation: badgeBobbing 4.6s ease-in-out infinite 0.8s;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-}
-
-.hero-pill-currency {
-  font-size: 11px;
-  opacity: 0.9;
-}
 
 /* Ethan Cole & Sofia Reyes Profile Cards */
-.hero-profile-card {
-  background: #ffffff;
-  border-radius: 9999px;
-  padding: 4px 14px 4px 5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  animation: badgeBobbing 5s ease-in-out infinite 1.2s;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-}
-
-.hero-profile-avatar {
-  border-radius: 50%;
-  display: block;
-}
-
-.hero-profile-meta {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-  text-align: left;
-}
-
-.hero-profile-name {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.hero-profile-handle {
-  font-size: 9.5px;
-  color: #64748b;
-  font-weight: 500;
-}
 
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -565,16 +110,9 @@
     font-size: 46px;
   }
 
-  .hero-nav-menu {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
-  .hero-content {
-    margin: 46px auto 0;
-    padding: 0 18px;
-  }
 
   .hero-headline {
     font-size: clamp(36px, 8.5vw, 46px);
@@ -584,16 +122,9 @@
     font-weight: 650;
   }
 
-  .hero-headline-line {
-    display: block;
-  }
 }
 
 @media (max-width: 480px) {
-  .hero-content {
-    margin: 40px auto 0;
-    padding: 0 18px;
-  }
 
   .hero-headline {
     font-size: clamp(28px, 8vw, 34px);
@@ -617,213 +148,31 @@
     gap: 8px;
   }
 
-  .hero-btn--cta-primary,
-  .hero-btn--cta-secondary {
-    font-size: 14px;
-    padding: 10px 16px;
-  }
 }
 
 /* ── Exact Reference Badges Overlay (Desktop, Tablet & Mobile) ────────── */
-.hero-globe-badges-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 12;
-}
-
-.hero-mob-item {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: auto;
-  user-select: none;
-  z-index: 10;
-}
 
 /* 1. Top-Left Faint: Collab sent! */
-.hero-mob-collab {
-  left: 21%;
-  top: 24%;
-  transform: translate(-50%, -50%);
-  opacity: 0.38;
-}
 
 /* 2. Top-Left Main: New campaign! + FIFA + Stones */
-.hero-mob-new-campaign {
-  left: 37%;
-  top: 23%;
-  transform: translate(-50%, -50%);
-  animation: float-gentle-1 4.5s ease-in-out infinite alternate;
-}
-.hero-mob-dual-badges {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 3px;
-}
 
 /* 3. Mid-Left: Who's ready? + Stake + Gojo */
-.hero-mob-who-ready {
-  left: 26%;
-  top: 57%;
-  transform: translate(-50%, -50%);
-  gap: 4px;
-  animation: float-gentle-2 5s ease-in-out infinite alternate;
-}
 
 /* 4. Top-Right Faint: Just made my first $1k! */
-.hero-mob-first-1k {
-  right: 18%;
-  top: 20%;
-  transform: translate(50%, -50%);
-  opacity: 0.35;
-}
 
 /* 5. Center-Right: F1 Red Squircle Badge */
-.hero-mob-f1 {
-  left: 67%;
-  top: 58%;
-  transform: translate(-50%, -50%);
-  animation: float-gentle-3 4.8s ease-in-out infinite alternate;
-}
 
 /* 6. Far-Right: NFL Shield & $970 Payout Pill & Connecting Arc */
-.hero-mob-payout-970 {
-  left: 77%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 12;
-}
-
-.hero-mob-nfl {
-  left: 81%;
-  top: 67%;
-  transform: translate(-50%, -50%);
-  z-index: 11;
-}
-
-.hero-mob-nfl-arc {
-  position: absolute;
-  left: 81.5%;
-  top: 49%;
-  width: 28px;
-  height: 52px;
-  pointer-events: none;
-  z-index: 9;
-}
 
 /* 7. Bottom Center: Let's go! + Boy Avatar */
-.hero-mob-lets-go {
-  left: 63%;
-  top: 75%;
-  transform: translate(-50%, -50%);
-  gap: 3px;
-  animation: float-gentle-1 4.2s ease-in-out infinite alternate;
-}
 
 /* 8. Bottom $1.8k Pill */
-.hero-mob-bottom-pill {
-  left: 46%;
-  bottom: 8%;
-  transform: translateX(-50%);
-}
-.hero-mob-gold-pill {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--pomera-ink, #111210);
-  opacity: 0.9;
-}
 
 /* Specialized badge styling */
-.hero-badge-card--fifa {
-  background: #0f172a;
-  padding: 3px 5px;
-  border-radius: 7px;
-}
-.hero-badge-card--stones {
-  background: #ffffff;
-  padding: 4px;
-  border-radius: 9px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
-}
-.hero-badge-card--stake {
-  background: #141f28;
-  padding: 4px 6px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-.hero-badge-card--gojo {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 2px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-.hero-badge-card--f1 {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 7px 11px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-.hero-badge-card--nfl {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-.hero-badge-card--boy {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 2px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.hero-bubble--faint {
-  opacity: 0.55;
-  font-size: 10px;
-  box-shadow: none;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
 
 /* Responsive scale adjustments */
-@media (min-width: 769px) {
-  .hero-speech-bubble {
-    font-size: 12.5px;
-    padding: 6.5px 14px;
-  }
-  .hero-payout-pill {
-    font-size: 13px;
-    padding: 5px 14px;
-  }
-  .hero-badge-card--stones {
-    padding: 6px;
-  }
-  .hero-badge-card--f1 {
-    padding: 9px 14px;
-  }
-  .hero-mob-gold-pill {
-    font-size: 13px;
-  }
-}
 
 /* Subtle Organic Floating Keyframes — gentle in-place bobbing */
-@keyframes float-gentle-1 {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-3.5px); }
-}
-@keyframes float-gentle-2 {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(3px); }
-}
-@keyframes float-gentle-3 {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-2.5px); }
-}
 
 /* Typing caret for the audience word in the headline */
 .hero-caret {

@@ -22,25 +22,29 @@ type PomeraMarkProps = {
   /** Corner radius of the background in viewBox units (90 = circle). */
   radius?: number;
   fg?: string;
+  /** Fades the whole mark as one shape, so overlapping arms never get darker (use this instead of an rgba fg). */
+  opacity?: number;
   className?: string;
 };
 
-export function PomeraMark({ size = 28, bg, radius = 40, fg = "#C8F135", className }: PomeraMarkProps) {
+export function PomeraMark({ size = 28, bg, radius = 40, fg = "#C8F135", opacity, className }: PomeraMarkProps) {
   return (
     <svg className={className} viewBox="0 0 180 180" width={size} height={size} aria-hidden="true" style={{ display: "block", flexShrink: 0 }}>
       {bg && <rect width="180" height="180" rx={radius} fill={bg} />}
-      {MARK_ARMS.map((arm, i) => (
-        <line
-          key={i}
-          x1={MARK_CENTER.x}
-          y1={MARK_CENTER.y}
-          x2={arm.x}
-          y2={arm.y}
-          stroke={fg}
-          strokeWidth={MARK_STROKE}
-          strokeLinecap="round"
-        />
-      ))}
+      <g opacity={opacity}>
+        {MARK_ARMS.map((arm, i) => (
+          <line
+            key={i}
+            x1={MARK_CENTER.x}
+            y1={MARK_CENTER.y}
+            x2={arm.x}
+            y2={arm.y}
+            stroke={fg}
+            strokeWidth={MARK_STROKE}
+            strokeLinecap="round"
+          />
+        ))}
+      </g>
     </svg>
   );
 }

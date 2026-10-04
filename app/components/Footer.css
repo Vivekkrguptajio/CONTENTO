@@ -11,7 +11,7 @@
   margin-top: auto;
   margin-bottom: 0;
   /* Half the card width (card is max 1120px, inside 24px page padding) */
-  --footer-card-half: min(560px, calc(50% - 24px));
+  --footer-card-half: min(660px, calc(50% - 24px));
   /* Lime glow rises from the card's left and right edges and drifts outward toward the page sides */
   background:
     radial-gradient(ellipse 340px 70% at calc(50% - var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.38) 0%, rgba(200, 241, 53, 0.14) 55%, transparent 100%),
@@ -31,7 +31,7 @@
 .cr-footer-container {
   position: relative;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -43,7 +43,7 @@
   border-radius: 32px 32px 0 0;
   border: none;
   box-shadow: none;
-  padding: 84px 56px 52px;
+  padding: 56px 56px 96px;
   box-sizing: border-box;
   width: 100%;
 }
@@ -54,7 +54,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 96px;
 }
 
 .cr-footer-card__heading {
@@ -149,22 +149,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.pm-footer-beam-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  display: block;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.pm-footer-beam-bar {
-  width: 3.5px;
-  height: 14px;
-  background: var(--pm-lime, #C8F135);
-  border-radius: 2px;
 }
 
 .cr-footer-brand__name {
@@ -290,7 +274,7 @@
 /* ── Responsive adjustments ──────────────────────────────────────── */
 @media (max-width: 860px) {
   .cr-footer-card {
-    padding: 48px 28px 28px;
+    padding: 36px 28px 72px;
   }
 
   .cr-footer-card__nav-bar {
