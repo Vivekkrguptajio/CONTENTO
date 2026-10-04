@@ -92,7 +92,7 @@ export default function CreatorPageClient() {
   if (viewMode === "pricing") {
     return (
       <>
-        <section id="pricing" className="w-full bg-[#fffdfb]">
+        <section id="pricing" className="w-full bg-white">
           <PricingSection />
         </section>
         <Footer />

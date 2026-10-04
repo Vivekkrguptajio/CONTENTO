@@ -6,8 +6,9 @@
 .hero-section {
   width: 100%;
   background: 
-    radial-gradient(ellipse 90% 65% at 50% 68%, rgba(254, 215, 170, 0.42) 0%, rgba(255, 237, 213, 0.22) 45%, rgba(255, 255, 255, 0) 72%),
-    linear-gradient(180deg, #ffffff 0%, #ffffff 36%, rgba(255, 250, 245, 0.5) 70%, #ffffff 100%);
+    /* Glow is sized to die out before the bottom edge, so it melts into the white section below */
+    radial-gradient(ellipse 90% 42% at 50% 58%, rgba(200, 241, 53, 0.25) 0%, rgba(200, 241, 53, 0.1) 45%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 36%, rgba(200, 241, 53, 0.05) 62%, #ffffff 92%);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -17,8 +18,9 @@
 /* ── 1. Top Announcement Bar ─────────────────────────────────────── */
 .hero-announcement {
   width: 100%;
-  background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
-  color: #ffffff;
+  background: var(--pomera-lime, #C8F135);
+  color: var(--pomera-ink, #111210);
+  font-weight: 500;
   padding: 8.5px 24px;
   box-sizing: border-box;
   display: flex;
@@ -178,7 +180,8 @@
 }
 
 .hero-signin-link:hover {
-  color: #f97316;
+  color: var(--pomera-ink, #111210);
+  opacity: 0.75;
 }
 
 .hero-btn {
@@ -193,17 +196,17 @@
 }
 
 .hero-btn--nav-primary {
-  background: linear-gradient(180deg, #ff7a00 0%, #ea580c 100%);
+  background: var(--pomera-ink, #111210);
   color: #ffffff;
   font-size: 13.5px;
   font-weight: 600;
   padding: 9px 20px;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.32);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .hero-btn--nav-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.42);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 .hero-btn--nav-secondary {
@@ -240,11 +243,12 @@
 }
 
 .hero-headline {
-  font-size: 50px;
-  font-weight: 600;
-  color: #0f172a;
-  line-height: 1.14;
-  letter-spacing: -0.03em;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(48px, 6.8vw, 76px);
+  font-weight: 500;
+  color: var(--pomera-ink, #111210);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   margin: 0;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -254,14 +258,14 @@
 }
 
 .hero-subheadline {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 16px;
-  line-height: 23px;
-  letter-spacing: -0.18px;
-  color: rgba(45, 37, 24, 0.7);
-  font-weight: 500;
-  max-width: 420px;
-  margin: 16px auto 0;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--pomera-muted, #5b5b58);
+  font-weight: 400;
+  max-width: 580px;
+  margin: 18px auto 0;
   text-align: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
@@ -269,9 +273,9 @@
 @media (min-width: 640px) {
   .hero-subheadline {
     font-size: 17px;
-    line-height: 24px;
+    line-height: 1.55;
     max-width: 660px;
-    margin-top: 18px;
+    margin-top: 20px;
   }
 }
 
@@ -287,22 +291,25 @@
 }
 
 .cr-button-main {
-  background: linear-gradient(180deg, #ff6b00 0%, #fa4700 100%);
-  background-image: linear-gradient(180deg, #ff6b00 0%, #fa4700 100%);
-  box-shadow: 0px 4px 14px 0px rgba(250, 71, 0, 0.35), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4);
+  background: var(--pomera-ink, #111210);
+  border: 1px solid var(--pomera-ink, #111210);
+  box-shadow: 0px 4px 14px 0px rgba(17, 18, 16, 0.18);
   color: #ffffff;
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  transition: all 0.2s ease, transform 0.15s ease;
 }
 
 .cr-button-main:hover {
-  opacity: 0.92;
+  background: #252624;
+  border-color: #252624;
+  transform: translateY(-1px);
+  box-shadow: 0px 6px 18px 0px rgba(17, 18, 16, 0.25);
 }
 
 .cr-button-main:active {
@@ -310,20 +317,24 @@
 }
 
 .hero-btn-secondary {
-  background: rgba(38, 29, 24, 0.05);
-  color: #261d18;
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #ffffff;
+  color: var(--pomera-ink, #111210);
+  border: 1px solid rgba(17, 18, 16, 0.15);
+  font-family: var(--font-geist-sans), sans-serif;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  transition: all 0.2s ease, transform 0.15s ease;
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(38, 29, 24, 0.1);
+  background: var(--pomera-paper, #fafaf7);
+  border-color: rgba(17, 18, 16, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .hero-btn-secondary:active {
@@ -490,14 +501,14 @@
 
 /* Payout Pill */
 .hero-payout-pill {
-  background: #ffffff;
+  background: var(--pomera-lime-tint, #F2FBD6);
   border-radius: 9999px;
   padding: 4.5px 13px;
   font-size: 12px;
   font-weight: 700;
-  color: #d97706;
-  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.16), 0 1px 3px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(251, 191, 36, 0.45);
+  color: var(--pomera-ink, #111210);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(200, 241, 53, 0.5);
   display: inline-flex;
   align-items: center;
   gap: 1px;
@@ -723,7 +734,7 @@
 .hero-mob-gold-pill {
   font-size: 11px;
   font-weight: 600;
-  color: #d97706;
+  color: var(--pomera-ink, #111210);
   opacity: 0.9;
 }
 
@@ -812,4 +823,23 @@
 @keyframes float-gentle-3 {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
   50% { transform: translate(-50%, -50%) translateY(-2.5px); }
+}
+
+/* Typing caret for the audience word in the headline */
+.hero-caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  margin-left: 4px;
+  vertical-align: -0.05em;
+  background: #111210;
+  animation: heroCaretBlink 1s steps(1) infinite;
+}
+
+@keyframes heroCaretBlink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-caret { animation: none; }
 }

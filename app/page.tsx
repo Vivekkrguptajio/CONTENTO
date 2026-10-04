@@ -1,11 +1,10 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import BrandLogos from "./components/BrandLogos";
 import VerificationLayer from "./components/VerificationLayer";
 import TrustVerification from "./components/TrustVerification";
-import TraditionalMarketing from "./components/TraditionalMarketing";
 import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
+import QuoteSection from "./components/QuoteSection";
 import TestimonialCard from "./components/TestimonialCard";
 import DashboardFeature from "./components/DashboardFeature";
 import CampaignBanner from "./components/CampaignBanner";
@@ -18,11 +17,11 @@ export default function Home() {
       <Navbar />
       <main className="w-full flex-grow bg-white">
         <HeroSection />
-        <TraditionalMarketing />
         <SolutionSteps />
         <VerificationLayer />
         <TrustVerification />
         <BentoFeatures />
+        <QuoteSection />
         <TestimonialCard />
         <DashboardFeature />
         <CampaignBanner />

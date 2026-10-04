@@ -22,7 +22,7 @@
   min-height: 720px;
   height: 85vh;
   overflow: hidden;
-  background: linear-gradient(180deg, #ff6c03 0%, #fbc433 56.73%, #ffffff 99.04%);
+  background: linear-gradient(180deg, #111210 0%, #1A1B18 55%, #FAFAF7 99%);
   display: flex;
   align-items: center;
   padding-top: 68px;
@@ -49,7 +49,7 @@
   left: 0;
   right: 0;
   height: 45%;
-  background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, transparent 0%, #FAFAF7 100%);
 }
 
 .agencies-hero__content {
@@ -268,10 +268,10 @@
   color: #262626;
 }
 
-.agencies-standard__card--orange {
-  background-color: #ff7904;
+.agencies-standard__card--ink {
+  background-color: var(--pomera-ink, #111210);
   color: #ffffff;
-  box-shadow: 0 12px 32px rgba(255, 121, 4, 0.25);
+  box-shadow: 0 12px 32px rgba(17, 18, 16, 0.2);
 }
 
 .agencies-standard__icon {
@@ -294,8 +294,8 @@
   margin-bottom: 14px;
 }
 
-.agencies-standard__divider--orange {
-  background-color: #ffa227;
+.agencies-standard__divider--ink {
+  background-color: rgba(255, 255, 255, 0.2);
   width: 240px;
 }
 
@@ -308,7 +308,7 @@
   margin: 0;
 }
 
-.agencies-standard__card--orange .agencies-standard__card-desc {
+.agencies-standard__card--ink .agencies-standard__card-desc {
   color: rgba(255, 255, 255, 0.88);
 }
 
@@ -376,7 +376,7 @@
 
 .agencies-verified__check-text {
   font-weight: 500;
-  color: #ff9304;
+  color: var(--pomera-ink, #111210);
   font-size: clamp(18px, 1.6vw, 24px);
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -645,8 +645,9 @@
 /* Banner */
 .agencies-bento__banner {
   width: 100%;
-  background: linear-gradient(180deg, #ff6207 0%, #ffcc00 142%);
-  box-shadow: inset 0px 0px 120px 16px rgba(255, 255, 255, 0.28);
+  background: linear-gradient(180deg, #181916 0%, #111210 100%);
+  box-shadow: inset 0px 0px 80px 10px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
   padding: 70px 24px;
   display: flex;
@@ -754,8 +755,8 @@
   background: linear-gradient(180deg, #00d76b 0%, #00b259 100%);
 }
 
-.agencies-stat-pill--orange {
-  background-color: #ff7206;
+.agencies-stat-pill--ink {
+  background-color: var(--pomera-ink, #111210);
 }
 
 .agencies-stat-pill--pink {
@@ -978,7 +979,7 @@
 }
 
 .agencies-payout-box--cpm {
-  background-color: #e57100;
+  background-color: var(--pomera-ink, #111210);
 }
 
 .agencies-payout-box--retainer {
@@ -1020,7 +1021,7 @@
 .agencies-faq {
   position: relative;
   width: 100%;
-  background-color: #fffdfb;
+  background-color: #ffffff;
   padding: 80px 24px 70px;
   border-top: 1px solid rgba(0, 0, 0, 0.03);
 }
@@ -1140,8 +1141,8 @@
 }
 
 .agencies-faq__support-btn {
-  background: rgba(255, 98, 7, 0.1);
-  color: #e57100;
+  background: var(--pomera-lime-tint, #F2FBD6);
+  color: var(--pomera-ink, #111210);
   border: none;
   border-radius: 10px;
   padding: 3px 12px;
@@ -1152,43 +1153,22 @@
 }
 
 .agencies-faq__support-btn:hover {
-  background: rgba(255, 98, 7, 0.18);
+  background: var(--pomera-lime-tint, #F2FBD6);
 }
 
 /* ── 8. AGENCY BOTTOM FOOTER CALL TO ACTION ───────────────────────────────── */
 .agencies-cta-bottom {
   position: relative;
   width: 100%;
-  background-color: #fffdfb;
+  background-color: var(--pomera-white, #ffffff);
   padding: 90px 24px 100px;
   overflow: hidden;
   border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.agencies-cta-bottom__glow-1 {
-  pointer-events: none;
-  position: absolute;
-  bottom: -60px;
-  left: -80px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: #ff8a00;
-  opacity: 0.38;
-  filter: blur(120px);
-}
-
+.agencies-cta-bottom__glow-1,
 .agencies-cta-bottom__glow-2 {
-  pointer-events: none;
-  position: absolute;
-  bottom: -60px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: #ff8a00;
-  opacity: 0.38;
-  filter: blur(120px);
+  display: none;
 }
 
 .agencies-corner {

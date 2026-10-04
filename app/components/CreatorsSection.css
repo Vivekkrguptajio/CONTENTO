@@ -7,25 +7,25 @@
 
 /* ── DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
-  --cr-bg: #fffdfb;
-  --cr-bg-alt: #f7f5f0;
-  --cr-text: #2d2518;
-  --cr-text-70: rgba(45, 37, 24, 0.7);
-  --cr-text-50: rgba(45, 37, 24, 0.5);
-  --cr-text-10: rgba(45, 37, 24, 0.1);
-  --cr-text-06: rgba(45, 37, 24, 0.06);
-  --cr-text-05: rgba(45, 37, 24, 0.05);
-  --cr-accent: #ff5500;
-  --cr-accent-gradient: linear-gradient(135deg, #ff6b2b 0%, #ff4500 100%);
+  --cr-bg: #ffffff;
+  --cr-bg-alt: #fafaf7;
+  --cr-text: #111210;
+  --cr-text-70: rgba(17, 18, 16, 0.7);
+  --cr-text-50: rgba(17, 18, 16, 0.5);
+  --cr-text-10: rgba(17, 18, 16, 0.1);
+  --cr-text-06: rgba(17, 18, 16, 0.06);
+  --cr-text-05: rgba(17, 18, 16, 0.05);
+  --cr-accent: #111210;
+  --cr-accent-gradient: #111210;
   --cr-card-bg: #ffffff;
-  --cr-card-border: rgba(45, 37, 24, 0.06);
-  --cr-bento-bg: #f3f2ee;
+  --cr-card-border: rgba(17, 18, 16, 0.08);
+  --cr-bento-bg: #fafaf7;
   --cr-radius-card: 16px;
   --cr-radius-xl: 24px;
   --cr-radius-full: 9999px;
-  --cr-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cr-font: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --cr-green: #16a34a;
-  --cr-pill-border: rgba(45, 37, 24, 0.08);
+  --cr-pill-border: rgba(17, 18, 16, 0.08);
 }
 
 /* ── PAGE CONTAINER ────────────────────────────────────────── */
@@ -57,20 +57,24 @@
   line-height: 1.5;
 }
 
-.cr-btn--orange {
-  background: linear-gradient(90deg, #ff7a00 0%, #ea580c 100%);
+.cr-btn--primary {
+  background: var(--pomera-ink, #111210);
+  border: 1px solid var(--pomera-ink, #111210);
   color: #ffffff;
   padding: 14px clamp(10px, 3.4vw, 20px);
   font-size: 16.3px;
-  font-weight: 600;
+  font-weight: 500;
   flex: 1;
   min-width: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(17, 18, 16, 0.18);
 }
-.cr-btn--orange:hover {
-  opacity: 0.9;
+.cr-btn--primary:hover {
+  background: #252624;
+  border-color: #252624;
+  opacity: 0.95;
 }
 
 .cr-btn--secondary {
@@ -535,7 +539,7 @@
   width: 50px;
   height: 50px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #ff5500, #EC4899);
+  background: var(--pomera-ink, #111210);
   flex-shrink: 0;
 }
 
@@ -920,8 +924,8 @@
   background: linear-gradient(180deg, #00d76b 0%, #00b259 100%);
 }
 
-.cr-metric-pill--orange {
-  background-color: #ff7206;
+.cr-metric-pill--ink {
+  background-color: var(--pomera-ink, #111210);
 }
 
 .cr-metric-pill--blue {
@@ -1195,7 +1199,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--cr-accent), #F59E0B);
+  background: linear-gradient(135deg, #3A3B37, #111210);
   flex-shrink: 0;
 }
 

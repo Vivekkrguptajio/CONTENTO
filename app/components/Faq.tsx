@@ -12,44 +12,43 @@ interface FaqItem {
 const FAQ_DATA: FaqItem[] = [
   {
     id: 1,
-    question: "How much can a creator earn from one clip?",
+    question: "How is Pomera different from running Meta or Google ads?",
     answer:
-      "Up to the maximum payout you set. On CPM, a clip earns its rate per 1,000 views and stops at that ceiling, so your per clip exposure is capped at a number you choose.",
+      "Meta runs an auction where your CPM changes daily and surges 2-3x during peak festive seasons like Diwali. Pomera sells a fixed CPM agreed upfront before launch. Plus, Pomera content appears organically on active theme and publisher pages without disruptive 'Sponsored' labels that users scroll past.",
   },
   {
     id: 2,
-    question: "How do I know the views are real?",
+    question: "How do you verify that views are authentic human delivery?",
     answer:
-      "We employ rigorous algorithmic fraud prevention, real-time analytics verification, and native API validation to guarantee that only authentic, verified human views count towards payouts.",
+      "Every view is audited against multi-signal platform insights, unique attribution links, and engagement ratios. Accounts with unnatural velocity spikes or low like-to-view ratios are automatically flagged and filtered out. You are never billed for bot views.",
   },
   {
     id: 3,
-    question: "Is there a minimum budget?",
+    question: "What happens if a campaign doesn't hit its target verified views?",
     answer:
-      "There are no rigid minimum budget constraints. You can start campaigns tailored to your specific testing requirements and scale your budget fluidly as creators drive results.",
+      "You only pay for verified views delivered. If you commit to 10,00,000 views and 8,00,000 are delivered, you are only billed for 8,00,000, or we extend distribution to hit 100% fulfillment at no additional charge under our make-good guarantee.",
   },
   {
     id: 4,
-    question: "How do I pay for a campaign?",
+    question: "Why work with Pomera instead of negotiating with creators directly?",
     answer:
-      "We accept all major credit and debit cards, ACH direct transfers, and wire payments. For larger brands and agencies, we also provide structured monthly invoicing.",
+      "Direct influencer outreach requires negotiating individual rates, chasing deliverables, and bearing 100% of the financial risk if their video flops. With Pomera, you negotiate one rate with us, we coordinate across dozens of verified publishers, and you only pay for the views that actually happen.",
   },
   {
     id: 5,
-    question: "Which payout models can I use?",
+    question: "What platforms does Pomera distribute on?",
     answer:
-      "We support flexible payout structures including CPM (pay per 1,000 verified views), fixed flat-rate bounties per accepted submission, and tiered performance incentives.",
+      "We distribute short-form video primarily across Instagram Reels and YouTube Shorts, where user engagement and short-form consumption in India are highest.",
   },
   {
     id: 6,
-    question: "What does it cost?",
+    question: "What is the minimum budget to get started?",
     answer:
-      "Creating an account and exploring the platform is completely free. We charge a transparent, low platform fee on top of your campaign payout budget with zero hidden surprises.",
+      "Founding pilot campaigns start at ₹10,000. This allows brands to run a controlled test, review verified reporting in the dashboard, and inspect performance before scaling spend.",
   },
 ];
 
 export default function Faq() {
-  // First item open by default to match user reference image
   const [openId, setOpenId] = useState<number | null>(1);
 
   const toggleItem = (id: number) => {
@@ -61,12 +60,12 @@ export default function Faq() {
       <div className="faq-container">
         {/* Top Badge */}
         <div className="faq-badge-wrapper">
-          <span className="faq-badge">FAQS</span>
+          <span className="faq-badge pm-num">FAQ</span>
         </div>
 
         {/* Section Heading */}
         <h2 id="faq-heading" className="faq-heading">
-          Before you ask...
+          Frequently asked questions.
         </h2>
 
         {/* Accordion List */}
@@ -118,9 +117,14 @@ export default function Faq() {
 
         {/* Footer Support Note */}
         <div className="faq-footer-note">
-          <span>More questions? Talk to our</span>
-          <a href="#support" className="faq-support-pill">
-            24/7 support
+          <span>Need custom flight parameters?</span>
+          <a
+            href="https://wa.me/919999999999?text=Hi%20Pomera%20Team%2C%20we%20have%20questions%20about%20campaign%20distribution."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="faq-support-pill"
+          >
+            Talk to brand operations
           </a>
         </div>
       </div>

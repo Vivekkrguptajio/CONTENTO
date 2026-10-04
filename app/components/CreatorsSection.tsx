@@ -133,7 +133,7 @@ export default function CreatorsSection() {
           </p>
 
           <div className="cr-hero-actions">
-            <a href="https://contentrewards.com/signup" className="cr-btn cr-btn--orange">
+            <a href="https://contentrewards.com/signup" className="cr-btn cr-btn--primary">
               Create Account
             </a>
             <a href="/discover" className="cr-btn cr-btn--grey">
@@ -216,15 +216,15 @@ export default function CreatorsSection() {
               </div>
               
               {/* Progress Bar Container */}
-              <div className="w-full h-1 bg-[#2D2518]/10 rounded-full mt-2 flex overflow-hidden">
+              <div className="w-full h-1 bg-[#111210]/10 rounded-full mt-2 flex overflow-hidden">
                 <div className="flex-1 h-full relative">
-                  {activeTab === "discover" && <div className="absolute top-0 left-0 h-full bg-[#ff5500] rounded-full animate-tab-progress" />}
+                  {activeTab === "discover" && <div className="absolute top-0 left-0 h-full bg-[#111210] rounded-full animate-tab-progress" />}
                 </div>
                 <div className="flex-1 h-full relative">
-                  {activeTab === "post" && <div className="absolute top-0 left-0 h-full bg-[#ff5500] rounded-full animate-tab-progress" />}
+                  {activeTab === "post" && <div className="absolute top-0 left-0 h-full bg-[#111210] rounded-full animate-tab-progress" />}
                 </div>
                 <div className="flex-1 h-full relative">
-                  {activeTab === "earn" && <div className="absolute top-0 left-0 h-full bg-[#ff5500] rounded-full animate-tab-progress" />}
+                  {activeTab === "earn" && <div className="absolute top-0 left-0 h-full bg-[#111210] rounded-full animate-tab-progress" />}
                 </div>
               </div>
             </div>
@@ -380,7 +380,7 @@ export default function CreatorsSection() {
 
           {activeTab === "earn" && (
             <div className="cr-earn-demo flex justify-center items-center py-[60px] relative w-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDFB] via-[#FFF5E6] to-[#FDE68A] opacity-70 z-0" />
+              <div className="absolute inset-0 bg-[#FAFAF7] z-0" />
               
               <div className="cr-receipt-card z-10">
                 <span className="text-[#2D2518]/60 text-[15px] font-medium mb-3">Your submission in</span>
@@ -466,7 +466,7 @@ export default function CreatorsSection() {
                   <p className="cr-withdraw-desc">
                     You have $2,862 available. Withdraw it to your account anytime.
                   </p>
-                  <button type="button" className="cr-btn cr-btn--orange cr-withdraw-btn">
+                  <button type="button" className="cr-btn cr-btn--primary cr-withdraw-btn">
                     Withdraw
                   </button>
                 </div>
@@ -563,7 +563,7 @@ export default function CreatorsSection() {
                   </div>
 
                   {/* eCPM / CPM */}
-                  <div className="cr-metric-pill cr-metric-pill--orange">
+                  <div className="cr-metric-pill">
                     <div className="cr-metric-pill__icon">
                       <img src="/assets/agencies/stat-icon-ecpm.svg" alt="" width="18" height="18" />
                     </div>
@@ -733,7 +733,7 @@ export default function CreatorsSection() {
             
             <div className="cr-quote-card">
               <div className="cr-quote-header">
-                <div className="cr-quote-avatar" style={{ background: "linear-gradient(135deg, #FF6B2B, #FF8E53)" }} />
+                <div className="cr-quote-avatar bg-[#111210]" />
                 <div className="cr-quote-meta">
                   <span className="cr-quote-name">Otto</span>
                   <span className="cr-quote-earnings">$30,500 earned since Feb 2025</span>
@@ -785,7 +785,7 @@ export default function CreatorsSection() {
 
             <div className="cr-quote-card">
               <div className="cr-quote-header">
-                <div className="cr-quote-avatar" style={{ background: "linear-gradient(135deg, #F59E0B, #FBBF24)" }} />
+                <div className="cr-quote-avatar" style={{ background: "linear-gradient(135deg, #3A3B37, #111210)" }} />
                 <div className="cr-quote-meta">
                   <span className="cr-quote-name">Tristan</span>
                   <span className="cr-quote-earnings">Zero to $10K/month in 2 months</span>
@@ -848,7 +848,7 @@ export default function CreatorsSection() {
               className="absolute -inset-x-[30%] top-[25%] bottom-[-15%] blur-[100px] pointer-events-none"
               style={{
                 backgroundImage:
-                  "linear-gradient(180deg, #FFFFFF 1%, #FBC433 43%, #FF6C03 86%, #FF0303 100%)",
+                  "linear-gradient(180deg, #FFFFFF 0%, #FAFAF7 100%)",
               }}
             />
             <div className="relative flex flex-col items-start gap-[36px] px-[24px] py-[48px] md:gap-[44px] md:px-[72px] md:py-[80px] max-w-[560px]">

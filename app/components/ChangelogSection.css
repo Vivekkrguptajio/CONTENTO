@@ -4,9 +4,9 @@
 
 .cr-changelog-section {
   width: 100%;
-  background-color: #fffdfb;
-  color: #261d18;
-  font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  background-color: #ffffff;
+  color: #111210;
+  font-family: inherit;
   padding: 120px 24px 100px;
   box-sizing: border-box;
 }

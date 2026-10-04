@@ -1,0 +1,68 @@
+.qt-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 72px 24px 80px;
+  box-sizing: border-box;
+}
+
+.qt-container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.qt-quote {
+  margin: 0 0 44px;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(28px, 4.6vw, 54px);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+  color: #111210;
+  text-wrap: pretty;
+}
+
+.qt-quote__muted {
+  color: #BDBDB6;
+}
+
+.qt-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.qt-author__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.qt-author__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qt-author__name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111210;
+}
+
+.qt-author__role {
+  font-size: 13px;
+  color: #6F6F6A;
+}
+
+@media (max-width: 640px) {
+  .qt-section {
+    padding: 48px 20px 56px;
+  }
+
+  .qt-quote {
+    margin-bottom: 32px;
+  }
+}

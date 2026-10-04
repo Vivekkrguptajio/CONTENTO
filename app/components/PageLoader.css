@@ -1,0 +1,104 @@
+.pl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  /* Failsafe: never trap the page if JS fails to dismiss the loader */
+  animation: plFailsafe 0.5s ease 8s forwards;
+}
+
+.pl-overlay.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pl-mark {
+  display: block;
+  width: 88px;
+  height: 88px;
+}
+
+.pl-spin {
+  transform-origin: 90px 94px;
+  animation: plSpin 1.8s ease-in-out infinite;
+}
+
+.pl-arm {
+  stroke: #111210;
+  stroke-width: 22;
+  stroke-linecap: round;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation-duration: 1.8s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.pl-arm--0 { animation-name: plArm0, plTint; }
+.pl-arm--1 { animation-name: plArm1, plTint; }
+.pl-arm--2 { animation-name: plArm2, plTint; }
+.pl-arm--3 { animation-name: plArm3, plTint; }
+.pl-arm--4 { animation-name: plArm4, plTint; }
+
+/* One loop: arms draw in one by one (0-46%), the whole mark spins once (50-74%), holds, fades, repeats */
+/* Arms are drawn in black; as the mark spins they turn lemon green and stay that way until the loop fades */
+@keyframes plTint {
+  0%, 50% { stroke: #111210; }
+  74%, 100% { stroke: #C8F135; }
+}
+
+@keyframes plSpin {
+  0%, 50% { transform: rotate(0deg); }
+  74%, 100% { transform: rotate(360deg); }
+}
+
+@keyframes plArm0 {
+  0%, 4% { stroke-dashoffset: 1; opacity: 0; }
+  4.01% { opacity: 1; }
+  10%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes plArm1 {
+  0%, 13% { stroke-dashoffset: 1; opacity: 0; }
+  13.01% { opacity: 1; }
+  19%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes plArm2 {
+  0%, 22% { stroke-dashoffset: 1; opacity: 0; }
+  22.01% { opacity: 1; }
+  28%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes plArm3 {
+  0%, 31% { stroke-dashoffset: 1; opacity: 0; }
+  31.01% { opacity: 1; }
+  37%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes plArm4 {
+  0%, 40% { stroke-dashoffset: 1; opacity: 0; }
+  40.01% { opacity: 1; }
+  46%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes plFailsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-arm, .pl-spin { animation: none; }
+  .pl-arm { stroke-dashoffset: 0; opacity: 1; }
+}

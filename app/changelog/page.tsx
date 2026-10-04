@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function ChangelogPage() {
   return (
-    <div className="min-h-screen bg-[#fffdfb] font-sans flex flex-col justify-between">
+    <div className="min-h-screen bg-white font-sans flex flex-col justify-between">
       <Navbar />
-      <main className="w-full flex-grow bg-[#fffdfb]">
+      <main className="w-full flex-grow bg-white">
         <ChangelogSection />
       </main>
       <Footer />

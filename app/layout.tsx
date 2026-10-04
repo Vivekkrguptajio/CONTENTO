@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import PageLoader from "./components/PageLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Content Rewards",
-  description: "The Operating System for your Marketing Spend",
+  icons: {
+    icon: "/assets/logo/pomera-icon.svg",
+    apple: "/assets/logo/apple-touch-icon.png",
+  },
+  title: "Pomera — Know your number before you spend.",
+  description:
+    "An ad platform that sells certainty. Fixed ₹CPM distribution across verified Instagram Reels and YouTube Shorts with multi-signal fraud filtering.",
 };
 
 export const viewport: Viewport = {
@@ -29,7 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} bg-white antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-white">{children}</body>
+      <body className="min-h-screen flex flex-col bg-white">
+        <PageLoader />
+        {children}
+      </body>
     </html>
   );
 }

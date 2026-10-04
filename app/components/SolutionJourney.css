@@ -1,0 +1,320 @@
+/* ════════════════════════════════════════════════════════════════════
+   HOW A CAMPAIGN RUNS — scroll-pinned stage (sp-*)
+   The page scrolls, the stage stays put and swaps steps.
+   ════════════════════════════════════════════════════════════════════ */
+.sp-section {
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Scroll runway: 100vh stage + ~65vh of scrolling per step */
+.sp-outer {
+  position: relative;
+  height: calc(100vh + var(--sp-steps, 6) * 65vh);
+}
+
+.sp-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-height, 72px) + 8px) 20px 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.sp-inner {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sp-eyebrow {
+  margin-bottom: 10px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5B5B58;
+}
+
+.sp-heading {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #111210;
+}
+
+.sp-lead {
+  margin: 0 0 clamp(20px, 4vh, 40px);
+  max-width: 640px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #5B5B58;
+}
+
+/* ── Rail ────────────────────────────────────────────────────────── */
+.sp-rail {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(20px, 5vh, 44px);
+}
+
+.sp-rail__line {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
+  background: #E7E7E3;
+  overflow: hidden;
+}
+
+.sp-rail__fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #C8F135, #9FD11A);
+  transform-origin: left;
+  transition: transform 0.12s linear;
+}
+
+.sp-dot {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #8A8A85;
+  border: 2px solid #E7E7E3;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sp-dot.is-done {
+  background: #C8F135;
+  border-color: #C8F135;
+  color: #111210;
+}
+
+.sp-dot.is-current {
+  background: #111210;
+  border-color: #111210;
+  color: #C8F135;
+  transform: scale(1.18);
+  box-shadow: 0 0 0 6px rgba(200, 241, 53, 0.35);
+}
+
+/* ── Stage: three-card carousel — active card in front, neighbours smaller on either side ── */
+.sp-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  height: clamp(300px, 44vh, 400px);
+}
+
+.sp-step {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(440px, 78vw);
+  height: 100%;
+  margin-left: calc(min(440px, 78vw) / -2);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 3vw, 30px);
+  background: #F4F4EF;
+  border: 1px solid #E7E7E3;
+  border-radius: 24px;
+  box-sizing: border-box;
+  color: #111210;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease,
+    background 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Left and right neighbours: identical size, mirrored, smaller and tucked behind the centre card */
+.sp-step--left,
+.sp-step--right {
+  z-index: 2;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.sp-step--left { transform: translateX(-68%) scale(0.8); }
+.sp-step--right { transform: translateX(68%) scale(0.8); }
+
+.sp-step--far-left { transform: translateX(-120%) scale(0.6); opacity: 0; pointer-events: none; z-index: 1; }
+.sp-step--far-right { transform: translateX(120%) scale(0.6); opacity: 0; pointer-events: none; z-index: 1; }
+
+/* Centre: black card, lemon text */
+.sp-step--center {
+  z-index: 3;
+  transform: none;
+  opacity: 1;
+  background: #111210;
+  border-color: #111210;
+  color: #C8F135;
+  box-shadow: 0 30px 60px -24px rgba(17, 18, 16, 0.55);
+}
+
+.sp-step__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sp-step__phase {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8A8A85;
+  transition: color 0.4s ease;
+}
+
+.sp-step--center .sp-step__phase { color: rgba(200, 241, 53, 0.7); }
+
+.sp-badge {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #5B5B58;
+  border: 1px solid #E7E7E3;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+.sp-step--center .sp-badge {
+  background: #C8F135;
+  color: #111210;
+  border-color: #C8F135;
+}
+
+.sp-step__num {
+  margin: auto 0 12px;
+  font-size: clamp(56px, 8vw, 92px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #C9C9C2;
+  transition: color 0.4s ease;
+}
+
+.sp-step--center .sp-step__num { color: #C8F135; }
+
+.sp-step__title {
+  margin: 0 0 8px;
+  font-size: clamp(19px, 2.4vw, 26px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: inherit;
+}
+
+.sp-step__desc {
+  margin: 0;
+  font-size: clamp(13.5px, 1.3vw, 15px);
+  line-height: 1.55;
+  color: #5B5B58;
+  transition: color 0.4s ease;
+}
+
+.sp-step--center .sp-step__desc { color: rgba(255, 255, 255, 0.72); }
+
+/* ── Scroll hint ─────────────────────────────────────────────────── */
+.sp-hint {
+  margin-top: 18px;
+  height: 18px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8A8A85;
+}
+
+.sp-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.sp-hint span::after {
+  content: "↓";
+  animation: spBob 1.4s ease-in-out infinite;
+}
+
+.sp-hint .is-hidden { opacity: 0; }
+
+@keyframes spBob {
+  50% { transform: translateY(4px); }
+}
+
+/* ── Channels banner (normal flow, after the pinned part) ────────── */
+.sp-channels-wrap {
+  padding: 0 20px 56px;
+}
+
+.sp-channels {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #FAFAF7;
+  border: 1px solid #E7E7E3;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .sp-channels { flex-direction: row; }
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sp-dot { width: 34px; height: 34px; font-size: 11px; }
+  .sp-rail__line { left: 17px; right: 17px; }
+
+  .sp-stage { height: clamp(320px, 48vh, 400px); }
+
+  .sp-step--left { transform: translateX(-58%) scale(0.78); }
+  .sp-step--right { transform: translateX(58%) scale(0.78); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-step, .sp-dot, .sp-rail__fill { transition: none; }
+  .sp-hint span::after { animation: none; }
+}

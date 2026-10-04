@@ -1,0 +1,1671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pomera Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a statement-like reference manual. Sticky section index on the left,
+   one 880px reading column, hairlines instead of boxes, one lime moment per section. */
+/* Pomera design tokens v2.0 (lime system) · 29 Sept 2026
+   Load Geist + Geist Mono first, then this file. Use the --pm-c-* semantic tokens in
+   components: they switch automatically in dark mode. Never hardcode a hex value. */
+
+:root {
+  /* Brand */
+  --pm-ink: #111210;
+  --pm-white: #FFFFFF;
+  --pm-paper: #FAFAF7;
+  --pm-lime: #C8F135;          /* surfaces, bands, markers, Beam on ink. Never text. */
+  --pm-lime-tint: #F2FBD6;     /* chips, highlighted rows, chart fills */
+  --pm-lime-strong: #7FA00F;   /* small lime dots on white (3:1). Never text. */
+
+  /* Neutral scale (warm-tinted) */
+  --pm-gray-50: #FAFAF7;
+  --pm-gray-100: #F3F3F0;
+  --pm-gray-200: #E7E7E3;
+  --pm-gray-300: #D4D4CF;
+  --pm-gray-400: #B8B8B2;
+  --pm-gray-500: #8A8A85;
+  --pm-gray-600: #5B5B58;
+  --pm-gray-700: #3D3E39;
+  --pm-gray-800: #1C1C1A;
+  --pm-gray-900: #111210;
+
+  /* Status (light) */
+  --pm-success: #146C34;  --pm-success-bg: #E7F6EC;
+  --pm-warning: #8A5300;  --pm-warning-bg: #FDF3E2;
+  --pm-danger:  #9A1F1F;  --pm-danger-bg:  #FCEBEA;
+  --pm-info:    #2E5AAC;  --pm-info-bg:    #EAF0FB;
+
+  /* Semantic: light (default) */
+  --pm-c-bg: #FFFFFF;
+  --pm-c-bg-subtle: #FAFAF7;
+  --pm-c-surface: #FFFFFF;
+  --pm-c-surface-2: #F3F3F0;
+  --pm-c-line: #E7E7E3;
+  --pm-c-line-strong: #D4D4CF;
+  --pm-c-text: #111210;
+  --pm-c-text-2: #5B5B58;      /* 6.8:1 on white */
+  --pm-c-text-3: #8A8A85;      /* 3.5:1: labels and captions only, never body */
+  --pm-c-signal: #7FA00F;      /* live / verified dot */
+  --pm-c-accent: #C8F135;
+  --pm-c-accent-tint: #F2FBD6;
+  --pm-c-btn-bg: #111210;
+  --pm-c-btn-fg: #FFFFFF;
+  --pm-c-btn-bg-hover: #2A2B27;
+  --pm-c-btn-bg-active: #000000;
+  --pm-c-focus: #111210;
+
+  /* Type */
+  --pm-font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --pm-font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --pm-text-display: 64px;   /* mobile 40px */
+  --pm-text-h1: 48px;        /* mobile 34px */
+  --pm-text-h2: 36px;        /* mobile 28px */
+  --pm-text-h3: 28px;        /* mobile 22px */
+  --pm-text-h4: 20px;        /* mobile 18px */
+  --pm-text-lead: 19px;
+  --pm-text-body: 17px;
+  --pm-text-small: 15px;
+  --pm-text-caption: 13px;
+  --pm-text-label: 12px;
+  --pm-weight-regular: 400;
+  --pm-weight-medium: 500;
+  --pm-weight-semibold: 600;   /* maximum. Nothing in the system is bolder. */
+  --pm-leading-tight: 1.05;
+  --pm-leading-snug: 1.2;
+  --pm-leading-body: 1.55;
+  --pm-tracking-display: -0.035em;
+  --pm-tracking-heading: -0.025em;
+  --pm-tracking-label: 0.06em;
+
+  /* Space: 4px base, 8px rhythm */
+  --pm-space-1: 4px;
+  --pm-space-2: 8px;
+  --pm-space-3: 12px;
+  --pm-space-4: 16px;
+  --pm-space-5: 24px;
+  --pm-space-6: 32px;
+  --pm-space-7: 48px;
+  --pm-space-8: 64px;
+  --pm-space-9: 96px;
+  --pm-space-10: 128px;
+  --pm-container: 1200px;
+  --pm-gutter: 24px;           /* mobile 16px */
+
+  /* Radius: no pill buttons */
+  --pm-radius-sm: 6px;         /* chips */
+  --pm-radius-md: 8px;         /* buttons, inputs */
+  --pm-radius-lg: 12px;        /* cards */
+  --pm-radius-xl: 16px;        /* modals, large panels */
+  --pm-radius-full: 999px;     /* status dots and avatars only */
+
+  /* Lines, elevation, motion */
+  --pm-border: 1px solid var(--pm-c-line);
+  --pm-shadow-overlay: 0 1px 2px rgba(17, 18, 16, .06), 0 8px 24px rgba(17, 18, 16, .08);
+  --pm-duration-fast: 120ms;
+  --pm-duration: 180ms;
+  --pm-ease: cubic-bezier(.2, 0, 0, 1);
+}
+
+/* Semantic: dark. Follows the OS unless data-theme="light" is set. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pm-c-bg: #0B0B0A;
+    --pm-c-bg-subtle: #111110;
+    --pm-c-surface: #141413;
+    --pm-c-surface-2: #1C1C1A;
+    --pm-c-line: #262624;
+    --pm-c-line-strong: #34342F;
+    --pm-c-text: #EDEDEA;
+    --pm-c-text-2: #9A9A95;
+    --pm-c-text-3: #6E6E69;
+    --pm-c-signal: #C8F135;
+    --pm-c-accent-tint: #1D2410;
+    --pm-c-btn-bg: #FFFFFF;
+    --pm-c-btn-fg: #111210;
+    --pm-c-btn-bg-hover: #E7E7E3;
+    --pm-c-btn-bg-active: #D4D4CF;
+    --pm-c-focus: #FFFFFF;
+    --pm-success: #5BC27E;  --pm-success-bg: #10281A;
+    --pm-warning: #E9B45A;  --pm-warning-bg: #2A2010;
+    --pm-danger:  #FF8A7D;  --pm-danger-bg:  #2C1311;
+    --pm-info:    #8FB0FF;  --pm-info-bg:    #121C33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --pm-c-bg: #0B0B0A;
+  --pm-c-bg-subtle: #111110;
+  --pm-c-surface: #141413;
+  --pm-c-surface-2: #1C1C1A;
+  --pm-c-line: #262624;
+  --pm-c-line-strong: #34342F;
+  --pm-c-text: #EDEDEA;
+  --pm-c-text-2: #9A9A95;
+  --pm-c-text-3: #6E6E69;
+  --pm-c-signal: #C8F135;
+  --pm-c-accent-tint: #1D2410;
+  --pm-c-btn-bg: #FFFFFF;
+  --pm-c-btn-fg: #111210;
+  --pm-c-btn-bg-hover: #E7E7E3;
+  --pm-c-btn-bg-active: #D4D4CF;
+  --pm-c-focus: #FFFFFF;
+  --pm-success: #5BC27E;  --pm-success-bg: #10281A;
+  --pm-warning: #E9B45A;  --pm-warning-bg: #2A2010;
+  --pm-danger:  #FF8A7D;  --pm-danger-bg:  #2C1311;
+  --pm-info:    #8FB0FF;  --pm-info-bg:    #121C33;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --pm-duration-fast: 0ms; --pm-duration: 0ms; }
+}
+
+/* The Number Rule: every figure that carries meaning */
+.pm-num {
+  font-family: var(--pm-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Pomera reference components v2.0. Requires pomera-tokens.css.
+   Framework-agnostic: port the values, keep the rules. */
+
+/* ---------- Buttons ---------- */
+.pm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 0 18px;
+  border: 1px solid transparent; border-radius: var(--pm-radius-md);
+  font: 500 15px/1 var(--pm-font-sans); letter-spacing: -0.005em;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color var(--pm-duration-fast) var(--pm-ease),
+              border-color var(--pm-duration-fast) var(--pm-ease),
+              color var(--pm-duration-fast) var(--pm-ease);
+}
+.pm-btn:focus-visible { outline: 2px solid var(--pm-c-focus); outline-offset: 2px; }
+.pm-btn--sm { height: 36px; padding: 0 14px; font-size: 14px; }
+.pm-btn--lg { height: 52px; padding: 0 24px; font-size: 16px; }
+
+.pm-btn--primary { background: var(--pm-c-btn-bg); color: var(--pm-c-btn-fg); }
+.pm-btn--primary:hover { background: var(--pm-c-btn-bg-hover); }
+.pm-btn--primary:active { background: var(--pm-c-btn-bg-active); }
+
+.pm-btn--secondary { background: var(--pm-c-surface); color: var(--pm-c-text); border-color: var(--pm-c-line-strong); }
+.pm-btn--secondary:hover { background: var(--pm-c-bg-subtle); border-color: var(--pm-c-text-3); }
+.pm-btn--secondary:active { background: var(--pm-c-surface-2); }
+
+.pm-btn--ghost { background: transparent; color: var(--pm-c-text); padding: 0 6px; height: auto;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.pm-btn--ghost:hover { text-decoration-thickness: 2px; }
+
+.pm-btn--danger { background: var(--pm-danger); color: var(--pm-white); }
+.pm-btn--danger:hover { filter: brightness(.92); }
+
+.pm-btn:disabled, .pm-btn[aria-disabled="true"] {
+  background: var(--pm-c-surface-2); color: var(--pm-c-text-3); border-color: transparent; cursor: not-allowed;
+}
+
+/* ---------- Inputs ---------- */
+.pm-field { display: grid; gap: 6px; }
+.pm-label { font: 500 14px/1.3 var(--pm-font-sans); color: var(--pm-c-text); }
+.pm-help { font: 400 13px/1.45 var(--pm-font-sans); color: var(--pm-c-text-2); }
+.pm-input {
+  height: 44px; width: 100%; padding: 0 12px;
+  background: var(--pm-c-surface); color: var(--pm-c-text);
+  border: 1px solid var(--pm-c-line-strong); border-radius: var(--pm-radius-md);
+  font: 400 16px/1 var(--pm-font-sans);
+  transition: border-color var(--pm-duration-fast) var(--pm-ease), box-shadow var(--pm-duration-fast) var(--pm-ease);
+}
+.pm-input::placeholder { color: var(--pm-c-text-3); }
+.pm-input:hover { border-color: var(--pm-c-text-3); }
+.pm-input:focus { outline: none; border-color: var(--pm-c-focus); box-shadow: 0 0 0 1px var(--pm-c-focus); }
+.pm-input[aria-invalid="true"] { border-color: var(--pm-danger); box-shadow: 0 0 0 1px var(--pm-danger); }
+.pm-input:disabled { background: var(--pm-c-surface-2); color: var(--pm-c-text-3); cursor: not-allowed; }
+.pm-error { font: 400 13px/1.45 var(--pm-font-sans); color: var(--pm-danger); }
+
+/* ---------- Chips (status and data) ---------- */
+.pm-chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px;
+  border-radius: var(--pm-radius-sm); font: 500 12px/1 var(--pm-font-sans); white-space: nowrap;
+  background: var(--pm-c-surface-2); color: var(--pm-c-text-2);
+}
+.pm-chip--dot::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.pm-chip--verified { background: var(--pm-c-accent-tint); color: var(--pm-c-text); }
+.pm-chip--verified::before { background: var(--pm-c-signal); }
+.pm-chip--live { background: var(--pm-c-btn-bg); color: var(--pm-c-btn-fg); }
+.pm-chip--live::before { background: var(--pm-lime); }
+.pm-chip--success { background: var(--pm-success-bg); color: var(--pm-success); }
+.pm-chip--warning { background: var(--pm-warning-bg); color: var(--pm-warning); }
+.pm-chip--danger  { background: var(--pm-danger-bg);  color: var(--pm-danger); }
+.pm-chip--mono { font-family: var(--pm-font-mono); font-weight: 400; font-variant-numeric: tabular-nums; }
+
+/* ---------- Cards ---------- */
+.pm-card { background: var(--pm-c-surface); border: 1px solid var(--pm-c-line); border-radius: var(--pm-radius-lg); padding: 24px; }
+.pm-card--interactive { transition: border-color var(--pm-duration-fast) var(--pm-ease); }
+.pm-card--interactive:hover { border-color: var(--pm-c-line-strong); }
+.pm-stat-label { font: 500 12px/1.4 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2); }
+.pm-stat-value { font: 400 32px/1.1 var(--pm-font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--pm-c-text); margin-top: 8px; }
+
+/* ---------- Tables (statements, not spreadsheets) ---------- */
+.pm-table { width: 100%; border-collapse: collapse; font: 400 15px/1.4 var(--pm-font-sans); color: var(--pm-c-text); }
+.pm-table th {
+  text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--pm-c-text);
+  font: 500 12px/1.4 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2);
+}
+.pm-table td { padding: 0 12px; height: 48px; border-bottom: 1px solid var(--pm-c-line); }
+.pm-table tr:hover td { background: var(--pm-c-bg-subtle); }
+.pm-table .num { text-align: right; font-family: var(--pm-font-mono); font-variant-numeric: tabular-nums; }
+.pm-table tfoot td { font-weight: 500; border-bottom: 0; border-top: 1px solid var(--pm-c-text); }
+
+
+/* ---------- Page ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--pm-c-bg); color: var(--pm-c-text); font: 400 17px/1.55 var(--pm-font-sans);
+  -webkit-font-smoothing: antialiased; margin: 0; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: 24px; display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 64px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 16px; } }
+
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--pm-c-bg);
+  border-bottom: 1px solid var(--pm-c-line); }
+.topbar-in { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+@media (max-width: 900px) { .topbar-in { padding: 10px 16px; } }
+.brandmark { display: flex; align-items: center; gap: 14px; color: var(--pm-c-text); text-decoration: none; min-width: 0; }
+.brandmark svg { height: 22px; width: auto; flex: none; }
+.brandmark .sep { width: 1px; height: 18px; background: var(--pm-c-line-strong); }
+.meta { font: 500 12px/1.3 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.theme-btn { flex: none; }
+
+nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); align-self: start; padding-block: 48px; }
+nav.index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.index a { display: flex; gap: 12px; padding: 7px 10px; border-radius: 8px; color: var(--pm-c-text-2); text-decoration: none; font-size: 15px; }
+nav.index a span { font: 400 12px/1.9 var(--pm-font-mono); color: var(--pm-c-text-3); }
+nav.index a:hover, nav.index a.on { background: var(--pm-c-surface-2); color: var(--pm-c-text); }
+nav.index a:focus-visible { outline: 2px solid var(--pm-c-focus); outline-offset: 2px; }
+@media (max-width: 900px) {
+  nav.index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 53px); z-index: 15; background: var(--pm-c-bg);
+    padding-block: 8px; border-bottom: 1px solid var(--pm-c-line); margin-inline: -16px; padding-inline: 16px; overflow-x: auto; }
+  nav.index ol { display: flex; gap: 4px; width: max-content; }
+  nav.index a { white-space: nowrap; font-size: 14px; }
+}
+
+main { min-width: 0; padding-block: 48px 128px; }
+section.chapter { padding-block: 72px 24px; border-top: 1px solid var(--pm-c-line); scroll-margin-top: 80px; }
+section.chapter:first-of-type { border-top: 0; padding-top: 0; }
+@media (max-width: 900px) { section.chapter { scroll-margin-top: 120px; padding-block: 56px 16px; } }
+
+.eyebrow { font: 500 12px/1.4 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2); margin: 0 0 12px; }
+h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 500; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(28px, 3.6vw, 36px); line-height: 1.15; letter-spacing: -0.025em; font-weight: 500; margin: 0 0 16px; text-wrap: balance; }
+h3 { font-size: 20px; line-height: 1.3; letter-spacing: -0.015em; font-weight: 500; margin: 48px 0 12px; }
+p { margin: 0 0 16px; max-width: 680px; }
+.lead { font-size: 19px; color: var(--pm-c-text-2); max-width: 680px; }
+.muted { color: var(--pm-c-text-2); }
+.small { font-size: 15px; }
+code, .mono { font-family: var(--pm-font-mono); font-size: .88em; }
+a { color: var(--pm-c-text); }
+
+.hero { padding-block: 24px 48px; display: grid; gap: 20px; }
+.band { background: var(--pm-lime); color: var(--pm-ink); border-radius: 12px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.band strong { font-size: clamp(22px, 3vw, 30px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; max-width: 520px; }
+.band .mono { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* definition lists as statements */
+.kv { display: grid; grid-template-columns: minmax(140px, 220px) minmax(0, 1fr); border-top: 1px solid var(--pm-c-text); margin: 8px 0 24px; }
+.kv > div { padding: 12px 0; border-bottom: 1px solid var(--pm-c-line); }
+.kv > div:nth-child(odd) { font: 500 12px/1.9 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2); padding-right: 16px; }
+@media (max-width: 560px) { .kv { grid-template-columns: minmax(0, 1fr); } .kv > div:nth-child(odd) { border-bottom: 0; padding-bottom: 0; } }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .grid3, .grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); } }
+
+.box { border: 1px solid var(--pm-c-line); border-radius: 12px; padding: 20px; min-width: 0; }
+.box h4 { margin: 0 0 6px; font-size: 16px; font-weight: 500; }
+.box p { font-size: 15px; color: var(--pm-c-text-2); margin: 0; }
+
+ol.steps { list-style: none; margin: 8px 0 24px; padding: 0; border-top: 1px solid var(--pm-c-line); }
+ol.steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); padding: 12px 0; border-bottom: 1px solid var(--pm-c-line); }
+ol.steps li b { font: 400 13px/1.7 var(--pm-font-mono); color: var(--pm-c-text-3); font-weight: 400; }
+
+.table-wrap { overflow-x: auto; margin: 8px 0 24px; }
+.table-wrap .pm-table td { height: auto; padding-block: 12px; vertical-align: top; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 20px; }
+.tag { font-size: 14px; padding: 4px 10px; border-radius: 6px; background: var(--pm-c-surface-2); }
+.tag.no { text-decoration: line-through; color: var(--pm-c-text-2); background: transparent; border: 1px solid var(--pm-c-line); }
+
+.callout { border-left: 3px solid var(--pm-c-text); padding: 4px 0 4px 20px; margin: 24px 0; max-width: 680px; }
+.callout p { margin: 0; }
+
+/* logo tiles */
+.tile { border-radius: 12px; border: 1px solid var(--pm-c-line); overflow: hidden; min-width: 0; }
+.tile .art { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 12%; }
+.tile .art svg { width: 100%; height: auto; max-height: 100%; }
+.tile .art.sq svg { width: 46%; }
+.tile .cap { padding: 10px 12px; border-top: 1px solid var(--pm-c-line); font-size: 13px; display: grid; gap: 2px; background: var(--pm-c-surface); }
+.tile .cap b { font-weight: 500; }
+.tile .cap code { color: var(--pm-c-text-2); font-size: 11.5px; overflow-wrap: anywhere; }
+.on-white { background: #FFFFFF; color: #111210; }
+.on-ink { background: #111210; color: #FFFFFF; }
+.on-lime { background: #C8F135; color: #111210; }
+.dont .art { position: relative; }
+.dont .cap b { color: var(--pm-danger); }
+
+/* swatches */
+.sw { border: 1px solid var(--pm-c-line); border-radius: 12px; overflow: hidden; min-width: 0; }
+.sw .chip { height: 96px; }
+.sw .info { padding: 12px; display: grid; gap: 2px; font-size: 13px; }
+.sw .info b { font-size: 15px; font-weight: 500; }
+.sw .info code { color: var(--pm-c-text-2); font-size: 12px; }
+.ratio { display: flex; height: 56px; border-radius: 10px; overflow: hidden; border: 1px solid var(--pm-c-line); margin: 8px 0 8px; }
+.ratio > div { display: flex; align-items: flex-end; padding: 8px 10px; font: 500 11px/1 var(--pm-font-mono); letter-spacing: .04em; }
+.scale { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
+.scale div { height: 48px; border-radius: 6px; border: 1px solid var(--pm-c-line); }
+.scale-l { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; font: 400 10.5px/1.3 var(--pm-font-mono); color: var(--pm-c-text-2); margin-top: 6px; }
+@media (max-width: 560px) { .scale-l { font-size: 9px; } }
+
+/* type specimens */
+.spec { border-top: 1px solid var(--pm-c-line); }
+.spec > div { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--pm-c-line); }
+.spec code { color: var(--pm-c-text-2); font-size: 12px; text-align: right; }
+@media (max-width: 620px) { .spec > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } .spec code { text-align: left; } }
+
+/* layout visuals */
+.spacebar { display: grid; grid-template-columns: 90px 70px minmax(0, 1fr); align-items: center; gap: 12px; font: 400 13px/1 var(--pm-font-mono); padding: 5px 0; }
+.spacebar i { display: block; height: 12px; background: var(--pm-c-text); border-radius: 2px; }
+.spacebar span { color: var(--pm-c-text-2); }
+.radius-demo { height: 88px; border: 1.5px solid var(--pm-c-text); background: var(--pm-c-bg-subtle); }
+
+/* component demo */
+.demo { border: 1px solid var(--pm-c-line); border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 8px 0 12px; min-width: 0; }
+.demo.col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 560px) { .demo.col { grid-template-columns: minmax(0, 1fr); } }
+.state { display: grid; justify-items: start; gap: 6px; }
+.state small { font: 400 11px/1 var(--pm-font-mono); color: var(--pm-c-text-3); letter-spacing: .04em; text-transform: uppercase; }
+.pm-btn--primary.is-hover { background: var(--pm-c-btn-bg-hover); }
+.pm-btn--primary.is-active { background: var(--pm-c-btn-bg-active); }
+.pm-btn.is-focus { outline: 2px solid var(--pm-c-focus); outline-offset: 2px; }
+.pm-btn--secondary.is-hover { background: var(--pm-c-bg-subtle); border-color: var(--pm-c-text-3); }
+.pm-input.is-focus { border-color: var(--pm-c-focus); box-shadow: 0 0 0 1px var(--pm-c-focus); }
+
+/* code */
+.code { border: 1px solid var(--pm-c-line); border-radius: 12px; overflow: hidden; margin: 12px 0 24px; min-width: 0; }
+.code-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; background: var(--pm-c-bg-subtle); border-bottom: 1px solid var(--pm-c-line); }
+.code-h span { font: 500 13px/1 var(--pm-font-mono); }
+.code pre { margin: 0; padding: 16px; overflow: auto; max-height: 440px; font: 400 12.5px/1.6 var(--pm-font-mono); color: var(--pm-c-text); background: var(--pm-c-surface); tab-size: 2; }
+.copied { font: 400 12px/1 var(--pm-font-mono); color: var(--pm-c-text-2); margin-right: 8px; }
+
+.check { list-style: none; margin: 8px 0 24px; padding: 0; display: grid; gap: 8px; max-width: 680px; }
+.check li { position: relative; padding-left: 30px; font-size: 16px; }
+.check li::before { content: ""; position: absolute; left: 0; top: 5px; width: 14px; height: 14px; border: 1.5px solid var(--pm-c-text); border-radius: 3px; }
+
+footer.end { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--pm-c-line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pm-c-text-2); font-size: 14px; }
+
+/* ---------- Print / PDF ---------- */
+@page { size: A4; margin: 16mm 14mm 18mm; }
+@media print {
+  :root { color-scheme: light; }
+  html { scroll-behavior: auto; }
+  body { font-size: 10.5pt; }
+  .topbar, nav.index, .theme-btn, [data-copy], .copied { display: none !important; }
+  .wrap { display: block; max-width: none; padding: 0; }
+  main { padding: 0; }
+  .hero { padding-top: 0; }
+  section.chapter { break-before: page; border-top: 0; padding-top: 0; }
+  h2, h3 { break-after: avoid; }
+  .tile, .box, .sw, .pm-card, .demo, .callout, .band, .kv > div, ol.steps li, .spec > div, .ratio, .scale, .check li { break-inside: avoid; }
+  .pm-table tr { break-inside: avoid; }
+  .table-wrap { overflow: visible; }
+  .code { border: 1px solid #E7E7E3; overflow: visible; }
+  .code pre { max-height: none; overflow: visible; white-space: pre-wrap; word-break: break-word; font-size: 8pt; line-height: 1.5; }
+  .code-h { break-after: avoid; }
+  .grid4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  a { text-decoration: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="pm-bad-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#5427F5"/><stop offset="1" stop-color="#455FF5"/></linearGradient><symbol id="pm-beam" viewBox="0 0 881.9 726.5"><path style="fill:var(--beam,currentColor)" d="M541.2,93.9 L540.6,87.4 L539.5,80.9 L538.0,74.5 L536.1,68.2 L533.8,62.0 L531.1,56.0 L528.0,50.2 L524.5,44.7 L520.7,39.3 L516.5,34.2 L512.0,29.4 L507.2,24.9 L502.1,20.8 L496.8,16.9 L491.2,13.5 L485.4,10.4 L479.4,7.7 L473.3,5.3 L467.0,3.4 L460.6,1.9 L454.1,0.9 L447.5,0.2 L441.0,0.0 L434.4,0.2 L427.8,0.9 L421.3,1.9 L414.9,3.4 L408.6,5.3 L402.5,7.7 L396.5,10.4 L390.7,13.5 L385.1,16.9 L379.8,20.8 L374.7,24.9 L369.9,29.4 L365.4,34.2 L361.2,39.3 L357.4,44.7 L353.9,50.2 L350.8,56.0 L348.1,62.0 L345.8,68.2 L343.9,74.5 L342.4,80.9 L341.3,87.4 L340.7,93.9 L340.5,100.5 L340.5,277.8 L147.6,175.3 L141.7,172.4 L135.6,169.9 L129.4,167.8 L123.1,166.1 L116.6,164.8 L110.1,164.0 L103.5,163.5 L96.9,163.6 L90.4,164.0 L83.9,164.9 L77.4,166.2 L71.1,167.9 L64.8,170.0 L58.8,172.6 L52.9,175.5 L47.2,178.8 L41.7,182.4 L36.5,186.5 L31.6,190.8 L26.9,195.5 L22.6,200.4 L18.6,205.6 L15.0,211.1 L11.7,216.8 L8.8,222.7 L6.3,228.8 L4.2,235.0 L2.5,241.4 L1.3,247.9 L0.4,254.4 L0.0,260.9 L0.0,267.5 L0.5,274.1 L1.3,280.6 L2.6,287.0 L4.3,293.4 L6.5,299.6 L9.0,305.7 L11.9,311.6 L15.2,317.3 L18.9,322.7 L22.9,327.9 L27.3,332.9 L31.9,337.5 L36.9,341.8 L42.1,345.8 L47.6,349.5 L53.3,352.7 L226.8,445.0 L53.3,537.3 L47.6,540.5 L42.1,544.2 L36.9,548.2 L31.9,552.5 L27.3,557.1 L22.9,562.1 L18.9,567.3 L15.2,572.7 L11.9,578.4 L9.0,584.3 L6.5,590.4 L4.3,596.6 L2.6,603.0 L1.3,609.4 L0.5,615.9 L0.0,622.5 L0.0,629.1 L0.4,635.6 L1.3,642.1 L2.5,648.6 L4.2,655.0 L6.3,661.2 L8.8,667.3 L11.7,673.2 L15.0,678.9 L18.6,684.4 L22.6,689.6 L26.9,694.5 L31.6,699.2 L36.5,703.5 L41.7,707.6 L47.2,711.2 L52.9,714.5 L58.8,717.4 L64.8,720.0 L71.1,722.1 L77.4,723.8 L83.9,725.1 L90.4,726.0 L96.9,726.4 L103.5,726.5 L110.1,726.0 L116.6,725.2 L123.1,723.9 L129.4,722.2 L135.6,720.1 L141.7,717.6 L147.6,714.7 L441.0,558.8 L734.3,714.7 L740.2,717.6 L746.3,720.1 L752.5,722.2 L758.9,723.9 L765.3,725.2 L771.8,726.0 L778.4,726.5 L785.0,726.4 L791.5,726.0 L798.1,725.1 L804.5,723.8 L810.8,722.1 L817.1,720.0 L823.1,717.4 L829.0,714.5 L834.7,711.2 L840.2,707.6 L845.4,703.5 L850.3,699.2 L855.0,694.5 L859.3,689.6 L863.3,684.4 L866.9,678.9 L870.2,673.2 L873.1,667.3 L875.6,661.2 L877.7,655.0 L879.4,648.6 L880.6,642.1 L881.5,635.6 L881.9,629.1 L881.9,622.5 L881.4,615.9 L880.6,609.4 L879.3,603.0 L877.6,596.6 L875.4,590.4 L872.9,584.3 L870.0,578.4 L866.7,572.7 L863.0,567.3 L859.0,562.1 L854.6,557.1 L850.0,552.5 L845.0,548.2 L839.8,544.2 L834.3,540.5 L828.6,537.3 L655.1,445.0 L828.6,352.7 L834.3,349.5 L839.8,345.8 L845.0,341.8 L850.0,337.5 L854.6,332.9 L859.0,327.9 L863.0,322.7 L866.7,317.3 L870.0,311.6 L872.9,305.7 L875.4,299.6 L877.6,293.4 L879.3,287.0 L880.6,280.6 L881.4,274.1 L881.9,267.5 L881.9,260.9 L881.5,254.4 L880.6,247.9 L879.4,241.4 L877.7,235.0 L875.6,228.8 L873.1,222.7 L870.2,216.8 L866.9,211.1 L863.3,205.6 L859.3,200.4 L855.0,195.5 L850.3,190.8 L845.4,186.5 L840.2,182.4 L834.7,178.8 L829.0,175.5 L823.1,172.6 L817.1,170.0 L810.8,167.9 L804.5,166.2 L798.1,164.9 L791.5,164.0 L785.0,163.6 L778.4,163.5 L771.8,164.0 L765.3,164.8 L758.9,166.1 L752.5,167.8 L746.3,169.9 L740.2,172.4 L734.3,175.3 L541.5,277.8 L541.5,100.5 L541.2,93.9Z"/></symbol><symbol id="cc-lockup" viewBox="203 205 2347.0 447.3"><path transform="translate(203.00,205.00) scale(0.615647)" style="fill:var(--beam,currentColor)" d="M541.45,97.21 L541.28,93.93 L541.02,90.65 L540.64,87.38 L540.16,84.13 L539.57,80.89 L538.87,77.68 L538.08,74.49 L537.17,71.33 L536.17,68.20 L535.06,65.10 L533.85,62.04 L532.54,59.02 L531.14,56.05 L529.63,53.12 L528.04,50.25 L526.34,47.43 L524.56,44.67 L522.69,41.96 L520.73,39.32 L518.69,36.74 L516.56,34.24 L514.35,31.80 L512.06,29.44 L509.70,27.15 L507.26,24.94 L504.76,22.81 L502.18,20.77 L499.54,18.81 L496.83,16.94 L494.07,15.16 L491.25,13.46 L488.38,11.87 L485.45,10.36 L482.48,8.96 L479.46,7.65 L476.40,6.44 L473.30,5.33 L470.17,4.33 L467.01,3.42 L463.82,2.63 L460.61,1.93 L457.37,1.34 L454.12,0.86 L450.85,0.48 L447.57,0.22 L444.29,0.05 L441.00,0.00 L437.71,0.05 L434.43,0.22 L431.15,0.48 L427.88,0.86 L424.63,1.34 L421.39,1.93 L418.18,2.63 L414.99,3.42 L411.83,4.33 L408.70,5.33 L405.60,6.44 L402.54,7.65 L399.52,8.96 L396.55,10.36 L393.62,11.87 L390.75,13.46 L387.93,15.16 L385.16,16.94 L382.46,18.81 L379.82,20.77 L377.24,22.81 L374.74,24.94 L372.30,27.15 L369.94,29.44 L367.65,31.80 L365.44,34.24 L363.31,36.74 L361.27,39.32 L359.31,41.96 L357.44,44.67 L355.65,47.43 L353.96,50.25 L352.37,53.12 L350.86,56.05 L349.46,59.02 L348.15,62.04 L346.94,65.10 L345.83,68.20 L344.83,71.33 L343.92,74.49 L343.13,77.68 L342.43,80.89 L341.84,84.13 L341.36,87.38 L340.98,90.65 L340.71,93.93 L340.55,97.21 L340.50,100.50 L340.50,277.76 L147.67,175.26 L144.74,173.76 L141.77,172.36 L138.75,171.06 L135.69,169.86 L132.59,168.76 L129.45,167.76 L126.29,166.87 L123.10,166.07 L119.88,165.39 L116.64,164.81 L113.39,164.33 L110.12,163.96 L106.84,163.70 L103.56,163.55 L100.27,163.50 L96.98,163.56 L93.70,163.73 L90.42,164.01 L87.15,164.39 L83.90,164.88 L80.67,165.48 L77.45,166.18 L74.27,166.98 L71.11,167.89 L67.98,168.91 L64.88,170.02 L61.83,171.24 L58.81,172.55 L55.84,173.97 L52.92,175.48 L50.05,177.08 L47.23,178.78 L44.47,180.57 L41.77,182.44 L39.14,184.41 L36.57,186.46 L34.06,188.59 L31.63,190.81 L29.27,193.10 L26.99,195.47 L24.79,197.91 L22.67,200.42 L20.63,203.00 L18.67,205.65 L16.81,208.36 L15.03,211.12 L13.35,213.95 L11.76,216.83 L10.26,219.76 L8.86,222.73 L7.56,225.75 L6.36,228.81 L5.26,231.91 L4.26,235.05 L3.36,238.21 L2.57,241.40 L1.89,244.62 L1.30,247.86 L0.83,251.11 L0.46,254.38 L0.20,257.66 L0.05,260.94 L0.00,264.23 L0.06,267.52 L0.23,270.80 L0.51,274.08 L0.89,277.35 L1.38,280.60 L1.98,283.83 L2.68,287.05 L3.48,290.23 L4.39,293.39 L5.41,296.52 L6.52,299.62 L7.74,302.67 L9.05,305.69 L10.47,308.66 L11.98,311.58 L13.58,314.45 L15.28,317.27 L17.07,320.03 L18.94,322.73 L20.91,325.36 L22.96,327.93 L25.09,330.44 L27.31,332.87 L29.60,335.23 L31.97,337.51 L34.41,339.71 L36.92,341.83 L39.50,343.87 L42.15,345.82 L44.86,347.69 L47.62,349.47 L50.45,351.15 L53.33,352.74 L226.89,445.00 L53.33,537.26 L50.45,538.85 L47.62,540.53 L44.86,542.31 L42.15,544.18 L39.50,546.13 L36.92,548.17 L34.41,550.29 L31.97,552.49 L29.60,554.77 L27.31,557.13 L25.09,559.56 L22.96,562.07 L20.91,564.64 L18.94,567.27 L17.07,569.97 L15.28,572.73 L13.58,575.55 L11.98,578.42 L10.47,581.34 L9.05,584.31 L7.74,587.33 L6.52,590.38 L5.41,593.48 L4.39,596.61 L3.48,599.77 L2.68,602.95 L1.98,606.17 L1.38,609.40 L0.89,612.65 L0.51,615.92 L0.23,619.20 L0.06,622.48 L0.00,625.77 L0.05,629.06 L0.20,632.34 L0.46,635.62 L0.83,638.89 L1.30,642.14 L1.89,645.38 L2.57,648.60 L3.36,651.79 L4.26,654.95 L5.26,658.09 L6.36,661.19 L7.56,664.25 L8.86,667.27 L10.26,670.24 L11.76,673.17 L13.35,676.05 L15.03,678.88 L16.81,681.64 L18.67,684.35 L20.63,687.00 L22.67,689.58 L24.79,692.09 L26.99,694.53 L29.27,696.90 L31.63,699.19 L34.06,701.41 L36.57,703.54 L39.14,705.59 L41.77,707.56 L44.47,709.43 L47.23,711.22 L50.05,712.92 L52.92,714.52 L55.84,716.03 L58.81,717.45 L61.83,718.76 L64.88,719.98 L67.98,721.09 L71.11,722.11 L74.27,723.02 L77.45,723.82 L80.67,724.52 L83.90,725.12 L87.15,725.61 L90.42,725.99 L93.70,726.27 L96.98,726.44 L100.27,726.50 L103.56,726.45 L106.84,726.30 L110.12,726.04 L113.39,725.67 L116.64,725.19 L119.88,724.61 L123.10,723.93 L126.29,723.13 L129.45,722.24 L132.59,721.24 L135.69,720.14 L138.75,718.94 L141.77,717.64 L144.74,716.24 L147.67,714.74 L441.00,558.82 L734.33,714.74 L737.26,716.24 L740.23,717.64 L743.25,718.94 L746.31,720.14 L749.41,721.24 L752.55,722.24 L755.71,723.13 L758.90,723.93 L762.12,724.61 L765.36,725.19 L768.61,725.67 L771.88,726.04 L775.16,726.30 L778.44,726.45 L781.73,726.50 L785.02,726.44 L788.30,726.27 L791.58,725.99 L794.85,725.61 L798.10,725.12 L801.33,724.52 L804.54,723.82 L807.73,723.02 L810.89,722.11 L814.02,721.09 L817.12,719.98 L820.17,718.76 L823.19,717.45 L826.16,716.03 L829.08,714.52 L831.95,712.92 L834.77,711.22 L837.53,709.43 L840.23,707.56 L842.86,705.59 L845.43,703.54 L847.94,701.41 L850.37,699.19 L852.73,696.90 L855.01,694.53 L857.21,692.09 L859.33,689.58 L861.37,687.00 L863.32,684.35 L865.19,681.64 L866.97,678.88 L868.65,676.05 L870.24,673.17 L871.74,670.24 L873.14,667.27 L874.44,664.25 L875.64,661.19 L876.74,658.09 L877.74,654.95 L878.63,651.79 L879.43,648.60 L880.11,645.38 L880.69,642.14 L881.17,638.89 L881.54,635.62 L881.80,632.34 L881.95,629.06 L882.00,625.77 L881.94,622.48 L881.77,619.20 L881.49,615.92 L881.11,612.65 L880.62,609.40 L880.02,606.17 L879.32,602.95 L878.52,599.77 L877.61,596.61 L876.59,593.48 L875.48,590.38 L874.26,587.33 L872.95,584.31 L871.53,581.34 L870.02,578.42 L868.42,575.55 L866.72,572.73 L864.93,569.97 L863.06,567.27 L861.09,564.64 L859.04,562.07 L856.91,559.56 L854.69,557.13 L852.40,554.77 L850.03,552.49 L847.59,550.29 L845.08,548.17 L842.50,546.13 L839.85,544.18 L837.14,542.31 L834.38,540.53 L831.55,538.85 L828.67,537.26 L655.11,445.00 L828.67,352.74 L831.55,351.15 L834.38,349.47 L837.14,347.69 L839.85,345.82 L842.50,343.87 L845.08,341.83 L847.59,339.71 L850.03,337.51 L852.40,335.23 L854.69,332.87 L856.91,330.44 L859.04,327.93 L861.09,325.36 L863.06,322.73 L864.93,320.03 L866.72,317.27 L868.42,314.45 L870.02,311.58 L871.53,308.66 L872.95,305.69 L874.26,302.67 L875.48,299.62 L876.59,296.52 L877.61,293.39 L878.52,290.23 L879.32,287.05 L880.02,283.83 L880.62,280.60 L881.11,277.35 L881.49,274.08 L881.77,270.80 L881.94,267.52 L882.00,264.23 L881.95,260.94 L881.80,257.66 L881.54,254.38 L881.17,251.11 L880.69,247.86 L880.11,244.62 L879.43,241.40 L878.63,238.21 L877.74,235.05 L876.74,231.91 L875.64,228.81 L874.44,225.75 L873.14,222.73 L871.74,219.76 L870.24,216.83 L868.65,213.95 L866.97,211.12 L865.19,208.36 L863.32,205.65 L861.37,203.00 L859.33,200.42 L857.21,197.91 L855.01,195.47 L852.73,193.10 L850.37,190.81 L847.94,188.59 L845.43,186.46 L842.86,184.41 L840.23,182.44 L837.53,180.57 L834.77,178.78 L831.95,177.08 L829.08,175.48 L826.16,173.97 L823.19,172.55 L820.17,171.24 L817.12,170.02 L814.02,168.91 L810.89,167.89 L807.73,166.98 L804.54,166.18 L801.33,165.48 L798.10,164.88 L794.85,164.39 L791.58,164.01 L788.30,163.73 L785.02,163.56 L781.73,163.50 L778.44,163.55 L775.16,163.70 L771.88,163.96 L768.61,164.33 L765.36,164.81 L762.12,165.39 L758.90,166.07 L755.71,166.87 L752.55,167.76 L749.41,168.76 L746.31,169.86 L743.25,171.06 L740.23,172.36 L737.26,173.76 L734.33,175.26 L541.50,277.76 L541.50,100.50 L541.45,97.21Z"/><g fill="currentColor"><path d="M927.928 452.736Q899.512 452.736 877.904 439.56399999999996Q856.296 426.392 844.1600000000001 401.82399999999996Q832.024 377.256 832.024 343.216Q832.024 309.472 844.012 284.756Q856.0 260.04 877.608 246.572Q899.216 233.104 928.2239999999999 233.104Q967.296 233.104 988.904 252.788Q1010.512 272.472 1017.024 306.808L983.576 308.584Q979.432 287.27200000000005 965.816 274.84000000000003Q952.2 262.408 928.2239999999999 262.408Q908.984 262.408 894.924 272.17600000000004Q880.864 281.944 873.02 300.0Q865.176 318.05600000000004 865.176 343.216Q865.176 368.376 873.02 386.432Q880.864 404.488 895.072 413.96000000000004Q909.28 423.432 927.928 423.432Q953.384 423.432 967.296 409.964Q981.208 396.496 985.056 372.81600000000003L1018.504 374.592Q1012.5840000000001 410.408 989.644 431.572Q966.704 452.736 927.928 452.736ZM1077.4080000000001 448.0Q1061.72 448.0 1052.3960000000002 440.00800000000004Q1043.0720000000001 432.016 1043.0720000000001 414.552V237.84H1074.448V411.592Q1074.448 422.248 1085.4 422.248H1097.832V448.0ZM1118.256 448.0V290.528H1149.632V448.0ZM1117.664 267.736V236.36H1150.224V267.736ZM1189.8880000000001 492.4V290.528H1219.488L1220.0800000000002 314.504Q1226.8880000000001 300.88800000000003 1239.468 293.932Q1252.048 286.976 1267.736 286.976Q1290.824 286.976 1305.772 298.372Q1320.72 309.76800000000003 1327.9720000000002 328.41600000000005Q1335.2240000000002 347.064 1335.2240000000002 369.264Q1335.2240000000002 391.464 1327.9720000000002 410.11199999999997Q1320.72 428.76 1305.772 440.156Q1290.824 451.552 1267.736 451.552Q1252.64 451.552 1240.208 444.89200000000005Q1227.776 438.232 1221.2640000000001 426.688V492.4ZM1262.112 424.32Q1281.056 424.32 1291.8600000000001 409.81600000000003Q1302.6640000000002 395.312 1302.6640000000002 369.264Q1302.6640000000002 343.216 1291.8600000000001 328.712Q1281.056 314.20799999999997 1262.112 314.20799999999997Q1243.1680000000001 314.20799999999997 1232.2160000000001 328.12Q1221.2640000000001 342.03200000000004 1221.2640000000001 369.264Q1221.2640000000001 396.496 1232.2160000000001 410.408Q1243.1680000000001 424.32 1262.112 424.32ZM1360.976 492.4V290.528H1390.576L1391.1680000000001 314.504Q1397.976 300.88800000000003 1410.556 293.932Q1423.136 286.976 1438.824 286.976Q1461.912 286.976 1476.8600000000001 298.372Q1491.808 309.76800000000003 1499.06 328.41600000000005Q1506.3120000000001 347.064 1506.3120000000001 369.264Q1506.3120000000001 391.464 1499.06 410.11199999999997Q1491.808 428.76 1476.8600000000001 440.156Q1461.912 451.552 1438.824 451.552Q1423.728 451.552 1411.296 444.89200000000005Q1398.864 438.232 1392.352 426.688V492.4ZM1433.2 424.32Q1452.144 424.32 1462.9479999999999 409.81600000000003Q1473.752 395.312 1473.752 369.264Q1473.752 343.216 1462.9479999999999 328.712Q1452.144 314.20799999999997 1433.2 314.20799999999997Q1414.256 314.20799999999997 1403.304 328.12Q1392.352 342.03200000000004 1392.352 369.264Q1392.352 396.496 1403.304 410.408Q1414.256 424.32 1433.2 424.32ZM1596.888 451.552Q1573.8 451.552 1557.076 441.34000000000003Q1540.352 431.128 1531.324 412.628Q1522.296 394.128 1522.296 369.264Q1522.296 344.4 1531.324 325.9Q1540.352 307.4 1556.928 297.188Q1573.5040000000001 286.976 1596.0 286.976Q1617.3120000000001 286.976 1633.592 296.892Q1649.872 306.808 1658.9 325.456Q1667.928 344.104 1667.928 370.448V378.44H1554.856Q1556.04 401.528 1567.1399999999999 413.072Q1578.24 424.616 1597.184 424.616Q1611.096 424.616 1620.124 418.252Q1629.152 411.88800000000003 1633.0 400.64L1665.56 402.712Q1659.344 424.912 1641.1399999999999 438.23199999999997Q1622.936 451.552 1596.888 451.552ZM1554.856 354.76H1634.776Q1633.296 333.744 1622.6399999999999 323.68Q1611.984 313.616 1596.0 313.616Q1579.128 313.616 1568.324 324.124Q1557.52 334.632 1554.856 354.76ZM1693.68 448.0V290.528H1722.392L1723.28 320.424Q1727.72 305.03200000000004 1737.0439999999999 297.78000000000003Q1746.368 290.528 1760.872 290.528H1775.968V318.648H1760.872Q1742.816 318.648 1733.9360000000001 327.528Q1725.056 336.408 1725.056 355.05600000000004V448.0ZM1891.112 452.736Q1862.696 452.736 1841.088 439.56399999999996Q1819.48 426.392 1807.344 401.82399999999996Q1795.2079999999999 377.256 1795.2079999999999 343.216Q1795.2079999999999 309.472 1807.196 284.756Q1819.184 260.04 1840.792 246.572Q1862.3999999999999 233.104 1891.408 233.104Q1930.48 233.104 1952.088 252.788Q1973.696 272.472 1980.208 306.808L1946.76 308.584Q1942.616 287.27200000000005 1929.0 274.84000000000003Q1915.384 262.408 1891.408 262.408Q1872.168 262.408 1858.108 272.17600000000004Q1844.048 281.944 1836.204 300.0Q1828.36 318.05600000000004 1828.36 343.216Q1828.36 368.376 1836.204 386.432Q1844.048 404.488 1858.2559999999999 413.96000000000004Q1872.464 423.432 1891.112 423.432Q1916.568 423.432 1930.48 409.964Q1944.392 396.496 1948.24 372.81600000000003L1981.6879999999999 374.592Q1975.768 410.408 1952.828 431.572Q1929.888 452.736 1891.112 452.736ZM2008.92 448.0V290.528H2040.296V448.0ZM2008.328 267.736V236.36H2040.888V267.736ZM2080.5519999999997 448.0V290.528H2109.2639999999997L2110.152 320.424Q2114.5919999999996 305.03200000000004 2123.9159999999997 297.78000000000003Q2133.24 290.528 2147.7439999999997 290.528H2162.8399999999997V318.648H2147.7439999999997Q2129.6879999999996 318.648 2120.808 327.528Q2111.928 336.408 2111.928 355.05600000000004V448.0ZM2244.24 451.552Q2221.7439999999997 451.552 2204.872 441.34000000000003Q2188.0 431.128 2178.8239999999996 412.628Q2169.6479999999997 394.128 2169.6479999999997 369.264Q2169.6479999999997 344.4 2178.8239999999996 325.9Q2188.0 307.4 2204.872 297.188Q2221.7439999999997 286.976 2244.24 286.976Q2272.9519999999998 286.976 2291.8959999999997 301.924Q2310.8399999999997 316.872 2314.688 344.104L2281.832 345.88Q2279.464 330.488 2269.3999999999996 322.34799999999996Q2259.336 314.20799999999997 2244.24 314.20799999999997Q2224.408 314.20799999999997 2213.308 328.86Q2202.208 343.512 2202.208 369.264Q2202.208 395.312 2213.308 409.81600000000003Q2224.408 424.32 2244.24 424.32Q2259.336 424.32 2269.3999999999996 415.884Q2279.464 407.448 2281.832 390.28L2314.688 392.056Q2310.8399999999997 419.288 2292.044 435.42Q2273.248 451.552 2244.24 451.552ZM2373.0 448.0Q2357.312 448.0 2347.988 440.00800000000004Q2338.6639999999998 432.016 2338.6639999999998 414.552V237.84H2370.04V411.592Q2370.04 422.248 2380.9919999999997 422.248H2393.424V448.0ZM2478.968 451.552Q2455.88 451.552 2439.156 441.34000000000003Q2422.432 431.128 2413.4039999999995 412.628Q2404.3759999999997 394.128 2404.3759999999997 369.264Q2404.3759999999997 344.4 2413.4039999999995 325.9Q2422.432 307.4 2439.008 297.188Q2455.584 286.976 2478.08 286.976Q2499.392 286.976 2515.6719999999996 296.892Q2531.9519999999998 306.808 2540.9799999999996 325.456Q2550.008 344.104 2550.008 370.448V378.44H2436.936Q2438.12 401.528 2449.2200000000003 413.072Q2460.32 424.616 2479.264 424.616Q2493.176 424.616 2502.2039999999997 418.252Q2511.232 411.88800000000003 2515.08 400.64L2547.64 402.712Q2541.424 424.912 2523.2200000000003 438.23199999999997Q2505.016 451.552 2478.968 451.552ZM2436.936 354.76H2516.8559999999998Q2515.3759999999997 333.744 2504.72 323.68Q2494.064 313.616 2478.08 313.616Q2461.208 313.616 2450.404 324.124Q2439.6 334.632 2436.936 354.76Z"/><path d="M867.9056603773585 609.5849056603773Q860.5094339622641 609.5849056603773 854.8962264150944 606.4150943396226Q849.2830188679245 603.2452830188679 846.377358490566 597.433962264151L845.9811320754717 608.0H832.9056603773585V514.2264150943396H846.9056603773585V547.6415094339623Q849.5471698113207 543.0188679245283 855.0943396226414 539.5849056603774Q860.6415094339623 536.1509433962265 867.9056603773585 536.1509433962265Q877.0188679245283 536.1509433962265 883.7547169811321 540.6415094339623Q890.4905660377358 545.1320754716982 894.122641509434 553.3867924528302Q897.7547169811321 561.6415094339623 897.7547169811321 572.8679245283018Q897.7547169811321 584.0943396226415 894.122641509434 592.3490566037735Q890.4905660377358 600.6037735849056 883.7547169811321 605.0943396226414Q877.0188679245283 609.5849056603773 867.9056603773585 609.5849056603773ZM865.6603773584906 597.433962264151Q873.7169811320755 597.433962264151 878.4716981132076 590.8301886792453Q883.2264150943396 584.2264150943396 883.2264150943396 572.8679245283018Q883.2264150943396 561.2452830188679 878.5377358490566 554.7735849056603Q873.8490566037735 548.3018867924528 865.7924528301887 548.3018867924528Q856.9433962264151 548.3018867924528 851.9245283018868 554.7735849056603Q846.9056603773585 561.2452830188679 846.9056603773585 572.8679245283018Q846.9056603773585 584.2264150943396 851.8584905660377 590.8301886792453Q856.811320754717 597.433962264151 865.6603773584906 597.433962264151ZM913.7358490566037 627.811320754717V616.3207547169811H922.3207547169811Q925.8867924528302 616.3207547169811 927.6037735849056 615.2641509433962Q929.3207547169811 614.2075471698113 930.2452830188679 611.6981132075472L932.4905660377358 605.8867924528302H928.132075471698L902.7735849056603 537.7358490566038H917.566037735849L936.8490566037735 592.9433962264151L955.2075471698113 537.7358490566038H970.132075471698L942.132075471698 616.188679245283Q940.0188679245283 622.2641509433962 935.8584905660377 625.0377358490566Q931.6981132075471 627.811320754717 924.3018867924528 627.811320754717Z"/><g transform="translate(1012.53,608.00) scale(0.36) translate(-819,-516)"><g transform="scale(0.3333333)"><g transform="translate(0,2574) scale(0.1,-0.1)"><path d="M34865 16099 c-202 -9 -398 -25 -450 -38 -22 -6 -55 -11 -74 -11 -19
+0 -62 -6 -95 -14 -34 -8 -97 -21 -141 -31 -93 -19 -153 -35 -340 -90 -57 -16
+-77 -23 -175 -60 -22 -8 -59 -22 -82 -31 -24 -8 -56 -22 -71 -30 -16 -8 -34
+-14 -40 -14 -12 0 -256 -122 -302 -151 -16 -10 -39 -23 -50 -28 -11 -5 -36
+-20 -55 -33 -19 -13 -42 -27 -50 -31 -8 -4 -24 -13 -35 -20 -325 -200 -680
+-547 -888 -867 -80 -123 -82 -126 -112 -185 -14 -27 -30 -57 -35 -65 -19 -32
+-70 -151 -70 -163 0 -7 -7 -22 -15 -33 -8 -10 -15 -27 -15 -36 0 -10 -6 -32
+-14 -50 -54 -126 -137 -442 -136 -519 0 -78 -52 -123 -57 -49 -2 19 -9 69 -17
+110 -8 41 -22 118 -31 170 -9 52 -21 113 -27 135 -6 22 -15 58 -19 80 -8 41
+-29 114 -50 175 -30 87 -65 180 -85 225 -70 159 -102 227 -138 290 -12 22 -31
+56 -42 75 -75 135 -177 264 -319 405 -66 66 -136 133 -155 149 -67 55 -189
+146 -195 146 -4 0 -24 12 -44 28 -20 15 -45 32 -56 39 -233 141 -307 180 -470
+248 -109 46 -149 61 -200 75 -16 5 -43 13 -60 18 -142 48 -339 92 -515 116
+-504 68 -978 38 -1440 -91 -30 -8 -70 -22 -88 -29 -18 -8 -40 -14 -50 -14 -9
+0 -26 -7 -36 -15 -11 -8 -26 -15 -33 -15 -13 0 -134 -53 -163 -71 -8 -5 -19
+-11 -25 -13 -5 -2 -17 -7 -25 -10 -8 -3 -28 -15 -45 -26 -16 -11 -39 -24 -50
+-30 -54 -28 -225 -148 -305 -215 -36 -30 -68 -55 -73 -55 -20 0 -29 71 -35
+262 -5 146 -11 211 -20 220 -22 22 -330 29 -1232 26 -930 -3 -904 -2 -932 -51
+-11 -18 -14 -754 -16 -3752 -1 -2285 1 -3735 7 -3744 7 -11 53 -17 188 -24
+239 -12 1929 -2 1966 12 l27 11 1 677 c1 373 5 883 8 1133 l6 455 25 3 c16 2
+35 -7 55 -26 69 -64 258 -198 375 -265 46 -26 171 -88 225 -111 17 -7 47 -21
+68 -30 21 -9 44 -16 52 -16 8 0 29 -6 47 -14 210 -88 645 -156 1003 -156 304
+0 705 54 900 122 17 5 46 14 65 18 19 4 51 14 70 20 113 40 150 54 230 85 122
+48 286 130 385 194 22 14 48 30 57 36 94 57 264 186 365 277 168 152 360 387
+443 543 6 11 26 47 45 80 46 80 132 254 179 367 73 173 145 449 167 643 5 44
+13 96 19 115 5 19 10 52 10 72 0 20 5 40 12 44 18 11 36 -24 43 -85 12 -108
+44 -259 77 -356 5 -16 13 -43 18 -60 13 -48 31 -98 46 -128 8 -16 14 -35 14
+-42 0 -7 6 -26 14 -42 8 -15 21 -44 29 -63 70 -161 183 -368 257 -471 14 -19
+41 -57 60 -84 192 -268 591 -625 865 -775 22 -12 54 -30 70 -40 17 -10 50 -28
+75 -40 25 -12 52 -26 60 -31 8 -5 22 -12 30 -15 8 -4 40 -18 70 -31 30 -14 73
+-33 95 -42 22 -10 57 -25 78 -34 21 -9 46 -17 57 -17 10 0 21 -4 25 -9 3 -5
+20 -13 38 -17 17 -3 45 -12 62 -19 16 -7 57 -21 90 -30 33 -10 75 -24 93 -31
+18 -8 43 -14 55 -14 12 0 39 -6 62 -14 97 -34 411 -91 580 -106 294 -27 429
+-31 613 -20 333 19 476 30 517 40 22 5 56 10 75 10 35 0 130 18 245 47 188 46
+234 60 345 98 41 15 89 30 105 35 54 15 120 41 129 51 6 5 16 9 23 9 39 0 447
+206 576 292 32 21 61 38 63 38 6 0 207 151 214 160 3 4 43 40 90 80 155 132
+306 298 435 478 64 88 90 128 102 152 4 8 19 33 34 55 70 105 166 301 223 453
+38 102 45 120 61 177 10 33 22 71 27 85 6 14 13 45 18 70 4 25 12 65 18 90 82
+340 82 869 0 1210 -6 25 -14 61 -18 80 -7 32 -22 86 -55 200 -22 75 -38 118
+-79 213 -22 52 -115 239 -137 277 -209 355 -375 561 -629 777 -167 142 -281
+224 -471 338 -114 68 -107 64 -259 140 -128 64 -157 77 -232 109 -18 7 -50 21
+-71 30 -21 9 -45 16 -53 16 -9 0 -28 6 -42 14 -46 23 -268 87 -417 119 -372
+81 -739 112 -1120 96z m-6513 -1899 c65 -10 126 -24 137 -30 11 -5 29 -10 40
+-10 19 0 35 -6 126 -45 162 -70 251 -131 384 -262 59 -60 128 -139 153 -178
+44 -68 118 -225 118 -251 0 -8 6 -28 14 -46 24 -58 46 -200 46 -300 0 -421
+-247 -805 -640 -995 -205 -100 -348 -132 -612 -140 -147 -4 -205 -1 -275 11
+-126 24 -289 69 -341 95 -9 4 -48 23 -87 42 -394 187 -647 572 -647 981 0 120
+33 300 72 393 19 44 79 167 93 190 34 55 131 175 174 216 48 46 150 124 188
+145 46 24 103 53 140 69 22 10 48 22 59 27 10 6 39 16 65 23 25 7 73 20 106
+30 201 56 475 70 687 35z m6873 4 c109 -19 199 -41 243 -60 18 -8 40 -14 48
+-14 9 0 28 -6 42 -13 15 -8 45 -22 67 -32 22 -9 47 -21 55 -26 8 -4 33 -18 54
+-29 97 -53 267 -208 348 -318 42 -57 128 -216 128 -238 0 -7 6 -25 14 -41 49
+-99 73 -302 56 -467 -12 -106 -43 -241 -61 -260 -5 -6 -9 -16 -9 -24 0 -21
+-63 -143 -114 -219 -85 -129 -295 -315 -416 -369 -8 -4 -43 -19 -78 -35 -34
+-16 -66 -29 -72 -29 -5 0 -24 -6 -42 -14 -126 -53 -248 -71 -473 -71 -186 0
+-243 6 -380 42 -194 50 -378 157 -543 317 -147 142 -251 319 -283 476 -4 25
+-13 63 -18 85 -28 108 -6 437 35 533 8 18 14 39 14 47 0 18 51 134 84 190 76
+132 204 270 321 346 76 50 183 106 255 134 25 9 60 23 78 31 18 8 40 14 48 14
+9 0 37 7 63 15 142 44 376 57 536 29z"/><path d="M51475 16099 c-225 -16 -277 -21 -385 -35 -172 -22 -299 -44 -356
+-60 -28 -8 -61 -14 -73 -14 -12 0 -31 -5 -42 -10 -10 -6 -38 -15 -61 -20 -61
+-13 -134 -35 -198 -60 -30 -12 -64 -24 -75 -27 -11 -3 -33 -11 -50 -18 -16 -7
+-50 -21 -75 -30 -90 -35 -328 -150 -400 -194 -19 -11 -42 -24 -50 -28 -24 -11
+-230 -152 -281 -192 -265 -207 -396 -342 -600 -616 -107 -144 -122 -166 -139
+-200 -6 -11 -19 -33 -29 -50 -20 -31 -112 -215 -138 -275 -9 -19 -22 -48 -29
+-63 -8 -16 -14 -33 -14 -39 0 -5 -6 -24 -13 -41 -25 -59 -55 -152 -77 -237 -5
+-19 -14 -55 -20 -80 -49 -189 -66 -297 -79 -505 -14 -209 -13 -331 4 -545 13
+-172 21 -226 51 -365 24 -112 69 -273 90 -323 8 -18 14 -40 14 -50 0 -9 7 -26
+15 -36 8 -11 15 -28 15 -37 0 -10 6 -30 14 -46 8 -15 21 -44 29 -63 150 -347
+360 -649 633 -909 91 -87 331 -281 348 -281 3 0 34 -20 70 -45 118 -80 457
+-255 556 -286 14 -4 50 -17 80 -29 59 -22 142 -50 230 -76 30 -9 75 -23 99
+-30 25 -8 53 -14 64 -14 11 0 43 -6 71 -14 103 -29 297 -61 536 -87 162 -18
+684 -23 841 -9 74 7 175 16 224 20 107 9 218 26 297 46 32 8 67 14 79 14 12 0
+47 7 78 16 31 8 81 22 111 31 30 8 71 21 90 28 19 7 51 18 70 25 19 6 51 15
+70 20 19 4 46 12 60 18 14 5 45 18 70 27 44 17 78 31 143 59 58 25 241 117
+272 137 17 10 39 23 50 29 124 66 383 261 511 387 152 148 239 255 360 438 81
+123 94 150 94 187 0 26 -6 37 -31 51 -17 9 -37 17 -44 17 -8 0 -29 6 -47 14
+-42 17 -94 35 -133 46 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -37 10 -90
+28 -130 45 -43 17 -96 36 -130 45 -16 5 -55 18 -85 30 -106 41 -135 51 -165
+60 -16 4 -55 18 -85 30 -30 12 -68 25 -85 30 -16 5 -55 18 -85 30 -30 12 -68
+25 -85 30 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -16 4 -41 12 -55 18 -50
+20 -106 40 -161 58 -55 17 -58 17 -87 -2 -17 -10 -57 -53 -90 -95 -105 -133
+-249 -250 -392 -319 -25 -12 -53 -26 -62 -31 -82 -44 -285 -98 -443 -119 -211
+-27 -501 9 -670 85 -271 122 -424 252 -562 480 -13 21 -46 89 -68 140 -7 17
+-20 55 -29 85 -41 148 -45 181 -23 197 8 7 716 13 1992 17 1089 4 2067 11
+2173 14 175 7 195 9 208 27 21 28 20 590 -1 730 -27 180 -46 289 -60 345 -41
+167 -70 267 -91 318 -8 18 -14 39 -14 47 0 15 -21 68 -46 117 -8 14 -14 31
+-14 37 0 11 -37 94 -93 211 -109 224 -322 527 -486 691 -159 158 -459 394
+-586 459 -11 6 -33 19 -50 30 -16 10 -52 30 -80 45 -27 14 -57 30 -65 35 -24
+15 -181 86 -240 110 -30 12 -68 27 -85 34 -36 16 -79 30 -165 57 -36 12 -76
+26 -90 31 -14 6 -41 14 -60 18 -19 4 -57 13 -85 20 -134 32 -167 39 -255 54
+-182 30 -316 45 -475 56 -241 15 -302 16 -400 9z m355 -1530 c184 -29 249 -43
+292 -65 14 -8 34 -14 43 -14 9 0 29 -6 43 -14 15 -8 61 -30 102 -51 237 -118
+412 -329 504 -610 23 -70 21 -92 -11 -112 -26 -17 -91 -18 -1130 -18 l-1102 0
+-22 22 c-21 20 -21 25 -10 70 36 137 114 283 218 404 87 101 221 206 333 260
+137 66 242 99 385 119 44 6 87 13 95 15 36 7 201 4 260 -6z"/><path d="M45670 16081 c-42 -5 -87 -12 -100 -16 -13 -4 -49 -11 -80 -15 -67
+-9 -212 -44 -295 -72 -16 -5 -43 -14 -60 -18 -53 -15 -120 -41 -129 -51 -6 -5
+-16 -9 -23 -9 -19 0 -153 -67 -233 -115 -143 -86 -202 -136 -378 -312 -100
+-100 -188 -183 -194 -183 -7 0 -40 30 -73 67 -136 152 -245 259 -330 322 -49
+37 -97 70 -105 74 -8 4 -28 16 -45 27 -16 10 -77 42 -135 71 -58 28 -113 55
+-122 60 -60 31 -276 98 -398 123 -186 40 -261 46 -544 46 -282 0 -381 -8 -528
+-46 -32 -8 -67 -14 -78 -14 -10 0 -34 -6 -52 -14 -18 -7 -58 -21 -88 -31 -68
+-21 -88 -30 -223 -96 -118 -59 -121 -60 -187 -104 -67 -44 -88 -63 -320 -283
+-24 -23 -50 -42 -57 -42 -26 0 -33 54 -33 260 l0 209 -27 21 -28 22 -1030 -7
+c-833 -5 -1034 -9 -1051 -20 l-21 -13 -6 -2088 c-4 -1148 -7 -2419 -7 -2825 0
+-711 1 -738 19 -760 l19 -24 1062 0 1062 0 17 22 c17 20 18 113 24 1610 5
+1298 9 1604 21 1673 49 300 160 475 366 580 25 12 53 27 64 32 87 45 334 64
+421 33 22 -8 48 -15 57 -15 14 0 39 -10 98 -41 8 -4 35 -18 60 -30 25 -13 79
+-57 120 -99 60 -60 85 -95 123 -172 26 -53 47 -103 47 -113 0 -9 5 -26 12 -38
+38 -71 40 -150 47 -1812 l6 -1609 25 -14 c21 -11 207 -13 1090 -8 1060 5 1065
+5 1081 25 16 19 18 148 22 1643 5 1380 8 1635 20 1703 16 82 41 163 58 179 5
+6 9 16 9 23 0 27 106 167 172 227 72 66 171 121 269 150 84 24 323 22 407 -4
+133 -42 220 -94 300 -179 45 -47 112 -152 112 -175 0 -6 5 -17 11 -23 6 -6 15
+-29 20 -50 4 -21 12 -56 18 -78 43 -171 41 -102 41 -1801 0 -1487 1 -1613 17
+-1625 22 -19 2155 -21 2174 -2 6 6 15 52 21 102 14 147 5 3540 -10 3681 -28
+252 -77 503 -118 598 -8 18 -14 39 -14 47 0 8 -6 29 -14 47 -8 18 -24 58 -36
+88 -70 174 -154 335 -235 452 -153 219 -337 392 -560 525 -107 64 -286 153
+-308 153 -7 0 -22 7 -33 15 -10 8 -27 15 -36 15 -10 0 -32 6 -50 14 -54 23
+-197 61 -343 91 -62 13 -151 18 -390 20 -170 2 -344 0 -385 -4z"/><path d="M61585 16055 c-144 -12 -194 -19 -350 -51 -123 -26 -281 -68 -333
+-90 -18 -8 -41 -14 -52 -14 -10 0 -21 -4 -25 -9 -3 -5 -20 -13 -38 -16 -17 -4
+-43 -13 -57 -20 -14 -7 -50 -23 -80 -35 -65 -26 -282 -133 -325 -161 -16 -10
+-39 -23 -50 -29 -25 -13 -52 -30 -157 -102 -205 -141 -518 -433 -654 -614 -61
+-80 -154 -212 -154 -219 0 -2 -16 -27 -35 -56 -19 -29 -49 -80 -65 -114 -17
+-33 -35 -67 -40 -75 -8 -14 -53 -113 -87 -190 -8 -19 -20 -44 -26 -55 -5 -11
+-14 -33 -18 -50 -4 -16 -17 -55 -29 -85 -11 -30 -30 -84 -41 -120 -11 -36 -25
+-78 -31 -95 -5 -16 -14 -48 -18 -70 -4 -22 -12 -60 -18 -85 -24 -101 -42 -197
+-42 -225 0 -16 -7 -68 -15 -115 -11 -62 -15 -161 -16 -359 0 -267 7 -367 42
+-551 6 -30 12 -73 15 -95 8 -65 56 -246 80 -303 8 -18 14 -41 14 -50 0 -10 7
+-27 15 -38 8 -10 15 -28 15 -39 0 -11 7 -29 15 -39 8 -11 15 -27 15 -35 0 -9
+14 -45 31 -81 17 -36 37 -78 44 -95 20 -46 85 -178 98 -200 52 -88 260 -382
+286 -405 4 -3 31 -34 61 -70 62 -75 175 -186 246 -246 64 -52 252 -194 258
+-194 3 0 33 -19 68 -42 86 -58 95 -63 153 -93 28 -14 57 -30 65 -35 28 -17
+209 -100 219 -100 5 0 22 -6 38 -14 36 -18 152 -61 208 -76 17 -5 44 -13 60
+-18 53 -18 138 -40 215 -56 186 -38 187 -39 505 -66 429 -38 974 49 1360 215
+219 95 366 187 588 370 37 30 74 55 82 55 28 0 35 -50 35 -250 0 -194 1 -199
+22 -214 20 -14 141 -16 1101 -16 l1078 0 24 25 25 24 -2 2828 -3 2828 -30 15
+c-26 13 -163 15 -1090 15 -996 0 -1062 -1 -1092 -18 l-33 -18 0 -197 c0 -204
+-7 -243 -42 -250 -9 -2 -25 5 -35 15 -77 74 -253 197 -380 264 -43 22 -85 44
+-93 49 -16 9 -136 64 -185 84 -215 91 -554 158 -895 176 -215 12 -245 11 -445
+-5z m1010 -1854 c33 -7 78 -17 100 -22 22 -6 56 -14 75 -19 71 -17 249 -96
+325 -143 116 -72 286 -236 357 -343 44 -67 99 -178 130 -259 25 -65 38 -123
+54 -245 31 -227 -12 -419 -150 -665 -23 -42 -125 -172 -172 -220 -53 -54 -140
+-127 -164 -138 -8 -4 -28 -16 -45 -27 -119 -76 -310 -150 -465 -180 -25 -5
+-65 -13 -90 -19 -71 -17 -406 -14 -497 4 -222 45 -397 118 -553 233 -102 74
+-219 200 -277 297 -31 52 -106 210 -113 238 -5 18 -13 46 -18 62 -44 132 -53
+305 -23 455 27 133 48 211 61 224 5 5 10 17 10 26 0 25 80 175 134 252 90 129
+259 273 397 340 165 80 275 118 394 139 33 5 78 14 100 19 53 12 355 5 430 -9z"/><path d="M58430 15975 c-30 -8 -69 -14 -86 -15 -18 0 -56 -7 -85 -16 -159 -46
+-194 -58 -294 -104 -33 -15 -67 -31 -75 -34 -8 -3 -28 -15 -45 -26 -16 -11
+-39 -24 -50 -30 -82 -41 -216 -152 -346 -284 -87 -88 -132 -127 -139 -120 -5
+5 -14 106 -20 224 -5 118 -12 248 -16 287 l-6 73 -41 11 c-30 8 -328 12 -1054
+13 l-1012 1 -23 -23 -23 -23 0 -2824 c0 -2698 1 -2825 18 -2842 17 -17 73 -18
+1072 -18 999 0 1055 1 1072 18 17 17 18 90 24 1390 5 1183 8 1385 21 1469 9
+53 21 105 27 116 6 12 11 30 11 41 0 39 85 212 143 291 51 70 145 160 222 211
+95 65 258 139 345 158 19 5 53 13 75 19 123 33 357 57 626 65 55 1 92 7 102
+16 16 12 17 92 17 968 l0 954 -25 24 c-24 25 -26 25 -202 24 -115 0 -198 -6
+-233 -14z"/></g></g></g></g></symbol><symbol id="pm-logo" viewBox="203 205 1994 447.3"><path transform="translate(203,205) scale(0.615711)" style="fill:var(--beam,currentColor)" d="M541.2,93.9 L540.6,87.4 L539.5,80.9 L538.0,74.5 L536.1,68.2 L533.8,62.0 L531.1,56.0 L528.0,50.2 L524.5,44.7 L520.7,39.3 L516.5,34.2 L512.0,29.4 L507.2,24.9 L502.1,20.8 L496.8,16.9 L491.2,13.5 L485.4,10.4 L479.4,7.7 L473.3,5.3 L467.0,3.4 L460.6,1.9 L454.1,0.9 L447.5,0.2 L441.0,0.0 L434.4,0.2 L427.8,0.9 L421.3,1.9 L414.9,3.4 L408.6,5.3 L402.5,7.7 L396.5,10.4 L390.7,13.5 L385.1,16.9 L379.8,20.8 L374.7,24.9 L369.9,29.4 L365.4,34.2 L361.2,39.3 L357.4,44.7 L353.9,50.2 L350.8,56.0 L348.1,62.0 L345.8,68.2 L343.9,74.5 L342.4,80.9 L341.3,87.4 L340.7,93.9 L340.5,100.5 L340.5,277.8 L147.6,175.3 L141.7,172.4 L135.6,169.9 L129.4,167.8 L123.1,166.1 L116.6,164.8 L110.1,164.0 L103.5,163.5 L96.9,163.6 L90.4,164.0 L83.9,164.9 L77.4,166.2 L71.1,167.9 L64.8,170.0 L58.8,172.6 L52.9,175.5 L47.2,178.8 L41.7,182.4 L36.5,186.5 L31.6,190.8 L26.9,195.5 L22.6,200.4 L18.6,205.6 L15.0,211.1 L11.7,216.8 L8.8,222.7 L6.3,228.8 L4.2,235.0 L2.5,241.4 L1.3,247.9 L0.4,254.4 L0.0,260.9 L0.0,267.5 L0.5,274.1 L1.3,280.6 L2.6,287.0 L4.3,293.4 L6.5,299.6 L9.0,305.7 L11.9,311.6 L15.2,317.3 L18.9,322.7 L22.9,327.9 L27.3,332.9 L31.9,337.5 L36.9,341.8 L42.1,345.8 L47.6,349.5 L53.3,352.7 L226.8,445.0 L53.3,537.3 L47.6,540.5 L42.1,544.2 L36.9,548.2 L31.9,552.5 L27.3,557.1 L22.9,562.1 L18.9,567.3 L15.2,572.7 L11.9,578.4 L9.0,584.3 L6.5,590.4 L4.3,596.6 L2.6,603.0 L1.3,609.4 L0.5,615.9 L0.0,622.5 L0.0,629.1 L0.4,635.6 L1.3,642.1 L2.5,648.6 L4.2,655.0 L6.3,661.2 L8.8,667.3 L11.7,673.2 L15.0,678.9 L18.6,684.4 L22.6,689.6 L26.9,694.5 L31.6,699.2 L36.5,703.5 L41.7,707.6 L47.2,711.2 L52.9,714.5 L58.8,717.4 L64.8,720.0 L71.1,722.1 L77.4,723.8 L83.9,725.1 L90.4,726.0 L96.9,726.4 L103.5,726.5 L110.1,726.0 L116.6,725.2 L123.1,723.9 L129.4,722.2 L135.6,720.1 L141.7,717.6 L147.6,714.7 L441.0,558.8 L734.3,714.7 L740.2,717.6 L746.3,720.1 L752.5,722.2 L758.9,723.9 L765.3,725.2 L771.8,726.0 L778.4,726.5 L785.0,726.4 L791.5,726.0 L798.1,725.1 L804.5,723.8 L810.8,722.1 L817.1,720.0 L823.1,717.4 L829.0,714.5 L834.7,711.2 L840.2,707.6 L845.4,703.5 L850.3,699.2 L855.0,694.5 L859.3,689.6 L863.3,684.4 L866.9,678.9 L870.2,673.2 L873.1,667.3 L875.6,661.2 L877.7,655.0 L879.4,648.6 L880.6,642.1 L881.5,635.6 L881.9,629.1 L881.9,622.5 L881.4,615.9 L880.6,609.4 L879.3,603.0 L877.6,596.6 L875.4,590.4 L872.9,584.3 L870.0,578.4 L866.7,572.7 L863.0,567.3 L859.0,562.1 L854.6,557.1 L850.0,552.5 L845.0,548.2 L839.8,544.2 L834.3,540.5 L828.6,537.3 L655.1,445.0 L828.6,352.7 L834.3,349.5 L839.8,345.8 L845.0,341.8 L850.0,337.5 L854.6,332.9 L859.0,327.9 L863.0,322.7 L866.7,317.3 L870.0,311.6 L872.9,305.7 L875.4,299.6 L877.6,293.4 L879.3,287.0 L880.6,280.6 L881.4,274.1 L881.9,267.5 L881.9,260.9 L881.5,254.4 L880.6,247.9 L879.4,241.4 L877.7,235.0 L875.6,228.8 L873.1,222.7 L870.2,216.8 L866.9,211.1 L863.3,205.6 L859.3,200.4 L855.0,195.5 L850.3,190.8 L845.4,186.5 L840.2,182.4 L834.7,178.8 L829.0,175.5 L823.1,172.6 L817.1,170.0 L810.8,167.9 L804.5,166.2 L798.1,164.9 L791.5,164.0 L785.0,163.6 L778.4,163.5 L771.8,164.0 L765.3,164.8 L758.9,166.1 L752.5,167.8 L746.3,169.9 L740.2,172.4 L734.3,175.3 L541.5,277.8 L541.5,100.5 L541.2,93.9Z"/><g style="fill:currentColor"><g transform="scale(0.3333333)"><g transform="translate(0,2574) scale(0.1,-0.1)"><path d="M34865 16099 c-202 -9 -398 -25 -450 -38 -22 -6 -55 -11 -74 -11 -19 0 -62 -6 -95 -14 -34 -8 -97 -21 -141 -31 -93 -19 -153 -35 -340 -90 -57 -16 -77 -23 -175 -60 -22 -8 -59 -22 -82 -31 -24 -8 -56 -22 -71 -30 -16 -8 -34 -14 -40 -14 -12 0 -256 -122 -302 -151 -16 -10 -39 -23 -50 -28 -11 -5 -36 -20 -55 -33 -19 -13 -42 -27 -50 -31 -8 -4 -24 -13 -35 -20 -325 -200 -680 -547 -888 -867 -80 -123 -82 -126 -112 -185 -14 -27 -30 -57 -35 -65 -19 -32 -70 -151 -70 -163 0 -7 -7 -22 -15 -33 -8 -10 -15 -27 -15 -36 0 -10 -6 -32 -14 -50 -54 -126 -137 -442 -136 -519 0 -78 -52 -123 -57 -49 -2 19 -9 69 -17 110 -8 41 -22 118 -31 170 -9 52 -21 113 -27 135 -6 22 -15 58 -19 80 -8 41 -29 114 -50 175 -30 87 -65 180 -85 225 -70 159 -102 227 -138 290 -12 22 -31 56 -42 75 -75 135 -177 264 -319 405 -66 66 -136 133 -155 149 -67 55 -189 146 -195 146 -4 0 -24 12 -44 28 -20 15 -45 32 -56 39 -233 141 -307 180 -470 248 -109 46 -149 61 -200 75 -16 5 -43 13 -60 18 -142 48 -339 92 -515 116 -504 68 -978 38 -1440 -91 -30 -8 -70 -22 -88 -29 -18 -8 -40 -14 -50 -14 -9 0 -26 -7 -36 -15 -11 -8 -26 -15 -33 -15 -13 0 -134 -53 -163 -71 -8 -5 -19 -11 -25 -13 -5 -2 -17 -7 -25 -10 -8 -3 -28 -15 -45 -26 -16 -11 -39 -24 -50 -30 -54 -28 -225 -148 -305 -215 -36 -30 -68 -55 -73 -55 -20 0 -29 71 -35 262 -5 146 -11 211 -20 220 -22 22 -330 29 -1232 26 -930 -3 -904 -2 -932 -51 -11 -18 -14 -754 -16 -3752 -1 -2285 1 -3735 7 -3744 7 -11 53 -17 188 -24 239 -12 1929 -2 1966 12 l27 11 1 677 c1 373 5 883 8 1133 l6 455 25 3 c16 2 35 -7 55 -26 69 -64 258 -198 375 -265 46 -26 171 -88 225 -111 17 -7 47 -21 68 -30 21 -9 44 -16 52 -16 8 0 29 -6 47 -14 210 -88 645 -156 1003 -156 304 0 705 54 900 122 17 5 46 14 65 18 19 4 51 14 70 20 113 40 150 54 230 85 122 48 286 130 385 194 22 14 48 30 57 36 94 57 264 186 365 277 168 152 360 387 443 543 6 11 26 47 45 80 46 80 132 254 179 367 73 173 145 449 167 643 5 44 13 96 19 115 5 19 10 52 10 72 0 20 5 40 12 44 18 11 36 -24 43 -85 12 -108 44 -259 77 -356 5 -16 13 -43 18 -60 13 -48 31 -98 46 -128 8 -16 14 -35 14 -42 0 -7 6 -26 14 -42 8 -15 21 -44 29 -63 70 -161 183 -368 257 -471 14 -19 41 -57 60 -84 192 -268 591 -625 865 -775 22 -12 54 -30 70 -40 17 -10 50 -28 75 -40 25 -12 52 -26 60 -31 8 -5 22 -12 30 -15 8 -4 40 -18 70 -31 30 -14 73 -33 95 -42 22 -10 57 -25 78 -34 21 -9 46 -17 57 -17 10 0 21 -4 25 -9 3 -5 20 -13 38 -17 17 -3 45 -12 62 -19 16 -7 57 -21 90 -30 33 -10 75 -24 93 -31 18 -8 43 -14 55 -14 12 0 39 -6 62 -14 97 -34 411 -91 580 -106 294 -27 429 -31 613 -20 333 19 476 30 517 40 22 5 56 10 75 10 35 0 130 18 245 47 188 46 234 60 345 98 41 15 89 30 105 35 54 15 120 41 129 51 6 5 16 9 23 9 39 0 447 206 576 292 32 21 61 38 63 38 6 0 207 151 214 160 3 4 43 40 90 80 155 132 306 298 435 478 64 88 90 128 102 152 4 8 19 33 34 55 70 105 166 301 223 453 38 102 45 120 61 177 10 33 22 71 27 85 6 14 13 45 18 70 4 25 12 65 18 90 82 340 82 869 0 1210 -6 25 -14 61 -18 80 -7 32 -22 86 -55 200 -22 75 -38 118 -79 213 -22 52 -115 239 -137 277 -209 355 -375 561 -629 777 -167 142 -281 224 -471 338 -114 68 -107 64 -259 140 -128 64 -157 77 -232 109 -18 7 -50 21 -71 30 -21 9 -45 16 -53 16 -9 0 -28 6 -42 14 -46 23 -268 87 -417 119 -372 81 -739 112 -1120 96z m-6513 -1899 c65 -10 126 -24 137 -30 11 -5 29 -10 40 -10 19 0 35 -6 126 -45 162 -70 251 -131 384 -262 59 -60 128 -139 153 -178 44 -68 118 -225 118 -251 0 -8 6 -28 14 -46 24 -58 46 -200 46 -300 0 -421 -247 -805 -640 -995 -205 -100 -348 -132 -612 -140 -147 -4 -205 -1 -275 11 -126 24 -289 69 -341 95 -9 4 -48 23 -87 42 -394 187 -647 572 -647 981 0 120 33 300 72 393 19 44 79 167 93 190 34 55 131 175 174 216 48 46 150 124 188 145 46 24 103 53 140 69 22 10 48 22 59 27 10 6 39 16 65 23 25 7 73 20 106 30 201 56 475 70 687 35z m6873 4 c109 -19 199 -41 243 -60 18 -8 40 -14 48 -14 9 0 28 -6 42 -13 15 -8 45 -22 67 -32 22 -9 47 -21 55 -26 8 -4 33 -18 54 -29 97 -53 267 -208 348 -318 42 -57 128 -216 128 -238 0 -7 6 -25 14 -41 49 -99 73 -302 56 -467 -12 -106 -43 -241 -61 -260 -5 -6 -9 -16 -9 -24 0 -21 -63 -143 -114 -219 -85 -129 -295 -315 -416 -369 -8 -4 -43 -19 -78 -35 -34 -16 -66 -29 -72 -29 -5 0 -24 -6 -42 -14 -126 -53 -248 -71 -473 -71 -186 0 -243 6 -380 42 -194 50 -378 157 -543 317 -147 142 -251 319 -283 476 -4 25 -13 63 -18 85 -28 108 -6 437 35 533 8 18 14 39 14 47 0 18 51 134 84 190 76 132 204 270 321 346 76 50 183 106 255 134 25 9 60 23 78 31 18 8 40 14 48 14 9 0 37 7 63 15 142 44 376 57 536 29z"/><path d="M51475 16099 c-225 -16 -277 -21 -385 -35 -172 -22 -299 -44 -356 -60 -28 -8 -61 -14 -73 -14 -12 0 -31 -5 -42 -10 -10 -6 -38 -15 -61 -20 -61 -13 -134 -35 -198 -60 -30 -12 -64 -24 -75 -27 -11 -3 -33 -11 -50 -18 -16 -7 -50 -21 -75 -30 -90 -35 -328 -150 -400 -194 -19 -11 -42 -24 -50 -28 -24 -11 -230 -152 -281 -192 -265 -207 -396 -342 -600 -616 -107 -144 -122 -166 -139 -200 -6 -11 -19 -33 -29 -50 -20 -31 -112 -215 -138 -275 -9 -19 -22 -48 -29 -63 -8 -16 -14 -33 -14 -39 0 -5 -6 -24 -13 -41 -25 -59 -55 -152 -77 -237 -5 -19 -14 -55 -20 -80 -49 -189 -66 -297 -79 -505 -14 -209 -13 -331 4 -545 13 -172 21 -226 51 -365 24 -112 69 -273 90 -323 8 -18 14 -40 14 -50 0 -9 7 -26 15 -36 8 -11 15 -28 15 -37 0 -10 6 -30 14 -46 8 -15 21 -44 29 -63 150 -347 360 -649 633 -909 91 -87 331 -281 348 -281 3 0 34 -20 70 -45 118 -80 457 -255 556 -286 14 -4 50 -17 80 -29 59 -22 142 -50 230 -76 30 -9 75 -23 99 -30 25 -8 53 -14 64 -14 11 0 43 -6 71 -14 103 -29 297 -61 536 -87 162 -18 684 -23 841 -9 74 7 175 16 224 20 107 9 218 26 297 46 32 8 67 14 79 14 12 0 47 7 78 16 31 8 81 22 111 31 30 8 71 21 90 28 19 7 51 18 70 25 19 6 51 15 70 20 19 4 46 12 60 18 14 5 45 18 70 27 44 17 78 31 143 59 58 25 241 117 272 137 17 10 39 23 50 29 124 66 383 261 511 387 152 148 239 255 360 438 81 123 94 150 94 187 0 26 -6 37 -31 51 -17 9 -37 17 -44 17 -8 0 -29 6 -47 14 -42 17 -94 35 -133 46 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -37 10 -90 28 -130 45 -43 17 -96 36 -130 45 -16 5 -55 18 -85 30 -106 41 -135 51 -165 60 -16 4 -55 18 -85 30 -30 12 -68 25 -85 30 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -16 4 -41 12 -55 18 -50 20 -106 40 -161 58 -55 17 -58 17 -87 -2 -17 -10 -57 -53 -90 -95 -105 -133 -249 -250 -392 -319 -25 -12 -53 -26 -62 -31 -82 -44 -285 -98 -443 -119 -211 -27 -501 9 -670 85 -271 122 -424 252 -562 480 -13 21 -46 89 -68 140 -7 17 -20 55 -29 85 -41 148 -45 181 -23 197 8 7 716 13 1992 17 1089 4 2067 11 2173 14 175 7 195 9 208 27 21 28 20 590 -1 730 -27 180 -46 289 -60 345 -41 167 -70 267 -91 318 -8 18 -14 39 -14 47 0 15 -21 68 -46 117 -8 14 -14 31 -14 37 0 11 -37 94 -93 211 -109 224 -322 527 -486 691 -159 158 -459 394 -586 459 -11 6 -33 19 -50 30 -16 10 -52 30 -80 45 -27 14 -57 30 -65 35 -24 15 -181 86 -240 110 -30 12 -68 27 -85 34 -36 16 -79 30 -165 57 -36 12 -76 26 -90 31 -14 6 -41 14 -60 18 -19 4 -57 13 -85 20 -134 32 -167 39 -255 54 -182 30 -316 45 -475 56 -241 15 -302 16 -400 9z m355 -1530 c184 -29 249 -43 292 -65 14 -8 34 -14 43 -14 9 0 29 -6 43 -14 15 -8 61 -30 102 -51 237 -118 412 -329 504 -610 23 -70 21 -92 -11 -112 -26 -17 -91 -18 -1130 -18 l-1102 0 -22 22 c-21 20 -21 25 -10 70 36 137 114 283 218 404 87 101 221 206 333 260 137 66 242 99 385 119 44 6 87 13 95 15 36 7 201 4 260 -6z"/><path d="M45670 16081 c-42 -5 -87 -12 -100 -16 -13 -4 -49 -11 -80 -15 -67 -9 -212 -44 -295 -72 -16 -5 -43 -14 -60 -18 -53 -15 -120 -41 -129 -51 -6 -5 -16 -9 -23 -9 -19 0 -153 -67 -233 -115 -143 -86 -202 -136 -378 -312 -100 -100 -188 -183 -194 -183 -7 0 -40 30 -73 67 -136 152 -245 259 -330 322 -49 37 -97 70 -105 74 -8 4 -28 16 -45 27 -16 10 -77 42 -135 71 -58 28 -113 55 -122 60 -60 31 -276 98 -398 123 -186 40 -261 46 -544 46 -282 0 -381 -8 -528 -46 -32 -8 -67 -14 -78 -14 -10 0 -34 -6 -52 -14 -18 -7 -58 -21 -88 -31 -68 -21 -88 -30 -223 -96 -118 -59 -121 -60 -187 -104 -67 -44 -88 -63 -320 -283 -24 -23 -50 -42 -57 -42 -26 0 -33 54 -33 260 l0 209 -27 21 -28 22 -1030 -7 c-833 -5 -1034 -9 -1051 -20 l-21 -13 -6 -2088 c-4 -1148 -7 -2419 -7 -2825 0 -711 1 -738 19 -760 l19 -24 1062 0 1062 0 17 22 c17 20 18 113 24 1610 5 1298 9 1604 21 1673 49 300 160 475 366 580 25 12 53 27 64 32 87 45 334 64 421 33 22 -8 48 -15 57 -15 14 0 39 -10 98 -41 8 -4 35 -18 60 -30 25 -13 79 -57 120 -99 60 -60 85 -95 123 -172 26 -53 47 -103 47 -113 0 -9 5 -26 12 -38 38 -71 40 -150 47 -1812 l6 -1609 25 -14 c21 -11 207 -13 1090 -8 1060 5 1065 5 1081 25 16 19 18 148 22 1643 5 1380 8 1635 20 1703 16 82 41 163 58 179 5 6 9 16 9 23 0 27 106 167 172 227 72 66 171 121 269 150 84 24 323 22 407 -4 133 -42 220 -94 300 -179 45 -47 112 -152 112 -175 0 -6 5 -17 11 -23 6 -6 15 -29 20 -50 4 -21 12 -56 18 -78 43 -171 41 -102 41 -1801 0 -1487 1 -1613 17 -1625 22 -19 2155 -21 2174 -2 6 6 15 52 21 102 14 147 5 3540 -10 3681 -28 252 -77 503 -118 598 -8 18 -14 39 -14 47 0 8 -6 29 -14 47 -8 18 -24 58 -36 88 -70 174 -154 335 -235 452 -153 219 -337 392 -560 525 -107 64 -286 153 -308 153 -7 0 -22 7 -33 15 -10 8 -27 15 -36 15 -10 0 -32 6 -50 14 -54 23 -197 61 -343 91 -62 13 -151 18 -390 20 -170 2 -344 0 -385 -4z"/><path d="M61585 16055 c-144 -12 -194 -19 -350 -51 -123 -26 -281 -68 -333 -90 -18 -8 -41 -14 -52 -14 -10 0 -21 -4 -25 -9 -3 -5 -20 -13 -38 -16 -17 -4 -43 -13 -57 -20 -14 -7 -50 -23 -80 -35 -65 -26 -282 -133 -325 -161 -16 -10 -39 -23 -50 -29 -25 -13 -52 -30 -157 -102 -205 -141 -518 -433 -654 -614 -61 -80 -154 -212 -154 -219 0 -2 -16 -27 -35 -56 -19 -29 -49 -80 -65 -114 -17 -33 -35 -67 -40 -75 -8 -14 -53 -113 -87 -190 -8 -19 -20 -44 -26 -55 -5 -11 -14 -33 -18 -50 -4 -16 -17 -55 -29 -85 -11 -30 -30 -84 -41 -120 -11 -36 -25 -78 -31 -95 -5 -16 -14 -48 -18 -70 -4 -22 -12 -60 -18 -85 -24 -101 -42 -197 -42 -225 0 -16 -7 -68 -15 -115 -11 -62 -15 -161 -16 -359 0 -267 7 -367 42 -551 6 -30 12 -73 15 -95 8 -65 56 -246 80 -303 8 -18 14 -41 14 -50 0 -10 7 -27 15 -38 8 -10 15 -28 15 -39 0 -11 7 -29 15 -39 8 -11 15 -27 15 -35 0 -9 14 -45 31 -81 17 -36 37 -78 44 -95 20 -46 85 -178 98 -200 52 -88 260 -382 286 -405 4 -3 31 -34 61 -70 62 -75 175 -186 246 -246 64 -52 252 -194 258 -194 3 0 33 -19 68 -42 86 -58 95 -63 153 -93 28 -14 57 -30 65 -35 28 -17 209 -100 219 -100 5 0 22 -6 38 -14 36 -18 152 -61 208 -76 17 -5 44 -13 60 -18 53 -18 138 -40 215 -56 186 -38 187 -39 505 -66 429 -38 974 49 1360 215 219 95 366 187 588 370 37 30 74 55 82 55 28 0 35 -50 35 -250 0 -194 1 -199 22 -214 20 -14 141 -16 1101 -16 l1078 0 24 25 25 24 -2 2828 -3 2828 -30 15 c-26 13 -163 15 -1090 15 -996 0 -1062 -1 -1092 -18 l-33 -18 0 -197 c0 -204 -7 -243 -42 -250 -9 -2 -25 5 -35 15 -77 74 -253 197 -380 264 -43 22 -85 44 -93 49 -16 9 -136 64 -185 84 -215 91 -554 158 -895 176 -215 12 -245 11 -445 -5z m1010 -1854 c33 -7 78 -17 100 -22 22 -6 56 -14 75 -19 71 -17 249 -96 325 -143 116 -72 286 -236 357 -343 44 -67 99 -178 130 -259 25 -65 38 -123 54 -245 31 -227 -12 -419 -150 -665 -23 -42 -125 -172 -172 -220 -53 -54 -140 -127 -164 -138 -8 -4 -28 -16 -45 -27 -119 -76 -310 -150 -465 -180 -25 -5 -65 -13 -90 -19 -71 -17 -406 -14 -497 4 -222 45 -397 118 -553 233 -102 74 -219 200 -277 297 -31 52 -106 210 -113 238 -5 18 -13 46 -18 62 -44 132 -53 305 -23 455 27 133 48 211 61 224 5 5 10 17 10 26 0 25 80 175 134 252 90 129 259 273 397 340 165 80 275 118 394 139 33 5 78 14 100 19 53 12 355 5 430 -9z"/><path d="M58430 15975 c-30 -8 -69 -14 -86 -15 -18 0 -56 -7 -85 -16 -159 -46 -194 -58 -294 -104 -33 -15 -67 -31 -75 -34 -8 -3 -28 -15 -45 -26 -16 -11 -39 -24 -50 -30 -82 -41 -216 -152 -346 -284 -87 -88 -132 -127 -139 -120 -5 5 -14 106 -20 224 -5 118 -12 248 -16 287 l-6 73 -41 11 c-30 8 -328 12 -1054 13 l-1012 1 -23 -23 -23 -23 0 -2824 c0 -2698 1 -2825 18 -2842 17 -17 73 -18 1072 -18 999 0 1055 1 1072 18 17 17 18 90 24 1390 5 1183 8 1385 21 1469 9 53 21 105 27 116 6 12 11 30 11 41 0 39 85 212 143 291 51 70 145 160 222 211 95 65 258 139 345 158 19 5 53 13 75 19 123 33 357 57 626 65 55 1 92 7 102 16 16 12 17 92 17 968 l0 954 -25 24 c-24 25 -26 25 -202 24 -115 0 -198 -6 -233 -14z"/><path d="M29497 8624 c-4 -4 -7 -376 -7 -826 0 -792 1 -821 20 -862 21 -46 61 -81 125 -109 32 -14 63 -17 155 -15 l115 3 0 85 0 85 -79 6 c-61 5 -83 11 -100 28 l-21 22 -5 792 -5 792 -95 3 c-53 1 -99 0 -103 -4z"/><path d="M41081 8612 c-12 -22 -10 -217 2 -229 14 -13 182 -16 206 -4 19 11 21 20 21 116 0 57 -3 110 -6 119 -5 13 -24 16 -110 16 -89 0 -105 -2 -113 -18z"/><path d="M50047 8624 c-4 -4 -7 -143 -7 -309 0 -166 -2 -304 -5 -307 -3 -3 -32 20 -63 51 -60 60 -92 80 -182 112 -109 38 -325 22 -421 -33 -102 -57 -194 -154 -237 -248 -61 -137 -75 -200 -79 -375 -4 -124 -1 -166 16 -240 43 -192 105 -302 220 -388 114 -85 182 -107 336 -107 166 1 283 49 378 158 46 51 56 43 59 -45 l3 -78 89 -3 c49 -2 92 1 95 7 3 5 4 413 1 908 l-5 898 -95 3 c-53 1 -99 0 -103 -4z m-228 -667 c133 -59 221 -248 221 -474 0 -224 -90 -411 -226 -473 -71 -32 -227 -32 -299 0 -61 28 -144 110 -172 170 -58 126 -58 125 -58 305 0 135 3 179 16 210 9 22 25 60 35 85 23 55 117 152 170 176 80 35 234 36 313 1z"/><path d="M54382 8618 c-17 -17 -16 -1573 1 -1639 17 -63 58 -113 119 -144 47 -24 59 -25 167 -23 l116 3 0 85 0 85 -74 6 c-65 5 -77 9 -98 33 l-23 27 0 778 c0 591 -3 780 -12 789 -7 7 -44 12 -98 12 -54 0 -91 -5 -98 -12z"/><path d="M59415 8616 c-93 -16 -135 -37 -180 -88 -65 -76 -77 -110 -83 -235 -3 -68 -9 -117 -16 -122 -7 -6 -48 -11 -91 -13 l-80 -3 0 -85 0 -85 80 -5 c44 -3 86 -9 93 -13 9 -6 12 -134 12 -583 l0 -575 108 3 107 3 5 580 5 580 163 3 162 2 0 90 0 90 -162 2 -163 3 -3 93 -3 94 39 39 40 39 123 0 c68 0 129 4 136 8 19 12 21 171 2 183 -19 12 -209 9 -294 -5z"/><path d="M30838 8483 c-10 -2 -18 -14 -19 -26 0 -12 0 -76 -1 -142 0 -66 -4 -128 -9 -137 -8 -14 -26 -18 -97 -20 l-87 -3 0 -85 0 -85 88 -3 c82 -3 88 -4 97 -27 5 -13 10 -217 10 -452 1 -299 5 -442 13 -474 17 -63 64 -134 106 -162 77 -49 125 -58 296 -55 l160 3 0 85 0 85 -125 6 c-177 8 -215 31 -230 140 -13 85 -12 810 0 829 7 12 43 16 182 20 l173 5 0 85 0 85 -169 3 c-104 1 -175 7 -183 13 -10 9 -13 49 -13 159 0 126 -2 149 -16 154 -18 7 -150 6 -176 -1z"/><path d="M39718 8479 c-16 -9 -18 -27 -18 -153 0 -106 -3 -146 -13 -154 -7 -6 -51 -12 -97 -14 l-85 -3 0 -85 0 -85 85 -3 c46 -2 90 -8 97 -14 10 -8 13 -100 13 -442 1 -528 6 -560 104 -642 76 -63 127 -75 311 -72 l160 3 0 85 0 85 -125 6 c-131 6 -166 16 -205 59 -19 21 -20 38 -23 471 -2 247 -2 450 0 451 2 1 82 4 178 7 l175 6 0 85 0 85 -175 5 -175 5 -3 150 c-2 127 -5 152 -19 163 -20 15 -160 16 -185 1z"/><path d="M57643 8482 c-9 -5 -13 -54 -15 -162 l-3 -155 -95 -5 -95 -5 -3 -87 -3 -87 98 -3 98 -3 5 -465 c6 -536 5 -527 95 -615 76 -74 128 -87 325 -83 l155 3 0 85 0 85 -126 6 c-142 6 -178 19 -214 79 -19 33 -20 53 -23 455 -1 264 1 426 7 435 8 12 44 16 183 20 l173 5 0 85 0 85 -169 3 c-102 1 -175 7 -183 13 -9 8 -13 53 -15 163 l-3 151 -90 3 c-49 1 -96 -1 -102 -6z"/><path d="M27861 8170 c-35 -11 -69 -24 -75 -30 -5 -5 -16 -10 -24 -10 -20 0 -126 -84 -162 -129 -45 -58 -86 -139 -94 -188 -8 -47 -8 -47 89 -58 33 -3 72 -8 87 -11 24 -5 29 0 52 48 36 75 88 133 149 164 47 24 62 26 167 26 95 0 123 -4 162 -21 91 -41 152 -140 160 -260 l3 -44 -65 -18 c-36 -11 -76 -19 -90 -19 -14 0 -54 -6 -90 -14 -58 -13 -94 -20 -235 -46 -198 -36 -322 -111 -391 -235 -26 -47 -28 -58 -29 -170 0 -106 3 -126 23 -167 25 -50 102 -126 155 -153 18 -9 59 -25 92 -36 80 -25 267 -27 340 -3 102 34 176 78 231 137 29 31 55 57 57 57 2 0 12 -20 21 -44 39 -101 95 -137 222 -139 49 -1 87 2 94 9 7 7 10 42 8 90 l-3 79 -39 6 c-25 4 -48 16 -63 33 l-23 27 0 352 c0 312 -3 360 -19 422 -48 180 -154 291 -326 346 -84 26 -293 26 -384 -1z m517 -770 c9 -149 -69 -304 -187 -374 -57 -33 -68 -36 -191 -56 -89 -15 -195 9 -240 53 -42 41 -70 98 -70 142 0 50 34 119 73 149 34 26 138 66 172 66 11 0 52 6 90 14 39 8 106 22 150 30 44 8 100 19 125 24 72 15 75 13 78 -48z"/><path d="M32545 8173 c-154 -48 -291 -164 -356 -303 -107 -229 -105 -574 4 -775 9 -16 21 -41 27 -54 21 -47 152 -165 220 -198 106 -51 160 -63 288 -63 140 0 210 18 329 84 62 35 185 174 209 236 3 8 12 29 19 46 20 48 7 54 -114 54 l-106 -1 -18 -38 c-25 -55 -93 -119 -157 -148 -47 -21 -70 -24 -161 -24 -98 0 -111 2 -172 31 -73 34 -134 94 -165 163 -46 100 -67 227 -39 227 6 0 215 0 464 0 249 0 464 2 478 6 24 6 25 9 25 86 0 191 -61 386 -156 496 -40 48 -134 121 -179 141 -92 40 -148 51 -269 50 -79 0 -138 -6 -171 -16z m334 -216 c56 -25 131 -99 158 -157 25 -52 48 -163 39 -179 -5 -8 -117 -11 -367 -11 -321 0 -360 2 -366 16 -9 23 34 146 69 199 35 53 99 110 148 132 76 35 241 35 319 0z"/><path d="M36100 8172 c-100 -37 -167 -88 -217 -166 -14 -22 -28 -35 -33 -30 -5 5 -10 47 -12 94 l-3 85 -97 3 -98 3 0 -676 0 -675 105 0 105 0 0 433 c0 392 2 438 19 498 10 36 25 78 34 95 19 36 82 102 111 115 11 5 28 13 36 18 31 19 107 36 160 35 147 0 234 -70 273 -219 6 -23 13 -238 16 -505 l6 -465 105 0 105 0 3 464 c2 388 0 474 -13 524 -8 32 -15 65 -15 73 0 23 -56 132 -90 174 -37 46 -117 100 -185 123 -67 23 -251 22 -315 -1z"/><path d="M37941 8170 c-35 -11 -69 -24 -75 -30 -5 -5 -16 -10 -24 -10 -20 0 -126 -84 -162 -129 -45 -58 -86 -139 -94 -188 -8 -47 -8 -47 89 -58 33 -3 72 -8 88 -11 25 -5 29 -1 52 48 34 75 87 133 148 164 47 24 62 26 167 26 95 0 123 -4 162 -21 89 -40 143 -125 164 -258 6 -39 4 -43 -19 -52 -14 -6 -54 -15 -89 -21 -35 -6 -94 -18 -133 -25 -38 -8 -97 -19 -130 -25 -33 -7 -80 -16 -105 -20 -199 -33 -336 -116 -397 -239 -25 -51 -27 -66 -27 -171 0 -105 3 -120 27 -166 27 -53 97 -122 151 -150 17 -8 58 -24 91 -35 80 -25 267 -27 340 -3 103 35 176 78 232 138 30 32 58 55 62 50 4 -5 16 -29 25 -54 35 -90 88 -121 212 -123 49 -1 87 2 94 9 7 7 10 42 8 90 l-3 79 -39 6 c-25 4 -48 16 -63 33 l-23 27 0 352 c0 312 -3 360 -19 422 -48 180 -154 291 -326 346 -84 26 -293 26 -384 -1z m517 -778 c6 -122 -60 -274 -146 -339 -138 -104 -385 -116 -478 -24 -34 33 -63 97 -64 137 0 46 36 120 73 148 34 26 138 66 172 66 11 0 52 6 90 14 39 8 106 22 150 30 44 8 100 19 125 24 73 16 75 14 78 -56z"/><path d="M44455 8173 c-106 -33 -200 -95 -278 -184 -212 -243 -212 -765 0 -1008 50 -57 154 -141 175 -141 8 0 19 -5 24 -10 27 -27 150 -50 264 -50 113 0 179 13 265 51 104 47 216 158 267 267 44 95 43 96 -87 100 l-110 3 -14 -33 c-24 -53 -97 -124 -159 -153 -50 -24 -68 -27 -163 -27 -98 1 -111 3 -172 32 -68 32 -131 92 -163 154 -45 88 -71 236 -41 236 6 0 215 0 464 0 249 0 464 2 478 6 24 6 25 9 25 81 0 287 -120 527 -315 629 -97 51 -158 64 -289 63 -79 0 -138 -6 -171 -16z m334 -216 c57 -25 133 -101 158 -158 24 -55 48 -163 39 -178 -5 -8 -117 -11 -367 -11 -324 0 -360 2 -366 16 -6 17 18 104 46 164 22 48 120 145 167 166 81 36 243 37 323 1z"/><path d="M47525 8173 c-104 -32 -175 -76 -241 -146 -84 -91 -152 -234 -122 -254 15 -9 189 -32 201 -26 4 2 21 32 38 66 34 70 83 119 149 149 36 16 67 20 155 20 128 1 179 -16 244 -81 43 -43 81 -139 81 -206 l0 -42 -82 -17 c-46 -9 -119 -24 -163 -32 -44 -8 -111 -22 -150 -30 -38 -8 -77 -14 -86 -14 -29 0 -184 -50 -219 -71 -8 -5 -25 -13 -38 -19 -35 -15 -107 -95 -133 -147 -19 -39 -24 -68 -27 -156 -5 -137 12 -190 83 -261 90 -91 193 -126 366 -126 118 0 133 3 244 48 49 20 146 92 173 128 24 33 48 27 57 -15 9 -40 39 -77 88 -108 34 -21 52 -25 127 -26 49 -1 91 1 95 5 6 6 10 109 6 166 -1 6 -14 12 -30 12 -17 0 -42 11 -59 25 l-30 25 -4 377 c-5 375 -6 378 -31 446 -64 169 -151 253 -322 310 -67 23 -297 22 -370 0z m503 -801 c8 -235 -159 -399 -413 -405 -192 -5 -300 109 -253 265 13 45 80 108 126 120 76 19 113 28 182 42 129 25 193 37 254 46 32 5 61 11 64 15 3 3 13 4 22 3 12 -3 16 -21 18 -86z"/><path d="M52790 8171 c-99 -37 -181 -98 -226 -166 -9 -14 -20 -22 -25 -19 -5 3 -9 43 -9 90 l0 85 -97 -3 -98 -3 0 -865 0 -865 105 0 105 0 3 255 c1 140 6 258 11 263 5 5 30 -13 57 -40 47 -47 89 -72 182 -107 56 -21 259 -22 317 -1 22 8 46 15 52 15 22 0 116 61 161 104 242 228 285 732 88 1039 -67 104 -167 181 -286 219 -75 24 -275 24 -340 -1z m295 -212 c47 -21 90 -59 131 -114 67 -90 94 -192 94 -358 0 -244 -70 -393 -223 -473 -43 -22 -61 -25 -153 -25 -94 0 -110 2 -161 28 -99 48 -151 114 -195 247 -16 50 -20 89 -20 217 -1 164 10 227 54 314 30 58 106 134 158 158 84 38 236 41 315 6z"/><path d="M55871 8170 c-35 -11 -69 -24 -75 -30 -5 -5 -16 -10 -24 -10 -24 0 -127 -87 -168 -142 -38 -51 -52 -77 -88 -162 -24 -55 -12 -63 111 -72 95 -6 103 -5 108 12 27 86 91 158 172 195 68 31 245 31 315 0 58 -26 100 -67 126 -123 23 -48 46 -169 34 -179 -10 -10 -125 -39 -153 -39 -13 0 -53 -6 -89 -14 -72 -17 -162 -34 -230 -46 -144 -24 -266 -78 -330 -147 -56 -59 -68 -81 -87 -152 -38 -145 -5 -280 90 -367 93 -84 184 -114 347 -114 125 0 171 10 277 63 57 29 163 118 163 138 0 5 7 9 15 9 8 0 15 -9 15 -20 0 -27 32 -90 56 -111 49 -43 143 -64 230 -52 l44 6 0 88 0 89 -34 0 c-18 0 -45 9 -59 20 l-25 20 -5 358 c-4 276 -8 371 -20 417 -21 78 -41 133 -55 147 -7 7 -12 17 -12 23 0 22 -105 124 -154 150 -95 51 -159 65 -301 64 -97 0 -146 -5 -194 -19z m507 -722 c26 -26 5 -186 -35 -266 -34 -66 -108 -143 -164 -169 -87 -40 -214 -59 -284 -43 -132 29 -185 86 -185 196 0 146 80 195 400 244 57 9 165 29 210 39 19 5 37 9 41 10 3 0 10 -4 17 -11z"/><path d="M60895 8173 c-229 -70 -365 -224 -429 -485 -22 -89 -22 -305 0 -402 58 -258 201 -420 433 -490 73 -22 269 -22 342 0 74 22 165 69 216 111 85 68 165 197 199 317 36 126 40 397 8 491 -8 22 -14 46 -14 52 0 27 -65 150 -108 206 -73 96 -174 164 -301 201 -71 21 -276 21 -346 -1z m331 -214 c152 -68 236 -236 236 -474 0 -191 -52 -332 -154 -419 -72 -62 -118 -77 -238 -77 -131 0 -181 19 -260 101 -83 85 -115 161 -129 305 -10 112 5 268 33 344 34 89 118 184 193 217 78 35 242 36 319 3z"/><path d="M64445 8169 c-76 -31 -125 -71 -187 -153 -20 -26 -40 -47 -45 -46 -4 0 -8 17 -9 38 0 20 -1 63 -2 95 l-2 57 -95 0 c-57 0 -95 -4 -95 -10 0 -5 0 -305 0 -665 0 -360 0 -660 0 -665 0 -7 38 -10 108 -8 l107 3 3 460 c2 403 4 466 19 510 16 46 55 106 93 145 92 92 283 98 374 12 91 -86 107 -194 106 -728 0 -209 -1 -385 0 -392 0 -10 25 -12 108 -10 l107 3 3 460 c2 504 3 509 65 603 97 145 317 171 435 51 79 -80 84 -117 91 -654 l6 -460 105 0 105 0 3 440 c2 411 -1 474 -26 615 -18 99 -95 211 -180 263 -78 47 -132 59 -259 55 -105 -3 -124 -6 -176 -31 -71 -35 -145 -106 -177 -170 -13 -27 -27 -50 -31 -53 -4 -2 -17 17 -30 43 -22 49 -114 153 -134 153 -6 0 -16 5 -22 11 -50 50 -272 66 -368 28z"/><path d="M34155 8148 c-3 -7 -4 -310 -3 -673 l3 -660 105 0 105 0 5 470 c6 460 6 471 28 517 52 108 121 146 282 153 62 3 115 6 116 8 2 2 6 156 5 185 -1 9 -30 12 -110 12 -93 0 -116 -3 -163 -24 -71 -32 -112 -70 -138 -130 -12 -27 -26 -44 -31 -39 -4 4 -9 49 -11 98 l-3 90 -93 3 c-68 2 -94 -1 -97 -10z"/><path d="M41085 8148 c-3 -7 -4 -310 -3 -673 l3 -660 105 0 105 0 0 670 0 670 -103 3 c-76 2 -104 -1 -107 -10z"/><path d="M42085 8150 c-3 -5 3 -31 14 -56 12 -26 21 -54 21 -63 0 -9 6 -25 14 -36 7 -11 16 -31 19 -45 3 -14 15 -50 26 -80 42 -107 52 -135 61 -168 4 -18 12 -38 18 -45 5 -7 12 -23 15 -37 3 -14 15 -50 26 -80 45 -113 53 -136 58 -160 3 -14 10 -30 15 -37 6 -7 14 -27 18 -45 5 -18 18 -58 30 -88 45 -117 52 -136 57 -160 3 -14 12 -34 19 -45 8 -11 14 -27 14 -37 0 -9 7 -34 16 -55 9 -21 23 -53 30 -70 l14 -33 134 0 135 0 15 33 c7 17 16 41 19 52 3 11 15 45 27 75 39 102 51 135 62 170 5 19 14 40 18 45 4 6 10 21 13 35 3 14 15 50 27 80 12 30 25 66 30 80 5 14 18 50 30 80 12 30 25 69 30 85 5 17 18 55 30 85 12 30 25 66 30 80 5 14 18 50 30 80 12 30 25 69 30 85 5 17 18 55 30 85 12 30 25 66 30 80 4 14 16 42 25 64 10 23 13 42 7 48 -5 5 -57 7 -117 6 -84 -2 -109 -6 -115 -18 -9 -19 -29 -76 -40 -115 -5 -16 -25 -75 -45 -130 -20 -55 -40 -113 -45 -130 -4 -16 -18 -55 -30 -85 -12 -30 -25 -68 -30 -85 -10 -36 -25 -80 -74 -212 -7 -21 -18 -51 -23 -68 -68 -208 -90 -265 -99 -265 -6 0 -20 30 -32 68 -22 71 -36 113 -60 177 -15 41 -30 85 -51 145 -7 19 -16 49 -21 65 -5 17 -18 55 -30 85 -12 30 -26 69 -30 85 -5 17 -25 75 -45 130 -20 55 -40 114 -45 130 -5 17 -24 73 -42 125 l-34 95 -111 3 c-68 2 -114 -1 -118 -8z"/><path d="M62520 7485 l0 -676 108 3 107 3 2 435 c3 526 7 554 95 636 51 47 101 63 228 71 l115 8 0 95 0 95 -111 3 c-99 2 -116 0 -166 -22 -61 -27 -125 -86 -140 -128 -19 -53 -35 -32 -44 60 l-9 87 -92 3 -93 3 0 -676z"/></g></g></g></symbol><symbol id="pm-compact" viewBox="203 205 1994 447.3"><path transform="translate(203,205) scale(0.615711)" style="fill:var(--beam,currentColor)" d="M541.2,93.9 L540.6,87.4 L539.5,80.9 L538.0,74.5 L536.1,68.2 L533.8,62.0 L531.1,56.0 L528.0,50.2 L524.5,44.7 L520.7,39.3 L516.5,34.2 L512.0,29.4 L507.2,24.9 L502.1,20.8 L496.8,16.9 L491.2,13.5 L485.4,10.4 L479.4,7.7 L473.3,5.3 L467.0,3.4 L460.6,1.9 L454.1,0.9 L447.5,0.2 L441.0,0.0 L434.4,0.2 L427.8,0.9 L421.3,1.9 L414.9,3.4 L408.6,5.3 L402.5,7.7 L396.5,10.4 L390.7,13.5 L385.1,16.9 L379.8,20.8 L374.7,24.9 L369.9,29.4 L365.4,34.2 L361.2,39.3 L357.4,44.7 L353.9,50.2 L350.8,56.0 L348.1,62.0 L345.8,68.2 L343.9,74.5 L342.4,80.9 L341.3,87.4 L340.7,93.9 L340.5,100.5 L340.5,277.8 L147.6,175.3 L141.7,172.4 L135.6,169.9 L129.4,167.8 L123.1,166.1 L116.6,164.8 L110.1,164.0 L103.5,163.5 L96.9,163.6 L90.4,164.0 L83.9,164.9 L77.4,166.2 L71.1,167.9 L64.8,170.0 L58.8,172.6 L52.9,175.5 L47.2,178.8 L41.7,182.4 L36.5,186.5 L31.6,190.8 L26.9,195.5 L22.6,200.4 L18.6,205.6 L15.0,211.1 L11.7,216.8 L8.8,222.7 L6.3,228.8 L4.2,235.0 L2.5,241.4 L1.3,247.9 L0.4,254.4 L0.0,260.9 L0.0,267.5 L0.5,274.1 L1.3,280.6 L2.6,287.0 L4.3,293.4 L6.5,299.6 L9.0,305.7 L11.9,311.6 L15.2,317.3 L18.9,322.7 L22.9,327.9 L27.3,332.9 L31.9,337.5 L36.9,341.8 L42.1,345.8 L47.6,349.5 L53.3,352.7 L226.8,445.0 L53.3,537.3 L47.6,540.5 L42.1,544.2 L36.9,548.2 L31.9,552.5 L27.3,557.1 L22.9,562.1 L18.9,567.3 L15.2,572.7 L11.9,578.4 L9.0,584.3 L6.5,590.4 L4.3,596.6 L2.6,603.0 L1.3,609.4 L0.5,615.9 L0.0,622.5 L0.0,629.1 L0.4,635.6 L1.3,642.1 L2.5,648.6 L4.2,655.0 L6.3,661.2 L8.8,667.3 L11.7,673.2 L15.0,678.9 L18.6,684.4 L22.6,689.6 L26.9,694.5 L31.6,699.2 L36.5,703.5 L41.7,707.6 L47.2,711.2 L52.9,714.5 L58.8,717.4 L64.8,720.0 L71.1,722.1 L77.4,723.8 L83.9,725.1 L90.4,726.0 L96.9,726.4 L103.5,726.5 L110.1,726.0 L116.6,725.2 L123.1,723.9 L129.4,722.2 L135.6,720.1 L141.7,717.6 L147.6,714.7 L441.0,558.8 L734.3,714.7 L740.2,717.6 L746.3,720.1 L752.5,722.2 L758.9,723.9 L765.3,725.2 L771.8,726.0 L778.4,726.5 L785.0,726.4 L791.5,726.0 L798.1,725.1 L804.5,723.8 L810.8,722.1 L817.1,720.0 L823.1,717.4 L829.0,714.5 L834.7,711.2 L840.2,707.6 L845.4,703.5 L850.3,699.2 L855.0,694.5 L859.3,689.6 L863.3,684.4 L866.9,678.9 L870.2,673.2 L873.1,667.3 L875.6,661.2 L877.7,655.0 L879.4,648.6 L880.6,642.1 L881.5,635.6 L881.9,629.1 L881.9,622.5 L881.4,615.9 L880.6,609.4 L879.3,603.0 L877.6,596.6 L875.4,590.4 L872.9,584.3 L870.0,578.4 L866.7,572.7 L863.0,567.3 L859.0,562.1 L854.6,557.1 L850.0,552.5 L845.0,548.2 L839.8,544.2 L834.3,540.5 L828.6,537.3 L655.1,445.0 L828.6,352.7 L834.3,349.5 L839.8,345.8 L845.0,341.8 L850.0,337.5 L854.6,332.9 L859.0,327.9 L863.0,322.7 L866.7,317.3 L870.0,311.6 L872.9,305.7 L875.4,299.6 L877.6,293.4 L879.3,287.0 L880.6,280.6 L881.4,274.1 L881.9,267.5 L881.9,260.9 L881.5,254.4 L880.6,247.9 L879.4,241.4 L877.7,235.0 L875.6,228.8 L873.1,222.7 L870.2,216.8 L866.9,211.1 L863.3,205.6 L859.3,200.4 L855.0,195.5 L850.3,190.8 L845.4,186.5 L840.2,182.4 L834.7,178.8 L829.0,175.5 L823.1,172.6 L817.1,170.0 L810.8,167.9 L804.5,166.2 L798.1,164.9 L791.5,164.0 L785.0,163.6 L778.4,163.5 L771.8,164.0 L765.3,164.8 L758.9,166.1 L752.5,167.8 L746.3,169.9 L740.2,172.4 L734.3,175.3 L541.5,277.8 L541.5,100.5 L541.2,93.9Z"/><g style="fill:currentColor"><g transform="scale(0.3333333)"><g transform="translate(0,2574) scale(0.1,-0.1)"><path d="M34865 16099 c-202 -9 -398 -25 -450 -38 -22 -6 -55 -11 -74 -11 -19 0 -62 -6 -95 -14 -34 -8 -97 -21 -141 -31 -93 -19 -153 -35 -340 -90 -57 -16 -77 -23 -175 -60 -22 -8 -59 -22 -82 -31 -24 -8 -56 -22 -71 -30 -16 -8 -34 -14 -40 -14 -12 0 -256 -122 -302 -151 -16 -10 -39 -23 -50 -28 -11 -5 -36 -20 -55 -33 -19 -13 -42 -27 -50 -31 -8 -4 -24 -13 -35 -20 -325 -200 -680 -547 -888 -867 -80 -123 -82 -126 -112 -185 -14 -27 -30 -57 -35 -65 -19 -32 -70 -151 -70 -163 0 -7 -7 -22 -15 -33 -8 -10 -15 -27 -15 -36 0 -10 -6 -32 -14 -50 -54 -126 -137 -442 -136 -519 0 -78 -52 -123 -57 -49 -2 19 -9 69 -17 110 -8 41 -22 118 -31 170 -9 52 -21 113 -27 135 -6 22 -15 58 -19 80 -8 41 -29 114 -50 175 -30 87 -65 180 -85 225 -70 159 -102 227 -138 290 -12 22 -31 56 -42 75 -75 135 -177 264 -319 405 -66 66 -136 133 -155 149 -67 55 -189 146 -195 146 -4 0 -24 12 -44 28 -20 15 -45 32 -56 39 -233 141 -307 180 -470 248 -109 46 -149 61 -200 75 -16 5 -43 13 -60 18 -142 48 -339 92 -515 116 -504 68 -978 38 -1440 -91 -30 -8 -70 -22 -88 -29 -18 -8 -40 -14 -50 -14 -9 0 -26 -7 -36 -15 -11 -8 -26 -15 -33 -15 -13 0 -134 -53 -163 -71 -8 -5 -19 -11 -25 -13 -5 -2 -17 -7 -25 -10 -8 -3 -28 -15 -45 -26 -16 -11 -39 -24 -50 -30 -54 -28 -225 -148 -305 -215 -36 -30 -68 -55 -73 -55 -20 0 -29 71 -35 262 -5 146 -11 211 -20 220 -22 22 -330 29 -1232 26 -930 -3 -904 -2 -932 -51 -11 -18 -14 -754 -16 -3752 -1 -2285 1 -3735 7 -3744 7 -11 53 -17 188 -24 239 -12 1929 -2 1966 12 l27 11 1 677 c1 373 5 883 8 1133 l6 455 25 3 c16 2 35 -7 55 -26 69 -64 258 -198 375 -265 46 -26 171 -88 225 -111 17 -7 47 -21 68 -30 21 -9 44 -16 52 -16 8 0 29 -6 47 -14 210 -88 645 -156 1003 -156 304 0 705 54 900 122 17 5 46 14 65 18 19 4 51 14 70 20 113 40 150 54 230 85 122 48 286 130 385 194 22 14 48 30 57 36 94 57 264 186 365 277 168 152 360 387 443 543 6 11 26 47 45 80 46 80 132 254 179 367 73 173 145 449 167 643 5 44 13 96 19 115 5 19 10 52 10 72 0 20 5 40 12 44 18 11 36 -24 43 -85 12 -108 44 -259 77 -356 5 -16 13 -43 18 -60 13 -48 31 -98 46 -128 8 -16 14 -35 14 -42 0 -7 6 -26 14 -42 8 -15 21 -44 29 -63 70 -161 183 -368 257 -471 14 -19 41 -57 60 -84 192 -268 591 -625 865 -775 22 -12 54 -30 70 -40 17 -10 50 -28 75 -40 25 -12 52 -26 60 -31 8 -5 22 -12 30 -15 8 -4 40 -18 70 -31 30 -14 73 -33 95 -42 22 -10 57 -25 78 -34 21 -9 46 -17 57 -17 10 0 21 -4 25 -9 3 -5 20 -13 38 -17 17 -3 45 -12 62 -19 16 -7 57 -21 90 -30 33 -10 75 -24 93 -31 18 -8 43 -14 55 -14 12 0 39 -6 62 -14 97 -34 411 -91 580 -106 294 -27 429 -31 613 -20 333 19 476 30 517 40 22 5 56 10 75 10 35 0 130 18 245 47 188 46 234 60 345 98 41 15 89 30 105 35 54 15 120 41 129 51 6 5 16 9 23 9 39 0 447 206 576 292 32 21 61 38 63 38 6 0 207 151 214 160 3 4 43 40 90 80 155 132 306 298 435 478 64 88 90 128 102 152 4 8 19 33 34 55 70 105 166 301 223 453 38 102 45 120 61 177 10 33 22 71 27 85 6 14 13 45 18 70 4 25 12 65 18 90 82 340 82 869 0 1210 -6 25 -14 61 -18 80 -7 32 -22 86 -55 200 -22 75 -38 118 -79 213 -22 52 -115 239 -137 277 -209 355 -375 561 -629 777 -167 142 -281 224 -471 338 -114 68 -107 64 -259 140 -128 64 -157 77 -232 109 -18 7 -50 21 -71 30 -21 9 -45 16 -53 16 -9 0 -28 6 -42 14 -46 23 -268 87 -417 119 -372 81 -739 112 -1120 96z m-6513 -1899 c65 -10 126 -24 137 -30 11 -5 29 -10 40 -10 19 0 35 -6 126 -45 162 -70 251 -131 384 -262 59 -60 128 -139 153 -178 44 -68 118 -225 118 -251 0 -8 6 -28 14 -46 24 -58 46 -200 46 -300 0 -421 -247 -805 -640 -995 -205 -100 -348 -132 -612 -140 -147 -4 -205 -1 -275 11 -126 24 -289 69 -341 95 -9 4 -48 23 -87 42 -394 187 -647 572 -647 981 0 120 33 300 72 393 19 44 79 167 93 190 34 55 131 175 174 216 48 46 150 124 188 145 46 24 103 53 140 69 22 10 48 22 59 27 10 6 39 16 65 23 25 7 73 20 106 30 201 56 475 70 687 35z m6873 4 c109 -19 199 -41 243 -60 18 -8 40 -14 48 -14 9 0 28 -6 42 -13 15 -8 45 -22 67 -32 22 -9 47 -21 55 -26 8 -4 33 -18 54 -29 97 -53 267 -208 348 -318 42 -57 128 -216 128 -238 0 -7 6 -25 14 -41 49 -99 73 -302 56 -467 -12 -106 -43 -241 -61 -260 -5 -6 -9 -16 -9 -24 0 -21 -63 -143 -114 -219 -85 -129 -295 -315 -416 -369 -8 -4 -43 -19 -78 -35 -34 -16 -66 -29 -72 -29 -5 0 -24 -6 -42 -14 -126 -53 -248 -71 -473 -71 -186 0 -243 6 -380 42 -194 50 -378 157 -543 317 -147 142 -251 319 -283 476 -4 25 -13 63 -18 85 -28 108 -6 437 35 533 8 18 14 39 14 47 0 18 51 134 84 190 76 132 204 270 321 346 76 50 183 106 255 134 25 9 60 23 78 31 18 8 40 14 48 14 9 0 37 7 63 15 142 44 376 57 536 29z"/><path d="M51475 16099 c-225 -16 -277 -21 -385 -35 -172 -22 -299 -44 -356 -60 -28 -8 -61 -14 -73 -14 -12 0 -31 -5 -42 -10 -10 -6 -38 -15 -61 -20 -61 -13 -134 -35 -198 -60 -30 -12 -64 -24 -75 -27 -11 -3 -33 -11 -50 -18 -16 -7 -50 -21 -75 -30 -90 -35 -328 -150 -400 -194 -19 -11 -42 -24 -50 -28 -24 -11 -230 -152 -281 -192 -265 -207 -396 -342 -600 -616 -107 -144 -122 -166 -139 -200 -6 -11 -19 -33 -29 -50 -20 -31 -112 -215 -138 -275 -9 -19 -22 -48 -29 -63 -8 -16 -14 -33 -14 -39 0 -5 -6 -24 -13 -41 -25 -59 -55 -152 -77 -237 -5 -19 -14 -55 -20 -80 -49 -189 -66 -297 -79 -505 -14 -209 -13 -331 4 -545 13 -172 21 -226 51 -365 24 -112 69 -273 90 -323 8 -18 14 -40 14 -50 0 -9 7 -26 15 -36 8 -11 15 -28 15 -37 0 -10 6 -30 14 -46 8 -15 21 -44 29 -63 150 -347 360 -649 633 -909 91 -87 331 -281 348 -281 3 0 34 -20 70 -45 118 -80 457 -255 556 -286 14 -4 50 -17 80 -29 59 -22 142 -50 230 -76 30 -9 75 -23 99 -30 25 -8 53 -14 64 -14 11 0 43 -6 71 -14 103 -29 297 -61 536 -87 162 -18 684 -23 841 -9 74 7 175 16 224 20 107 9 218 26 297 46 32 8 67 14 79 14 12 0 47 7 78 16 31 8 81 22 111 31 30 8 71 21 90 28 19 7 51 18 70 25 19 6 51 15 70 20 19 4 46 12 60 18 14 5 45 18 70 27 44 17 78 31 143 59 58 25 241 117 272 137 17 10 39 23 50 29 124 66 383 261 511 387 152 148 239 255 360 438 81 123 94 150 94 187 0 26 -6 37 -31 51 -17 9 -37 17 -44 17 -8 0 -29 6 -47 14 -42 17 -94 35 -133 46 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -37 10 -90 28 -130 45 -43 17 -96 36 -130 45 -16 5 -55 18 -85 30 -106 41 -135 51 -165 60 -16 4 -55 18 -85 30 -30 12 -68 25 -85 30 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -16 5 -55 18 -85 30 -30 12 -68 25 -85 30 -16 4 -41 12 -55 18 -50 20 -106 40 -161 58 -55 17 -58 17 -87 -2 -17 -10 -57 -53 -90 -95 -105 -133 -249 -250 -392 -319 -25 -12 -53 -26 -62 -31 -82 -44 -285 -98 -443 -119 -211 -27 -501 9 -670 85 -271 122 -424 252 -562 480 -13 21 -46 89 -68 140 -7 17 -20 55 -29 85 -41 148 -45 181 -23 197 8 7 716 13 1992 17 1089 4 2067 11 2173 14 175 7 195 9 208 27 21 28 20 590 -1 730 -27 180 -46 289 -60 345 -41 167 -70 267 -91 318 -8 18 -14 39 -14 47 0 15 -21 68 -46 117 -8 14 -14 31 -14 37 0 11 -37 94 -93 211 -109 224 -322 527 -486 691 -159 158 -459 394 -586 459 -11 6 -33 19 -50 30 -16 10 -52 30 -80 45 -27 14 -57 30 -65 35 -24 15 -181 86 -240 110 -30 12 -68 27 -85 34 -36 16 -79 30 -165 57 -36 12 -76 26 -90 31 -14 6 -41 14 -60 18 -19 4 -57 13 -85 20 -134 32 -167 39 -255 54 -182 30 -316 45 -475 56 -241 15 -302 16 -400 9z m355 -1530 c184 -29 249 -43 292 -65 14 -8 34 -14 43 -14 9 0 29 -6 43 -14 15 -8 61 -30 102 -51 237 -118 412 -329 504 -610 23 -70 21 -92 -11 -112 -26 -17 -91 -18 -1130 -18 l-1102 0 -22 22 c-21 20 -21 25 -10 70 36 137 114 283 218 404 87 101 221 206 333 260 137 66 242 99 385 119 44 6 87 13 95 15 36 7 201 4 260 -6z"/><path d="M45670 16081 c-42 -5 -87 -12 -100 -16 -13 -4 -49 -11 -80 -15 -67 -9 -212 -44 -295 -72 -16 -5 -43 -14 -60 -18 -53 -15 -120 -41 -129 -51 -6 -5 -16 -9 -23 -9 -19 0 -153 -67 -233 -115 -143 -86 -202 -136 -378 -312 -100 -100 -188 -183 -194 -183 -7 0 -40 30 -73 67 -136 152 -245 259 -330 322 -49 37 -97 70 -105 74 -8 4 -28 16 -45 27 -16 10 -77 42 -135 71 -58 28 -113 55 -122 60 -60 31 -276 98 -398 123 -186 40 -261 46 -544 46 -282 0 -381 -8 -528 -46 -32 -8 -67 -14 -78 -14 -10 0 -34 -6 -52 -14 -18 -7 -58 -21 -88 -31 -68 -21 -88 -30 -223 -96 -118 -59 -121 -60 -187 -104 -67 -44 -88 -63 -320 -283 -24 -23 -50 -42 -57 -42 -26 0 -33 54 -33 260 l0 209 -27 21 -28 22 -1030 -7 c-833 -5 -1034 -9 -1051 -20 l-21 -13 -6 -2088 c-4 -1148 -7 -2419 -7 -2825 0 -711 1 -738 19 -760 l19 -24 1062 0 1062 0 17 22 c17 20 18 113 24 1610 5 1298 9 1604 21 1673 49 300 160 475 366 580 25 12 53 27 64 32 87 45 334 64 421 33 22 -8 48 -15 57 -15 14 0 39 -10 98 -41 8 -4 35 -18 60 -30 25 -13 79 -57 120 -99 60 -60 85 -95 123 -172 26 -53 47 -103 47 -113 0 -9 5 -26 12 -38 38 -71 40 -150 47 -1812 l6 -1609 25 -14 c21 -11 207 -13 1090 -8 1060 5 1065 5 1081 25 16 19 18 148 22 1643 5 1380 8 1635 20 1703 16 82 41 163 58 179 5 6 9 16 9 23 0 27 106 167 172 227 72 66 171 121 269 150 84 24 323 22 407 -4 133 -42 220 -94 300 -179 45 -47 112 -152 112 -175 0 -6 5 -17 11 -23 6 -6 15 -29 20 -50 4 -21 12 -56 18 -78 43 -171 41 -102 41 -1801 0 -1487 1 -1613 17 -1625 22 -19 2155 -21 2174 -2 6 6 15 52 21 102 14 147 5 3540 -10 3681 -28 252 -77 503 -118 598 -8 18 -14 39 -14 47 0 8 -6 29 -14 47 -8 18 -24 58 -36 88 -70 174 -154 335 -235 452 -153 219 -337 392 -560 525 -107 64 -286 153 -308 153 -7 0 -22 7 -33 15 -10 8 -27 15 -36 15 -10 0 -32 6 -50 14 -54 23 -197 61 -343 91 -62 13 -151 18 -390 20 -170 2 -344 0 -385 -4z"/><path d="M61585 16055 c-144 -12 -194 -19 -350 -51 -123 -26 -281 -68 -333 -90 -18 -8 -41 -14 -52 -14 -10 0 -21 -4 -25 -9 -3 -5 -20 -13 -38 -16 -17 -4 -43 -13 -57 -20 -14 -7 -50 -23 -80 -35 -65 -26 -282 -133 -325 -161 -16 -10 -39 -23 -50 -29 -25 -13 -52 -30 -157 -102 -205 -141 -518 -433 -654 -614 -61 -80 -154 -212 -154 -219 0 -2 -16 -27 -35 -56 -19 -29 -49 -80 -65 -114 -17 -33 -35 -67 -40 -75 -8 -14 -53 -113 -87 -190 -8 -19 -20 -44 -26 -55 -5 -11 -14 -33 -18 -50 -4 -16 -17 -55 -29 -85 -11 -30 -30 -84 -41 -120 -11 -36 -25 -78 -31 -95 -5 -16 -14 -48 -18 -70 -4 -22 -12 -60 -18 -85 -24 -101 -42 -197 -42 -225 0 -16 -7 -68 -15 -115 -11 -62 -15 -161 -16 -359 0 -267 7 -367 42 -551 6 -30 12 -73 15 -95 8 -65 56 -246 80 -303 8 -18 14 -41 14 -50 0 -10 7 -27 15 -38 8 -10 15 -28 15 -39 0 -11 7 -29 15 -39 8 -11 15 -27 15 -35 0 -9 14 -45 31 -81 17 -36 37 -78 44 -95 20 -46 85 -178 98 -200 52 -88 260 -382 286 -405 4 -3 31 -34 61 -70 62 -75 175 -186 246 -246 64 -52 252 -194 258 -194 3 0 33 -19 68 -42 86 -58 95 -63 153 -93 28 -14 57 -30 65 -35 28 -17 209 -100 219 -100 5 0 22 -6 38 -14 36 -18 152 -61 208 -76 17 -5 44 -13 60 -18 53 -18 138 -40 215 -56 186 -38 187 -39 505 -66 429 -38 974 49 1360 215 219 95 366 187 588 370 37 30 74 55 82 55 28 0 35 -50 35 -250 0 -194 1 -199 22 -214 20 -14 141 -16 1101 -16 l1078 0 24 25 25 24 -2 2828 -3 2828 -30 15 c-26 13 -163 15 -1090 15 -996 0 -1062 -1 -1092 -18 l-33 -18 0 -197 c0 -204 -7 -243 -42 -250 -9 -2 -25 5 -35 15 -77 74 -253 197 -380 264 -43 22 -85 44 -93 49 -16 9 -136 64 -185 84 -215 91 -554 158 -895 176 -215 12 -245 11 -445 -5z m1010 -1854 c33 -7 78 -17 100 -22 22 -6 56 -14 75 -19 71 -17 249 -96 325 -143 116 -72 286 -236 357 -343 44 -67 99 -178 130 -259 25 -65 38 -123 54 -245 31 -227 -12 -419 -150 -665 -23 -42 -125 -172 -172 -220 -53 -54 -140 -127 -164 -138 -8 -4 -28 -16 -45 -27 -119 -76 -310 -150 -465 -180 -25 -5 -65 -13 -90 -19 -71 -17 -406 -14 -497 4 -222 45 -397 118 -553 233 -102 74 -219 200 -277 297 -31 52 -106 210 -113 238 -5 18 -13 46 -18 62 -44 132 -53 305 -23 455 27 133 48 211 61 224 5 5 10 17 10 26 0 25 80 175 134 252 90 129 259 273 397 340 165 80 275 118 394 139 33 5 78 14 100 19 53 12 355 5 430 -9z"/><path d="M58430 15975 c-30 -8 -69 -14 -86 -15 -18 0 -56 -7 -85 -16 -159 -46 -194 -58 -294 -104 -33 -15 -67 -31 -75 -34 -8 -3 -28 -15 -45 -26 -16 -11 -39 -24 -50 -30 -82 -41 -216 -152 -346 -284 -87 -88 -132 -127 -139 -120 -5 5 -14 106 -20 224 -5 118 -12 248 -16 287 l-6 73 -41 11 c-30 8 -328 12 -1054 13 l-1012 1 -23 -23 -23 -23 0 -2824 c0 -2698 1 -2825 18 -2842 17 -17 73 -18 1072 -18 999 0 1055 1 1072 18 17 17 18 90 24 1390 5 1183 8 1385 21 1469 9 53 21 105 27 116 6 12 11 30 11 41 0 39 85 212 143 291 51 70 145 160 222 211 95 65 258 139 345 158 19 5 53 13 75 19 123 33 357 57 626 65 55 1 92 7 102 16 16 12 17 92 17 968 l0 954 -25 24 c-24 25 -26 25 -202 24 -115 0 -198 -6 -233 -14z"/></g></g></g></symbol></defs></svg>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brandmark" href="#top" aria-label="Pomera brand guidelines, top">
+      <svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-compact" width="1994" height="447.3"/></svg>
+      <span class="sep"></span>
+      <span class="meta">Brand guidelines · v2.0 · 29 Sept 2026</span>
+    </a>
+    <button class="pm-btn pm-btn--secondary pm-btn--sm theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme: auto</button>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+<nav class="index" aria-label="Sections">
+  <ol>
+    <li><a href="#brand"><span>01</span>Brand</a></li>
+    <li><a href="#logo"><span>02</span>Logo</a></li>
+    <li><a href="#colour"><span>03</span>Colour</a></li>
+    <li><a href="#type"><span>04</span>Typography</a></li>
+    <li><a href="#layout"><span>05</span>Layout</a></li>
+    <li><a href="#components"><span>06</span>Components</a></li>
+    <li><a href="#handoff"><span>07</span>Tech handoff</a></li>
+    <li><a href="#governance"><span>08</span>Governance</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="eyebrow">Pomera · Brand guidelines v2.1</p>
+  <h1>How Pomera looks, sounds and is built.</h1>
+  <p class="lead">One source of truth for designers, developers and anyone writing for Pomera. Positioning and messaging come from Brand Book v2.4. This page covers the identity and the rules for applying it. If something here conflicts with an older file, this page wins.</p>
+  <div class="kv" style="margin-top:12px">
+    <div>Name</div><div>Pomera in sentences · <b style="font-weight:500">pomera</b> only inside the logo</div>
+    <div>Descriptor</div><div>alternative ad platform</div>
+    <div>Brand tagline</div><div>Know your number before you spend.</div>
+    <div>Publisher tagline</div><div>Paid per view, not per follower.</div>
+    <div>Publisher community</div><div>ClipperCircle by Pomera · clippercircle.pomera.com · @clippercircle</div>
+    <div>Colours</div><div>Ink <code>#111210</code> · White <code>#FFFFFF</code> · Paper <code>#FAFAF7</code> · Lime <code>#C8F135</code></div>
+    <div>Typeface</div><div>Geist 400 / 500 · Geist Mono for every number</div>
+    <div>Logo files</div><div><code>Pomera-Brand-Assets-v2.1</code> (folders 01–07)</div>
+  </div>
+  <div class="band"><strong>Know your number before you spend.</strong><span class="mono">One lime moment per screen</span></div>
+</div>
+
+<!-- ===================== 01 BRAND ===================== -->
+<section class="chapter" id="brand">
+  <p class="eyebrow">01 · Brand</p>
+  <h2>An ad platform that sells certainty.</h2>
+  <p class="lead">Pomera is an alternative ad platform for D2C brands in India. A brand commits a budget at a fixed price per 1,000 verified views. Independent publishers turn the brand's video into short vertical posts and publish them from their own accounts. Every view is verified, fraud is filtered out, and the brand is billed only for what was delivered.</p>
+
+  <h3>The problem, on both sides</h3>
+  <div class="grid2">
+    <div class="box"><h4>Brands feel uncertainty</h4><p>A founder spending on Meta can't forecast what a rupee buys, can't explain results to investors and can't repeat a good month on purpose. The pain isn't the price. It's not knowing.</p></div>
+    <div class="box"><h4>Publishers feel shut out</h4><p>Skilled video editors can make content that performs, but creator platforms gate work by follower count. Their skill has no market.</p></div>
+  </div>
+
+  <h3>How a campaign runs</h3>
+  <ol class="steps">
+    <li><b>1</b><span>The brand commits a budget and a fixed rate per 1,000 verified views.</span></li>
+    <li><b>2</b><span>The brand shares video (long-form, raw footage or product video) and guidelines.</span></li>
+    <li><b>3</b><span>Publishers produce short vertical videos and post them from their own accounts.</span></li>
+    <li><b>4</b><span>Every post is tracked. Views are verified and fraudulent traffic is filtered out.</span></li>
+    <li><b>5</b><span>Publishers are paid per verified view, weekly, via UPI.</span></li>
+    <li><b>6</b><span>The brand gets a report and is billed only for verified delivery.</span></li>
+  </ol>
+
+  <h3>The locked set</h3>
+  <p class="muted small">These four never get rewritten per campaign, designer or channel.</p>
+  <div class="kv">
+    <div>Name</div><div>Pomera</div>
+    <div>Descriptor</div><div>alternative ad platform</div>
+    <div>For brands</div><div>Know your number before you spend.</div>
+    <div>For publishers</div><div>Paid per view, not per follower.</div>
+  </div>
+
+  <h3>Which line goes where</h3>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Surface</th><th>Audience</th><th>Line</th></tr></thead>
+    <tbody>
+      <tr><td>Website home</td><td>Brands</td><td>Know your number before you spend.</td></tr>
+      <tr><td>clippercircle.pomera.com (ClipperCircle by Pomera)</td><td>Publishers</td><td>Paid per view, not per follower.</td></tr>
+      <tr><td>Instagram @pomera</td><td>Brands only</td><td>Know your number before you spend.</td></tr>
+      <tr><td>Instagram @clippercircle</td><td>Publishers</td><td>Paid per view, not per follower.</td></tr>
+      <tr><td>LinkedIn, deck, proposals, reports, invoices</td><td>Brands, investors</td><td>Know your number before you spend.</td></tr>
+      <tr><td>ClipperCircle WhatsApp group, publisher DMs, recruitment, campaign briefs</td><td>Publishers</td><td>Paid per view, not per follower.</td></tr>
+      <tr><td>Brand dashboard</td><td>Brands</td><td>Know your number before you spend.</td></tr>
+      <tr><td>Publisher dashboard (ClipperCircle by Pomera)</td><td>Publishers</td><td>Paid per view, not per follower.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Where both audiences land on one surface (mainly the Pomera homepage), add one visible link for publishers that goes to ClipperCircle by Pomera. Never merge the two promises into one sentence.</p>
+
+  <h3>Pomera and ClipperCircle by Pomera</h3>
+  <p>Pomera is one company and one brand. The publisher side has its own front door, <b style="font-weight:500">ClipperCircle by Pomera</b>: an endorsed sub-brand with the same Beam, colours and type. It is never a second brand.</p>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th></th><th>Pomera</th><th>ClipperCircle by Pomera</th></tr></thead>
+    <tbody>
+      <tr><td>Audience</td><td>Brands, agencies, investors</td><td>Publishers</td></tr>
+      <tr><td>Website</td><td>pomera.com</td><td>clippercircle.pomera.com (clippercircle.com redirects)</td></tr>
+      <tr><td>Dashboard</td><td>Brand dashboard</td><td>Publisher dashboard</td></tr>
+      <tr><td>Instagram</td><td>@pomera · profile picture ink on lime</td><td>@clippercircle · profile picture lime on ink</td></tr>
+      <tr><td>Supply side is called</td><td>publishers, the publisher network</td><td>clippers</td></tr>
+      <tr><td>Logo</td><td>pomera logo (01, 02)</td><td>ClipperCircle lockup (07)</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="check">
+    <li>"by Pomera" always appears with the name: profile display name, website, dashboard header, WhatsApp group, emails.</li>
+    <li>Spelling: <b style="font-weight:500">ClipperCircle</b>, one word, two capitals. Never "Clipper Circle" or "CC".</li>
+    <li>No separate ClipperCircle colour, font or icon. Ever.</li>
+    <li>On Pomera's brand-facing surfaces, ClipperCircle is named in one line at most: "Publishers join through ClipperCircle, our publisher community." Never hidden, never the headline.</li>
+    <li>Pomera is still an advertising platform. ClipperCircle is never used to describe what Pomera is.</li>
+  </ul>
+
+  <h3>Voice</h3>
+  <div class="grid3">
+    <div class="box"><h4>Numbers first</h4><p>"Spend ₹20,000. Get verified views. Pay only for delivery." Adjectives last.</p></div>
+    <div class="box"><h4>Plain over clever</h4><p>We sell accountability. Plain copy reads as true. Short sentences, active voice, second person.</p></div>
+    <div class="box"><h4>Calm, not loud</h4><p>Our buyer is anxious, not excited. No hype, no urgency tricks, no fake scarcity.</p></div>
+    <div class="box"><h4>Specific over general</h4><p>Name the rupee amount, the view count, the day of payout.</p></div>
+    <div class="box"><h4>CTAs say what happens</h4><p>"Start a campaign", "Join as a publisher", and on ClipperCircle "Join ClipperCircle". Never "Submit" or "Learn more".</p></div>
+    <div class="box"><h4>Two registers</h4><p>Brands: precise and accountable. Clippers on ClipperCircle: direct and money-first; Hinglish is fine on @clippercircle and WhatsApp.</p></div>
+  </div>
+
+  <h3>Words</h3>
+  <p class="small muted">We use · Pomera (brand-facing)</p>
+  <div class="tags"><span class="tag">campaign</span><span class="tag">verified views</span><span class="tag">fixed rate</span><span class="tag">₹CPM</span><span class="tag">delivery</span><span class="tag">distribution</span><span class="tag">publishers</span><span class="tag">network</span><span class="tag">payout</span><span class="tag">brief</span></div>
+  <p class="small muted">We use · ClipperCircle (publisher-facing)</p>
+  <div class="tags"><span class="tag">campaign</span><span class="tag">clippers</span><span class="tag">ClipperCircle</span><span class="tag">verified views</span><span class="tag">payout</span><span class="tag">UPI</span><span class="tag">brief</span><span class="tag">founding cohort</span></div>
+  <p class="small muted">We never use · anywhere</p>
+  <div class="tags"><span class="tag no">clip farm</span><span class="tag no">influencer marketing</span><span class="tag no">UGC agency</span><span class="tag no">India's first</span><span class="tag no">guaranteed views</span><span class="tag no">revolutionary</span><span class="tag no">game-changing</span><span class="tag no">disruptive</span><span class="tag no">seamless</span><span class="tag no">unlock</span><span class="tag no">supercharge</span><span class="tag no">go viral</span></div>
+  <p class="small muted">Also never on Pomera's brand-facing surfaces</p>
+  <div class="tags"><span class="tag no">clipping platform</span><span class="tag no">clipping</span><span class="tag no">clippers</span></div>
+
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Use</th><th>Not</th></tr></thead>
+    <tbody>
+      <tr><td>publishers, the publisher network (Pomera, investors, agreements, product back end)</td><td>editors, creators</td></tr>
+      <tr><td>clippers (ClipperCircle surfaces only)</td><td>editors, creators</td></tr>
+      <tr><td>campaign</td><td>project, gig</td></tr>
+      <tr><td>verified views</td><td>impressions, reach (when we mean views)</td></tr>
+      <tr><td>brand</td><td>client, advertiser</td></tr>
+      <tr><td>payout</td><td>salary, fee</td></tr>
+      <tr><td>₹CPM, rate per 1,000 verified views</td><td>price, cost</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout"><p><b style="font-weight:500">The proof rule overrides everything.</b> No fabricated numbers, client logos, testimonials or earnings. Mockups use clearly labelled sample data. Any projection is labelled a projection. We sell verification, so our own numbers have to be real.</p></div>
+</section>
+<!-- ===================== 02 LOGO ===================== -->
+<section class="chapter" id="logo">
+  <p class="eyebrow">02 · Logo</p>
+  <h2>The Beam and the wordmark.</h2>
+  <p class="lead">The Beam is five rounded arms meeting at one point: one piece of content reaching many accounts. It stays abstract. Never explain it as a play button, a clip or a growth chart. The wordmark "pomera" is artwork, not a font: never retype it.</p>
+
+  <div class="tile" style="margin-top:24px">
+    <div class="art on-white" style="aspect-ratio:21/8;padding:8%"><svg viewBox="0 0 1994 447.3" role="img" aria-label="Pomera primary logo"><use href="#pm-logo" width="1994" height="447.3"/></svg></div>
+    <div class="cap"><b>Primary logo · ink on white</b><code>01-logo-primary/pomera-logo-light.svg</code></div>
+  </div>
+
+  <h3>Approved versions</h3>
+  <p class="small muted">Every file lives in <code>Pomera-Brand-Assets-v2.1</code>. Pick by background, not by taste.</p>
+  <div class="grid3">
+    <div class="tile"><div class="art on-ink"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Dark · default on dark</b><code>pomera-logo-dark</code></div></div>
+    <div class="tile"><div class="art on-ink" style="--beam:#C8F135"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Signature · lime Beam on ink</b><code>pomera-logo-lime-dark</code></div></div>
+    <div class="tile"><div class="art on-lime"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>On lime · lime moments only</b><code>pomera-logo-on-lime</code></div></div>
+    <div class="tile"><div class="art on-white"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-compact" width="1994" height="447.3"/></svg></div><div class="cap"><b>Compact · headers, app bars</b><code>pomera-compact-light</code></div></div>
+    <div class="tile"><div class="art on-ink" style="--beam:#C8F135"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-compact" width="1994" height="447.3"/></svg></div><div class="cap"><b>Compact · signature</b><code>pomera-compact-lime-dark</code></div></div>
+    <div class="tile"><div class="art on-white sq"><svg viewBox="0 0 882 726.5" aria-hidden="true"><use href="#pm-beam" width="882" height="726.5"/></svg></div><div class="cap"><b>Beam · ink</b><code>03-icon/pomera-icon-ink</code></div></div>
+    <div class="tile"><div class="art on-ink sq" style="--beam:#C8F135"><svg viewBox="0 0 882 726.5" aria-hidden="true"><use href="#pm-beam" width="882" height="726.5"/></svg></div><div class="cap"><b>App icon · lime on ink</b><code>04-social-and-app-icon/app-icon</code></div></div>
+    <div class="tile"><div class="art on-lime sq"><svg viewBox="0 0 882 726.5" aria-hidden="true"><use href="#pm-beam" width="882" height="726.5"/></svg></div><div class="cap"><b>Profile picture · ink on lime</b><code>avatar-ink-on-lime</code> · @pomera</div></div>
+    <div class="tile"><div class="art on-white sq"><svg viewBox="0 0 882 726.5" aria-hidden="true" style="width:16px;height:13px"><use href="#pm-beam" width="882" height="726.5"/></svg></div><div class="cap"><b>Favicon · ink, white in dark tabs</b><code>05-favicon/favicon.svg</code></div></div>
+  </div>
+
+  <h3>ClipperCircle by Pomera</h3>
+  <p>The lockup for every publisher-facing surface. The Beam is the master geometry, "ClipperCircle" is Geist Medium converted to outlines, and "pomera" is the original wordmark artwork. All three are artwork: never retype them. Files in <code>07-clippercircle</code>, same eight versions as the Pomera logo.</p>
+  <div class="tile"><div class="art on-white" style="aspect-ratio:21/7;padding:7%"><svg viewBox="0 0 2347 447.3" role="img" aria-label="ClipperCircle by Pomera"><use href="#cc-lockup" width="2347" height="447.3"/></svg></div>
+    <div class="cap"><b>ClipperCircle · ink on white</b><code>07-clippercircle/clippercircle-logo-light.svg</code></div></div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="tile"><div class="art on-ink"><svg viewBox="0 0 2347 447.3" aria-hidden="true"><use href="#cc-lockup" width="2347" height="447.3"/></svg></div><div class="cap"><b>Dark · default on dark</b><code>clippercircle-logo-dark</code></div></div>
+    <div class="tile"><div class="art on-ink" style="--beam:#C8F135"><svg viewBox="0 0 2347 447.3" aria-hidden="true"><use href="#cc-lockup" width="2347" height="447.3"/></svg></div><div class="cap"><b>Signature · lime Beam on ink</b><code>clippercircle-logo-lime-dark</code></div></div>
+    <div class="tile"><div class="art on-ink sq" style="--beam:#C8F135;color:#C8F135"><svg viewBox="0 0 882 726.5" aria-hidden="true"><use href="#pm-beam" width="882" height="726.5"/></svg></div><div class="cap"><b>Profile picture · lime on ink</b><code>avatar-lime-on-ink</code> · @clippercircle</div></div>
+  </div>
+  <p class="small muted">Use it on clippercircle.pomera.com, the publisher dashboard, @clippercircle, the ClipperCircle WhatsApp group and campaign briefs. Never on Pomera's brand-facing surfaces. Favicon for clippercircle.pomera.com: <code>05-favicon/alt-lime-on-ink-tile</code>. The full lockup can't be redrawn in the heavy pomera style without a type designer; Geist for the sub-brand name is deliberate, so pomera stays the master brand.</p>
+
+  <h3>Clear space</h3>
+  <p>Keep at least <b style="font-weight:500">x</b> clear on every side, where x is the width of one Beam arm. Nothing enters that zone: no text, no edges, no other logos.</p>
+  <div class="tile"><div class="art on-white" style="aspect-ratio:auto;padding:24px">
+    <svg viewBox="-160 -160 2314 767.3" role="img" aria-label="Clear space diagram">
+      <rect x="-124" y="-124" width="2242" height="695.3" fill="none" stroke="#8A8A85" stroke-width="3" stroke-dasharray="14 10"/>
+      <rect x="0" y="0" width="1994" height="447.3" fill="none" stroke="#D4D4CF" stroke-width="2"/>
+      <rect x="-124" y="-124" width="124" height="124" fill="#F2FBD6" stroke="#7FA00F" stroke-width="2"/>
+      <rect x="1994" y="447.3" width="124" height="124" fill="#F2FBD6" stroke="#7FA00F" stroke-width="2"/>
+      <text x="-62" y="-50" text-anchor="middle" font-family="Geist Mono, monospace" font-size="56" fill="#111210">x</text>
+      <text x="2056" y="521" text-anchor="middle" font-family="Geist Mono, monospace" font-size="56" fill="#111210">x</text>
+      <use href="#pm-logo" width="1994" height="447.3" style="color:#111210"/>
+    </svg>
+  </div></div>
+
+  <h3>Minimum size</h3>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Version</th><th class="num">Screen</th><th class="num">Print</th><th>Below that</th></tr></thead>
+    <tbody>
+      <tr><td>Primary (with descriptor)</td><td class="num">200 px</td><td class="num">40 mm</td><td>Use compact</td></tr>
+      <tr><td>Compact</td><td class="num">120 px</td><td class="num">25 mm</td><td>Use the Beam</td></tr>
+      <tr><td>ClipperCircle lockup</td><td class="num">240 px</td><td class="num">50 mm</td><td>Use the Beam</td></tr>
+      <tr><td>Beam</td><td class="num">16 px</td><td class="num">5 mm</td><td>Don't go smaller</td></tr>
+    </tbody>
+  </table></div>
+  <div class="demo on-white" style="border-color:#E7E7E3">
+    <svg viewBox="0 0 1994 447.3" style="width:200px;height:auto" aria-label="Primary at 200px" role="img"><use href="#pm-logo" width="1994" height="447.3"/></svg>
+    <svg viewBox="0 0 1994 447.3" style="width:120px;height:auto" aria-label="Compact at 120px" role="img"><use href="#pm-compact" width="1994" height="447.3"/></svg>
+    <svg viewBox="0 0 882 726.5" style="width:16px;height:auto" aria-label="Beam at 16px" role="img"><use href="#pm-beam" width="882" height="726.5"/></svg>
+  </div>
+
+  <h3>Name in text</h3>
+  <p>Inside the logo, the name is lowercase: <b style="font-weight:500">pomera</b>. In every sentence, headline, contract and invoice, write <b style="font-weight:500">Pomera</b>: capital P, never all caps, never abbreviated.</p>
+
+  <h3>What not to do</h3>
+  <div class="grid4">
+    <div class="tile dont"><div class="art on-white"><svg viewBox="0 0 1994 447.3" preserveAspectRatio="none" style="height:60%;width:100%" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't stretch</b><span class="muted">Scale proportionally.</span></div></div>
+    <div class="tile dont"><div class="art on-white"><svg viewBox="0 0 1994 447.3" style="transform:rotate(-10deg)" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't rotate</b><span class="muted">The Beam's top arm points up.</span></div></div>
+    <div class="tile dont"><div class="art on-white" style="--beam:#455FF5"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't use old colours</b><span class="muted">Blue is retired.</span></div></div>
+    <div class="tile dont"><div class="art on-white" style="--beam:#C8F135"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't put lime on white</b><span class="muted">1.3:1. The Beam disappears.</span></div></div>
+    <div class="tile dont"><div class="art on-white" style="--beam:transparent;color:transparent"><svg viewBox="0 0 1994 447.3" style="stroke:#111210;stroke-width:10;overflow:visible" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't outline</b><span class="muted">Solid fills only.</span></div></div>
+    <div class="tile dont"><div class="art on-white"><svg viewBox="0 0 1994 447.3" style="filter:drop-shadow(8px 10px 6px rgba(0,0,0,.35))" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't add shadows</b><span class="muted">No effects of any kind.</span></div></div>
+    <div class="tile dont"><div class="art on-white" style="--beam:url(#pm-bad-grad)"><svg viewBox="0 0 1994 447.3" aria-hidden="true"><use href="#pm-logo" width="1994" height="447.3"/></svg></div><div class="cap"><b>Don't use gradients</b><span class="muted">One flat colour.</span></div></div>
+    <div class="tile dont"><div class="art on-white"><div style="display:flex;align-items:center;gap:6%;width:100%"><svg viewBox="0 0 882 726.5" style="width:26%;flex:none" aria-hidden="true"><use href="#pm-beam" width="882" height="726.5"/></svg><span style="font:600 clamp(18px,3vw,30px)/1 var(--pm-font-sans);letter-spacing:-.03em">Pomera</span></div></div><div class="cap"><b>Don't retype the wordmark</b><span class="muted">Use the artwork file.</span></div></div>
+  </div>
+</section>
+
+<!-- ===================== 03 COLOUR ===================== -->
+<section class="chapter" id="colour">
+  <p class="eyebrow">03 · Colour</p>
+  <h2>White and ink do the reading. Lime is the signal.</h2>
+  <p class="lead">About 95% of any screen is white, paper and ink. Lime takes 5% or less: one band, one highlight, one live dot. Rationed, it reads as confident. Spread around, it reads as a promotion.</p>
+
+  <div class="ratio" aria-label="Colour ratio">
+    <div style="width:62%;background:#FFFFFF;color:#5B5B58">WHITE 62</div>
+    <div style="width:18%;background:#FAFAF7;color:#5B5B58;border-left:1px solid #E7E7E3">PAPER 18</div>
+    <div style="width:15%;background:#111210;color:#FFFFFF">INK 15</div>
+    <div style="width:5%;background:#C8F135;color:#111210;padding-inline:4px">5</div>
+  </div>
+  <p class="small muted">Light surfaces. On dark surfaces: night 75, surface 20, lime 5.</p>
+
+  <div class="grid4" style="margin-top:24px">
+    <div class="sw"><div class="chip" style="background:#111210"></div><div class="info"><b>Ink</b><code>#111210</code><span class="muted">Text, primary buttons, logo on light</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="info"><b>White</b><code>#FFFFFF</code><span class="muted">Page, cards, logo on dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FAFAF7"></div><div class="info"><b>Paper</b><code>#FAFAF7</code><span class="muted">Alternate sections, sidebars</span></div></div>
+    <div class="sw"><div class="chip" style="background:#C8F135"></div><div class="info"><b>Lime</b><code>#C8F135</code><span class="muted">Bands, markers, Beam on ink</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F2FBD6"></div><div class="info"><b>Lime tint</b><code>#F2FBD6</code><span class="muted">Verified chips, highlighted rows</span></div></div>
+    <div class="sw"><div class="chip" style="background:#7FA00F"></div><div class="info"><b>Lime strong</b><code>#7FA00F</code><span class="muted">Live dots on white (3:1). Never text.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#5B5B58"></div><div class="info"><b>Grey 600</b><code>#5B5B58</code><span class="muted">Secondary text (6.8:1)</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E7E7E3"></div><div class="info"><b>Hairline</b><code>#E7E7E3</code><span class="muted">Borders and dividers</span></div></div>
+  </div>
+
+  <h3>Lime rules</h3>
+  <ul class="check">
+    <li>Lime is never text, on any background.</li>
+    <li>Lime is never a button. Primary buttons are ink on light and white on dark.</li>
+    <li>Lime never sits on white as a shape or mark (1.3:1). Use ink.</li>
+    <li>Anything on lime is ink: text, the Beam, buttons.</li>
+    <li>One lime moment per screen, and one lime tile in every nine Instagram posts.</li>
+  </ul>
+
+  <h3>Neutral scale</h3>
+  <p class="small muted">Warm-tinted greys, so they sit comfortably next to lime.</p>
+  <div class="scale">
+    <div style="background:#FAFAF7"></div><div style="background:#F3F3F0"></div><div style="background:#E7E7E3"></div><div style="background:#D4D4CF"></div><div style="background:#B8B8B2"></div><div style="background:#8A8A85"></div><div style="background:#5B5B58"></div><div style="background:#3D3E39"></div><div style="background:#1C1C1A"></div><div style="background:#111210"></div>
+  </div>
+  <div class="scale-l"><span>50 FAFAF7</span><span>100 F3F3F0</span><span>200 E7E7E3</span><span>300 D4D4CF</span><span>400 B8B8B2</span><span>500 8A8A85</span><span>600 5B5B58</span><span>700 3D3E39</span><span>800 1C1C1A</span><span>900 111210</span></div>
+
+  <h3>Status colours</h3>
+  <p class="small muted">Kept away from lime, so "paid" never looks like "brand". These follow the viewer's theme.</p>
+  <div class="demo">
+    <span class="pm-chip pm-chip--success pm-chip--dot">Paid via UPI</span>
+    <span class="pm-chip pm-chip--warning pm-chip--dot">Pending review</span>
+    <span class="pm-chip pm-chip--danger pm-chip--dot">Fraud filtered</span>
+    <span class="pm-chip pm-chip--verified pm-chip--dot">Verified</span>
+    <span class="pm-chip pm-chip--live pm-chip--dot">Live</span>
+    <span class="pm-chip pm-chip--dot">Draft</span>
+  </div>
+
+  <h3>Contrast</h3>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Pair</th><th class="num">Ratio</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Ink on white</td><td class="num">18.8</td><td>All text</td></tr>
+      <tr><td>Grey 600 on white</td><td class="num">6.8</td><td>Secondary text</td></tr>
+      <tr><td>Grey 500 on white</td><td class="num">3.5</td><td>Labels and captions only, never body</td></tr>
+      <tr><td>Ink on lime</td><td class="num">14.4</td><td>Text and Beam on lime bands</td></tr>
+      <tr><td>Lime on ink</td><td class="num">14.4</td><td>Beam, dots, chart points. Not running text.</td></tr>
+      <tr><td>Lime strong on white</td><td class="num">3.0</td><td>Dots and small marks only</td></tr>
+      <tr><td>Lime on white</td><td class="num">1.3</td><td>Never</td></tr>
+      <tr><td>Text on night (#EDEDEA on #0B0B0A)</td><td class="num">16.8</td><td>Dark-mode text</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Dark mode</h3>
+  <p>Dark mode is the publisher side's home and an option everywhere else. Surfaces step up in lightness instead of using shadows. Buttons turn white. Lime stays a signal: the Beam, a live dot, the latest point on a chart. Never lime paragraphs on black: they glare and tire the eye.</p>
+  <div class="grid2">
+    <div class="tile"><div class="art on-ink" style="aspect-ratio:auto;padding:24px;display:block;background:#0B0B0A">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><span style="font:500 12px/1 var(--pm-font-mono);letter-spacing:.06em;color:#9A9A95">EARNED THIS WEEK · SAMPLE</span><span style="display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--pm-font-sans);color:#EDEDEA"><i style="width:6px;height:6px;border-radius:9px;background:#C8F135;display:block"></i>Live</span></div>
+      <div style="font:400 40px/1 var(--pm-font-mono);letter-spacing:-.02em;color:#EDEDEA">₹4,280</div>
+      <div style="font-size:14px;color:#9A9A95;margin:8px 0 20px">Payout Friday via UPI</div>
+      <span class="pm-btn" style="background:#FFFFFF;color:#111210">View payouts</span>
+    </div><div class="cap"><b>Dark surfaces</b><code>night #0B0B0A · surface #141413 · line #262624 · text #EDEDEA · text-2 #9A9A95</code></div></div>
+    <div class="box" style="display:grid;gap:10px;align-content:start">
+      <h4>Dark-mode swaps</h4>
+      <div class="kv" style="margin:0">
+        <div>Background</div><div><code>#FFFFFF → #0B0B0A</code></div>
+        <div>Card</div><div><code>#FFFFFF → #141413</code></div>
+        <div>Hairline</div><div><code>#E7E7E3 → #262624</code></div>
+        <div>Text</div><div><code>#111210 → #EDEDEA</code></div>
+        <div>Button</div><div><code>ink → white</code></div>
+        <div>Live dot</div><div><code>#7FA00F → #C8F135</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 TYPE ===================== -->
+<section class="chapter" id="type">
+  <p class="eyebrow">04 · Typography</p>
+  <h2>Geist for words. Geist Mono for numbers.</h2>
+  <p class="lead">Headlines at 500, body at 400, nothing above 600. Confidence comes from space and precision, not weight.</p>
+
+  <div class="spec" style="margin-top:24px">
+    <div><span style="font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-.035em;font-weight:500">Display</span><code>64 / 40 · 500 · 1.05 · −3.5%</code></div>
+    <div><span style="font-size:clamp(34px,4.5vw,48px);line-height:1.08;letter-spacing:-.03em;font-weight:500">Heading 1</span><code>48 / 34 · 500 · 1.08 · −3%</code></div>
+    <div><span style="font-size:clamp(28px,3.6vw,36px);line-height:1.15;letter-spacing:-.025em;font-weight:500">Heading 2</span><code>36 / 28 · 500 · 1.15 · −2.5%</code></div>
+    <div><span style="font-size:clamp(22px,3vw,28px);line-height:1.2;letter-spacing:-.025em;font-weight:500">Heading 3</span><code>28 / 22 · 500 · 1.2 · −2.5%</code></div>
+    <div><span style="font-size:20px;line-height:1.3;letter-spacing:-.015em;font-weight:500">Heading 4</span><code>20 / 18 · 500 · 1.3 · −1.5%</code></div>
+    <div><span style="font-size:19px;color:var(--pm-c-text-2)">Lead paragraph that opens a section.</span><code>19 · 400 · 1.55</code></div>
+    <div><span style="font-size:17px">Body text for reading. Keep lines under 680px wide.</span><code>17 · 400 · 1.55</code></div>
+    <div><span style="font-size:15px">Small text for supporting details.</span><code>15 · 400 · 1.5</code></div>
+    <div><span style="font-size:13px;color:var(--pm-c-text-2)">Caption for images and footnotes.</span><code>13 · 400 · 1.45</code></div>
+    <div><span style="font:500 12px/1.4 var(--pm-font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pm-c-text-2)">Section label</span><code>Mono 12 · 500 · caps · +6%</code></div>
+    <div><span class="pm-num" style="font-size:36px;letter-spacing:-.02em">₹2,50,000</span><code>Mono · 400 · tabular</code></div>
+  </div>
+
+  <h3>The number rule</h3>
+  <p>Every figure that carries meaning is set in Geist Mono with tabular figures: rupee amounts, view counts, CPM, dates, campaign IDs, payout status. It makes any Pomera screen recognisable without the logo, and it makes a campaign report read like a financial statement.</p>
+  <div class="demo" style="display:grid;gap:0;padding:0 0 4px">
+    <table class="pm-table">
+      <thead><tr><th>Campaign #0142 · sample</th><th class="num">Verified views</th><th class="num">Billed</th></tr></thead>
+      <tbody>
+        <tr><td>Instagram Reels</td><td class="num">4,03,200</td><td class="num">₹[amount]</td></tr>
+        <tr><td>YouTube Shorts</td><td class="num">1,98,400</td><td class="num">₹[amount]</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td class="num">6,01,600</td><td class="num">₹[amount]</td></tr></tfoot>
+    </table>
+  </div>
+
+  <h3>Rules</h3>
+  <ul class="check">
+    <li>Sentence case for headings and buttons. Uppercase only for mono labels.</li>
+    <li>Indian number grouping for rupees and views: ₹2,50,000, 6,40,000.</li>
+    <li>Emphasis with weight 500, never italics or underline.</li>
+    <li>Headlines use <code>text-wrap: balance</code>. Body text stays under 680px wide.</li>
+  </ul>
+</section>
+<!-- ===================== 05 LAYOUT ===================== -->
+<section class="chapter" id="layout">
+  <p class="eyebrow">05 · Layout</p>
+  <h2>Space, hairlines, small corners.</h2>
+  <p class="lead">Structure comes from white space and 1px lines, not from boxes and shadows. Everything sits on a 4px base with an 8px rhythm.</p>
+
+  <h3>Spacing scale</h3>
+  <div style="margin:8px 0 24px">
+    <div class="spacebar"><code>space-1</code><span>4px</span><i style="width:4px"></i></div>
+    <div class="spacebar"><code>space-2</code><span>8px</span><i style="width:8px"></i></div>
+    <div class="spacebar"><code>space-3</code><span>12px</span><i style="width:12px"></i></div>
+    <div class="spacebar"><code>space-4</code><span>16px</span><i style="width:16px"></i></div>
+    <div class="spacebar"><code>space-5</code><span>24px</span><i style="width:24px"></i></div>
+    <div class="spacebar"><code>space-6</code><span>32px</span><i style="width:32px"></i></div>
+    <div class="spacebar"><code>space-7</code><span>48px</span><i style="width:48px"></i></div>
+    <div class="spacebar"><code>space-8</code><span>64px</span><i style="width:64px"></i></div>
+    <div class="spacebar"><code>space-9</code><span>96px</span><i style="width:96px"></i></div>
+    <div class="spacebar"><code>space-10</code><span>128px</span><i style="width:128px"></i></div>
+  </div>
+
+  <h3>Grid and breakpoints</h3>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Setting</th><th>Desktop</th><th>Mobile</th></tr></thead>
+    <tbody>
+      <tr><td>Container</td><td class="mono">1200px, 12 columns</td><td class="mono">full width, 4 columns</td></tr>
+      <tr><td>Gutter / side margin</td><td class="mono">24px</td><td class="mono">16px</td></tr>
+      <tr><td>Between website sections</td><td class="mono">96–128px</td><td class="mono">64px</td></tr>
+      <tr><td>Card padding</td><td class="mono">24px</td><td class="mono">20px</td></tr>
+      <tr><td>Reading width</td><td class="mono">680px max</td><td class="mono">full width</td></tr>
+      <tr><td>Breakpoints</td><td class="mono" colspan="2">sm 640 · md 768 · lg 1024 · xl 1280</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Corners</h3>
+  <div class="grid4">
+    <div><div class="radius-demo" style="border-radius:6px"></div><p class="small" style="margin-top:8px"><b style="font-weight:500">6px</b> · chips</p></div>
+    <div><div class="radius-demo" style="border-radius:8px"></div><p class="small" style="margin-top:8px"><b style="font-weight:500">8px</b> · buttons, inputs</p></div>
+    <div><div class="radius-demo" style="border-radius:12px"></div><p class="small" style="margin-top:8px"><b style="font-weight:500">12px</b> · cards</p></div>
+    <div><div class="radius-demo" style="border-radius:16px"></div><p class="small" style="margin-top:8px"><b style="font-weight:500">16px</b> · modals, panels</p></div>
+  </div>
+  <p class="small muted">No pill-shaped buttons or cards. Fully round is only for status dots and avatars.</p>
+
+  <h3>Lines and elevation</h3>
+  <ul class="check">
+    <li>Borders are 1px in the hairline colour. Use a 1px ink line only to open a table or a statement.</li>
+    <li>No shadows on cards or page sections. Shadow only on things that float: menus, popovers, modals, toasts.</li>
+    <li>In dark mode, depth comes from lighter surfaces (#0B0B0A → #141413 → #1C1C1A), not shadows.</li>
+  </ul>
+
+  <h3>Icons and motion</h3>
+  <div class="grid2">
+    <div class="box"><h4>Icons</h4><p>Lucide, 1.5px stroke, at 16, 20 or 24px, coloured like the text next to them. No filled or multi-colour icons, no emoji in the product.</p></div>
+    <div class="box"><h4>Motion</h4><p>120ms for hovers, 180ms for panels, easing <code>cubic-bezier(.2,0,0,1)</code>. Fades and small moves only. Turned off when the user prefers reduced motion.</p></div>
+  </div>
+</section>
+
+<!-- ===================== 06 COMPONENTS ===================== -->
+<section class="chapter" id="components">
+  <p class="eyebrow">06 · Components</p>
+  <h2>The parts, with every state.</h2>
+  <p class="lead">These are live components rendered from <code>pomera-components.css</code>. Switch the theme at the top to see dark mode. Numbers shown are sample data.</p>
+
+  <h3>Buttons</h3>
+  <div class="demo">
+    <div class="state"><small>Default</small><button class="pm-btn pm-btn--primary" type="button">Start a campaign</button></div>
+    <div class="state"><small>Hover</small><button class="pm-btn pm-btn--primary is-hover" type="button" tabindex="-1">Start a campaign</button></div>
+    <div class="state"><small>Pressed</small><button class="pm-btn pm-btn--primary is-active" type="button" tabindex="-1">Start a campaign</button></div>
+    <div class="state"><small>Focus</small><button class="pm-btn pm-btn--primary is-focus" type="button" tabindex="-1">Start a campaign</button></div>
+    <div class="state"><small>Disabled</small><button class="pm-btn pm-btn--primary" type="button" disabled>Start a campaign</button></div>
+  </div>
+  <div class="demo">
+    <div class="state"><small>Secondary</small><button class="pm-btn pm-btn--secondary" type="button">Join as a publisher</button></div>
+    <div class="state"><small>Secondary hover</small><button class="pm-btn pm-btn--secondary is-hover" type="button" tabindex="-1">Join as a publisher</button></div>
+    <div class="state"><small>Ghost</small><button class="pm-btn pm-btn--ghost" type="button">See how it works</button></div>
+    <div class="state"><small>Destructive</small><button class="pm-btn pm-btn--danger" type="button">Cancel campaign</button></div>
+    <div class="state"><small>Sizes</small><span style="display:flex;gap:8px;align-items:center"><button class="pm-btn pm-btn--primary pm-btn--sm" type="button">Small 36</button><button class="pm-btn pm-btn--primary pm-btn--lg" type="button">Large 52</button></span></div>
+  </div>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Spec</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Height</td><td class="mono">36 small · 44 default · 52 large (touch targets ≥ 44)</td></tr>
+      <tr><td>Padding / radius</td><td class="mono">0 18px · 8px</td></tr>
+      <tr><td>Type</td><td class="mono">Geist 500, 15px, sentence case</td></tr>
+      <tr><td>Primary</td><td class="mono">ink bg, white text · hover #2A2B27 · pressed #000 · dark mode: white bg, ink text</td></tr>
+      <tr><td>Focus</td><td class="mono">2px outline in text colour, 2px offset. Never removed.</td></tr>
+      <tr><td>Rules</td><td>One primary button per view. Never lime, never pill-shaped. Label says what happens.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Inputs</h3>
+  <div class="demo col">
+    <div class="pm-field"><label class="pm-label" for="in-brand">Brand name</label><input class="pm-input" id="in-brand" placeholder="Your D2C brand"><span class="pm-help">As it appears on your invoices.</span></div>
+    <div class="pm-field"><label class="pm-label" for="in-budget">Budget (₹) · focus</label><input class="pm-input is-focus" id="in-budget" value="2,50,000" style="font-family:var(--pm-font-mono)"></div>
+    <div class="pm-field"><label class="pm-label" for="in-upi">UPI ID · error</label><input class="pm-input" id="in-upi" value="name@" aria-invalid="true" aria-describedby="upi-err"><span class="pm-error" id="upi-err">Enter a full UPI ID, like name@bank.</span></div>
+    <div class="pm-field"><label class="pm-label" for="in-rate">Rate per 1,000 views · disabled</label><input class="pm-input" id="in-rate" value="Set after your pilot" disabled></div>
+  </div>
+  <p class="small muted">Height 44, radius 8, 1px border. Focus turns the border to the text colour with a 1px ring. Errors say what went wrong and how to fix it. Labels sit above the field, always visible.</p>
+
+  <h3>Chips</h3>
+  <div class="demo">
+    <span class="pm-chip pm-chip--verified pm-chip--dot">Verified</span>
+    <span class="pm-chip pm-chip--live pm-chip--dot">Live</span>
+    <span class="pm-chip pm-chip--success pm-chip--dot">Paid</span>
+    <span class="pm-chip pm-chip--warning pm-chip--dot">Reviewing</span>
+    <span class="pm-chip pm-chip--danger pm-chip--dot">Flagged</span>
+    <span class="pm-chip">Draft</span>
+    <span class="pm-chip pm-chip--mono">₹[CPM] / 1K</span>
+  </div>
+  <p class="small muted">Height 24, radius 6, Geist 500 12px. Status always has a dot and a word, never colour alone.</p>
+
+  <h3>Cards</h3>
+  <div class="grid3">
+    <div class="pm-card"><div class="pm-stat-label">Budget committed</div><div class="pm-stat-value">₹2,50,000</div></div>
+    <div class="pm-card"><div class="pm-stat-label">Verified views</div><div class="pm-stat-value">6,40,000</div></div>
+    <div class="pm-card"><div class="pm-stat-label">Filtered, not billed</div><div class="pm-stat-value">18,312</div></div>
+  </div>
+  <div class="pm-card pm-card--interactive" style="margin-top:16px;display:grid;gap:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span style="font-size:18px;font-weight:500">Festive launch</span><span class="pm-chip pm-chip--live pm-chip--dot">Live</span></div>
+    <div><div style="display:flex;justify-content:space-between;font-size:14px;color:var(--pm-c-text-2)"><span>Delivered</span><span class="pm-num" style="color:var(--pm-c-text)">6,40,000 / 10,00,000</span></div>
+    <div style="height:6px;border-radius:9px;background:var(--pm-c-surface-2);margin-top:8px;overflow:hidden"><div style="width:64%;height:6px;background:var(--pm-c-text)"></div></div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--pm-c-line);padding-top:14px;gap:12px;flex-wrap:wrap"><span class="pm-chip pm-chip--mono">₹[CPM] / 1K</span><button class="pm-btn pm-btn--ghost" type="button">View report</button></div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Radius 12, 1px hairline, 24px padding, no shadow. Stat labels in mono caps, values in mono. Progress bars in the text colour; lime only marks the current point.</p>
+
+  <h3>Tables</h3>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Publisher</th><th>Platform</th><th class="num">Verified views</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>@publisher.one</td><td>Reels</td><td class="num">1,12,400</td><td><span class="pm-chip pm-chip--verified pm-chip--dot">Verified</span></td></tr>
+      <tr><td>@publisher.two</td><td>Shorts</td><td class="num">86,050</td><td><span class="pm-chip pm-chip--verified pm-chip--dot">Verified</span></td></tr>
+      <tr><td>@publisher.three</td><td>Reels</td><td class="num">71,900</td><td><span class="pm-chip pm-chip--warning pm-chip--dot">Reviewing</span></td></tr>
+      <tr><td>@publisher.four</td><td>Reels</td><td class="num">9,870</td><td><span class="pm-chip pm-chip--danger pm-chip--dot">Flagged</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Mono caps headers over a 1px ink line. Rows at least 48px with hairlines. Numbers right-aligned in Geist Mono. No zebra stripes, no vertical lines.</p>
+
+  <h3>Charts</h3>
+  <div class="pm-card" style="padding:20px 20px 12px">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="font-weight:500">Verified views per day</span><span class="pm-stat-label">Sample · 14 days</span></div>
+    <svg viewBox="0 0 660 250" style="width:100%;height:auto;margin-top:12px" role="img" aria-label="Sample line chart of verified views per day, rising from 22 thousand to 92 thousand over 14 days"><line x1="52" x2="628" y1="216.0" y2="216.0" style="stroke:var(--pm-c-line)" stroke-width="1"/><text x="42" y="220.0" text-anchor="end" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">0</text><line x1="52" x2="628" y1="166.0" y2="166.0" style="stroke:var(--pm-c-line)" stroke-width="1"/><text x="42" y="170.0" text-anchor="end" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">25K</text><line x1="52" x2="628" y1="116.0" y2="116.0" style="stroke:var(--pm-c-line)" stroke-width="1"/><text x="42" y="120.0" text-anchor="end" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">50K</text><line x1="52" x2="628" y1="66.0" y2="66.0" style="stroke:var(--pm-c-line)" stroke-width="1"/><text x="42" y="70.0" text-anchor="end" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">75K</text><line x1="52" x2="628" y1="16.0" y2="16.0" style="stroke:var(--pm-c-line)" stroke-width="1"/><text x="42" y="20.0" text-anchor="end" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">100K</text><path d="M52.0,216 L52.0,172.0 L96.3,156.0 L140.6,160.0 L184.9,134.0 L229.2,122.0 L273.5,128.0 L317.8,100.0 L362.2,90.0 L406.5,106.0 L450.8,76.0 L495.1,60.0 L539.4,68.0 L583.7,44.0 L628.0,32.0 L628.0,216 Z" style="fill:var(--pm-c-accent-tint)"/><polyline points="52.0,172.0 96.3,156.0 140.6,160.0 184.9,134.0 229.2,122.0 273.5,128.0 317.8,100.0 362.2,90.0 406.5,106.0 450.8,76.0 495.1,60.0 539.4,68.0 583.7,44.0 628.0,32.0" fill="none" style="stroke:var(--pm-c-text)" stroke-width="2" stroke-linejoin="round"/><circle cx="628.0" cy="32.0" r="6" fill="#C8F135" style="stroke:var(--pm-c-text)" stroke-width="2"/><text x="616.0" y="20.0" text-anchor="end" style="fill:var(--pm-c-text);font:500 12px var(--pm-font-mono)">92K today</text><text x="52.0" y="238" text-anchor="middle" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">1 Oct</text><text x="317.8" y="238" text-anchor="middle" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">7 Oct</text><text x="628.0" y="238" text-anchor="middle" style="fill:var(--pm-c-text-2);font:400 11px var(--pm-font-mono)">14 Oct</text></svg>
+  </div>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Element</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Main series</td><td>Text colour, 2px line. Area fill in lime tint (light) or none (dark).</td></tr>
+      <tr><td>Current or highlighted value</td><td>Lime point with a text-colour ring. The only lime on the chart.</td></tr>
+      <tr><td>More series</td><td>In order: ink, grey 400 <code>#B8B8B2</code>, grey 600 <code>#5B5B58</code>. Four or more: use small multiples.</td></tr>
+      <tr><td>Grid and axes</td><td>Hairline horizontals only. Axis labels in Geist Mono 11px, grey 600. No chart borders, no 3D, no pies over three slices.</td></tr>
+      <tr><td>Negative / fraud</td><td>Danger colour, used only for filtered or failed values.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ===================== 07 HANDOFF ===================== -->
+<section class="chapter" id="handoff">
+  <p class="eyebrow">07 · Tech handoff</p>
+  <h2>Everything a developer needs.</h2>
+  <p class="lead">Five files ship with this page: <code>pomera-tokens.css</code>, <code>pomera-components.css</code>, <code>tailwind.config.js</code>, <code>tokens.json</code> and the logo folder <code>Pomera-Brand-Assets-v2</code>. They are the source of truth; this page renders from the same code.</p>
+
+  <h3>Setup</h3>
+  <ol class="steps">
+    <li><b>1</b><span>Load the fonts (or self-host the .ttf files from <code>06-fonts-geist</code>).</span></li>
+    <li><b>2</b><span>Include <code>pomera-tokens.css</code> globally, before any component styles.</span></li>
+    <li><b>3</b><span>Tailwind projects: use <code>tailwind.config.js</code>. Others: use the CSS variables directly.</span></li>
+    <li><b>4</b><span>Style components only with <code>--pm-c-*</code> tokens so dark mode works automatically. Never hardcode a hex value.</span></li>
+    <li><b>5</b><span>Dark mode follows the OS. Force it with <code>data-theme="dark"</code> or <code>"light"</code> on <code>&lt;html&gt;</code>.</span></li>
+    <li><b>6</b><span>Copy <code>05-favicon</code> into the site root and add the head tags below.</span></li>
+  </ol>
+  <div class="code"><div class="code-h"><span>index.html · &lt;head&gt;</span><button class="pm-btn pm-btn--secondary pm-btn--sm" type="button" data-copy="c-head">Copy</button></div><pre id="c-head">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap"&gt;
+&lt;link rel="stylesheet" href="/pomera-tokens.css"&gt;
+&lt;link rel="stylesheet" href="/pomera-components.css"&gt;
+
+&lt;link rel="icon" href="/favicon.ico" sizes="48x48"&gt;
+&lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/site.webmanifest"&gt;
+&lt;meta name="theme-color" content="#111210"&gt;</pre></div>
+
+  <h3>pomera-tokens.css</h3>
+  <div class="code"><div class="code-h"><span>pomera-tokens.css</span><button class="pm-btn pm-btn--secondary pm-btn--sm" type="button" data-copy="c-tokens">Copy</button></div><pre id="c-tokens">/* Pomera design tokens v2.0 (lime system) · 29 Sept 2026
+   Load Geist + Geist Mono first, then this file. Use the --pm-c-* semantic tokens in
+   components: they switch automatically in dark mode. Never hardcode a hex value. */
+
+:root {
+  /* Brand */
+  --pm-ink: #111210;
+  --pm-white: #FFFFFF;
+  --pm-paper: #FAFAF7;
+  --pm-lime: #C8F135;          /* surfaces, bands, markers, Beam on ink. Never text. */
+  --pm-lime-tint: #F2FBD6;     /* chips, highlighted rows, chart fills */
+  --pm-lime-strong: #7FA00F;   /* small lime dots on white (3:1). Never text. */
+
+  /* Neutral scale (warm-tinted) */
+  --pm-gray-50: #FAFAF7;
+  --pm-gray-100: #F3F3F0;
+  --pm-gray-200: #E7E7E3;
+  --pm-gray-300: #D4D4CF;
+  --pm-gray-400: #B8B8B2;
+  --pm-gray-500: #8A8A85;
+  --pm-gray-600: #5B5B58;
+  --pm-gray-700: #3D3E39;
+  --pm-gray-800: #1C1C1A;
+  --pm-gray-900: #111210;
+
+  /* Status (light) */
+  --pm-success: #146C34;  --pm-success-bg: #E7F6EC;
+  --pm-warning: #8A5300;  --pm-warning-bg: #FDF3E2;
+  --pm-danger:  #9A1F1F;  --pm-danger-bg:  #FCEBEA;
+  --pm-info:    #2E5AAC;  --pm-info-bg:    #EAF0FB;
+
+  /* Semantic: light (default) */
+  --pm-c-bg: #FFFFFF;
+  --pm-c-bg-subtle: #FAFAF7;
+  --pm-c-surface: #FFFFFF;
+  --pm-c-surface-2: #F3F3F0;
+  --pm-c-line: #E7E7E3;
+  --pm-c-line-strong: #D4D4CF;
+  --pm-c-text: #111210;
+  --pm-c-text-2: #5B5B58;      /* 6.8:1 on white */
+  --pm-c-text-3: #8A8A85;      /* 3.5:1: labels and captions only, never body */
+  --pm-c-signal: #7FA00F;      /* live / verified dot */
+  --pm-c-accent: #C8F135;
+  --pm-c-accent-tint: #F2FBD6;
+  --pm-c-btn-bg: #111210;
+  --pm-c-btn-fg: #FFFFFF;
+  --pm-c-btn-bg-hover: #2A2B27;
+  --pm-c-btn-bg-active: #000000;
+  --pm-c-focus: #111210;
+
+  /* Type */
+  --pm-font-sans: &quot;Geist&quot;, ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif;
+  --pm-font-mono: &quot;Geist Mono&quot;, ui-monospace, &quot;SFMono-Regular&quot;, Menlo, Consolas, monospace;
+  --pm-text-display: 64px;   /* mobile 40px */
+  --pm-text-h1: 48px;        /* mobile 34px */
+  --pm-text-h2: 36px;        /* mobile 28px */
+  --pm-text-h3: 28px;        /* mobile 22px */
+  --pm-text-h4: 20px;        /* mobile 18px */
+  --pm-text-lead: 19px;
+  --pm-text-body: 17px;
+  --pm-text-small: 15px;
+  --pm-text-caption: 13px;
+  --pm-text-label: 12px;
+  --pm-weight-regular: 400;
+  --pm-weight-medium: 500;
+  --pm-weight-semibold: 600;   /* maximum. Nothing in the system is bolder. */
+  --pm-leading-tight: 1.05;
+  --pm-leading-snug: 1.2;
+  --pm-leading-body: 1.55;
+  --pm-tracking-display: -0.035em;
+  --pm-tracking-heading: -0.025em;
+  --pm-tracking-label: 0.06em;
+
+  /* Space: 4px base, 8px rhythm */
+  --pm-space-1: 4px;
+  --pm-space-2: 8px;
+  --pm-space-3: 12px;
+  --pm-space-4: 16px;
+  --pm-space-5: 24px;
+  --pm-space-6: 32px;
+  --pm-space-7: 48px;
+  --pm-space-8: 64px;
+  --pm-space-9: 96px;
+  --pm-space-10: 128px;
+  --pm-container: 1200px;
+  --pm-gutter: 24px;           /* mobile 16px */
+
+  /* Radius: no pill buttons */
+  --pm-radius-sm: 6px;         /* chips */
+  --pm-radius-md: 8px;         /* buttons, inputs */
+  --pm-radius-lg: 12px;        /* cards */
+  --pm-radius-xl: 16px;        /* modals, large panels */
+  --pm-radius-full: 999px;     /* status dots and avatars only */
+
+  /* Lines, elevation, motion */
+  --pm-border: 1px solid var(--pm-c-line);
+  --pm-shadow-overlay: 0 1px 2px rgba(17, 18, 16, .06), 0 8px 24px rgba(17, 18, 16, .08);
+  --pm-duration-fast: 120ms;
+  --pm-duration: 180ms;
+  --pm-ease: cubic-bezier(.2, 0, 0, 1);
+}
+
+/* Semantic: dark. Follows the OS unless data-theme=&quot;light&quot; is set. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=&quot;light&quot;]) {
+    --pm-c-bg: #0B0B0A;
+    --pm-c-bg-subtle: #111110;
+    --pm-c-surface: #141413;
+    --pm-c-surface-2: #1C1C1A;
+    --pm-c-line: #262624;
+    --pm-c-line-strong: #34342F;
+    --pm-c-text: #EDEDEA;
+    --pm-c-text-2: #9A9A95;
+    --pm-c-text-3: #6E6E69;
+    --pm-c-signal: #C8F135;
+    --pm-c-accent-tint: #1D2410;
+    --pm-c-btn-bg: #FFFFFF;
+    --pm-c-btn-fg: #111210;
+    --pm-c-btn-bg-hover: #E7E7E3;
+    --pm-c-btn-bg-active: #D4D4CF;
+    --pm-c-focus: #FFFFFF;
+    --pm-success: #5BC27E;  --pm-success-bg: #10281A;
+    --pm-warning: #E9B45A;  --pm-warning-bg: #2A2010;
+    --pm-danger:  #FF8A7D;  --pm-danger-bg:  #2C1311;
+    --pm-info:    #8FB0FF;  --pm-info-bg:    #121C33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme=&quot;dark&quot;] {
+  --pm-c-bg: #0B0B0A;
+  --pm-c-bg-subtle: #111110;
+  --pm-c-surface: #141413;
+  --pm-c-surface-2: #1C1C1A;
+  --pm-c-line: #262624;
+  --pm-c-line-strong: #34342F;
+  --pm-c-text: #EDEDEA;
+  --pm-c-text-2: #9A9A95;
+  --pm-c-text-3: #6E6E69;
+  --pm-c-signal: #C8F135;
+  --pm-c-accent-tint: #1D2410;
+  --pm-c-btn-bg: #FFFFFF;
+  --pm-c-btn-fg: #111210;
+  --pm-c-btn-bg-hover: #E7E7E3;
+  --pm-c-btn-bg-active: #D4D4CF;
+  --pm-c-focus: #FFFFFF;
+  --pm-success: #5BC27E;  --pm-success-bg: #10281A;
+  --pm-warning: #E9B45A;  --pm-warning-bg: #2A2010;
+  --pm-danger:  #FF8A7D;  --pm-danger-bg:  #2C1311;
+  --pm-info:    #8FB0FF;  --pm-info-bg:    #121C33;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --pm-duration-fast: 0ms; --pm-duration: 0ms; }
+}
+
+/* The Number Rule: every figure that carries meaning */
+.pm-num {
+  font-family: var(--pm-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: &quot;tnum&quot;;
+}
+</pre></div>
+
+  <h3>tailwind.config.js</h3>
+  <div class="code"><div class="code-h"><span>tailwind.config.js</span><button class="pm-btn pm-btn--secondary pm-btn--sm" type="button" data-copy="c-tw">Copy</button></div><pre id="c-tw">/** Pomera Tailwind config v2.0 (lime system)
+ *  Requires pomera-tokens.css to be loaded globally: the `c-*` colours read its
+ *  semantic CSS variables, so dark mode works without `dark:` variants. */
+/** @type {import(&#x27;tailwindcss&#x27;).Config} */
+module.exports = {
+  content: [&quot;./src/**/*.{html,js,jsx,ts,tsx,vue,svelte}&quot;],
+  darkMode: [&quot;selector&quot;, &#x27;[data-theme=&quot;dark&quot;]&#x27;],
+  theme: {
+    screens: { sm: &quot;640px&quot;, md: &quot;768px&quot;, lg: &quot;1024px&quot;, xl: &quot;1280px&quot; },
+    colors: {
+      transparent: &quot;transparent&quot;,
+      current: &quot;currentColor&quot;,
+      ink: &quot;#111210&quot;,
+      white: &quot;#FFFFFF&quot;,
+      paper: &quot;#FAFAF7&quot;,
+      lime: { DEFAULT: &quot;#C8F135&quot;, tint: &quot;#F2FBD6&quot;, strong: &quot;#7FA00F&quot; },
+      gray: {
+        50: &quot;#FAFAF7&quot;, 100: &quot;#F3F3F0&quot;, 200: &quot;#E7E7E3&quot;, 300: &quot;#D4D4CF&quot;, 400: &quot;#B8B8B2&quot;,
+        500: &quot;#8A8A85&quot;, 600: &quot;#5B5B58&quot;, 700: &quot;#3D3E39&quot;, 800: &quot;#1C1C1A&quot;, 900: &quot;#111210&quot;,
+      },
+      success: { DEFAULT: &quot;var(--pm-success)&quot;, bg: &quot;var(--pm-success-bg)&quot; },
+      warning: { DEFAULT: &quot;var(--pm-warning)&quot;, bg: &quot;var(--pm-warning-bg)&quot; },
+      danger:  { DEFAULT: &quot;var(--pm-danger)&quot;,  bg: &quot;var(--pm-danger-bg)&quot; },
+      info:    { DEFAULT: &quot;var(--pm-info)&quot;,    bg: &quot;var(--pm-info-bg)&quot; },
+      c: {
+        bg: &quot;var(--pm-c-bg)&quot;,
+        &quot;bg-subtle&quot;: &quot;var(--pm-c-bg-subtle)&quot;,
+        surface: &quot;var(--pm-c-surface)&quot;,
+        &quot;surface-2&quot;: &quot;var(--pm-c-surface-2)&quot;,
+        line: &quot;var(--pm-c-line)&quot;,
+        &quot;line-strong&quot;: &quot;var(--pm-c-line-strong)&quot;,
+        text: &quot;var(--pm-c-text)&quot;,
+        &quot;text-2&quot;: &quot;var(--pm-c-text-2)&quot;,
+        &quot;text-3&quot;: &quot;var(--pm-c-text-3)&quot;,
+        signal: &quot;var(--pm-c-signal)&quot;,
+        accent: &quot;var(--pm-c-accent)&quot;,
+        &quot;accent-tint&quot;: &quot;var(--pm-c-accent-tint)&quot;,
+        &quot;btn-bg&quot;: &quot;var(--pm-c-btn-bg)&quot;,
+        &quot;btn-fg&quot;: &quot;var(--pm-c-btn-fg)&quot;,
+        &quot;btn-bg-hover&quot;: &quot;var(--pm-c-btn-bg-hover)&quot;,
+        focus: &quot;var(--pm-c-focus)&quot;,
+      },
+    },
+    fontFamily: {
+      sans: [&quot;Geist&quot;, &quot;ui-sans-serif&quot;, &quot;system-ui&quot;, &quot;-apple-system&quot;, &quot;Segoe UI&quot;, &quot;sans-serif&quot;],
+      mono: [&quot;Geist Mono&quot;, &quot;ui-monospace&quot;, &quot;SFMono-Regular&quot;, &quot;Menlo&quot;, &quot;monospace&quot;],
+    },
+    fontWeight: { normal: &quot;400&quot;, medium: &quot;500&quot;, semibold: &quot;600&quot; },
+    fontSize: {
+      label:   [&quot;12px&quot;, { lineHeight: &quot;1.4&quot;,  letterSpacing: &quot;0.06em&quot; }],
+      caption: [&quot;13px&quot;, { lineHeight: &quot;1.45&quot; }],
+      small:   [&quot;15px&quot;, { lineHeight: &quot;1.5&quot; }],
+      body:    [&quot;17px&quot;, { lineHeight: &quot;1.55&quot; }],
+      lead:    [&quot;19px&quot;, { lineHeight: &quot;1.55&quot; }],
+      h4:      [&quot;20px&quot;, { lineHeight: &quot;1.3&quot;,  letterSpacing: &quot;-0.015em&quot; }],
+      h3:      [&quot;28px&quot;, { lineHeight: &quot;1.2&quot;,  letterSpacing: &quot;-0.025em&quot; }],
+      h2:      [&quot;36px&quot;, { lineHeight: &quot;1.15&quot;, letterSpacing: &quot;-0.025em&quot; }],
+      h1:      [&quot;48px&quot;, { lineHeight: &quot;1.08&quot;, letterSpacing: &quot;-0.03em&quot; }],
+      display: [&quot;64px&quot;, { lineHeight: &quot;1.05&quot;, letterSpacing: &quot;-0.035em&quot; }],
+    },
+    spacing: {
+      0: &quot;0&quot;, px: &quot;1px&quot;, 1: &quot;4px&quot;, 2: &quot;8px&quot;, 3: &quot;12px&quot;, 4: &quot;16px&quot;, 5: &quot;24px&quot;,
+      6: &quot;32px&quot;, 7: &quot;48px&quot;, 8: &quot;64px&quot;, 9: &quot;96px&quot;, 10: &quot;128px&quot;,
+    },
+    borderRadius: { none: &quot;0&quot;, sm: &quot;6px&quot;, md: &quot;8px&quot;, lg: &quot;12px&quot;, xl: &quot;16px&quot;, full: &quot;999px&quot; },
+    boxShadow: { none: &quot;none&quot;, overlay: &quot;0 1px 2px rgba(17,18,16,.06), 0 8px 24px rgba(17,18,16,.08)&quot; },
+    extend: {
+      maxWidth: { container: &quot;1200px&quot;, prose: &quot;680px&quot; },
+      transitionDuration: { fast: &quot;120ms&quot;, DEFAULT: &quot;180ms&quot; },
+      transitionTimingFunction: { DEFAULT: &quot;cubic-bezier(.2,0,0,1)&quot; },
+    },
+  },
+  plugins: [],
+};
+</pre></div>
+
+  <h3>tokens.json</h3>
+  <div class="code"><div class="code-h"><span>tokens.json</span><button class="pm-btn pm-btn--secondary pm-btn--sm" type="button" data-copy="c-json">Copy</button></div><pre id="c-json">{
+  &quot;$description&quot;: &quot;Pomera design tokens v2.0 (lime system), 29 Sept 2026. Format: W3C Design Tokens draft.&quot;,
+  &quot;color&quot;: {
+    &quot;brand&quot;: {
+      &quot;ink&quot;:         { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot;, &quot;$description&quot;: &quot;Text, primary buttons, logo on light&quot; },
+      &quot;white&quot;:       { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; },
+      &quot;paper&quot;:       { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FAFAF7&quot;, &quot;$description&quot;: &quot;Alternate sections&quot; },
+      &quot;lime&quot;:        { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#C8F135&quot;, &quot;$description&quot;: &quot;Bands, markers, Beam on ink. Never text, never a button.&quot; },
+      &quot;lime-tint&quot;:   { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#F2FBD6&quot;, &quot;$description&quot;: &quot;Chips, highlighted rows, chart fills&quot; },
+      &quot;lime-strong&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#7FA00F&quot;, &quot;$description&quot;: &quot;Small signal dots on white only (3:1)&quot; }
+    },
+    &quot;gray&quot;: {
+      &quot;50&quot;:  { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FAFAF7&quot; },
+      &quot;100&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#F3F3F0&quot; },
+      &quot;200&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#E7E7E3&quot; },
+      &quot;300&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#D4D4CF&quot; },
+      &quot;400&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#B8B8B2&quot; },
+      &quot;500&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#8A8A85&quot; },
+      &quot;600&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#5B5B58&quot; },
+      &quot;700&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#3D3E39&quot; },
+      &quot;800&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#1C1C1A&quot; },
+      &quot;900&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot; }
+    },
+    &quot;status&quot;: {
+      &quot;light&quot;: {
+        &quot;success&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#146C34&quot; }, &quot;success-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#E7F6EC&quot; },
+        &quot;warning&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#8A5300&quot; }, &quot;warning-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FDF3E2&quot; },
+        &quot;danger&quot;:  { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#9A1F1F&quot; }, &quot;danger-bg&quot;:  { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FCEBEA&quot; },
+        &quot;info&quot;:    { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#2E5AAC&quot; }, &quot;info-bg&quot;:    { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#EAF0FB&quot; }
+      },
+      &quot;dark&quot;: {
+        &quot;success&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#5BC27E&quot; }, &quot;success-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#10281A&quot; },
+        &quot;warning&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#E9B45A&quot; }, &quot;warning-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#2A2010&quot; },
+        &quot;danger&quot;:  { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FF8A7D&quot; }, &quot;danger-bg&quot;:  { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#2C1311&quot; },
+        &quot;info&quot;:    { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#8FB0FF&quot; }, &quot;info-bg&quot;:    { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#121C33&quot; }
+      }
+    },
+    &quot;semantic&quot;: {
+      &quot;light&quot;: {
+        &quot;bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; }, &quot;bg-subtle&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FAFAF7&quot; },
+        &quot;surface&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; }, &quot;surface-2&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#F3F3F0&quot; },
+        &quot;line&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#E7E7E3&quot; }, &quot;line-strong&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#D4D4CF&quot; },
+        &quot;text&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot; }, &quot;text-2&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#5B5B58&quot; }, &quot;text-3&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#8A8A85&quot; },
+        &quot;signal&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#7FA00F&quot; }, &quot;accent-tint&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#F2FBD6&quot; },
+        &quot;btn-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot; }, &quot;btn-fg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; }, &quot;btn-bg-hover&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#2A2B27&quot; },
+        &quot;focus&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot; }
+      },
+      &quot;dark&quot;: {
+        &quot;bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#0B0B0A&quot; }, &quot;bg-subtle&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111110&quot; },
+        &quot;surface&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#141413&quot; }, &quot;surface-2&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#1C1C1A&quot; },
+        &quot;line&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#262624&quot; }, &quot;line-strong&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#34342F&quot; },
+        &quot;text&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#EDEDEA&quot; }, &quot;text-2&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#9A9A95&quot; }, &quot;text-3&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#6E6E69&quot; },
+        &quot;signal&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#C8F135&quot; }, &quot;accent-tint&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#1D2410&quot; },
+        &quot;btn-bg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; }, &quot;btn-fg&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#111210&quot; }, &quot;btn-bg-hover&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#E7E7E3&quot; },
+        &quot;focus&quot;: { &quot;$type&quot;: &quot;color&quot;, &quot;$value&quot;: &quot;#FFFFFF&quot; }
+      }
+    }
+  },
+  &quot;font&quot;: {
+    &quot;family&quot;: {
+      &quot;sans&quot;: { &quot;$type&quot;: &quot;fontFamily&quot;, &quot;$value&quot;: [&quot;Geist&quot;, &quot;ui-sans-serif&quot;, &quot;system-ui&quot;, &quot;sans-serif&quot;] },
+      &quot;mono&quot;: { &quot;$type&quot;: &quot;fontFamily&quot;, &quot;$value&quot;: [&quot;Geist Mono&quot;, &quot;ui-monospace&quot;, &quot;Menlo&quot;, &quot;monospace&quot;] }
+    },
+    &quot;weight&quot;: {
+      &quot;regular&quot;:  { &quot;$type&quot;: &quot;fontWeight&quot;, &quot;$value&quot;: 400 },
+      &quot;medium&quot;:   { &quot;$type&quot;: &quot;fontWeight&quot;, &quot;$value&quot;: 500 },
+      &quot;semibold&quot;: { &quot;$type&quot;: &quot;fontWeight&quot;, &quot;$value&quot;: 600 }
+    }
+  },
+  &quot;typography&quot;: {
+    &quot;display&quot;: { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;64px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.05, &quot;letterSpacing&quot;: &quot;-0.035em&quot; }, &quot;$description&quot;: &quot;Mobile 40px&quot; },
+    &quot;h1&quot;:      { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;48px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.08, &quot;letterSpacing&quot;: &quot;-0.03em&quot; },  &quot;$description&quot;: &quot;Mobile 34px&quot; },
+    &quot;h2&quot;:      { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;36px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.15, &quot;letterSpacing&quot;: &quot;-0.025em&quot; }, &quot;$description&quot;: &quot;Mobile 28px&quot; },
+    &quot;h3&quot;:      { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;28px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.2,  &quot;letterSpacing&quot;: &quot;-0.025em&quot; }, &quot;$description&quot;: &quot;Mobile 22px&quot; },
+    &quot;h4&quot;:      { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;20px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.3,  &quot;letterSpacing&quot;: &quot;-0.015em&quot; } },
+    &quot;lead&quot;:    { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;19px&quot;, &quot;fontWeight&quot;: 400, &quot;lineHeight&quot;: 1.55, &quot;letterSpacing&quot;: &quot;0&quot; } },
+    &quot;body&quot;:    { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;17px&quot;, &quot;fontWeight&quot;: 400, &quot;lineHeight&quot;: 1.55, &quot;letterSpacing&quot;: &quot;0&quot; } },
+    &quot;small&quot;:   { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;15px&quot;, &quot;fontWeight&quot;: 400, &quot;lineHeight&quot;: 1.5,  &quot;letterSpacing&quot;: &quot;0&quot; } },
+    &quot;caption&quot;: { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.sans}&quot;, &quot;fontSize&quot;: &quot;13px&quot;, &quot;fontWeight&quot;: 400, &quot;lineHeight&quot;: 1.45, &quot;letterSpacing&quot;: &quot;0&quot; } },
+    &quot;label&quot;:   { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.mono}&quot;, &quot;fontSize&quot;: &quot;12px&quot;, &quot;fontWeight&quot;: 500, &quot;lineHeight&quot;: 1.4,  &quot;letterSpacing&quot;: &quot;0.06em&quot;, &quot;textTransform&quot;: &quot;uppercase&quot; } },
+    &quot;number&quot;:  { &quot;$type&quot;: &quot;typography&quot;, &quot;$value&quot;: { &quot;fontFamily&quot;: &quot;{font.family.mono}&quot;, &quot;fontWeight&quot;: 400, &quot;fontVariantNumeric&quot;: &quot;tabular-nums&quot; }, &quot;$description&quot;: &quot;Every rupee amount, view count, CPM, date and ID&quot; }
+  },
+  &quot;space&quot;: {
+    &quot;1&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;4px&quot; },  &quot;2&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;8px&quot; },
+    &quot;3&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;12px&quot; }, &quot;4&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;16px&quot; },
+    &quot;5&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;24px&quot; }, &quot;6&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;32px&quot; },
+    &quot;7&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;48px&quot; }, &quot;8&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;64px&quot; },
+    &quot;9&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;96px&quot; }, &quot;10&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;128px&quot; }
+  },
+  &quot;radius&quot;: {
+    &quot;sm&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;6px&quot;,  &quot;$description&quot;: &quot;Chips&quot; },
+    &quot;md&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;8px&quot;,  &quot;$description&quot;: &quot;Buttons, inputs&quot; },
+    &quot;lg&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;12px&quot;, &quot;$description&quot;: &quot;Cards&quot; },
+    &quot;xl&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;16px&quot;, &quot;$description&quot;: &quot;Modals, large panels&quot; },
+    &quot;full&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;999px&quot;, &quot;$description&quot;: &quot;Status dots and avatars only&quot; }
+  },
+  &quot;border&quot;: { &quot;default&quot;: { &quot;$type&quot;: &quot;border&quot;, &quot;$value&quot;: { &quot;width&quot;: &quot;1px&quot;, &quot;style&quot;: &quot;solid&quot;, &quot;color&quot;: &quot;{color.semantic.light.line}&quot; } } },
+  &quot;shadow&quot;: { &quot;overlay&quot;: { &quot;$type&quot;: &quot;shadow&quot;, &quot;$value&quot;: &quot;0 1px 2px rgba(17,18,16,.06), 0 8px 24px rgba(17,18,16,.08)&quot;, &quot;$description&quot;: &quot;Menus, popovers, modals only&quot; } },
+  &quot;motion&quot;: {
+    &quot;duration-fast&quot;: { &quot;$type&quot;: &quot;duration&quot;, &quot;$value&quot;: &quot;120ms&quot; },
+    &quot;duration&quot;:      { &quot;$type&quot;: &quot;duration&quot;, &quot;$value&quot;: &quot;180ms&quot; },
+    &quot;ease&quot;:          { &quot;$type&quot;: &quot;cubicBezier&quot;, &quot;$value&quot;: [0.2, 0, 0, 1] }
+  },
+  &quot;breakpoint&quot;: {
+    &quot;sm&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;640px&quot; }, &quot;md&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;768px&quot; },
+    &quot;lg&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;1024px&quot; }, &quot;xl&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;1280px&quot; }
+  },
+  &quot;layout&quot;: {
+    &quot;container&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;1200px&quot; },
+    &quot;gutter-desktop&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;24px&quot; },
+    &quot;gutter-mobile&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;16px&quot; },
+    &quot;section-desktop&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;96px&quot; },
+    &quot;section-mobile&quot;: { &quot;$type&quot;: &quot;dimension&quot;, &quot;$value&quot;: &quot;64px&quot; }
+  }
+}
+</pre></div>
+
+  <h3>pomera-components.css</h3>
+  <div class="code"><div class="code-h"><span>pomera-components.css</span><button class="pm-btn pm-btn--secondary pm-btn--sm" type="button" data-copy="c-comp">Copy</button></div><pre id="c-comp">/* Pomera reference components v2.0. Requires pomera-tokens.css.
+   Framework-agnostic: port the values, keep the rules. */
+
+/* ---------- Buttons ---------- */
+.pm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 0 18px;
+  border: 1px solid transparent; border-radius: var(--pm-radius-md);
+  font: 500 15px/1 var(--pm-font-sans); letter-spacing: -0.005em;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color var(--pm-duration-fast) var(--pm-ease),
+              border-color var(--pm-duration-fast) var(--pm-ease),
+              color var(--pm-duration-fast) var(--pm-ease);
+}
+.pm-btn:focus-visible { outline: 2px solid var(--pm-c-focus); outline-offset: 2px; }
+.pm-btn--sm { height: 36px; padding: 0 14px; font-size: 14px; }
+.pm-btn--lg { height: 52px; padding: 0 24px; font-size: 16px; }
+
+.pm-btn--primary { background: var(--pm-c-btn-bg); color: var(--pm-c-btn-fg); }
+.pm-btn--primary:hover { background: var(--pm-c-btn-bg-hover); }
+.pm-btn--primary:active { background: var(--pm-c-btn-bg-active); }
+
+.pm-btn--secondary { background: var(--pm-c-surface); color: var(--pm-c-text); border-color: var(--pm-c-line-strong); }
+.pm-btn--secondary:hover { background: var(--pm-c-bg-subtle); border-color: var(--pm-c-text-3); }
+.pm-btn--secondary:active { background: var(--pm-c-surface-2); }
+
+.pm-btn--ghost { background: transparent; color: var(--pm-c-text); padding: 0 6px; height: auto;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.pm-btn--ghost:hover { text-decoration-thickness: 2px; }
+
+.pm-btn--danger { background: var(--pm-danger); color: var(--pm-white); }
+.pm-btn--danger:hover { filter: brightness(.92); }
+
+.pm-btn:disabled, .pm-btn[aria-disabled=&quot;true&quot;] {
+  background: var(--pm-c-surface-2); color: var(--pm-c-text-3); border-color: transparent; cursor: not-allowed;
+}
+
+/* ---------- Inputs ---------- */
+.pm-field { display: grid; gap: 6px; }
+.pm-label { font: 500 14px/1.3 var(--pm-font-sans); color: var(--pm-c-text); }
+.pm-help { font: 400 13px/1.45 var(--pm-font-sans); color: var(--pm-c-text-2); }
+.pm-input {
+  height: 44px; width: 100%; padding: 0 12px;
+  background: var(--pm-c-surface); color: var(--pm-c-text);
+  border: 1px solid var(--pm-c-line-strong); border-radius: var(--pm-radius-md);
+  font: 400 16px/1 var(--pm-font-sans);
+  transition: border-color var(--pm-duration-fast) var(--pm-ease), box-shadow var(--pm-duration-fast) var(--pm-ease);
+}
+.pm-input::placeholder { color: var(--pm-c-text-3); }
+.pm-input:hover { border-color: var(--pm-c-text-3); }
+.pm-input:focus { outline: none; border-color: var(--pm-c-focus); box-shadow: 0 0 0 1px var(--pm-c-focus); }
+.pm-input[aria-invalid=&quot;true&quot;] { border-color: var(--pm-danger); box-shadow: 0 0 0 1px var(--pm-danger); }
+.pm-input:disabled { background: var(--pm-c-surface-2); color: var(--pm-c-text-3); cursor: not-allowed; }
+.pm-error { font: 400 13px/1.45 var(--pm-font-sans); color: var(--pm-danger); }
+
+/* ---------- Chips (status and data) ---------- */
+.pm-chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px;
+  border-radius: var(--pm-radius-sm); font: 500 12px/1 var(--pm-font-sans); white-space: nowrap;
+  background: var(--pm-c-surface-2); color: var(--pm-c-text-2);
+}
+.pm-chip--dot::before { content: &quot;&quot;; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.pm-chip--verified { background: var(--pm-c-accent-tint); color: var(--pm-c-text); }
+.pm-chip--verified::before { background: var(--pm-c-signal); }
+.pm-chip--live { background: var(--pm-c-btn-bg); color: var(--pm-c-btn-fg); }
+.pm-chip--live::before { background: var(--pm-lime); }
+.pm-chip--success { background: var(--pm-success-bg); color: var(--pm-success); }
+.pm-chip--warning { background: var(--pm-warning-bg); color: var(--pm-warning); }
+.pm-chip--danger  { background: var(--pm-danger-bg);  color: var(--pm-danger); }
+.pm-chip--mono { font-family: var(--pm-font-mono); font-weight: 400; font-variant-numeric: tabular-nums; }
+
+/* ---------- Cards ---------- */
+.pm-card { background: var(--pm-c-surface); border: 1px solid var(--pm-c-line); border-radius: var(--pm-radius-lg); padding: 24px; }
+.pm-card--interactive { transition: border-color var(--pm-duration-fast) var(--pm-ease); }
+.pm-card--interactive:hover { border-color: var(--pm-c-line-strong); }
+.pm-stat-label { font: 500 12px/1.4 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2); }
+.pm-stat-value { font: 400 32px/1.1 var(--pm-font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--pm-c-text); margin-top: 8px; }
+
+/* ---------- Tables (statements, not spreadsheets) ---------- */
+.pm-table { width: 100%; border-collapse: collapse; font: 400 15px/1.4 var(--pm-font-sans); color: var(--pm-c-text); }
+.pm-table th {
+  text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--pm-c-text);
+  font: 500 12px/1.4 var(--pm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pm-c-text-2);
+}
+.pm-table td { padding: 0 12px; height: 48px; border-bottom: 1px solid var(--pm-c-line); }
+.pm-table tr:hover td { background: var(--pm-c-bg-subtle); }
+.pm-table .num { text-align: right; font-family: var(--pm-font-mono); font-variant-numeric: tabular-nums; }
+.pm-table tfoot td { font-weight: 500; border-bottom: 0; border-top: 1px solid var(--pm-c-text); }
+</pre></div>
+
+  <h3>Accessibility checklist</h3>
+  <ul class="check">
+    <li>Body text at least 4.5:1. Grey 500 is for labels only.</li>
+    <li>Visible focus on every interactive element. Never remove outlines.</li>
+    <li>Status shown with a dot and a word, never colour alone.</li>
+    <li>Touch targets at least 44 × 44px.</li>
+    <li>Every input has a visible label; errors are linked with <code>aria-describedby</code>.</li>
+    <li>Motion respects <code>prefers-reduced-motion</code>.</li>
+    <li>The logo has alt text "Pomera" (ClipperCircle lockup: "ClipperCircle by Pomera"); decorative Beams are <code>aria-hidden</code>.</li>
+  </ul>
+</section>
+
+<!-- ===================== 08 GOVERNANCE ===================== -->
+<section class="chapter" id="governance">
+  <p class="eyebrow">08 · Governance</p>
+  <h2>Version 2.1, and what it replaces.</h2>
+  <div class="kv">
+    <div>Version</div><div>2.1 · October 2026 · changes need founder sign-off</div>
+    <div>v2.1 adds</div><div>ClipperCircle by Pomera (brand architecture, words, lockup, minimum size), two Instagram accounts, Brand Assets v2.1. Nothing else changed from 2.0.</div>
+    <div>Replaces</div><div>Brand Identity v1.0, Brand Guidelines v1.0, Visual System v1.0, pomera-tokens v1 (all blue)</div>
+    <div>Pairs with</div><div>Brand Book v2.4 (positioning, messaging, proof rules) · Brand Assets v2.1 · Social Kit v1.1 · Campaign Brief v1.1</div>
+  </div>
+  <div class="table-wrap"><table class="pm-table">
+    <thead><tr><th>Topic</th><th>v1</th><th>v2.1 (now)</th></tr></thead>
+    <tbody>
+      <tr><td>Brand colour</td><td>Blue #455FF5, purple gradient</td><td>Ink, white, paper; lime #C8F135 under 5%</td></tr>
+      <tr><td>Headline weight</td><td>Geist 600–700</td><td>Geist 500, nothing above 600</td></tr>
+      <tr><td>Buttons</td><td>Pills, brand-coloured</td><td>8px corners, ink (white on dark)</td></tr>
+      <tr><td>Supply side</td><td>editors / creators</td><td>publishers to brands; clippers inside ClipperCircle</td></tr>
+      <tr><td>Publisher front door</td><td>—</td><td>ClipperCircle by Pomera, clippercircle.pomera.com</td></tr>
+      <tr><td>Instagram</td><td>Editor-first</td><td>Two accounts: @pomera (brands), @clippercircle (publishers)</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Open before anything is printed</h3>
+  <ul class="check">
+    <li>Reverse image search on the Beam (Google Lens, TinEye).</li>
+    <li>Indian trademark searches for Pomera and ClipperCircle: Classes 35 (advertising), 42 (software) and 9.</li>
+    <li>Find the original vector of the wordmark for billboards and signage. The current files are traced from the highest-resolution master and hold up to 3200px.</li>
+  </ul>
+  <footer class="end"><span>Pomera · alternative ad platform · Bengaluru</span><span class="mono">Brand guidelines v2.1</span></footer>
+</section>
+</main>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('themeBtn');
+  var modes = ['auto', 'light', 'dark'], mode = 'auto';
+  try { mode = localStorage.getItem('pm-theme') || 'auto'; } catch (e) {}
+  function apply() {
+    if (mode === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', mode);
+    btn.textContent = 'Theme: ' + mode;
+  }
+  btn.addEventListener('click', function () {
+    mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+    try { localStorage.setItem('pm-theme', mode); } catch (e) {}
+    apply();
+  });
+  apply();
+
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = document.getElementById(b.getAttribute('data-copy'));
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
+      var select = function () { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press Ctrl/Cmd+C'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(pre.textContent).then(done, select); else select();
+    });
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.index a'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    document.querySelectorAll('section.chapter').forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+
+
+
+</body>
+</html>
+

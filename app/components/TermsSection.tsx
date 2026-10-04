@@ -71,8 +71,8 @@ export default function TermsSection() {
               <ellipse
                 cx="591.5"
                 cy="481.5"
-                fill="#FF7707"
-                fillOpacity="0.32"
+                fill="#111210"
+                fillOpacity="0.25"
                 rx="591.5"
                 ry="481.5"
                 transform="matrix(1 0 0 -1 128 262)"
@@ -82,7 +82,7 @@ export default function TermsSection() {
               <ellipse
                 cx="377"
                 cy="237.5"
-                fill="#984D04"
+                fill="#252624"
                 rx="377"
                 ry="237.5"
                 transform="matrix(1 0 0 -1 343 44)"
@@ -181,7 +181,7 @@ export default function TermsSection() {
               y2="422.104"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#FF8003" />
+              <stop stopColor="#353632" />
               <stop offset="1" stopColor="#EC3EFF" />
             </linearGradient>
             <clipPath id="terms-bg_clip">

@@ -1,236 +1,194 @@
 "use client";
 
-import React from "react";
-import "./SolutionSteps.css";
+import { useEffect, useRef, useState } from "react";
+import "./SolutionJourney.css";
+
+const STEPS = [
+  {
+    step: "01",
+    title: "Commit budget & fixed rate",
+    desc: "You set the budget and agree on a fixed ₹CPM before the campaign runs. Minimum campaign is ₹10,000. No auction drift, no surprise bills.",
+    badge: "Fixed ₹CPM",
+    badgeType: "accent",
+  },
+  {
+    step: "02",
+    title: "Provide content & guidelines",
+    desc: "Share your existing long-form videos, raw cuts, product footage, and creative brief. You set the guardrails and disclosure rules.",
+    badge: "Brief & Assets",
+    badgeType: "neutral",
+  },
+  {
+    step: "03",
+    title: "Publishers distribute",
+    desc: "Independent video editors turn footage into short vertical posts and publish from their personal accounts across Instagram Reels and YouTube Shorts.",
+    badge: "Real Accounts",
+    badgeType: "neutral",
+  },
+  {
+    step: "04",
+    title: "Verification & fraud filtering",
+    desc: "Every post is tracked. Suspicious traffic, bot activity, and anomalies are filtered out. Views are verified before being logged.",
+    badge: "Fraud Filtered",
+    badgeType: "warning",
+  },
+  {
+    step: "05",
+    title: "Weekly UPI payouts",
+    desc: "Publishers are paid per verified view, weekly, directly via UPI. Reputation on the supply side is non-negotiable.",
+    badge: "Weekly UPI",
+    badgeType: "success",
+  },
+  {
+    step: "06",
+    title: "Verified delivery report",
+    desc: "You receive transparent reports showing every post link, verified view count, and achieved CPM. You are billed strictly for verified delivery.",
+    badge: "Pay on Delivery",
+    badgeType: "accent",
+  },
+];
 
 export default function SolutionSteps() {
+  const outerRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0); // 0..1 across the whole pinned scroll
+  const [active, setActive] = useState(0);
+
+  /*
+   * The section is a tall "scroll runway" with a sticky 100vh stage inside it.
+   * The page keeps scrolling, but the stage stays put and swaps steps as you go.
+   */
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const outer = outerRef.current;
+      if (!outer) return;
+      const rect = outer.getBoundingClientRect();
+      const runway = outer.offsetHeight - window.innerHeight;
+      const p = runway > 0 ? Math.min(1, Math.max(0, -rect.top / runway)) : 0;
+      setProgress(p);
+      setActive(Math.min(STEPS.length - 1, Math.floor(p * STEPS.length)));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Jump to a step by scrolling to the middle of its slice of the runway
+  const goTo = (i: number) => {
+    const outer = outerRef.current;
+    if (!outer) return;
+    const runway = outer.offsetHeight - window.innerHeight;
+    const top = outer.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: top + runway * ((i + 0.5) / STEPS.length), behavior: "smooth" });
+  };
+
   return (
-    <section className="sol-section" aria-label="Solution Overview">
-      <div className="sol-container">
-        
-        {/* Section Heading */}
-        <h2 className="sol-main-heading">Introducing the new Solution</h2>
+    <section id="how-it-works" className="sp-section" aria-label="Campaign Execution">
+      <div className="sp-outer" ref={outerRef} style={{ ["--sp-steps" as string]: STEPS.length }}>
+        <div className="sp-sticky">
+          <div className="sp-inner">
+            {/* Eyebrow */}
+            <div className="sp-eyebrow"></div>
 
-        {/* 3-Column Grid */}
-        <div className="sol-grid">
-          
-          {/* ── CARD 1: Launch your campaign ─────────────────────────── */}
-          <div className="sol-card">
-            <div className="sol-card__visual sol-card__visual--launch">
-              <div className="sol-platform-modal">
-                <span className="sol-modal-title">Select platforms</span>
-                <span className="sol-modal-sub">
-                  Choose which platforms this campaign accepts content from.
-                </span>
+            <h2 className="sp-heading">How a campaign runs.</h2>
+            <p className="sp-lead">
+              Six predictable steps from initial video assets to delivered, verified reach. No guesswork and no upfront
+              billing risk.
+            </p>
 
-                <div className="sol-platform-input">
-                  <span className="sol-pill-badge">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="#0f172a">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 3.76.92V6.69Z" />
-                    </svg>
-                    <span>TikTok</span>
-                  </span>
-
-                  <span className="sol-pill-badge">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="#dc2626">
-                      <path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.26 5 12 5 12 5s-6.26 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26.2 26.2 0 0 0 2 12c0 1.62.14 3.23.42 4.81.33 1.24 1.3 2.21 2.54 2.54C6.52 19.77 12 19.77 12 19.77s6.26 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77c.28-1.58.42-3.19.42-4.81 0-1.62-.14-3.23-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z" />
-                    </svg>
-                    <span>YouTube</span>
-                  </span>
-
-                  <span className="sol-pill-badge">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#e1306c" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="2" width="20" height="20" rx="5" />
-                      <circle cx="12" cy="12" r="4" />
-                      <circle cx="17.5" cy="6.5" r="0.5" fill="#e1306c" />
-                    </svg>
-                    <span>Instagram</span>
-                  </span>
-
-                  <span className="sol-pill-badge sol-pill-badge--mini">
-                    <span className="sol-x-icon">𝕏</span>
-                    <span className="sol-x-icon">𝕏</span>
-                  </span>
-                </div>
-
-                {/* Mouse cursor pointer clicking on input */}
-                <div className="sol-cursor-pointer" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#0f172a">
-                    <path d="M4 2l16 9-7 2.5L10.5 21 4 2z" />
-                  </svg>
-                </div>
-
-                <div className="sol-modal-actions">
-                  <button type="button" className="sol-modal-cancel">Cancel</button>
-                  <button type="button" className="sol-modal-continue">Continue</button>
-                </div>
+            {/* Rail: six stops joined by a line that fills as you scroll */}
+            <div className="sp-rail" role="tablist" aria-label="Campaign steps">
+              <div className="sp-rail__line" aria-hidden="true">
+                <div className="sp-rail__fill" style={{ transform: `scaleX(${progress})` }} />
               </div>
+              {STEPS.map((item, i) => (
+                <button
+                  key={item.step}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  aria-label={`Step ${item.step}: ${item.title}`}
+                  onClick={() => goTo(i)}
+                  className={`sp-dot ${i < active ? "is-done" : i === active ? "is-current" : ""}`}
+                >
+                  {item.step}
+                </button>
+              ))}
             </div>
 
-            <div className="sol-card__text">
-              <h3 className="sol-card__title">Launch your campaign</h3>
-              <p className="sol-card__desc">
-                Set your budget, explain what content you want, and choose how creators get paid.
-              </p>
+            {/* Stage: one step at a time, swapped by scroll */}
+            <div className="sp-stage">
+              {STEPS.map((item, i) => {
+                // Where this card sits relative to the active one: centre, one to either side, or parked out of sight
+                const offset = i - active;
+                const pos =
+                  offset === 0 ? "center" : offset === -1 ? "left" : offset === 1 ? "right" : offset < 0 ? "far-left" : "far-right";
+                return (
+                  <article
+                    key={item.step}
+                    className={`sp-step sp-step--${pos}`}
+                    aria-hidden={offset !== 0}
+                    onClick={() => offset !== 0 && goTo(i)}
+                  >
+                    <div className="sp-step__meta">
+                      <span className="sp-step__phase">
+                        Phase {item.step} / 0{STEPS.length}
+                      </span>
+                      <span className="sp-badge">{item.badge}</span>
+                    </div>
+                    <div className="sp-step__num" aria-hidden="true">
+                      {item.step}
+                    </div>
+                    <div className="sp-step__body">
+                      <h3 className="sp-step__title">{item.title}</h3>
+                      <p className="sp-step__desc">{item.desc}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div className="sp-hint" aria-hidden="true">
+              <span className={active === STEPS.length - 1 ? "is-hidden" : ""}>Keep scrolling</span>
             </div>
           </div>
-
-          {/* ── CARD 2: Creators make the content ─────────────────────── */}
-          <div className="sol-card">
-            <div className="sol-card__visual sol-card__visual--creators">
-              <div className="sol-reels-container">
-                
-                {/* Reel 1 (partial left) */}
-                <div className="sol-reel sol-reel--left">
-                  <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=350&fit=crop"
-                    alt="Creator recording video"
-                    className="sol-reel-img"
-                  />
-                </div>
-
-                {/* Reel 2 (primary center-left) */}
-                <div className="sol-reel sol-reel--center-1">
-                  <img
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=220&h=380&fit=crop"
-                    alt="Creator smiling on video"
-                    className="sol-reel-img"
-                  />
-                </div>
-
-                {/* Reel 3 (primary center-right) */}
-                <div className="sol-reel sol-reel--center-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=220&h=380&fit=crop"
-                    alt="Creator dancing in video"
-                    className="sol-reel-img"
-                  />
-                </div>
-
-                {/* Reel 4 (partial right) */}
-                <div className="sol-reel sol-reel--right">
-                  <img
-                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=350&fit=crop"
-                    alt="Creator talking to camera"
-                    className="sol-reel-img"
-                  />
-                </div>
-
-                {/* Bottom smooth fade overlay */}
-                <div className="sol-reels-fade" />
-              </div>
-            </div>
-
-            <div className="sol-card__text">
-              <h3 className="sol-card__title">Creators make the content</h3>
-              <p className="sol-card__desc">
-                Creators apply, post videos about your brand, and submit them to your campaign.
-              </p>
-            </div>
-          </div>
-
-          {/* ── CARD 3: We handle everything else ─────────────────────── */}
-          <div className="sol-card">
-            <div className="sol-card__visual sol-card__visual--analytics">
-              <div className="sol-analytics-card">
-                
-                {/* Header */}
-                <div className="sol-analytics-head">
-                  <span className="sol-analytics-label">Campaign engagement</span>
-                  <div className="sol-analytics-ctr-row">
-                    <span className="sol-analytics-ctr">4.3% CTR</span>
-                    <span className="sol-analytics-tag">+18.3%</span>
-                  </div>
-                </div>
-
-                {/* Legend badges */}
-                <div className="sol-analytics-legend">
-                  <span className="sol-legend-pill sol-legend-pill--views">
-                    <span className="sol-legend-check">✓</span>
-                    <span>Views 1,2M</span>
-                  </span>
-                  <span className="sol-legend-pill sol-legend-pill--apps">
-                    <span className="sol-legend-check">✓</span>
-                    <span>Applications 18,2K</span>
-                  </span>
-                  <span className="sol-legend-pill sol-legend-pill--joined">
-                    <span className="sol-legend-check">✓</span>
-                    <span>Joined 4.8%</span>
-                  </span>
-                </div>
-
-                {/* Multi-curve Graph SVG */}
-                <div className="sol-analytics-chart">
-                  <svg viewBox="0 0 280 140" className="sol-chart-svg" preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="solBlueGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.15" />
-                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-                      </linearGradient>
-                      <linearGradient id="solPinkGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#ec4899" stopOpacity="0.12" />
-                        <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-
-                    {/* Area fills */}
-                    <path
-                      d="M0 120 Q 30 110, 60 90 T 120 70 T 180 85 T 240 50 L 280 40 L 280 140 L 0 140 Z"
-                      fill="url(#solBlueGrad)"
-                    />
-
-                    {/* Green line (upper trajectory) */}
-                    <path
-                      d="M0 95 Q 25 90, 50 65 T 100 80 T 150 50 T 200 65 T 250 35 L 280 20"
-                      fill="none"
-                      stroke="#10b981"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                    />
-
-                    {/* Pink line (middle trajectory) */}
-                    <path
-                      d="M0 115 Q 35 110, 70 85 T 140 95 T 210 60 T 260 55 L 280 70"
-                      fill="none"
-                      stroke="#ec4899"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                    />
-
-                    {/* Blue line (lower trajectory) */}
-                    <path
-                      d="M0 125 Q 40 120, 80 95 T 160 105 T 240 70 L 280 45"
-                      fill="none"
-                      stroke="#3b82f6"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-
-                {/* X-axis labels */}
-                <div className="sol-chart-dates">
-                  <span>Jan 5</span>
-                  <span>Jan 11</span>
-                  <span>Jan 17</span>
-                  <span>Jan 23</span>
-                  <span>Jan 30</span>
-                  <span>Feb 5</span>
-                </div>
-
-              </div>
-            </div>
-
-            <div className="sol-card__text">
-              <h3 className="sol-card__title">We handle everything else</h3>
-              <p className="sol-card__desc">
-                Content Rewards tracks the views, calculates rewards, and pays creators automatically.
-              </p>
-            </div>
-          </div>
-
         </div>
+      </div>
 
+      {/* Supported Distribution Platforms Banner */}
+      <div className="sp-channels-wrap">
+        <div className="sp-channels">
+          <div className="flex items-center gap-3 flex-wrap justify-center">
+            <span className="font-mono text-[12px] uppercase tracking-[0.06em] text-[#5B5B58]">
+              Distribution Channels:
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-white border border-[#E7E7E3] text-[13px] font-medium text-[#111210]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                </svg>
+                Instagram Reels
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-white border border-[#E7E7E3] text-[13px] font-medium text-[#111210]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.26 5 12 5 12 5s-6.26 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26.2 26.2 0 0 0 2 12c0 1.62.14 3.23.42 4.81.33 1.24 1.3 2.21 2.54 2.54C6.52 19.77 12 19.77 12 19.77s6.26 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77c.28-1.58.42-3.19.42-4.81 0-1.62-.14-3.23-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z" />
+                </svg>
+                YouTube Shorts
+              </span>
+            </div>
+          </div>
+          <span className="font-mono text-[12px] text-[#5B5B58]">ASCI compliant paid disclosure on every post</span>
+        </div>
       </div>
     </section>
   );

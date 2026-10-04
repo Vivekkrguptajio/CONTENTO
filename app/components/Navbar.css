@@ -27,20 +27,20 @@
 }
 
 .nav-sticky-wrapper.is-scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none !important;
+  border-bottom: none !important;
 }
 
-/* ── 1. Top Orange Announcement Bar ─────────────────────────────── */
+/* ── 1. Top Announcement Bar (Lime Band with Ink Text — Rationed 5%) ─ */
 .nav-announcement {
   width: 100%;
-  background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
-  color: #ffffff;
-  padding: 11px 24px;
-  min-height: 42px;
+  background: var(--pomera-ink, #111210);
+  color: var(--pomera-lime, #C8F135);
+  padding: 10px 24px;
+  min-height: 40px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -48,6 +48,7 @@
   position: relative;
   font-size: 13.5px;
   letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
 .nav-announcement-content {
@@ -57,24 +58,24 @@
 }
 
 .nav-announcement-bold {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .nav-announcement-divider {
-  opacity: 0.6;
-  font-weight: 300;
+  opacity: 0.35;
+  font-weight: 400;
 }
 
 .nav-announcement-link {
-  color: #ffffff;
-  font-weight: 500;
-  text-decoration: none;
+  color: var(--pomera-lime, #C8F135);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: opacity 0.15s ease;
 }
 
 .nav-announcement-link:hover {
-  text-decoration: underline;
-  opacity: 0.95;
+  opacity: 0.85;
 }
 
 .nav-announcement-close {
@@ -84,11 +85,11 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--pomera-lime, #C8F135);
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.75;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -136,6 +137,17 @@
   align-items: center;
   gap: 7px;
   line-height: 0;
+}
+
+.nav-brand-img,
+img.logo,
+svg.logo {
+  width: 108px;
+  height: 24px;
+  max-width: 108px;
+  max-height: 24px;
+  object-fit: contain;
+  display: block;
 }
 
 .nav-brand-link svg path {
@@ -192,9 +204,15 @@
 }
 
 .nav-link:hover,
+.nav-link.is-active,
 .nav-btn-dropdown.is-active {
   background: #F3F2EE;
   color: #110D0C;
+}
+
+/* While hovering the menu, the pill moves to the hovered link */
+.nav-menu:hover .nav-link.is-active:not(:hover) {
+  background: transparent;
 }
 
 .nav-chevron {
@@ -396,13 +414,14 @@
 }
 
 .nav-signin-link:hover {
-  color: #f97316;
+  color: var(--pomera-ink, #111210);
+  opacity: 0.75;
 }
 
 .nav-btn {
   font-family: inherit;
   cursor: pointer;
-  border-radius: 9999px;
+  border-radius: var(--pm-radius-md, 8px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -417,14 +436,15 @@
 }
 
 .nav-btn--primary {
-  background: linear-gradient(180deg, #ff7a00 0%, #ea580c 100%);
+  background: var(--pomera-ink, #111210);
   color: #ffffff;
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 9px 20px;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.32);
+  box-shadow: 0 2px 8px rgba(17, 18, 16, 0.16);
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--pomera-ink, #111210);
 }
 
 .nav-btn--primary::after {
@@ -434,7 +454,7 @@
   left: -60%;
   width: 40%;
   height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transform: rotate(25deg);
   transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -445,22 +465,26 @@
 }
 
 .nav-btn--primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 22px rgba(234, 88, 12, 0.45);
+  background: #252624;
+  border-color: #252624;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(17, 18, 16, 0.24);
 }
 
 .nav-btn--secondary {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: #ffffff;
+  color: var(--pomera-ink, #111210);
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 9px 20px;
+  border: 1px solid rgba(17, 18, 16, 0.15);
 }
 
 .nav-btn--secondary:hover {
-  background: #e2e8f0;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: var(--pomera-paper, #fafaf7);
+  border-color: rgba(17, 18, 16, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* ── Mobile Hamburger Toggle Button ────────────────────────────── */
@@ -646,7 +670,8 @@
 }
 
 .nav-mobile-large-link:hover {
-  color: #ea580c;
+  color: var(--pomera-ink, #111210);
+  opacity: 0.75;
 }
 
 .nav-mobile-accordion {
@@ -684,7 +709,8 @@
 }
 
 .nav-mobile-accordion-header:hover {
-  color: #ea580c;
+  color: var(--pomera-ink, #111210);
+  opacity: 0.75;
 }
 
 .nav-mobile-chevron {
@@ -697,7 +723,7 @@
 
 .nav-mobile-chevron.is-rotated {
   transform: rotate(180deg);
-  color: #ea580c;
+  color: var(--pomera-ink, #111210);
 }
 
 .nav-mobile-submenu {
@@ -861,19 +887,20 @@
   gap: 8px;
   width: 100%;
   height: 52px;
-  background: linear-gradient(90deg, #ff7a00 0%, #ea580c 100%);
+  background: var(--pomera-ink, #111210);
   color: #ffffff;
   font-size: 15.5px;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
+  box-shadow: 0 4px 16px rgba(17, 18, 16, 0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-mobile-btn-primary:hover {
+  background: #252624;
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(234, 88, 12, 0.45);
+  box-shadow: 0 6px 20px rgba(17, 18, 16, 0.28);
 }
 
 .nav-mobile-btn-primary svg {
@@ -1044,7 +1071,12 @@
 
 .nav-sticky-wrapper.nav-theme-dark .nav-link:hover,
 .nav-sticky-wrapper.nav-theme-dark .nav-link.is-active {
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+}
+
+.nav-sticky-wrapper.nav-theme-dark .nav-menu:hover .nav-link.is-active:not(:hover) {
+  background: transparent;
 }
 
 .nav-sticky-wrapper.nav-theme-dark .nav-chevron {
@@ -1090,7 +1122,7 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* ── Transparent Navbar for Agencies over Orange Hero ─────────────── */
+/* ── Transparent Navbar for Agencies over Hero ─────────────────────── */
 .nav-sticky-wrapper.nav-theme-agency {
   background: transparent !important;
   box-shadow: none !important;
@@ -1115,9 +1147,14 @@
 }
 
 .nav-sticky-wrapper.nav-theme-agency .nav-link:hover,
+.nav-sticky-wrapper.nav-theme-agency .nav-link.is-active,
 .nav-sticky-wrapper.nav-theme-agency .nav-btn-dropdown.is-active {
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
+}
+
+.nav-sticky-wrapper.nav-theme-agency .nav-menu:hover .nav-link.is-active:not(:hover) {
+  background: transparent;
 }
 
 .nav-sticky-wrapper.nav-theme-agency .nav-chevron {

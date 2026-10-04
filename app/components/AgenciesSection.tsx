@@ -68,21 +68,21 @@ export default function AgenciesSection() {
   const creatorRows = [
     {
       name: "xKaizen",
-      gradient: "linear-gradient(135deg, #4BFCEE 0%, #F57D55 100%)",
+      gradient: "linear-gradient(135deg, #4BFCEE 0%, #3B82F6 100%)",
       platforms: ["tiktok", "instagram", "youtube"],
       views: "337.4K",
       payout: "$139.75",
     },
     {
       name: "ReelMas",
-      gradient: "linear-gradient(135deg, #43B0E7 0%, #F8D215 100%)",
+      gradient: "linear-gradient(135deg, #43B0E7 0%, #10B981 100%)",
       platforms: ["youtube", "facebook", "instagram"],
       views: "2.25M",
       payout: "$600",
     },
     {
       name: "ClipBoss",
-      gradient: "linear-gradient(135deg, #F1A151 0%, #E823E8 100%)",
+      gradient: "linear-gradient(135deg, #A855F7 0%, #6366F1 100%)",
       platforms: ["tiktok", "instagram"],
       views: "752.4K",
       payout: "$200.45",
@@ -277,8 +277,8 @@ export default function AgenciesSection() {
               </div>
             </div>
 
-            {/* Card 3: Discover Page visibility (Orange) */}
-            <div className="agencies-standard__card agencies-standard__card--orange agencies-standard__card--bottom-left">
+            {/* Card 3: Discover Page visibility (Ink) */}
+            <div className="agencies-standard__card agencies-standard__card--ink agencies-standard__card--bottom-left">
               <div className="agencies-standard__card-inner">
                 <img
                   src="/assets/agencies/icon-discover-page.svg"
@@ -290,7 +290,7 @@ export default function AgenciesSection() {
                 <h3 className="agencies-standard__card-title text-white">
                   Discover Page visibility
                 </h3>
-                <div className="agencies-standard__divider agencies-standard__divider--orange"></div>
+                <div className="agencies-standard__divider agencies-standard__divider--ink"></div>
                 <p className="agencies-standard__card-desc text-white/80">
                   After getting onto CR and the Discover Page, Virality scaled from zero to 100,000 clips in 40 days.
                 </p>
@@ -332,7 +332,7 @@ export default function AgenciesSection() {
             <div className="agencies-verified__checks">
               <div className="agencies-verified__check-item">
                 <img
-                  src="/assets/agencies/icon-check-orange.svg"
+                  src="/assets/agencies/icon-check-ink.svg"
                   alt=""
                   width="36"
                   height="36"
@@ -342,7 +342,7 @@ export default function AgenciesSection() {
               </div>
               <div className="agencies-verified__check-item">
                 <img
-                  src="/assets/agencies/icon-check-orange.svg"
+                  src="/assets/agencies/icon-check-ink.svg"
                   alt=""
                   width="36"
                   height="36"
@@ -352,7 +352,7 @@ export default function AgenciesSection() {
               </div>
               <div className="agencies-verified__check-item">
                 <img
-                  src="/assets/agencies/icon-check-orange.svg"
+                  src="/assets/agencies/icon-check-ink.svg"
                   alt=""
                   width="36"
                   height="36"
@@ -502,7 +502,7 @@ export default function AgenciesSection() {
                   </div>
 
                   {/* eCPM / CPM badge */}
-                  <div className="agencies-stat-pill agencies-stat-pill--orange">
+                  <div className="agencies-stat-pill agencies-stat-pill--ink">
                     <div className="agencies-stat-pill__icon-wrap">
                       <img
                         src="/assets/agencies/stat-icon-ecpm.svg"
@@ -584,12 +584,12 @@ export default function AgenciesSection() {
                   >
                     <defs>
                       <linearGradient id="scale-fill-gradient" x1="250" y1="0" x2="250" y2="240" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#F9741E" stopOpacity="0.28" />
-                        <stop offset="1" stopColor="#F9741E" stopOpacity="0.0" />
+                        <stop stopColor="#111210" stopOpacity="0.12" />
+                        <stop offset="1" stopColor="#111210" stopOpacity="0.0" />
                       </linearGradient>
                       <linearGradient id="scale-line-gradient" x1="0" y1="200" x2="500" y2="20" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#F9741E" />
-                        <stop offset="1" stopColor="#F9AC1E" />
+                        <stop stopColor="#111210" />
+                        <stop offset="1" stopColor="#353632" />
                       </linearGradient>
                     </defs>
 
@@ -619,8 +619,8 @@ export default function AgenciesSection() {
                       { cx: 475, cy: 26 },
                     ].map((pt, idx) => (
                       <g key={idx}>
-                        <circle cx={pt.cx} cy={pt.cy} r="8" fill="#ffffff" stroke="#F9741E" strokeWidth="2.5" />
-                        <circle cx={pt.cx} cy={pt.cy} r="3.5" fill="#F9741E" />
+                        <circle cx={pt.cx} cy={pt.cy} r="8" fill="#ffffff" stroke="#111210" strokeWidth="2.5" />
+                        <circle cx={pt.cx} cy={pt.cy} r="3.5" fill="#111210" />
                       </g>
                     ))}
                   </svg>

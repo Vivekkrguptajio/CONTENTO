@@ -32,6 +32,61 @@
   margin: 0 0 44px 0;
 }
 
+/* ── Heading Interactive Keyword Pills ───────────────────────────── */
+.df-heading-keywords {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.df-heading-keyword {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--pm-radius-md, 8px);
+  border: 1.5px solid var(--pm-hairline, #E7E7E3);
+  background: var(--pm-paper, #F8F8F6);
+  color: var(--pm-ink-muted, #767571);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  letter-spacing: -0.01em;
+}
+
+.df-heading-keyword:hover {
+  background: #ffffff;
+  border-color: var(--pm-ink, #111210);
+  color: var(--pm-ink, #111210);
+}
+
+.df-heading-keyword--active {
+  background: var(--pm-ink, #111210);
+  border-color: var(--pm-ink, #111210);
+  color: #ffffff;
+}
+
+.df-heading-keyword--active:hover {
+  background: var(--pm-ink, #111210);
+  border-color: var(--pm-ink, #111210);
+  color: #ffffff;
+}
+
+.df-heading-keyword svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.df-heading-keyword--active svg {
+  opacity: 1;
+}
+
 /* ── Top Tabs Stepper ────────────────────────────────────────────── */
 .df-tabs-wrapper {
   display: flex;
@@ -39,14 +94,13 @@
   align-items: center;
   margin-bottom: 48px;
   width: 100%;
-  max-width: 580px;
+  max-width: 760px;
 }
 
+/* Three equal columns, so the indicator below lines up exactly with each tab */
 .df-tabs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
 }
 
@@ -61,45 +115,56 @@
   padding: 6px 12px;
   font-family: inherit;
   outline: none;
-  flex: 1;
+  position: relative;
+}
+
+/* Hairline divider between tabs */
+.df-tab + .df-tab::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  height: 28px;
+  width: 1px;
+  background: var(--pm-hairline, #E7E7E3);
 }
 
 .df-tab__icon-bubble {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background: #f4f4f5;
+  border-radius: var(--pm-radius-md, 8px);
+  background: var(--pm-paper, #F8F8F6);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #71717a;
+  color: var(--pm-ink-muted, #767571);
   transition: all 0.2s ease;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--pm-hairline, #E7E7E3);
 }
 
 .df-tab--active .df-tab__icon-bubble {
-  background: #f4f4f5;
-  color: #111827;
-  border-color: rgba(0, 0, 0, 0.08);
+  background: var(--pm-ink, #111210);
+  color: #ffffff;
+  border-color: var(--pm-ink, #111210);
 }
 
 .df-tab__label {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--pm-ink-muted, #767571);
   transition: color 0.2s ease;
   white-space: nowrap;
 }
 
 .df-tab--active .df-tab__label {
-  font-weight: 700;
-  color: #111827;
+  font-weight: 600;
+  color: var(--pm-ink, #111210);
 }
 
 .df-tabs__divider {
   width: 1px;
   height: 28px;
-  background: #e5e7eb;
+  background: var(--pm-hairline, #E7E7E3);
   flex-shrink: 0;
 }
 
@@ -107,7 +172,7 @@
 .df-tabs-track {
   width: 100%;
   height: 2px;
-  background: #f3f4f6;
+  background: var(--pm-paper, #F8F8F6);
   margin-top: 20px;
   position: relative;
   border-radius: 2px;
@@ -118,22 +183,20 @@
   position: absolute;
   top: 0;
   height: 2px;
-  background: #ea580c;
+  background: var(--pm-ink, #111210);
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
 }
 
-/* ── Dashboard Mockup Card (1218px width to match campaign card) ── */
+/* ── Dashboard Mockup Card (1218px width) ────────────────────────── */
 .df-dashboard {
   width: 100%;
   max-width: 1218px;
-  min-height: 600px;
+  min-height: 560px;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 28px;
-  box-shadow: 
-    0 14px 40px -10px rgba(0, 0, 0, 0.04),
-    0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--pm-hairline, #E7E7E3);
+  border-radius: var(--pm-radius-lg, 12px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
   display: flex;
   overflow: hidden;
   box-sizing: border-box;
@@ -142,7 +205,7 @@
 /* ── Left Sidebar ────────────────────────────────────────────────── */
 .df-sidebar {
   width: 205px;
-  border-right: 1px solid #f1f5f9;
+  border-right: 1px solid var(--pm-hairline, #E7E7E3);
   padding: 24px 14px;
   display: flex;
   flex-direction: column;
@@ -162,12 +225,20 @@
 .df-sidebar__logo-box {
   width: 28px;
   height: 28px;
-  border-radius: 7px;
-  background: #f97316;
+  border-radius: 6px;
+  background: var(--pm-ink, #111210);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+}
+
+.df-sidebar__beam {
+  width: 3px;
+  height: 14px;
+  background: var(--pm-lime, #C8F135);
+  border-radius: 2px;
 }
 
 .df-sidebar__brand-meta {
@@ -177,15 +248,16 @@
 }
 
 .df-sidebar__brand-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.015em;
+  color: var(--pm-ink, #111210);
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
 }
 
 .df-sidebar__brand-sub {
-  font-size: 11px;
-  color: #94a3b8;
+  font-size: 10.5px;
+  color: var(--pm-ink-muted, #767571);
 }
 
 .df-sidebar__menu {
@@ -249,7 +321,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ea580c;
+  background: var(--pomera-ink, #111210);
   margin-left: auto;
 }
 
@@ -495,64 +567,74 @@
   gap: 10px;
 }
 
+.df-sub-caption {
+  font-size: 13px;
+  color: var(--pm-ink-muted, #767571);
+  margin: 4px 0 0 0;
+}
+
+.df-badge-verified {
+  font-size: 12px;
+  font-weight: 600;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 5px 12px;
+  border-radius: var(--pm-radius-sm, 6px);
+}
+
 .df-badge-pending {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 12px;
   font-weight: 600;
-  color: #ea580c;
-  background: #fff7ed;
+  color: #166534;
+  background: #f0fdf4;
   padding: 4px 10px;
-  border-radius: 9999px;
-  border: 1px solid #ffedd5;
+  border-radius: var(--pm-radius-sm, 6px);
+  border: 1px solid #bbf7d0;
 }
 
 .df-badge-pending__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ea580c;
+  background: #16a34a;
 }
 
-.df-btn-dots {
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  color: #94a3b8;
-  cursor: pointer;
-  padding: 0 4px;
+.df-audit-box {
+  background: var(--pm-paper, #F8F8F6);
+  border: 1px solid var(--pm-hairline, #E7E7E3);
+  border-radius: var(--pm-radius-md, 8px);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
 }
 
-.df-btn-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 12.5px;
+.df-audit-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.df-audit-key {
+  color: var(--pm-ink-muted, #767571);
+}
+
+.df-audit-val {
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: inherit;
+  color: var(--pm-ink, #111210);
 }
 
-.df-btn-action--reject {
-  color: #dc2626;
-  background: #fef2f2;
-  border: 1px solid #fee2e2;
-}
-.df-btn-action--reject:hover {
-  background: #fee2e2;
-}
-
-.df-btn-action--approve {
+.df-audit-val--safe {
   color: #16a34a;
-  background: #f0fdf4;
-  border: 1px solid #dcfce7;
 }
-.df-btn-action--approve:hover {
-  background: #dcfce7;
+
+.df-stat-card__val--green {
+  color: #16a34a !important;
 }
 
 /* Card Body (Phone + Analytics) */
@@ -726,10 +808,10 @@
   border: 1px solid #fce7f3;
 }
 
-.df-legend-pill--orange {
-  background: #fff7ed;
-  color: #ea580c;
-  border: 1px solid #ffedd5;
+.df-legend-pill--lime {
+  background: #F2FBD6;
+  color: #111210;
+  border: 1px solid #E5E5E0;
 }
 
 .df-legend-pill--gray {
@@ -1049,16 +1131,16 @@
 }
 
 .df-payout-badge--pending {
-  background: #fff7ed;
-  color: #ea580c;
-  border: 1px solid #ffedd5;
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
 }
 
 .df-payout-badge__dot--pending {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ea580c;
+  background: #b45309;
 }
 
 .df-payout-badge--paid {

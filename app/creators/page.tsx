@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function CreatorsPage() {
   return (
-    <div className="min-h-screen font-sans flex flex-col justify-between" style={{ backgroundColor: '#fffdfb' }}>
+    <div className="min-h-screen font-sans flex flex-col justify-between" style={{ backgroundColor: '#ffffff' }}>
       <Navbar />
-      <main className="w-full flex-grow" style={{ backgroundColor: '#fffdfb', paddingTop: '0' }}>
+      <main className="w-full flex-grow" style={{ backgroundColor: '#ffffff', paddingTop: '0' }}>
         <CreatorsSection />
       </main>
       <Footer />

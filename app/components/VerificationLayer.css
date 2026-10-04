@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════════
    VERIFICATION LAYER SECTION ("The Verification Layer that Protects every Campaign")
-   Wide, Tall, Seamless Top Blend matching Content Rewards specifications
+   Premium Dark Luxury Styling matching Pomera Ink & Lime theme
    ════════════════════════════════════════════════════════════════════ */
 
 .vl-section {
@@ -12,36 +12,21 @@
 }
 
 .vl-container {
-  max-width: 1400px; /* Grand wide width */
+  max-width: 1320px;
   margin: 0 auto;
   width: 100%;
 }
 
-/* Sunset Gradient Card - Top horizontal box completely removed & blended up to pure white */
+/* Luxury Dark Ink Card matching Pomera dark surface tokens */
 .vl-card {
   width: 100%;
-  min-height: 620px; /* Increased tall height */
-  /* Smooth vertical blend: Bottom deep sunset amber fading upward into pure transparent/white */
-  background: linear-gradient(180deg, 
-    #ffffff 0%, 
-    #fffbf5 16%, 
-    #fef2e0 36%, 
-    #fcdba6 56%, 
-    #f6b559 76%, 
-    #ee962a 90%, 
-    #ea8624 100%
-  );
-  /* Flat invisible top edge, beautiful pill curved bottom corners */
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 44px;
-  border-bottom-right-radius: 44px;
-  padding: 44px 56px 36px;
+  min-height: 600px;
+  background: var(--pm-ink, #111210);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 56px 56px 40px;
   box-sizing: border-box;
-  /* Downward ambient glow only, zero top/side shadow */
-  box-shadow: 0 40px 75px -15px rgba(234, 134, 36, 0.32);
-  border: none;
-  border-top: none;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.35);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -49,14 +34,14 @@
   justify-content: space-between;
 }
 
-/* Section Title - Seamlessly placed inside the top blended area of the card with 0 external gap */
+/* Section Title - Crisp Pure White */
 .vl-main-heading {
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 600;
-  color: #0f172a;
+  color: #ffffff;
   text-align: center;
   letter-spacing: -0.03em;
-  margin: 0 0 20px 0;
+  margin: 0 0 28px 0;
   line-height: 1.15;
   position: relative;
   z-index: 2;
@@ -73,14 +58,14 @@
   box-sizing: border-box;
 }
 
-/* Dotted horizontal connector spanning across stations */
+/* Dotted horizontal connector spanning across stations - Subtle Lime */
 .vl-connector-line {
   position: absolute;
   top: 50%;
   left: 170px;
   right: 180px;
   height: 1px;
-  border-top: 2px dashed rgba(234, 88, 12, 0.75);
+  border-top: 2px dashed rgba(200, 241, 53, 0.28);
   z-index: 1;
 }
 
@@ -94,24 +79,27 @@
 
 /* ── Station I: Platform Data Modal ──────────────────────────────── */
 .vl-modal-card {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 26px;
-  padding: 26px 28px;
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 24px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   width: 240px;
   box-sizing: border-box;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
   cursor: pointer;
 }
 
 .vl-modal-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 24px 44px -8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.9);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 241, 53, 0.4);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 241, 53, 0.15);
 }
 
 .vl-platform-row {
@@ -123,13 +111,15 @@
 .vl-platform-icon {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: #ffffff;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--pm-lime, #C8F135);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .vl-platform-meta {
@@ -139,14 +129,14 @@
 }
 
 .vl-platform-name {
-  font-size: 15.5px;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .vl-platform-status {
   font-size: 12px;
-  color: #64748b;
+  color: var(--pm-lime, #C8F135);
   font-weight: 500;
 }
 
@@ -165,8 +155,8 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(200, 241, 53, 0.22);
+  background: rgba(200, 241, 53, 0.03);
   animation: vlPulse 3.2s infinite ease-in-out;
 }
 
@@ -175,8 +165,8 @@
   width: 156px;
   height: 156px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(200, 241, 53, 0.35);
+  background: rgba(200, 241, 53, 0.06);
 }
 
 .vl-radar-ring-inner {
@@ -184,19 +174,22 @@
   width: 98px;
   height: 98px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(200, 241, 53, 0.5);
+  background: rgba(200, 241, 53, 0.1);
 }
 
 .vl-radar-center {
   position: relative;
   z-index: 3;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #181916;
+  border: 2px solid var(--pm-lime, #C8F135);
+  color: var(--pm-lime, #C8F135);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 28px rgba(200, 241, 53, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,42 +204,48 @@
 .vl-notes-stack {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 12px;
   position: relative;
-  width: 210px;
+  width: 220px;
 }
 
 .vl-note-card {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 15px;
-  padding: 13px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #334155;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 18px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 12px 26px -4px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.65);
-  transition: transform 0.22s ease;
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.22s ease, border-color 0.22s ease;
   white-space: nowrap;
 }
 
+.vl-note-card svg {
+  color: var(--pm-lime, #C8F135);
+  flex-shrink: 0;
+}
+
 .vl-note-card--1 {
-  transform: rotate(-5deg) translateX(-6px);
+  transform: rotate(-3deg) translateX(-4px);
 }
 
 .vl-note-card--2 {
-  transform: rotate(3deg) translateX(6px);
+  transform: rotate(2deg) translateX(4px);
 }
 
 .vl-note-card--3 {
-  transform: rotate(-2deg);
+  transform: rotate(-1deg);
 }
 
 .vl-notes-stack:hover .vl-note-card--1 {
-  transform: rotate(-7deg) translateY(-2px);
+  transform: rotate(-5deg) translateY(-2px);
 }
 .vl-notes-stack:hover .vl-note-card--3 {
   transform: rotate(0deg) translateY(2px);
@@ -254,31 +253,36 @@
 
 /* ── Station IV: Verified Reporting Flag Card ────────────────────── */
 .vl-flag-card {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 26px;
-  padding: 26px 30px;
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 26px;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
-  gap: 22px;
-  width: 265px;
+  gap: 18px;
+  width: 275px;
   box-sizing: border-box;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
   cursor: pointer;
 }
 
 .vl-flag-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 24px 44px -8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 241, 53, 0.4);
+  box-shadow: 0 24px 44px -8px rgba(0, 0, 0, 0.6), 0 0 24px rgba(200, 241, 53, 0.15);
 }
 
 .vl-flag-icon-wrap {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(200, 241, 53, 0.14);
+  border: 1px solid rgba(200, 241, 53, 0.28);
+  color: var(--pomera-lime, #C8F135);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,15 +298,15 @@
 .vl-flag-val {
   font-size: 30px;
   font-weight: 750;
-  color: #0f172a;
+  color: #ffffff;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 .vl-flag-lbl {
   font-size: 13px;
-  color: #475569;
-  font-weight: 550;
+  color: var(--pomera-lime, #C8F135);
+  font-weight: 600;
 }
 
 /* ── Bottom 4 Columns Bar (Stage Navigator) ──────────────────────── */
@@ -310,7 +314,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 38px 0 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .vl-col {
@@ -330,20 +334,21 @@
   top: 15%;
   bottom: 15%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .vl-col-num {
-  font-size: 24px;
-  font-family: Georgia, "Times New Roman", serif;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 400;
+  font-size: 20px;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--pomera-lime, #C8F135);
+  font-weight: 600;
   line-height: 1;
 }
 
 .vl-col-lbl {
-  font-size: 22px;
-  font-weight: 650;
+  font-size: 20px;
+  font-weight: 500;
   color: #ffffff;
   letter-spacing: -0.02em;
   display: inline-flex;
@@ -353,7 +358,7 @@
 }
 
 .vl-col-lbl--underlined {
-  border-bottom: 1.5px dotted rgba(255, 255, 255, 0.85);
+  border-bottom: 1.5px dotted rgba(200, 241, 53, 0.6);
   padding-bottom: 2px;
   cursor: pointer;
 }
@@ -361,7 +366,7 @@
 .vl-col-info {
   font-size: 14px;
   font-weight: 400;
-  opacity: 0.85;
+  color: var(--pomera-lime, #C8F135);
 }
 
 /* ── Mobile Station Header (Hidden on Desktop) ────────────────────── */
@@ -394,16 +399,15 @@
   }
 }
 
-/* Phone & Tablet Stacked View (matches ContentRewards mobile design) */
+/* Phone & Tablet Stacked View */
 @media (max-width: 820px) {
   .vl-section {
     padding: 20px 12px 64px;
   }
 
   .vl-card {
-    padding: 38px 16px 44px;
-    border-bottom-left-radius: 36px;
-    border-bottom-right-radius: 36px;
+    padding: 38px 20px 44px;
+    border-radius: 28px;
     min-height: auto;
   }
 
@@ -442,17 +446,17 @@
   }
 
   .vl-station-mobile-num {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: inherit;
     font-size: 19px;
-    color: #78716c;
-    font-weight: 400;
+    color: var(--pomera-lime, #C8F135);
+    font-weight: 600;
     line-height: 1;
   }
 
   .vl-station-mobile-lbl {
     font-size: 18px;
     font-weight: 600;
-    color: #1c1917;
+    color: #ffffff;
     letter-spacing: -0.015em;
     display: inline-flex;
     align-items: center;
@@ -461,7 +465,7 @@
   }
 
   .vl-station-mobile-lbl--underlined {
-    border-bottom: 1.5px dotted rgba(28, 25, 23, 0.45);
+    border-bottom: 1.5px dotted rgba(200, 241, 53, 0.6);
     padding-bottom: 1px;
     cursor: pointer;
   }
@@ -469,7 +473,7 @@
   .vl-station-mobile-info {
     display: inline-flex;
     align-items: center;
-    color: #78716c;
+    color: var(--pomera-lime, #C8F135);
   }
 
   /* Bottom 4-column bar hidden on phone view */

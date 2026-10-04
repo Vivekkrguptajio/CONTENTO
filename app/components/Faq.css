@@ -1,13 +1,14 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Content Rewards — FAQ Section (Pixel-Perfect Matching Reference)
+   POMERA FAQ SECTION
+   Clean architectural accordion conforming to Brand Guidelines v2.1
    ═══════════════════════════════════════════════════════════════════ */
 
 .faq-section {
   width: 100%;
   background: #ffffff;
-  padding: 100px 24px 70px;
+  padding: 80px 24px 24px;
   box-sizing: border-box;
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   display: flex;
   justify-content: center;
 }
@@ -30,24 +31,24 @@
 
 .faq-badge {
   display: inline-block;
-  background-color: #f4f4f5;
-  color: #52525b;
-  font-size: 12px;
+  background-color: var(--pm-paper, #F8F8F6);
+  color: var(--pm-ink-muted, #767571);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 5px 15px;
-  border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: var(--pm-radius-sm, 6px);
+  border: 1px solid var(--pm-hairline, #E7E7E3);
 }
 
 /* ── Section Heading ─────────────────────────────────────────────── */
 .faq-heading {
-  font-size: clamp(2.1rem, 3.8vw, 2.9rem);
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: #111827;
-  margin: 14px 0 44px 0;
+  color: var(--pm-ink, #111210);
+  margin: 14px 0 40px 0;
   text-align: center;
   line-height: 1.18;
 }
@@ -57,30 +58,28 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 /* ── Individual Accordion Card ───────────────────────────────────── */
 .faq-card {
   width: 100%;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
+  border: 1px solid var(--pm-hairline, #E7E7E3);
+  border-radius: var(--pm-radius-lg, 12px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-  transition: border-color 0.25s ease, box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .faq-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  border-color: rgba(17, 18, 16, 0.2);
 }
 
 .faq-card--open {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border-color: rgba(17, 18, 16, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 /* Header Trigger Button */
@@ -89,41 +88,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 28px;
+  padding: 20px 24px;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
-  gap: 18px;
+  gap: 16px;
   font-family: inherit;
   outline: none;
   box-sizing: border-box;
 }
 
 .faq-card__question {
-  font-size: 17.5px;
+  font-size: 16.5px;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #111827;
+  letter-spacing: -0.015em;
+  color: var(--pm-ink, #111210);
   line-height: 1.35;
-  transition: color 0.2s ease;
-}
-
-.faq-card__trigger:hover .faq-card__question {
-  color: #ea580c;
 }
 
 .faq-card__chevron {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #111827;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  color: var(--pm-ink, #111210);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
-}
-
-.faq-card__trigger:hover .faq-card__chevron {
-  color: #ea580c;
 }
 
 .faq-card__chevron--rotated {
@@ -132,40 +122,26 @@
 
 /* Answer Body */
 .faq-card__content {
-  padding: 0 28px 24px 28px;
+  padding: 0 24px 22px 24px;
   box-sizing: border-box;
-  animation: faqFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes faqFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .faq-card__answer {
   margin: 0;
-  font-size: 15.5px;
-  line-height: 1.62;
-  color: #4b5563;
-  max-width: 710px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--pm-ink-muted, #767571);
 }
 
 /* ── Footer Support Note ─────────────────────────────────────────── */
 .faq-footer-note {
-  margin-top: 50px;
+  margin-top: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  font-size: 15px;
-  color: #6b7280;
-  font-weight: 500;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--pm-ink-muted, #767571);
   flex-wrap: wrap;
   text-align: center;
 }
@@ -173,51 +149,47 @@
 .faq-support-pill {
   display: inline-flex;
   align-items: center;
-  background-color: #ffedd5;
-  color: #ea580c;
-  padding: 4px 14px;
-  border-radius: 9999px;
+  background-color: var(--pm-paper, #F8F8F6);
+  color: var(--pm-ink, #111210);
+  border: 1px solid var(--pm-hairline, #E7E7E3);
+  padding: 5px 14px;
+  border-radius: var(--pm-radius-md, 8px);
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 13.5px;
   text-decoration: none;
-  transition: background-color 0.18s ease, transform 0.18s ease;
+  transition: all 0.15s ease;
 }
 
 .faq-support-pill:hover {
-  background-color: #fed7aa;
-  transform: translateY(-1px);
+  background-color: #ffffff;
+  border-color: var(--pm-ink, #111210);
 }
 
 /* ── Responsive adjustments ──────────────────────────────────────── */
 @media (max-width: 640px) {
   .faq-section {
-    padding: 70px 16px 50px;
+    padding: 56px 16px 40px;
   }
 
   .faq-heading {
-    font-size: 2.2rem;
-    margin: 12px 0 34px 0;
+    font-size: 28px;
+    margin: 12px 0 28px 0;
   }
 
   .faq-card__trigger {
-    padding: 18px 20px;
+    padding: 16px 18px;
     gap: 12px;
   }
 
   .faq-card__question {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .faq-card__content {
-    padding: 0 20px 20px 20px;
+    padding: 0 18px 18px 18px;
   }
 
   .faq-card__answer {
-    font-size: 14.5px;
-  }
-
-  .faq-footer-note {
-    margin-top: 36px;
     font-size: 14px;
   }
 }

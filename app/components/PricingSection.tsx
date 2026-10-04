@@ -246,7 +246,7 @@ export default function PricingSection() {
                     />
                     <path
                       d="m9 12 2 2 4-4"
-                      stroke="#F5820F"
+                      stroke="#111210"
                       strokeWidth="2.4"
                       strokeLinecap="round"
                       strokeLinejoin="round"

@@ -4,7 +4,7 @@
 
 .cr-pricing-wrapper {
   width: 100%;
-  background-color: #fffdfb;
+  background-color: #ffffff;
   color: #2d2518;
   font-family: var(--font-suisse, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   overflow-x: clip;
@@ -29,7 +29,7 @@
 .cr-pricing-hero {
   position: relative;
   overflow-x: clip;
-  background-color: #fffdfb;
+  background-color: #ffffff;
   padding-top: clamp(80px, 9vw, 140px);
   padding-bottom: clamp(100px, 16vw, 260px);
 }
@@ -103,9 +103,9 @@
   pointer-events: none;
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgba(254, 250, 245, 0.7) 0%,
-    rgba(254, 250, 245, 0.62) 35%,
-    rgba(254, 250, 245, 0) 72%
+    rgba(200, 241, 53, 0.15) 0%,
+    rgba(200, 241, 53, 0.08) 35%,
+    rgba(255, 255, 255, 0) 72%
   );
 }
 
@@ -380,16 +380,9 @@
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(251, 214, 120, 0.3) 20%,
-    rgba(249, 200, 77, 0.75) 40%,
-    rgba(255, 150, 80, 0.95) 60%,
-    rgba(255, 120, 70, 0.92) 74%,
-    rgba(255, 108, 68, 0.78) 82%,
-    rgba(255, 102, 68, 0.55) 88%,
-    rgba(255, 98, 69, 0.32) 92.5%,
-    rgba(255, 95, 70, 0.15) 96%,
-    rgba(255, 92, 70, 0.05) 98.5%,
-    rgba(255, 90, 70, 0) 100%
+    rgba(250, 250, 247, 0.4) 40%,
+    rgba(250, 250, 247, 0.8) 70%,
+    rgba(250, 250, 247, 0) 100%
   );
   mask-image: radial-gradient(
     ellipse min(150px, 38vw) 130px at 50% 28.3%,
@@ -507,7 +500,7 @@
   border-radius: clamp(22px, 3vw, 30px);
   border: 1px solid rgba(45, 37, 24, 0.1);
   padding: clamp(10px, 2vw, 20px);
-  background-color: #fffdfb;
+  background-color: #ffffff;
 }
 
 /* Verified Column Highlight Pillar covering all 5 rows */
@@ -518,16 +511,16 @@
   grid-row: 1 / 6;
   margin: -2px 4px;
   border-radius: 14px;
-  background-image: linear-gradient(180deg, #ff9a34 0%, #fd861f 52%, #f16e0b 100%);
-  box-shadow: 0px 4px 18.2px 0px rgba(253, 143, 22, 0.3);
+  background-image: linear-gradient(180deg, #111210 0%, #1c1d1a 100%);
+  box-shadow: 0px 4px 18.2px 0px rgba(17, 18, 16, 0.2);
 }
 
 .cr-pricing-verified-glow-border {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 3px;
-  background: linear-gradient(180deg, #ffb05a 0%, #f9820f 100%);
+  padding: 2px;
+  background: var(--pomera-ink, #111210);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -782,7 +775,7 @@
 .cr-pricing-cta-blur {
   position: absolute;
   inset: 20% -30% -15% -30%;
-  background-image: linear-gradient(180deg, #ffffff 1%, #fbc433 43%, #ff6c03 86%, #ff0303 100%);
+  background-image: linear-gradient(180deg, #ffffff 0%, #fafaf7 100%);
   filter: blur(100px);
   pointer-events: none;
 }
@@ -969,7 +962,7 @@
   position: relative;
   border-radius: clamp(18px, 2vw, 22px);
   border: 1px solid rgba(45, 37, 24, 0.1);
-  background-color: #fffdfb;
+  background-color: #ffffff;
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }

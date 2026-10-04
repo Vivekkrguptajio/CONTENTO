@@ -3,9 +3,98 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  /* ══════════════════════════════════════════════════════════════════
+     POMERA DESIGN TOKENS v2.1 (LIME SYSTEM) · MASTER SPECIFICATION
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* Brand Palette */
+  --pm-ink: #111210;
+  --pm-white: #FFFFFF;
+  --pm-paper: #FAFAF7;
+  --pm-lime: #C8F135;          /* surfaces, bands, markers, Beam on ink. Never text, never a button. */
+  --pm-lime-tint: #F2FBD6;     /* chips, highlighted rows, chart fills */
+  --pm-lime-strong: #7FA00F;   /* small lime dots on white (3:1 contrast). Never text. */
+
+  /* Neutral scale (warm-tinted) */
+  --pm-gray-50: #FAFAF7;
+  --pm-gray-100: #F3F3F0;
+  --pm-gray-200: #E7E7E3;
+  --pm-gray-300: #D4D4CF;
+  --pm-gray-400: #B8B8B2;
+  --pm-gray-500: #8A8A85;
+  --pm-gray-600: #5B5B58;
+  --pm-gray-700: #3D3E39;
+  --pm-gray-800: #1C1C1A;
+  --pm-gray-900: #111210;
+
+  /* Backward Compatibility Aliases */
+  --pomera-ink: var(--pm-ink);
+  --pomera-white: var(--pm-white);
+  --pomera-paper: var(--pm-paper);
+  --pomera-lime: var(--pm-lime);
+  --pomera-lime-tint: var(--pm-lime-tint);
+  --pomera-muted: var(--pm-gray-600);
+
+  /* Status Colors */
+  --pm-success: #146C34;  --pm-success-bg: #E7F6EC;
+  --pm-warning: #8A5300;  --pm-warning-bg: #FDF3E2;
+  --pm-danger:  #9A1F1F;  --pm-danger-bg:  #FCEBEA;
+  --pm-info:    #2E5AAC;  --pm-info-bg:    #EAF0FB;
+
+  /* Semantic Tokens: Light (Default) */
+  --pm-c-bg: #FFFFFF;
+  --pm-c-bg-subtle: #FAFAF7;
+  --pm-c-surface: #FFFFFF;
+  --pm-c-surface-2: #F3F3F0;
+  --pm-c-line: #E7E7E3;
+  --pm-c-line-strong: #D4D4CF;
+  --pm-c-text: #111210;
+  --pm-c-text-2: #5B5B58;      /* 6.8:1 on white */
+  --pm-c-text-3: #8A8A85;      /* 3.5:1: labels and captions only, never body */
+  --pm-c-signal: #7FA00F;      /* live / verified dot */
+  --pm-c-accent: #C8F135;
+  --pm-c-accent-tint: #F2FBD6;
+  --pm-c-btn-bg: #111210;
+  --pm-c-btn-fg: #FFFFFF;
+  --pm-c-btn-bg-hover: #2A2B27;
+  --pm-c-btn-bg-active: #000000;
+  --pm-c-focus: #111210;
+
+  /* Corner Radii System: NO pill buttons */
+  --pm-radius-sm: 6px;         /* chips, tags */
+  --pm-radius-md: 8px;         /* buttons, inputs */
+  --pm-radius-lg: 12px;        /* cards, tiles */
+  --pm-radius-xl: 16px;        /* modals, large panels */
+  --pm-radius-full: 999px;     /* status dots and avatars only */
+
+  /* Semantic Variables */
+  --background: var(--pm-c-bg);
+  --foreground: var(--pm-c-text);
   --header-height: 71px;
+}
+
+/* Dark mode theme */
+:root[data-theme="dark"] {
+  --pm-c-bg: #0B0B0A;
+  --pm-c-bg-subtle: #111110;
+  --pm-c-surface: #141413;
+  --pm-c-surface-2: #1C1C1A;
+  --pm-c-line: #262624;
+  --pm-c-line-strong: #34342F;
+  --pm-c-text: #EDEDEA;
+  --pm-c-text-2: #9A9A95;
+  --pm-c-text-3: #6E6E69;
+  --pm-c-signal: #C8F135;
+  --pm-c-accent-tint: #1D2410;
+  --pm-c-btn-bg: #FFFFFF;
+  --pm-c-btn-fg: #111210;
+  --pm-c-btn-bg-hover: #E7E7E3;
+  --pm-c-btn-bg-active: #D4D4CF;
+  --pm-c-focus: #FFFFFF;
+  --pm-success: #5BC27E;  --pm-success-bg: #10281A;
+  --pm-warning: #E9B45A;  --pm-warning-bg: #2A2010;
+  --pm-danger:  #FF8A7D;  --pm-danger-bg:  #2C1311;
+  --pm-info:    #8FB0FF;  --pm-info-bg:    #121C33;
 }
 
 @theme inline {
@@ -15,10 +104,25 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Clean base styles with smooth vertical mobile touch scrolling */
+/* ══════════════════════════════════════════════════════════════════
+   GLOBAL BODY & TYPOGRAPHY
+   ══════════════════════════════════════════════════════════════════ */
+/* Hide the page scrollbar (scrolling still works) */
 html {
-  background-color: #ffffff !important;
-  color: #0f172a;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+html {
+  background-color: var(--pm-c-bg) !important;
+  color: var(--pm-c-text);
   overflow-x: hidden !important;
   max-width: 100vw;
   width: 100%;
@@ -27,16 +131,178 @@ html {
 }
 
 body {
-  background-color: #ffffff !important;
-  color: #0f172a;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--pm-c-bg) !important;
+  color: var(--pm-c-text);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   min-height: 100dvh;
-  overflow-x: hidden !important;
+  /* clip, not hidden: hidden would make body a scroll container and break position: sticky */
+  overflow-x: clip !important;
   max-width: 100vw;
   width: 100%;
-  touch-action: pan-y pinch-zoom;
-  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* The Number Rule: every figure that carries meaning */
+.pm-num, .pomera-tabular {
+  font-family: var(--font-geist-mono), monospace !important;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Pomera Typography Classes */
+.pomera-display {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--pm-c-text);
+  text-wrap: balance;
+}
+
+.pomera-heading {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(28px, 3.6vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--pm-c-text);
+  text-wrap: balance;
+}
+
+.pomera-body {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--pm-c-text);
+  max-width: 680px;
+}
+
+.pomera-body-muted {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--pm-c-text-2);
+}
+
+.pomera-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pm-c-text-2);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   POMERA BUTTON SYSTEM — 8px CORNERS (NO PILL BUTTONS)
+   ══════════════════════════════════════════════════════════════════ */
+.pm-btn, .pomera-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: var(--pm-radius-md, 8px);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 120ms cubic-bezier(.2,0,0,1),
+              border-color 120ms cubic-bezier(.2,0,0,1),
+              color 120ms cubic-bezier(.2,0,0,1);
+}
+
+.pm-btn:focus-visible, .pomera-btn:focus-visible {
+  outline: 2px solid var(--pm-c-focus);
+  outline-offset: 2px;
+}
+
+.pomera-btn-primary, .pm-btn--primary {
+  background-color: var(--pm-c-btn-bg);
+  color: var(--pm-c-btn-fg);
+  border: 1px solid var(--pm-c-btn-bg);
+  border-radius: var(--pm-radius-md, 8px);
+  font-weight: 500;
+}
+
+.pomera-btn-primary:hover, .pm-btn--primary:hover {
+  background-color: var(--pm-c-btn-bg-hover);
+  border-color: var(--pm-c-btn-bg-hover);
+}
+
+.pomera-btn-secondary, .pm-btn--secondary {
+  background-color: var(--pm-c-surface);
+  color: var(--pm-c-text);
+  border: 1px solid var(--pm-c-line-strong);
+  border-radius: var(--pm-radius-md, 8px);
+  font-weight: 500;
+}
+
+.pomera-btn-secondary:hover, .pm-btn--secondary:hover {
+  background-color: var(--pm-c-bg-subtle);
+  border-color: var(--pm-c-text-3);
+}
+
+/* Dark context buttons */
+.pomera-btn-on-dark-primary {
+  background-color: #FFFFFF;
+  color: #111210;
+  border: 1px solid #FFFFFF;
+  border-radius: var(--pm-radius-md, 8px);
+  font-weight: 500;
+}
+
+.pomera-btn-on-dark-primary:hover {
+  background-color: #E7E7E3;
+}
+
+.pomera-btn-on-dark-secondary {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--pm-radius-md, 8px);
+  font-weight: 500;
+}
+
+.pomera-btn-on-dark-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Lime Band */
+.pm-band {
+  background: var(--pm-lime);
+  color: var(--pm-ink);
+  border-radius: var(--pm-radius-lg, 12px);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pm-band strong {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.pm-band .mono {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }

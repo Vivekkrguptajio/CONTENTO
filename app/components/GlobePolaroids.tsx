@@ -172,6 +172,8 @@ export function GlobePolaroids({
   const phiOffsetRef = useRef(0)
   const thetaOffsetRef = useRef(0)
   const isPausedRef = useRef(false)
+  const isVisibleRef = useRef(true)
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [isMobile, setIsMobile] = useState(false)
 
@@ -186,7 +188,24 @@ export function GlobePolaroids({
 
   // Balanced selection: includes northern creator hubs + prominent southern portion cards (Australia, Chile, Cape Town, Rio)
   const activeMarkers = useMemo(() => {
-    if (!isMobile) return markers
+    if (!isMobile) {
+      // Well-separated hubs only, so cards don't overlap each other
+      const desktopIds = [
+        "reel-sf",
+        "reel-nyc",
+        "reel-london",
+        "reel-dubai",
+        "reel-mumbai",
+        "reel-singapore",
+        "reel-tokyo",
+        "reel-chile",
+        "reel-rio",
+        "reel-capetown",
+        "reel-sydney",
+      ]
+      const picked = markers.filter((m) => desktopIds.includes(m.id))
+      return picked.length > 0 ? picked : markers
+    }
     const mobileIds = [
       // Northern portion
       "reel-sf",
@@ -221,6 +240,21 @@ export function GlobePolaroids({
   }, [])
 
   useEffect(() => {
+    const el = wrapperRef.current
+    if (!el || typeof IntersectionObserver === "undefined") return
+    const io = new IntersectionObserver(([entry]) => {
+      isVisibleRef.current = entry.isIntersecting
+      // Stop decoding the card videos too while off-screen
+      el.querySelectorAll("video").forEach((v) => {
+        if (entry.isIntersecting) v.play().catch(() => {})
+        else v.pause()
+      })
+    })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
       if (pointerInteracting.current !== null) {
         dragOffset.current = {
@@ -250,35 +284,44 @@ export function GlobePolaroids({
 
       try {
         globe = createGlobe(canvas, {
-          devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+          devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.5),
           width,
           height: width,
           phi: 0,
           theta: 0.04, // Perfectly centered equator to show bottom portion (Chile, Australia, etc.)
           dark: 0,
           diffuse: 1.5,
-          mapSamples: 8000,
+          mapSamples: 6000,
           mapBrightness: 9,
           baseColor: [1, 1, 1],
-          markerColor: [0.4, 0.6, 0.9],
+          markerColor: [0.784, 0.945, 0.208],
           glowColor: [0.94, 0.93, 0.91],
           markerElevation: 0,
           markers: activeMarkers.map((m) => ({ location: m.location, size: 0.02, id: m.id })),
           arcs: [],
-          arcColor: [0.5, 0.7, 1],
+          arcColor: [0.784, 0.945, 0.208],
           arcWidth: 0.5,
           arcHeight: 0.25,
           opacity: 0.7,
         })
-        function animate() {
-          if (!isPausedRef.current) phi += speed
+        let last = performance.now()
+        function animate(now: number) {
+          animationId = requestAnimationFrame(animate)
+          // Skip all work while the globe is off-screen or the tab is hidden
+          if (!isVisibleRef.current || document.hidden) {
+            last = now
+            return
+          }
+          // Time-based rotation: same speed regardless of frame rate, no jumps after lag
+          const dt = Math.min((now - last) / 16.67, 3)
+          last = now
+          if (!isPausedRef.current) phi += speed * dt
           globe!.update({
             phi: phi + phiOffsetRef.current + dragOffset.current.phi,
             theta: 0.04 + thetaOffsetRef.current + dragOffset.current.theta,
           })
-          animationId = requestAnimationFrame(animate)
         }
-        animate()
+        animationId = requestAnimationFrame(animate)
         setTimeout(() => canvas && (canvas.style.opacity = "1"))
       } catch (error) {
         console.error("Globe failed to initialize:", error)
@@ -308,7 +351,7 @@ export function GlobePolaroids({
   }, [activeMarkers, speed])
 
   return (
-    <div className={`relative aspect-square select-none ${className}`}>
+    <div ref={wrapperRef} className={`relative aspect-square select-none ${className}`}>
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
@@ -336,16 +379,20 @@ export function GlobePolaroids({
               marginBottom: 10,
               pointerEvents: "none" as const,
               opacity: `var(--cobe-visible-${m.id}, 0)`,
-              filter: `blur(calc((1 - var(--cobe-visible-${m.id}, 0)) * 8px))`,
-              transition: "opacity 0.3s, filter 0.3s",
+              willChange: "opacity",
+              // Slow fade-in as a card rotates into view, quick fade-out as it leaves.
+              // The duration is read from the state being transitioned *to* (visible = 1 → slow).
+              transitionProperty: "opacity",
+              transitionTimingFunction: "ease-out",
+              transitionDuration: `calc(0.15s + var(--cobe-visible-${m.id}, 0) * 0.95s)`,
               transform: `rotate(${m.rotate}deg)`,
             }}
           >
             {/* Reels Phone-Style Vertical Card (9:16 Aspect Ratio) */}
             <div
               style={{
-                width: isMobile ? 48 : 56,
-                height: isMobile ? 84 : 96,
+                width: isMobile ? 40 : 46,
+                height: isMobile ? 70 : 80,
                 position: "relative",
                 borderRadius: isMobile ? "8px" : "10px",
                 overflow: "hidden",
@@ -378,7 +425,7 @@ export function GlobePolaroids({
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   controls={false}
                   // @ts-ignore
                   disablePictureInPicture

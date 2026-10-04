@@ -69,7 +69,7 @@ export default function BrandKitSection() {
 
   return (
     <section className="cr-bk-section" id="brand-kit">
-      {/* ── 1. ORANGE HERO BANNER (DESKTOP) ────────────────────────── */}
+      {/* ── 1. HERO BANNER (DESKTOP) ────────────────────────── */}
       <div className="cr-bk-hero-banner">
         <div className="cr-bk-hero-inner">
           <img
@@ -83,8 +83,8 @@ export default function BrandKitSection() {
             aria-hidden="true"
             className="cr-bk-banner-stars"
           />
-          <a href="/" className="cr-bk-banner-logo" aria-label="Content Rewards Home">
-            <img src="/assets/branding/white-logo.svg" alt="Content Rewards" />
+          <a href="/" className="cr-bk-banner-logo" aria-label="Pomera Home">
+            <img src="/assets/logo/pomera_logo_white.png" alt="Pomera" />
           </a>
         </div>
       </div>
@@ -94,14 +94,10 @@ export default function BrandKitSection() {
         <div className="cr-bk-mobile-header-bar">
           <a href="/" className="cr-bk-mobile-brand">
             <img
-              src="/assets/footer/stars-icon.svg"
-              alt=""
-              className="cr-bk-mobile-stars-icon"
+              src="/assets/logo/pomera_logo_white.png"
+              alt="Pomera"
+              className="h-6 w-auto"
             />
-            <div className="cr-bk-mobile-brand-text">
-              <span>Content</span>
-              <span>Rewards</span>
-            </div>
           </a>
           <button
             type="button"
@@ -112,7 +108,7 @@ export default function BrandKitSection() {
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M2 4h12M2 8h12M2 12h12"
-                stroke="#FF8003"
+                stroke="#111210"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
@@ -300,12 +296,12 @@ export default function BrandKitSection() {
                     lockup is being used, the symbol should not appear separately.
                   </p>
                   <div className="cr-bk-symbols-grid">
-                    <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--orange">
+                    <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--paper">
                       <button
                         type="button"
                         className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-3/symbol-1.svg")}
-                        aria-label="Download symbol orange"
+                        onClick={() => handleDownload("/assets/logo/pomera_logo_light.png")}
+                        aria-label="Download symbol"
                       >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -313,7 +309,7 @@ export default function BrandKitSection() {
                           <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
                       </button>
-                      <img src="/assets/branding/tab-3/symbol-1.svg" alt="Symbol on orange" />
+                      <img src="/assets/logo/pomera_logo_light.png" alt="Pomera symbol" />
                     </div>
                     <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--white">
                       <button
@@ -404,8 +400,8 @@ export default function BrandKitSection() {
                     <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-white">
                       <img src="/assets/branding/tab-3/color-var-2.svg" alt="Variation light" />
                     </div>
-                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-orange">
-                      <img src="/assets/branding/tab-3/color-var-3.svg" alt="Variation orange" />
+                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-paper">
+                      <img src="/assets/logo/pomera_logo_light.png" alt="Variation paper" />
                     </div>
                     <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-tint">
                       <img src="/assets/branding/tab-3/color-var-4.svg" alt="Variation tint" />
@@ -478,78 +474,76 @@ export default function BrandKitSection() {
             {/* ── TAB 04: TYPOGRAPHY ───────────────────────────────── */}
             {activeTab === "04" && (
               <div className="cr-bk-tab-pane cr-bk-tab-type">
-                <h2 className="cr-bk-page-heading">Typography</h2>
+                <div className="cr-bk-tag-label">POMERA VISUAL SYSTEM · TYPOGRAPHY</div>
+                <h2 className="cr-bk-page-heading">Geist · The Only Typeface</h2>
+                <p className="cr-bk-sub-desc">
+                  Geist is our single, uncompromising typeface across all brand and digital experiences.
+                </p>
 
-                {/* Typeface */}
+                {/* Display Type */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Typeface</h3>
-                  <p className="cr-bk-sub-desc">
-                    Inter is our primary typeface, used for body copy, UI, and long form
-                    content. It ensures high readability and a contemporary feel across all
-                    platforms.
-                  </p>
-                  <div className="cr-bk-card cr-bk-type-card">
-                    <div className="cr-bk-type-left">
-                      <span className="cr-bk-type-name">Inter</span>
-                      <div className="cr-bk-type-glyphs">
-                        <span className="cr-bk-type-sample-aa">Aa</span>
-                        <div className="cr-bk-type-chars">
-                          <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                          <p>abcdefghijklmnopqrstuvwxyz</p>
-                          <p>1234567890(.,:;?!$&*)</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cr-bk-type-right">
-                      <div className="cr-bk-type-meta">
-                        <span className="cr-bk-type-meta-lbl">Primary Weight:</span>
-                        <span className="cr-bk-type-meta-val">Medium</span>
-                      </div>
-                      <a
-                        href="https://fonts.google.com/specimen/Inter"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="cr-bk-type-link"
-                      >
-                        fonts.google.com/specimen/Inter
-                      </a>
-                    </div>
+                  <div className="cr-bk-sub-header-row">
+                    <h3 className="cr-bk-sub-heading">Display</h3>
+                    <span className="cr-bk-spec-pill">56-72 · 500 · -3.5%</span>
+                  </div>
+                  <div className="cr-bk-card cr-bk-spec-card">
+                    <div className="cr-bk-display-demo">Display</div>
+                    <p className="cr-bk-spec-meta">Large hero statements and display headers. Weight 500 with tight negative tracking (-3.5%).</p>
                   </div>
                 </div>
 
-                {/* Type Hierarchy - Web */}
+                {/* Heading */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Type Hierarchy - Web</h3>
-                  <p className="cr-bk-sub-desc">
-                    Follow this hierarchy for most use cases with our primary font Inter.
-                  </p>
-                  <div className="cr-bk-card cr-bk-hierarchy-card">
-                    <div className="cr-bk-hierarchy-left">
-                      <h2 className="cr-bk-h2-demo">Get paid to post</h2>
-                      <p className="cr-bk-p-demo">
-                        Join live campaigns, submit your work, and get paid fast with
-                        simple, transparent payouts.
-                      </p>
+                  <div className="cr-bk-sub-header-row">
+                    <h3 className="cr-bk-sub-heading">Heading</h3>
+                    <span className="cr-bk-spec-pill">28-40 · 500 · -2.5%</span>
+                  </div>
+                  <div className="cr-bk-card cr-bk-spec-card">
+                    <div className="cr-bk-heading-demo">Heading</div>
+                    <p className="cr-bk-spec-meta">Section and modal titles. Weight 500 with -2.5% letter spacing.</p>
+                  </div>
+                </div>
+
+                {/* Body Text */}
+                <div className="cr-bk-sub-section">
+                  <div className="cr-bk-sub-header-row">
+                    <h3 className="cr-bk-sub-heading">Body text</h3>
+                    <span className="cr-bk-spec-pill">17 · 400 · 1.55</span>
+                  </div>
+                  <div className="cr-bk-card cr-bk-spec-card">
+                    <p className="cr-bk-body-demo">
+                      Body text sits at 17px with generous line height.
+                    </p>
+                    <p className="cr-bk-spec-meta">Designed for sustained reading and high legibility across desktop and mobile.</p>
+                  </div>
+                </div>
+
+                {/* Section Label & Tabular Numbers */}
+                <div className="cr-bk-sub-section">
+                  <div className="cr-bk-two-col-grid">
+                    <div className="cr-bk-card cr-bk-spec-card">
+                      <div className="cr-bk-sub-header-row">
+                        <span className="cr-bk-spec-title">SECTION LABEL</span>
+                        <span className="cr-bk-spec-pill">Mono 12 · caps · +6%</span>
+                      </div>
+                      <div className="cr-bk-mono-label-demo">03 · COLOUR AND TYPE</div>
                     </div>
-                    <div className="cr-bk-hierarchy-right">
-                      <div className="cr-bk-indicator-row">
-                        <div className="cr-bk-indicator-line" />
-                        <span className="cr-bk-indicator-tag">Semi Bold</span>
+                    <div className="cr-bk-card cr-bk-spec-card">
+                      <div className="cr-bk-sub-header-row">
+                        <span className="cr-bk-spec-title">NUMBERS / CURRENCY</span>
+                        <span className="cr-bk-spec-pill">Mono · tabular</span>
                       </div>
-                      <div className="cr-bk-indicator-row">
-                        <div className="cr-bk-indicator-line" />
-                        <span className="cr-bk-indicator-tag">Medium</span>
-                      </div>
+                      <div className="cr-bk-mono-num-demo">₹2,50,000</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Inc. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Geist Typography System</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -560,186 +554,163 @@ export default function BrandKitSection() {
             {/* ── TAB 05: COLOURS ──────────────────────────────────── */}
             {activeTab === "05" && (
               <div className="cr-bk-tab-pane cr-bk-tab-colours">
-                <h2 className="cr-bk-page-heading">Colours</h2>
+                <div className="cr-bk-tag-label">03 · COLOUR AND TYPE</div>
+                <h2 className="cr-bk-page-heading">Six colours. One of them rationed.</h2>
+                <p className="cr-bk-sub-desc">
+                  POMERA VISUAL SYSTEM · COLOUR TEST 03 (UPDATED)
+                </p>
 
-                {/* Primary Colour */}
-                <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Primary Colour</h3>
-                  <p className="cr-bk-sub-desc">
-                    Our primary palette defines our core identity. These colors should be
-                    used across all product experiences.
-                  </p>
-                  <div className="cr-bk-swatches-grid">
-                    {/* Orange Swatch */}
-                    <div className="cr-bk-swatch-card cr-bk-swatch--orange">
-                      <button
-                        type="button"
-                        className="cr-bk-copy-btn"
-                        onClick={() => copyToClipboard("FF8003")}
-                        title="Copy hex code"
-                      >
-                        {copiedHex === "FF8003" ? "✓" : (
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                          </svg>
-                        )}
-                      </button>
-                      <div className="cr-bk-swatch-details">
-                        <div className="cr-bk-swatch-line">
-                          <span>Hex</span>
-                          <span>FF8003</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>HSL</span>
-                          <span>hsla(30, 100%, 51%, 1)</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>RGB</span>
-                          <span>rgba(255, 128, 3, 1)</span>
-                        </div>
-                      </div>
+                {/* Proportion bar */}
+                <div className="cr-bk-ratio-bar-wrap">
+                  <div className="cr-bk-ratio-bar">
+                    <div className="cr-bk-ratio-seg cr-bk-ratio--white" style={{ width: "62%" }}>
+                      <span>WHITE 62%</span>
                     </div>
-
-                    {/* White Swatch */}
-                    <div className="cr-bk-swatch-card cr-bk-swatch--white">
-                      <button
-                        type="button"
-                        className="cr-bk-copy-btn"
-                        onClick={() => copyToClipboard("FFFFFF")}
-                        title="Copy hex code"
-                      >
-                        {copiedHex === "FFFFFF" ? "✓" : (
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                          </svg>
-                        )}
-                      </button>
-                      <div className="cr-bk-swatch-details text-[#252525]">
-                        <div className="cr-bk-swatch-line">
-                          <span>Hex</span>
-                          <span>FFFFFF</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>HSL</span>
-                          <span>hsla(0, 0%, 100%, 1)</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>RGB</span>
-                          <span>rgba(255, 255, 255, 1)</span>
-                        </div>
-                      </div>
+                    <div className="cr-bk-ratio-seg cr-bk-ratio--paper" style={{ width: "18%" }}>
+                      <span>PAPER 18%</span>
                     </div>
+                    <div className="cr-bk-ratio-seg cr-bk-ratio--ink" style={{ width: "15%" }}>
+                      <span>INK 15%</span>
+                    </div>
+                    <div className="cr-bk-ratio-seg cr-bk-ratio--lime" style={{ width: "5%" }} />
+                  </div>
+                  <div className="cr-bk-ratio-lime-tag">Lime 5%</div>
+                </div>
 
-                    {/* Charcoal Swatch */}
-                    <div className="cr-bk-swatch-card cr-bk-swatch--dark">
-                      <button
-                        type="button"
-                        className="cr-bk-copy-btn"
-                        onClick={() => copyToClipboard("252525")}
-                        title="Copy hex code"
-                      >
-                        {copiedHex === "252525" ? "✓" : (
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                          </svg>
-                        )}
-                      </button>
-                      <div className="cr-bk-swatch-details">
-                        <div className="cr-bk-swatch-line">
-                          <span>Hex</span>
-                          <span>252525</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>HSL</span>
-                          <span>hsla(0, 0%, 15%, 1)</span>
-                        </div>
-                        <div className="cr-bk-swatch-line">
-                          <span>RGB</span>
-                          <span>rgba(37, 37, 37, 1)</span>
-                        </div>
-                      </div>
+                {/* 6 Colour Swatches Grid */}
+                <div className="cr-bk-pomera-swatches">
+                  {/* Ink */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#111210]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">Ink</div>
+                      <div className="cr-bk-pom-meta">#111210 · text, buttons</div>
+                    </div>
+                  </div>
+
+                  {/* White */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#ffffff] border border-[#e5e5e0]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">White</div>
+                      <div className="cr-bk-pom-meta">#FFFFFF · canvas</div>
+                    </div>
+                  </div>
+
+                  {/* Paper */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#FAFAF7] border border-[#e5e5e0]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">Paper</div>
+                      <div className="cr-bk-pom-meta">#FAFAF7 · sections</div>
+                    </div>
+                  </div>
+
+                  {/* Lime */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#C8F135]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">Lime</div>
+                      <div className="cr-bk-pom-meta">#C8F135 · bands, markers</div>
+                    </div>
+                  </div>
+
+                  {/* Lime tint */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#F2FBD6]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">Lime tint</div>
+                      <div className="cr-bk-pom-meta">#F2FBD6 · chips, fills</div>
+                    </div>
+                  </div>
+
+                  {/* Muted */}
+                  <div className="cr-bk-pom-card">
+                    <div className="cr-bk-pom-swatch bg-[#5B5B58]" />
+                    <div className="cr-bk-pom-info">
+                      <div className="cr-bk-pom-name">Muted</div>
+                      <div className="cr-bk-pom-meta">#5B5B58 · secondary text</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Gradient */}
+                {/* Anti-patterns Section */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Gradient</h3>
-                  <p className="cr-bk-sub-desc">
-                    This gradient is the official primary gradient for the project. Apply it
-                    as the default gradient in all designs, components, hero sections, cards,
-                    backgrounds, etc. where a gradient is required.
-                  </p>
-                  <div className="cr-bk-card cr-bk-gradient-card">
-                    <div className="cr-bk-grad-top">
-                      <span className="cr-bk-grad-tag">Hex FDD0A9</span>
+                  <h3 className="cr-bk-sub-heading">Anti-Patterns</h3>
+                  <div className="cr-bk-antipattern-grid">
+                    {/* Lime text never */}
+                    <div className="cr-bk-antipattern-card">
+                      <div className="cr-bk-anti-visual text-[#C8F135] text-5xl font-medium">Aa</div>
+                      <div className="cr-bk-anti-tag">LIME TEXT · NEVER</div>
                     </div>
-                    <div className="cr-bk-grad-bottom">
-                      <span className="cr-bk-grad-tag">Hex FF8003</span>
+
+                    {/* Lime button never */}
+                    <div className="cr-bk-antipattern-card">
+                      <div className="cr-bk-anti-visual">
+                        <button type="button" className="px-5 py-2 rounded-lg bg-[#C8F135] text-[#111210] font-medium text-sm">
+                          Button
+                        </button>
+                      </div>
+                      <div className="cr-bk-anti-tag">LIME BUTTON · NEVER</div>
+                    </div>
+
+                    {/* Long lime text on black */}
+                    <div className="cr-bk-antipattern-card bg-[#111210] text-[#C8F135]">
+                      <div className="cr-bk-anti-visual font-mono text-sm text-[#C8F135]">
+                        Long lime text on black
+                      </div>
+                      <div className="cr-bk-anti-tag text-white/60">GLARES · AVOID</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Primary Shades */}
+                {/* Buttons and States */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Primary Shades</h3>
-                  <p className="cr-bk-sub-desc">
-                    We have two different shades for the from our primary colours, which can
-                    be used across different mediums. Use the specified value to ensure
-                    consistency.
-                  </p>
-                  <div className="cr-bk-shades-grid">
-                    {/* Orange Shades Column */}
-                    <div className="cr-bk-shade-col">
-                      <div className="cr-bk-shade-header bg-[#FF8003]">
-                        <span>Hex</span>
-                        <span>FF8003</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#FF8003] opacity-70">
-                        <span>70%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#FF8003] opacity-50">
-                        <span>50%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#FF8003] opacity-30">
-                        <span>30%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#FF8003] opacity-10 text-[#252525]">
-                        <span>10%</span>
+                  <h3 className="cr-bk-sub-heading">Buttons and States</h3>
+                  <div className="cr-bk-states-panel">
+                    {/* Light buttons */}
+                    <div className="cr-bk-states-row">
+                      <button type="button" className="cr-bk-btn-pom-primary">
+                        Start a campaign
+                      </button>
+                      <button type="button" className="cr-bk-btn-pom-secondary">
+                        Talk to us
+                      </button>
+                      <button type="button" disabled className="cr-bk-btn-pom-disabled">
+                        Disabled
+                      </button>
+                      <div className="cr-bk-chips-group">
+                        <span className="cr-bk-status-pill cr-bk-status--verified">
+                          <span className="cr-bk-dot bg-[#2e7d32]" /> Verified
+                        </span>
+                        <span className="cr-bk-status-pill cr-bk-status--reviewing">
+                          <span className="cr-bk-dot bg-[#b45309]" /> Reviewing
+                        </span>
+                        <span className="cr-bk-status-pill cr-bk-status--flagged">
+                          <span className="cr-bk-dot bg-[#dc2626]" /> Flagged
+                        </span>
                       </div>
                     </div>
 
-                    {/* Charcoal Shades Column */}
-                    <div className="cr-bk-shade-col">
-                      <div className="cr-bk-shade-header bg-[#252525]">
-                        <span>Hex</span>
-                        <span>Medium</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#252525] opacity-70">
-                        <span>70%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#252525] opacity-50">
-                        <span>50%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#252525] opacity-30">
-                        <span>30%</span>
-                      </div>
-                      <div className="cr-bk-shade-step bg-[#252525] opacity-10 text-[#252525]">
-                        <span>10%</span>
-                      </div>
+                    {/* Dark row: ON DARK: WHITE, NOT LIME */}
+                    <div className="cr-bk-dark-states-row">
+                      <button type="button" className="cr-bk-btn-dark-primary">
+                        Start a campaign
+                      </button>
+                      <button type="button" className="cr-bk-btn-dark-secondary">
+                        Talk to us
+                      </button>
+                      <span className="cr-bk-dark-rule-tag">ON DARK: WHITE, NOT LIME</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Inc. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Visual System</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
