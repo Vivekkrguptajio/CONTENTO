@@ -70,7 +70,7 @@ export default function BentoFeatures() {
                 <div className="bento-cpm-stat-row">
                   <div className="bento-cpm-val-wrap">
                     <span className="bento-cpm-curr">₹</span>
-                    <span className="bento-cpm-amount pm-num">250</span>
+                    <span className="bento-cpm-amount pm-num">50</span>
                     <span className="bento-cpm-unit">/ 1K views</span>
                   </div>
                   <span className="bento-cpm-badge">Guaranteed Rate</span>
