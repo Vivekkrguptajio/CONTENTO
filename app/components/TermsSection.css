@@ -156,7 +156,8 @@
     flex-shrink: 0;
     font-size: 13px;
     padding: 7px 14px;
-  }
+  border-radius: 8px;
+}
 }
 
 .cr-terms-pill {
@@ -167,7 +168,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);

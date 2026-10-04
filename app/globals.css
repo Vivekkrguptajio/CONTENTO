@@ -109,6 +109,8 @@
    ══════════════════════════════════════════════════════════════════ */
 /* Hide the page scrollbar (scrolling still works) */
 html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

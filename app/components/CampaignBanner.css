@@ -22,7 +22,7 @@
   min-height: 500px;
   background: #111210;
   border: 1px solid #111210;
-  border-radius: 40px;
+  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -86,12 +86,12 @@
 }
 
 .cb-btn--primary {
-  background: var(--pm-lime, #C8F135);
+  background: #ffffff;
   color: var(--pm-ink, #111210);
 }
 
 .cb-btn--primary:hover {
-  background: #d6f860;
+  background: #E7E7E3;
   transform: translateY(-1px);
 }
 
@@ -156,7 +156,7 @@
 .cb-reel {
   position: relative;
   aspect-ratio: 9 / 16;
-  border-radius: 22px;
+  border-radius: 12px;
   overflow: hidden;
   background: #1c1d1b;
   flex-shrink: 0;
@@ -254,7 +254,7 @@
 @media (max-width: 860px) {
   .cb-card {
     grid-template-columns: 1fr;
-    border-radius: 28px;
+    border-radius: 16px;
   }
 
   .cb-content {

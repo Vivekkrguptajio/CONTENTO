@@ -10,7 +10,7 @@
   padding: clamp(18px, 2.8vw, 36px);
   background: #F6F6F1;
   border: 1px solid #E7E7E3;
-  border-radius: 28px;
+  border-radius: 16px;
   box-sizing: border-box;
   animation: dfxIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -23,7 +23,7 @@
 .dfx-card {
   background: #ffffff;
   border: 1px solid #E7E7E3;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -60,7 +60,7 @@
   display: inline-flex;
   align-items: center;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: 6px;
   background: #F1F1EC;
   color: #111210;
   font-family: var(--font-geist-mono), ui-monospace, monospace;
@@ -132,7 +132,7 @@
 .dfx-video {
   position: relative;
   aspect-ratio: 9 / 16;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   background: #111210;
 }
@@ -290,7 +290,7 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 8px;
   background: #C8F135;
   color: #111210;
   font-size: 16px;
@@ -393,7 +393,9 @@
 
 @media (max-width: 680px) {
   .dfx-review__body { grid-template-columns: 1fr; }
-  .dfx-video { max-width: 220px; }
+  .dfx-video { max-width: 220px;
+  border-radius: 12px;
+}
   .dfx-kpis { grid-template-columns: 1fr; }
 
   .dfx-row {
@@ -408,5 +410,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dfx-stage { animation: none; }
+  .dfx-stage { animation: none;
+  border-radius: 16px;
+}
 }

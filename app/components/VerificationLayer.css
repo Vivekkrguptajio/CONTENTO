@@ -26,7 +26,7 @@
   border-radius: 16px;
   padding: 56px 56px 40px;
   box-sizing: border-box;
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.35);
+  
   position: relative;
   overflow: hidden;
   display: flex;
@@ -79,13 +79,11 @@
 
 /* ── Station I: Platform Data Modal ──────────────────────────────── */
 .vl-modal-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #1D1E1C;
   border-radius: 12px;
   padding: 24px 26px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -97,9 +95,9 @@
 
 .vl-modal-card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.08);
+  background: #242523;
   border-color: rgba(200, 241, 53, 0.4);
-  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 241, 53, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .vl-platform-row {
@@ -119,7 +117,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
 }
 
 .vl-platform-meta {
@@ -148,6 +146,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.vl-radar-wrap::before {
+  content: "";
+  position: absolute;
+  width: 232px;
+  height: 232px;
+  border-radius: 50%;
+  background: var(--pm-ink, #111210);
 }
 
 .vl-radar-ring-outer {
@@ -210,9 +217,7 @@
 }
 
 .vl-note-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #1F201E;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px 18px;
@@ -222,7 +227,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: transform 0.22s ease, border-color 0.22s ease;
   white-space: nowrap;
 }
@@ -253,13 +258,11 @@
 
 /* ── Station IV: Verified Reporting Flag Card ────────────────────── */
 .vl-flag-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #1D1E1C;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 24px 26px;
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   gap: 18px;
@@ -271,9 +274,9 @@
 
 .vl-flag-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  background: #242523;
   border-color: rgba(200, 241, 53, 0.4);
-  box-shadow: 0 24px 44px -8px rgba(0, 0, 0, 0.6), 0 0 24px rgba(200, 241, 53, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .vl-flag-icon-wrap {
@@ -382,7 +385,8 @@
 
   .vl-card {
     padding: 36px 36px 32px;
-  }
+  border-radius: 16px;
+}
 
   .vl-col-lbl {
     font-size: 19px;
@@ -391,12 +395,14 @@
   .vl-modal-card {
     width: 210px;
     padding: 22px 24px;
-  }
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 
   .vl-flag-card {
     width: 235px;
     padding: 22px 24px;
-  }
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 }
 
 /* Phone & Tablet Stacked View */
@@ -407,7 +413,7 @@
 
   .vl-card {
     padding: 38px 20px 44px;
-    border-radius: 28px;
+    border-radius: 16px;
     min-height: auto;
   }
 
@@ -507,11 +513,13 @@
   .vl-modal-card {
     width: 250px;
     padding: 22px 24px;
-  }
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 
   .vl-flag-card {
     width: 255px;
     padding: 22px 24px;
     gap: 18px;
-  }
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 }

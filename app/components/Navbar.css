@@ -139,15 +139,27 @@
   line-height: 0;
 }
 
+/* Large enough that the "alternative ad platform" line under the wordmark stays readable */
 .nav-brand-img,
 img.logo,
 svg.logo {
-  width: 108px;
-  height: 24px;
-  max-width: 108px;
-  max-height: 24px;
+  width: 192px;
+  height: 43px;
+  max-width: 192px;
+  max-height: 43px;
   object-fit: contain;
   display: block;
+}
+
+@media (max-width: 640px) {
+  .nav-brand-img,
+  img.logo,
+  svg.logo {
+    width: 168px;
+    height: 38px;
+    max-width: 168px;
+    max-height: 38px;
+  }
 }
 
 .nav-brand-link svg path {
@@ -172,7 +184,7 @@ svg.logo {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  border-radius: 9999px;
+  border-radius: 8px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -254,7 +266,7 @@ svg.logo {
   font-size: 13.5px;
   font-weight: 500;
   padding: 9px 20px;
-  box-shadow: 0 2px 8px rgba(17, 18, 16, 0.16);
+  
   position: relative;
   overflow: hidden;
   border: 1px solid var(--pomera-ink, #111210);
@@ -281,7 +293,7 @@ svg.logo {
   background: #252624;
   border-color: #252624;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(17, 18, 16, 0.24);
+  
 }
 
 .nav-btn--secondary {
@@ -297,7 +309,7 @@ svg.logo {
   background: var(--pomera-paper, #fafaf7);
   border-color: rgba(17, 18, 16, 0.25);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  
 }
 
 /* ── Mobile Hamburger Toggle Button ────────────────────────────── */
@@ -430,7 +442,7 @@ svg.logo {
   display: flex;
   align-items: center;
   background: #f1f3f5;
-  border-radius: 9999px;
+  border-radius: 8px;
   padding: 4px;
   width: 100%;
   box-sizing: border-box;
@@ -441,7 +453,7 @@ svg.logo {
   flex: 1;
   background: transparent;
   border: none;
-  border-radius: 9999px;
+  border-radius: 8px;
   padding: 9.5px 0;
   font-size: 14.5px;
   font-weight: 500;
@@ -458,7 +470,7 @@ svg.logo {
   background: #ffffff;
   color: #0f172a;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
 }
 
 /* Large Clean Navigation Links */
@@ -508,7 +520,7 @@ svg.logo {
   color: #0f172a;
   font-size: 15.5px;
   font-weight: 600;
-  border-radius: 9999px;
+  border-radius: 8px;
   text-decoration: none;
   transition: background-color 0.2s ease;
 }
@@ -528,16 +540,16 @@ svg.logo {
   color: #ffffff;
   font-size: 15.5px;
   font-weight: 600;
-  border-radius: 9999px;
+  border-radius: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(17, 18, 16, 0.2);
+  
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-mobile-btn-primary:hover {
   background: #252624;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(17, 18, 16, 0.28);
+  
 }
 
 .nav-mobile-btn-primary svg {
@@ -564,7 +576,7 @@ svg.logo {
 .nav-mobile-drawer.is-dark .nav-mobile-tab.is-active {
   background: #1c1d1d;
   color: #ededed;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  
 }
 
 .nav-mobile-drawer.is-dark .nav-mobile-large-link,
@@ -658,7 +670,7 @@ svg.logo {
   background: rgba(28, 29, 29, 0.90);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -693,13 +705,13 @@ svg.logo {
   background: #ededed;
   color: #110d0c;
   border: 1px solid #ededed;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+  
 }
 
 .nav-sticky-wrapper.nav-theme-dark .nav-btn--primary:hover {
   background: #ffffff;
   color: #110d0c;
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+  
 }
 
 .nav-sticky-wrapper.nav-theme-dark .nav-btn--secondary {

@@ -126,6 +126,16 @@
 
 @media (max-width: 480px) {
 
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .hero-cta-row > a {
+    width: 100%;
+  }
+
   .hero-headline {
     font-size: clamp(28px, 8vw, 34px);
     line-height: 1.18;

@@ -15,8 +15,8 @@ const BrandLogo = ({
   <img
     src={isDark ? "/assets/logo/pomera_logo_white_nav.webp" : "/assets/logo/pomera_logo_light_nav.webp"}
     alt="Pomera"
-    width={108}
-    height={24}
+    width={192}
+    height={43}
     className={`nav-brand-img logo ${className}`}
   />
 );
@@ -206,7 +206,7 @@ export default function Navbar() {
           className="nav-mobile-content"
           style={{ paddingTop: bannerVisible && !isCreatorPage && !isAgenciesPage ? 110 : 68 }}
         >
-          {/* Segmented Switcher: Brands | Creators */}
+          {/* Segmented Switcher: Brands | Publishers */}
           <div className="nav-mobile-tab-switch" role="tablist" aria-label="Audience Switcher">
             <button
               type="button"
@@ -236,7 +236,7 @@ export default function Navbar() {
                 }
               }}
             >
-              Creators
+              Publishers
             </button>
           </div>
 
@@ -283,11 +283,11 @@ export default function Navbar() {
             </a>
 
             <a
-              href={mobileActiveTab === "creators" ? "/signup" : "/launch-a-campaign"}
+              href={mobileActiveTab === "creators" ? "/creator#join" : "/#campaign-cta"}
               className="nav-mobile-btn-primary"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span>{mobileActiveTab === "creators" ? "Create Account" : "Launch a Campaign"}</span>
+              <span>{mobileActiveTab === "creators" ? "Join the founding cohort" : "Start a campaign"}</span>
               <svg
                 width="16"
                 height="16"

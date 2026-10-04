@@ -10,13 +10,15 @@
 /* Scroll runway: 100vh stage + ~65vh of scrolling per step */
 .sp-outer {
   position: relative;
-  height: calc(100vh + var(--sp-steps, 6) * 65vh);
+  height: calc(100vh + var(--sp-steps, 5) * 65vh);
+  height: calc(100svh + var(--sp-steps, 5) * 65svh);
 }
 
 .sp-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +84,7 @@
   padding: clamp(24px, 3.2vw, 40px);
   background: #F4F4EF;
   border: 1px solid #E7E7E3;
-  border-radius: 28px;
+  border-radius: 16px;
   box-sizing: border-box;
   color: #111210;
   transition:
@@ -115,7 +117,7 @@
   background: #111210;
   border-color: #111210;
   color: #C8F135;
-  box-shadow: 0 30px 60px -24px rgba(17, 18, 16, 0.55);
+  
 }
 
 .sp-step__meta {
@@ -230,13 +232,22 @@
 
 /* ── Mobile ──────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .sp-stage { height: clamp(380px, 56vh, 480px); }
+  .sp-stage { height: clamp(320px, 50vh, 430px); height: clamp(320px, 50svh, 430px); }
 
-  .sp-step--left { transform: translateX(-58%) scale(0.78); }
-  .sp-step--right { transform: translateX(58%) scale(0.78); }
+  /* one full-width card at a time; neighbours stay parked off-screen instead of peeking half-cut */
+  .sp-step {
+    width: calc(100vw - 40px);
+    margin-left: calc((100vw - 40px) / -2);
+  }
+  .sp-step--left,
+  .sp-step--right { opacity: 0; pointer-events: none; }
+  .sp-step--left { transform: translateX(-110%) scale(0.92); }
+  .sp-step--right { transform: translateX(110%) scale(0.92); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sp-step { transition: none; }
+  .sp-step { transition: none;
+  border-radius: 16px;
+}
   .sp-hint span::after { animation: none; }
 }

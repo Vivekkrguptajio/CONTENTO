@@ -34,13 +34,6 @@ const STEPS = [
   },
   {
     step: "05",
-    title: "Weekly UPI payouts",
-    desc: "Publishers are paid per verified view, weekly, directly via UPI. Reputation on the supply side is non-negotiable.",
-    badge: "Weekly UPI",
-    badgeType: "success",
-  },
-  {
-    step: "06",
     title: "Verified delivery report",
     desc: "You receive transparent reports showing every post link, verified view count, and achieved CPM. You are billed strictly for verified delivery.",
     badge: "Pay on Delivery",
@@ -50,6 +43,7 @@ const STEPS = [
 
 export default function SolutionSteps() {
   const outerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
   /*
@@ -63,7 +57,7 @@ export default function SolutionSteps() {
       const outer = outerRef.current;
       if (!outer) return;
       const rect = outer.getBoundingClientRect();
-      const runway = outer.offsetHeight - window.innerHeight;
+      const runway = outer.offsetHeight - (stickyRef.current?.offsetHeight ?? window.innerHeight);
       const p = runway > 0 ? Math.min(1, Math.max(0, -rect.top / runway)) : 0;
       setActive(Math.min(STEPS.length - 1, Math.floor(p * STEPS.length)));
     };
@@ -84,7 +78,7 @@ export default function SolutionSteps() {
   const goTo = (i: number) => {
     const outer = outerRef.current;
     if (!outer) return;
-    const runway = outer.offsetHeight - window.innerHeight;
+    const runway = outer.offsetHeight - (stickyRef.current?.offsetHeight ?? window.innerHeight);
     const top = outer.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: top + runway * ((i + 0.5) / STEPS.length), behavior: "smooth" });
   };
@@ -92,14 +86,14 @@ export default function SolutionSteps() {
   return (
     <section id="how-it-works" className="sp-section" aria-label="Campaign Execution">
       <div className="sp-outer" ref={outerRef} style={{ ["--sp-steps" as string]: STEPS.length }}>
-        <div className="sp-sticky">
+        <div className="sp-sticky" ref={stickyRef}>
           <div className="sp-inner">
             {/* Eyebrow */}
             <div className="sp-eyebrow"></div>
 
             <h2 className="sp-heading">How a campaign runs.</h2>
             <p className="sp-lead">
-              Six predictable steps from initial video assets to delivered, verified reach. No guesswork and no upfront
+              Five predictable steps from initial video assets to delivered, verified reach. No guesswork and no upfront
               billing risk.
             </p>
 
