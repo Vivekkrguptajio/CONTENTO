@@ -16,18 +16,18 @@ export default function TestimonialCard() {
 
           {/* Main Statement */}
           <h2 className="tc-heading">
-            Your first campaign runs as a pilot.
+            Your first campaign is free.
           </h2>
 
           <p className="tc-subheading">
-            We’re booking in a small group of founding brands first. We source the publishers and run the campaign, and you get a report with every post link and verified view count. You only scale if the numbers prove themselves.
+            We’re early: no campaign has run yet, so there is no case study to show. We’re booking in a small group of founding brands first. We run your first campaign, you see the report with every post link and verified view count, then you decide.
           </p>
 
           {/* Key Pilot Guarantees */}
           <div className="tc-specs-grid">
             <div className="tc-spec-item">
-              <span className="tc-spec-val pm-num">₹10,000</span>
-              <span className="tc-spec-lbl">Minimum campaign</span>
+              <span className="tc-spec-val pm-num">Free</span>
+              <span className="tc-spec-lbl">Your first campaign</span>
             </div>
             <div className="tc-spec-divider" />
             <div className="tc-spec-item">
@@ -36,15 +36,15 @@ export default function TestimonialCard() {
             </div>
             <div className="tc-spec-divider" />
             <div className="tc-spec-item">
-              <span className="tc-spec-val pm-num">₹0</span>
-              <span className="tc-spec-lbl">Platform fee on your pilot</span>
+              <span className="tc-spec-val pm-num">₹10,000</span>
+              <span className="tc-spec-lbl">Minimum campaign after the pilot</span>
             </div>
           </div>
 
           {/* Action CTA */}
           <div className="tc-cta-wrap">
             <a href="#contact" className="tc-btn-primary">
-              Book a pilot
+              Book a free pilot
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />

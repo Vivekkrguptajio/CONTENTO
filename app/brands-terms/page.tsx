@@ -15,7 +15,7 @@ export default function BrandsTermsPage() {
       <main className="w-full flex-grow">
         <LegalNotice
           title="Brand terms"
-          intro="Pomera’s brand and agency terms are being finalised and will be published here before the first campaigns start in November 2026. Pilot terms are agreed with you on a short call."
+          intro="The brand and agency terms are being finalised and will be published here before the first campaigns start in November 2026. Free pilot terms are agreed with you on a short call."
           points={["The rate per 1,000 verified views is agreed before the campaign starts.", "You are billed only for verified views. If a campaign under-delivers, it extends or the shortfall is not billed.", "Minimum campaign is ₹10,000."]}
         />
       </main>

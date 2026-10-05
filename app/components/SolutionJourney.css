@@ -116,7 +116,7 @@
   opacity: 1;
   background: #111210;
   border-color: #111210;
-  color: #C8F135;
+  color: #ffffff;
   
 }
 
@@ -326,6 +326,6 @@
     line-height: 1.55;
     color: #5B5B58;
   }
-  .sp-tl__item:last-child .sp-tl__title { color: #C8F135; }
+  .sp-tl__item:last-child .sp-tl__title { color: #ffffff; }
   .sp-tl__item:last-child .sp-tl__desc { color: rgba(255, 255, 255, 0.75); }
 }

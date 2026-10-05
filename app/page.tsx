@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import VerificationLayer from "./components/VerificationLayer";
 import TrustVerification from "./components/TrustVerification";
+import ProblemSection from "./components/ProblemSection";
 import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
 import QuoteSection from "./components/QuoteSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <main className="w-full flex-grow bg-white">
         <HeroSection />
+        <ProblemSection />
         <SolutionSteps />
         <VerificationLayer />
         <TrustVerification />

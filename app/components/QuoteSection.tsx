@@ -14,7 +14,7 @@ export default function QuoteSection() {
           <PomeraMark size={48} bg="#121210" radius={90} />
           <span className="qt-author__meta">
             <span className="qt-author__name">Dhiraj</span>
-            <span className="qt-author__role">Founder, Pomera · Bengaluru</span>
+            <span className="qt-author__role">Co-founder, Pomera · Bengaluru</span>
           </span>
         </figcaption>
       </figure>

@@ -403,8 +403,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--pm-lime, #C8F135);
-  border: 1px solid rgba(17, 18, 16, 0.2);
+  background: var(--pm-lime-strong, #7FA00F);
+  border: 0;
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -451,4 +451,14 @@
 /* Phones: fraud checks are already covered in the verification section */
 @media (max-width: 768px) {
   .bento-card--bot { display: none; }
+}
+
+/* The rate is blank on purpose: it is agreed per brand before launch, and we don't quote one before we have delivery data */
+.bento-cpm-blank {
+  display: inline-block;
+  width: 84px;
+  height: 0;
+  margin: 0 6px 6px;
+  border-bottom: 3px dashed var(--pm-ink, #111210);
+  align-self: flex-end;
 }

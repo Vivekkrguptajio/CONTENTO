@@ -1,5 +1,9 @@
 "use client";
 
+/* FOUNDER SIGN-OFF NEEDED: agencies are not covered by Brand Book v2.4 (audiences = brands, publishers, investors).
+   Claims to confirm before launch: "named Pomera contact on WhatsApp", "partner pricing, agreed on the call",
+   the 10–20% slice, and the free-pilot wording. */
+
 import React, { useEffect, useRef, useState } from "react";
 import { PomeraMark } from "./pomeraMark";
 import { BeamMark } from "./beamMark";
@@ -22,7 +26,7 @@ const REPORT_ROWS = [
 ];
 
 const PERKS = [
-  "Your first client campaign runs as a pilot with no platform fee",
+  "Your first client campaign runs as a free pilot",
   "A named Pomera contact on WhatsApp",
   "You own the client relationship. We never pitch your clients",
   "Partner pricing, agreed on the call",
@@ -144,7 +148,7 @@ export default function AgenciesLanding() {
           </div>
 
           <figure className="ag-plan">
-            <span className="ag-plan__sticker">Pilot · no platform fee</span>
+            <span className="ag-plan__sticker">First client campaign: free pilot</span>
             <figcaption>A client’s paid social plan, and where Pomera sits</figcaption>
             <table>
               <thead>
@@ -175,7 +179,7 @@ export default function AgenciesLanding() {
 
           <div className="ag-why">
             {/* A: quote ticket */}
-            <article className="ag-card ag-card--lime ag-why__a" data-reveal>
+            <article className="ag-card ag-card--tint ag-why__a" data-reveal>
               <div>
                 <p className="ag-card__n">01</p>
                 <h3>A number you can quote</h3>
@@ -332,7 +336,7 @@ export default function AgenciesLanding() {
               <p className="pb-join__s">We’re working with a small group of agencies first. Partner terms are agreed with you on a short call.</p>
 
               <div className="ag-early">
-                <b>We’re early.</b> We haven’t run a campaign for an agency yet, so there’s no case study to show you. Your first client campaign is a pilot with no platform fee: we run it, you see the report, then you decide.
+                <b>We’re early.</b> We haven’t run a campaign for an agency yet, so there’s no case study to show you. Your first client campaign is a free pilot: we run it, you see the report, then you decide.
               </div>
 
               <ul className="pb-earn__ticks ag-perks">

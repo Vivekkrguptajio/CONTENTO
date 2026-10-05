@@ -1,0 +1,126 @@
+/* ════════════════════════════════════════════════════════════════════
+   THE PROBLEM — calm and plain. Editorial list on the left of the page,
+   then an ink panel that answers it.
+   ════════════════════════════════════════════════════════════════════ */
+.pr-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 72px 20px 24px;
+}
+@media (min-width: 768px) { .pr-section { padding: 120px 32px 40px; } }
+
+.pr-container { max-width: 1240px; margin: 0 auto; }
+
+.pr-top { display: grid; gap: 44px; }
+@media (min-width: 960px) { .pr-top { grid-template-columns: 5fr 7fr; gap: 88px; align-items: start; } }
+
+/* left: headline */
+@media (min-width: 960px) { .pr-top__head { position: sticky; top: 130px; } }
+.pr-eyebrow {
+  margin: 0 0 18px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5B5B58;
+}
+.pr-heading {
+  margin: 0;
+  font-size: clamp(32px, 4.4vw, 54px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: #111210;
+  text-wrap: balance;
+}
+.pr-strike { color: #8A8A85; }
+.pr-lead { margin: 22px 0 0; max-width: 460px; font-size: 17px; line-height: 1.55; color: #5B5B58; }
+
+/* right: three statements as hairline rows */
+.pr-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid #111210; }
+.pr-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 4px 16px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid #E7E7E3;
+}
+@media (min-width: 640px) { .pr-row { grid-template-columns: 56px 1fr auto; gap: 8px 24px; padding: 34px 0; } }
+.pr-row__n { padding-top: 6px; font-size: 13px; letter-spacing: 0.06em; color: #8A8A85; }
+.pr-row__t {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #111210;
+}
+.pr-row__d { margin: 0; max-width: 520px; font-size: 16px; line-height: 1.55; color: #5B5B58; }
+.pr-row__q {
+  display: none;
+  align-self: center;
+  padding: 8px 14px;
+  border: 1.5px dashed #BDBDB6;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #8A8A85;
+  white-space: nowrap;
+}
+@media (min-width: 640px) { .pr-row__q { display: inline-block; } }
+
+/* answer panel */
+.pr-answer {
+  display: grid;
+  gap: 36px;
+  margin-top: 64px;
+  padding: 36px 24px;
+  border-radius: 16px;
+  background: #111210;
+  color: #ffffff;
+}
+@media (min-width: 900px) { .pr-answer { grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; margin-top: 88px; padding: 64px 60px; } }
+.pr-answer__kicker {
+  margin: 0 0 14px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8A8A85;
+}
+.pr-answer__main {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.pr-hl {
+  background: #C8F135;
+  color: #111210;
+  padding: 0 8px 2px;
+  border-radius: 6px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* the 10–20% slice, drawn */
+.pr-bar { display: flex; height: 56px; overflow: hidden; border-radius: 12px; }
+.pr-bar__rest {
+  display: flex; align-items: center; flex: 1 1 82%;
+  padding-left: 16px;
+  background: #2A2B27;
+  font-size: 13px; font-weight: 500; color: #B8B8B2; white-space: nowrap;
+}
+.pr-bar__pom {
+  display: flex; align-items: center; justify-content: center; flex: 0 0 18%;
+  background: repeating-linear-gradient(135deg, #C8F135 0 8px, #B7E02A 8px 16px);
+  font-size: 12px; font-weight: 600; color: #111210; overflow: hidden;
+}
+.pr-bar__scale {
+  display: flex; justify-content: space-between; gap: 12px; margin-top: 10px;
+  font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #8A8A85;
+}
+.pr-answer__note { margin: 18px 0 0; font-size: 15px; line-height: 1.55; color: #B8B8B2; }

@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
       <main className="w-full flex-grow">
         <LegalNotice
           title="Privacy policy"
-          intro="Pomera’s full privacy policy is being finalised and will be published here. Until then: we use the details you submit in our forms only to contact you about Pomera, and we never ask for your Instagram password or login."
+          intro="The full privacy policy is being finalised and will be published here. Until then: we use the details you submit in our forms only to contact you about Pomera, and we never ask for your Instagram password or login."
         />
       </main>
       <Footer />

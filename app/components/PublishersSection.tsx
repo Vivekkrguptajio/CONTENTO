@@ -40,19 +40,19 @@ const PROMISES = [
 ];
 
 const FAQS = [
-  { q: "What is a publisher?", a: "A video editor who posts brand videos on their own account and gets paid for every verified view. You edit and you publish; that’s what brands pay for." },
+  { q: "What is a clipper?", a: "A video editor who posts brand videos on their own account and gets paid for every verified view. You edit and you publish; that’s what brands pay for." },
   { q: "Do I have to pay anything?", a: "No. Joining is free, always. Pomera will never ask you for money." },
   { q: "How many followers do I need?", a: "None. There is no follower minimum. What matters is whether people watch your edits." },
   { q: "Will you post from my account or ask for my password?", a: "Never. You post yourself. We only need your post link and a screenshot of your Insights." },
-  { q: "When does the first campaign start?", a: "We’re onboarding the founding cohort now. First campaigns start in November 2026, and founding publishers get them first." },
+  { q: "When does the first campaign start?", a: "We’re onboarding the founding cohort now. First campaigns start in November 2026, and founding clippers get them first." },
   { q: "How and when do I get paid?", a: "Every week by UPI, for posts verified that week. Verified views are counted on day 7 after you post." },
-  { q: "Why do posts need a paid label?", a: "Indian advertising rules (ASCI) require paid posts to be labelled. It protects you and your account, and it takes one tap." },
+  { q: "Why do posts need a paid label?", a: "Indian advertising rules (ASCI) require paid posts to be labelled. It protects you and your account, and it takes one tap. A post without the label is not counted and not paid until it is fixed." },
 ];
 
 const NEXT_STEPS = [
-  "We add you to the Pomera Publishers WhatsApp group within one working day.",
+  "We add you to the ClipperCircle by Pomera WhatsApp group within one working day.",
   "You get the first brief before campaigns start in November 2026.",
-  "Founding publishers see every new campaign first.",
+  "Founding clippers see every new campaign first.",
 ];
 
 const inr = (n: number) => n.toLocaleString("en-IN");
@@ -61,7 +61,7 @@ export default function PublishersSection() {
   const reelsRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState(0);
   const [views, setViews] = useState(100000);
-  const [rate, setRate] = useState(30);
+  const [rate, setRate] = useState(100);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error" | "unconnected">("idle");
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
@@ -155,7 +155,7 @@ export default function PublishersSection() {
       <section className="pb-hero">
         <div className="pb-wrap">
           <div className="pb-hero__copy">
-            <p className="pb-eyebrow"><span className="pb-dot" />Founding cohort · first campaigns start November 2026</p>
+            <p className="pb-eyebrow"><span className="pb-dot" />ClipperCircle by Pomera · Founding cohort · first campaigns start November 2026</p>
             <h1 className="pb-h1">Paid per view, <span className="pb-mk">not</span> per follower.</h1>
             <p className="pb-lead">
               Edit brand videos, post them from your own Instagram or YouTube account, and get paid for every verified view. Weekly, by UPI.
@@ -164,7 +164,7 @@ export default function PublishersSection() {
               <a className="pb-btn pb-btn--dark" href="#join">Join the founding cohort</a>
               <a className="pb-btn pb-btn--soft" href="#how">How it works</a>
             </div>
-            <p className="pb-fine">Free to join. We never ask for money or your Instagram password. Publishers join through ClipperCircle, Pomera’s publisher community.</p>
+            <p className="pb-fine">Free to join. We never ask for money or your Instagram password.</p>
           </div>
 
           <div className="pb-reels-wrap">
@@ -220,7 +220,7 @@ export default function PublishersSection() {
       <section className="pb-sec pb-sec--tight">
         <div className="pb-wrap">
           <div className="pb-band">
-            <div className="pb-band__mark" aria-hidden="true"><PomeraMark size={360} fg="#111210" opacity={0.07} /></div>
+            <div className="pb-band__mark" aria-hidden="true"><PomeraMark size={360} fg="#C8F135" opacity={0.08} /></div>
             <p className="pb-band__zero">0</p>
             <div className="pb-band__copy">
               <p className="pb-band__t">followers needed to join.</p>
@@ -240,7 +240,7 @@ export default function PublishersSection() {
         <div className="pb-wrap pb-split">
           <div className="pb-split__side">
             <p className="pb-eyebrow pb-eyebrow--left">How it works</p>
-            <h2 className="pb-h2 pb-h2--left">What’s a publisher?</h2>
+            <h2 className="pb-h2 pb-h2--left">What’s a clipper?</h2>
             <p className="pb-lead pb-lead--left">
               A video editor who posts brand videos on their own account and gets paid for the views. You don’t need a big following. You need edits people watch.
             </p>
@@ -301,12 +301,12 @@ export default function PublishersSection() {
                 <input
                   id="calc-rate"
                   type="range"
-                  min={10}
-                  max={100}
-                  step={5}
+                  min={20}
+                  max={400}
+                  step={10}
                   value={rate}
                   onChange={(e) => setRate(+e.target.value)}
-                  style={{ "--fill": `${((rate - 10) / (100 - 10)) * 100}%` } as CSSVars}
+                  style={{ "--fill": `${((rate - 20) / (400 - 20)) * 100}%` } as CSSVars}
                 />
               </div>
 
@@ -338,13 +338,13 @@ export default function PublishersSection() {
               <PomeraMark size={48} bg="#111210" radius={90} />
               <div>
                 <p>Dhiraj</p>
-                <small>Founder, Pomera · Bengaluru</small>
+                <small>Co-founder, Pomera · Bengaluru</small>
               </div>
             </div>
           </div>
 
           <div className="pb-prom">
-            <p className="pb-prom__t">Our promises to publishers</p>
+            <p className="pb-prom__t">Our promises to clippers</p>
             <ul>
               {PROMISES.map((t) => (
                 <li key={t}>

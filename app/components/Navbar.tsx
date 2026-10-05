@@ -5,34 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
 import ThemeToggle from "./ThemeToggle";
+import BrandLogo from "./BrandLogo";
 import { useTheme } from "../lib/theme";
-
-/* ── Brand logo: wordmark image + lime tagline box whose text rolls up from below ── */
-const BrandLogo = ({
-  isDark = false,
-  className = "",
-}: {
-  isDark?: boolean;
-  className?: string;
-}) =>
-  (
-    <span className="nav-logo-box" aria-label="Pomera, alternative ad platform">
-      <img
-        src={isDark ? "/assets/logo/pomera-logo-nav-white.png" : "/assets/logo/pomera-logo-nav.png"}
-        alt=""
-        width={180}
-        height={48}
-        className={`nav-brand-img logo ${className}`}
-      />
-      <span className="nav-logo-tag" aria-hidden="true">
-        <span className="nav-logo-tag__text">alternative ad platform</span>
-      </span>
-    </span>
-  );
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isCreatorPage = pathname === "/creators" || pathname === "/creator" || pathname.startsWith("/creator/") || pathname.startsWith("/creators/");
+  const isCreatorPage = pathname === "/clippercircle" || pathname.startsWith("/clippercircle/");
   const isHomePage = pathname === "/";
   const [currentHash, setCurrentHash] = useState("");
   // Home page is the Brand page
@@ -114,10 +92,8 @@ export default function Navbar() {
         {bannerVisible && !isCreatorPage && !isAgenciesPage && (
           <aside className="nav-announcement" aria-label="Announcement">
             <div className="nav-announcement-content">
-              <span className="nav-announcement-bold">Publishers join through ClipperCircle</span>
-              <span className="nav-announcement-divider">·</span>
-              <a href="/creator" className="nav-announcement-link">
-                ClipperCircle by Pomera — Paid per view, not per follower &rarr;
+              <a href="/clippercircle" className="nav-announcement-link">
+                Publishers join through ClipperCircle, our publisher community &rarr;
               </a>
             </div>
             <button
@@ -152,7 +128,7 @@ export default function Navbar() {
                   Brand
                 </Link>
                 <a
-                  href="/creator"
+                  href="/clippercircle"
                   className={`nav-link ${isCreatorPage ? "is-active" : ""}`}
                 >
                   Publisher
@@ -170,7 +146,7 @@ export default function Navbar() {
             <div className="nav-right">
               <ThemeToggle />
               {isCreatorPage && !isLegalPage ? (
-                <a href="/creator#join" className="nav-btn nav-btn--primary">
+                <a href="/clippercircle#join" className="nav-btn nav-btn--primary">
                   Join the founding cohort
                 </a>
               ) : (
@@ -239,7 +215,7 @@ export default function Navbar() {
                 setMobileActiveTab("creators");
                 if (!isCreatorPage) {
                   setMobileMenuOpen(false);
-                  window.location.href = "/creator";
+                  window.location.href = "/clippercircle";
                 }
               }}
             >
@@ -257,7 +233,7 @@ export default function Navbar() {
               Brand
             </Link>
             <a
-              href="/creator"
+              href="/clippercircle"
               className={`nav-mobile-large-link ${isCreatorPage ? "is-active" : ""}`}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -275,7 +251,7 @@ export default function Navbar() {
           {/* Bottom Action Buttons */}
           <div className="nav-mobile-bottom-actions">
             <a
-              href={mobileActiveTab === "creators" ? "/creator#join" : isAgenciesPage ? "/agencies#partner" : "/#contact"}
+              href={mobileActiveTab === "creators" ? "/clippercircle#join" : isAgenciesPage ? "/agencies#partner" : "/#contact"}
               className="nav-mobile-btn-primary"
               onClick={() => setMobileMenuOpen(false)}
             >

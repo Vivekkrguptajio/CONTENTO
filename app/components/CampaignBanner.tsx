@@ -6,7 +6,7 @@ import "./CampaignBanner.css";
 const guarantees = [
   "Fixed ₹ rate before you spend",
   "Billed on verified views only",
-  "No platform fee on your pilot",
+  "Your first campaign is free",
   "A report with every post link",
   "Support on WhatsApp",
 ];
@@ -66,11 +66,11 @@ export default function CampaignBanner() {
   }, []);
 
   return (
-    <section className="cb-section" id="campaign-cta" aria-label="Run your first campaign as a pilot">
+    <section className="cb-section" id="campaign-cta" aria-label="Run your first campaign free">
       <div className="cb-container">
         <div className="cb-card">
           <div className="cb-content">
-            <h2 className="cb-heading">Run your first campaign as a pilot.</h2>
+            <h2 className="cb-heading">Run your first campaign free.</h2>
 
             <ul className="cb-features">
               {guarantees.map((text) => (
@@ -82,7 +82,7 @@ export default function CampaignBanner() {
             </ul>
 
             <a href="#contact" className="cb-btn cb-btn--primary">
-              Book a pilot
+              Book a free pilot
             </a>
           </div>
 

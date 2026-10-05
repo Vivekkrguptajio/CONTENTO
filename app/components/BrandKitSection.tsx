@@ -22,39 +22,31 @@ interface TabItem {
 
 const TABS: TabItem[] = [
   { number: "01", label: "Introduction" },
-  { number: "02", label: "Tone of Voice" },
+  { number: "02", label: "Voice" },
   { number: "03", label: "Our Logo" },
   { number: "04", label: "Typography" },
   { number: "05", label: "Colours" },
-  { number: "06", label: "Visual Assets" },
-  { number: "07", label: "Brand in Use" },
 ];
 
-const TONE_ITEMS = [
-  {
-    label: "Proof Over Promise",
-    description:
-      "We don't inspire without evidence. Every claim we make is grounded in real numbers, real names, and real outcomes. If we can't back it up, we don't say it.",
-  },
-  {
-    label: "Casually Confident",
-    description:
-      "We don't shout. We don't hedge either. Our voice is the kind of quiet confidence that comes from knowing the product works, so we let results do the heavy lifting while we keep it conversational.",
-  },
-  {
-    label: "Relentlessly Clear",
-    description:
-      "Short sentences. Obvious next steps. If someone has to read it twice to understand it, we've already lost them. Every word either builds trust or moves them forward.",
-  },
+const VOICE_ITEMS = [
+  { label: "Numbers first", description: "Numbers and money first, adjectives last. A rate, a count or a date beats a big claim." },
+  { label: "Short and active", description: "Short sentences. Active voice. Second person. Say what happens." },
+  { label: "Plain over clever", description: "We sell accountability. Clever copy reads as marketing; plain copy reads as true." },
+  { label: "Specific over general", description: "A named figure, a real step or a clear date stops the scroll. “Great potential” does not." },
+  { label: "Calm, not loud", description: "Our buyer is anxious, not excited. Hype is what every ad vendor already sounds like." },
+  { label: "CTAs say what happens", description: "“Launch your first campaign”, “Join the founding cohort”. Never “Submit” or “Learn more”." },
+  { label: "Honest by default", description: "No invented numbers. If it isn’t real, it is clearly labelled an example or a projection, or it doesn’t ship." },
 ];
 
-const INCORRECT_EXAMPLES = [
-  { src: "/assets/branding/tab-3/incorrect-1.svg", alt: "Incorrect usage 1: Do not stretch or distort" },
-  { src: "/assets/branding/tab-3/incorrect-2.svg", alt: "Incorrect usage 2: Do not rotate" },
-  { src: "/assets/branding/tab-3/incorrect-3.svg", alt: "Incorrect usage 3: Do not alter colors" },
-  { src: "/assets/branding/tab-3/incorrect-4.svg", alt: "Incorrect usage 4: Do not add drop shadow" },
-  { src: "/assets/branding/tab-3/incorrect-5.svg", alt: "Incorrect usage 5: Do not rearrange lockup" },
-  { src: "/assets/branding/tab-3/incorrect-6.svg", alt: "Incorrect usage 6: Do not place on low contrast background" },
+const AVOID_WORDS = ["guaranteed views", "go viral", "revolutionary", "game-changing", "disruptive", "seamless", "effortless", "unlock", "supercharge", "India’s first"];
+
+const INCORRECT_LOGO: { cap: string; bg?: string; style: React.CSSProperties }[] = [
+  { cap: "Don’t stretch or squash", style: { transform: "scaleX(1.45)" } },
+  { cap: "Don’t rotate", style: { transform: "rotate(-14deg)" } },
+  { cap: "Don’t recolour", style: { filter: "invert(42%) sepia(95%) saturate(3000%) hue-rotate(190deg)" } },
+  { cap: "Don’t add shadows or effects", style: { filter: "drop-shadow(6px 8px 3px rgba(0,0,0,0.45))" } },
+  { cap: "Don’t use low-contrast backgrounds", bg: "#3D3E39", style: {} },
+  { cap: "Don’t crop or crowd it", style: { marginLeft: "-38%" } },
 ];
 
 export default function BrandKitSection() {
@@ -94,58 +86,13 @@ export default function BrandKitSection() {
 
   return (
     <section className="cr-bk-section" id="brand-kit">
-      {/* ── 1. HERO BANNER (DESKTOP) ────────────────────────── */}
-      <div className="cr-bk-hero-banner">
-        <div className="cr-bk-hero-inner">
-          <img
-            src="/assets/branding/branding-banner.png"
-            alt="Brand Guidelines"
-            className="cr-bk-banner-img"
-          />
-          <img
-            src="/assets/branding/banner-stars.webp"
-            alt=""
-            aria-hidden="true"
-            className="cr-bk-banner-stars"
-          />
-          <a href="/" className="cr-bk-banner-logo" aria-label="Pomera Home">
-            <img src="/assets/logo/pomera_logo_white.png" alt="Pomera" />
-          </a>
-        </div>
-      </div>
-
-      {/* ── 2. MOBILE HEADER & BANNER ──────────────────────────────── */}
-      <div className="cr-bk-mobile-header">
-        <div className="cr-bk-mobile-header-bar">
-          <a href="/" className="cr-bk-mobile-brand">
-            <img
-              src="/assets/logo/pomera_logo_white.png"
-              alt="Pomera"
-              className="h-6 w-auto"
-            />
-          </a>
-          <button
-            type="button"
-            className="cr-bk-mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle brand guidelines navigation"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M2 4h12M2 8h12M2 12h12"
-                stroke="#111210"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="cr-bk-mobile-banner-wrap">
-          <img
-            src="/assets/branding/mobile-banner.webp"
-            alt="Brand Guidelines"
-            className="cr-bk-mobile-banner-img"
-          />
+      {/* ── 1. BANNER ─────────────────────────────────────────── */}
+      <div className="cr-bk-banner">
+        <div className="cr-bk-banner__mark" aria-hidden="true"><PomeraMark size={340} fg="#C8F135" opacity={1} /></div>
+        <div className="cr-bk-banner__inner">
+          <p className="cr-bk-banner__kicker">Pomera · alternative ad platform</p>
+          <h1 className="cr-bk-banner__title">Brand Guidelines</h1>
+          <p className="cr-bk-banner__sub">How Pomera looks and sounds. Know your number before you spend.</p>
         </div>
       </div>
 
@@ -179,9 +126,9 @@ export default function BrandKitSection() {
             <button
               type="button"
               className="cr-bk-btn-primary"
-              onClick={() => handleDownload("/assets/branding/logo.svg", "pomera-brand-kit.svg")}
+              onClick={() => handleDownload("/assets/logo/pomera_logo_light.png", "pomera-logo.png")}
             >
-              <span>Download all assets</span>
+              <span>Download logo</span>
             </button>
           </div>
         </aside>
@@ -194,10 +141,17 @@ export default function BrandKitSection() {
             {activeTab === "01" && (
               <div className="cr-bk-tab-pane cr-bk-tab-intro">
                 <p className="cr-bk-intro-lead">
-                  This brand guide is made to keep our brand feels unified across every
-                  platform. Use them as a reference to design and communicate voice, look,
-                  and feel of our brand.
+                  This guide keeps Pomera consistent everywhere it appears. Use it as the reference for how we look and sound.
                 </p>
+
+                <div className="cr-bk-sub-section">
+                  <h3 className="cr-bk-sub-heading">The locked set</h3>
+                  <div className="cr-bk-tone-list">
+                    <div className="cr-bk-tone-row"><span className="cr-bk-pill-badge">Name</span><p className="cr-bk-tone-desc">Pomera. Capital P in text, never all-caps, never abbreviated.</p></div>
+                    <div className="cr-bk-tone-row"><span className="cr-bk-pill-badge">Descriptor</span><p className="cr-bk-tone-desc">alternative ad platform</p></div>
+                    <div className="cr-bk-tone-row"><span className="cr-bk-pill-badge">Tagline</span><p className="cr-bk-tone-desc">Know your number before you spend.</p></div>
+                  </div>
+                </div>
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
@@ -212,18 +166,30 @@ export default function BrandKitSection() {
               </div>
             )}
 
-            {/* ── TAB 02: TONE OF VOICE ────────────────────────────── */}
+            {/* ── TAB 02: VOICE ────────────────────────────────────── */}
             {activeTab === "02" && (
               <div className="cr-bk-tab-pane cr-bk-tab-tone">
-                <h2 className="cr-bk-page-heading">Tone of Voice</h2>
+                <h2 className="cr-bk-page-heading">Voice</h2>
 
                 <div className="cr-bk-tone-list">
-                  {TONE_ITEMS.map((item, idx) => (
-                    <div key={idx} className="cr-bk-tone-row">
+                  {VOICE_ITEMS.map((item) => (
+                    <div key={item.label} className="cr-bk-tone-row">
                       <span className="cr-bk-pill-badge">{item.label}</span>
                       <p className="cr-bk-tone-desc">{item.description}</p>
                     </div>
                   ))}
+                </div>
+
+                <div className="cr-bk-sub-section">
+                  <h3 className="cr-bk-sub-heading">Words we avoid</h3>
+                  <p className="cr-bk-sub-desc">
+                    We guarantee price and billing, never outcome. These words promise more than we can keep, or sound like every other ad vendor.
+                  </p>
+                  <div className="cr-bk-avoid-list">
+                    {AVOID_WORDS.map((w) => (
+                      <span key={w} className="cr-bk-pill-outline">{w}</span>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="cr-bk-intro-footer">
@@ -247,7 +213,7 @@ export default function BrandKitSection() {
                   <button
                     type="button"
                     className="cr-bk-btn-primary cr-bk-btn-compact"
-                    onClick={() => handleDownload("/assets/branding/tab-3/primary-logo.svg", "pomera-logo.svg")}
+                    onClick={() => handleDownload("/assets/logo/pomera_logo_light.png", "pomera-logo.png")}
                   >
                     <span>Download logo</span>
                   </button>
@@ -255,229 +221,109 @@ export default function BrandKitSection() {
 
                 {/* Primary Logo */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Primary Logo</h3>
+                  <h3 className="cr-bk-sub-heading">Primary logo</h3>
                   <p className="cr-bk-sub-desc">
-                    The primary lockup is the official logo and should be used in most
-                    brand applications. It combines the symbol and the logotype in a fixed
-                    relationship.
+                    The Beam, the lowercase pomera wordmark and the descriptor, locked together. Use it wherever there is room. Always use the supplied files and never redraw it.
                   </p>
-                  <div className="cr-bk-card cr-bk-card--primary-logo">
-                    <button
-                      type="button"
-                      className="cr-bk-card-dl-btn"
-                      onClick={() => handleDownload("/assets/branding/tab-3/primary-logo.svg")}
-                      aria-label="Download primary logo"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                      </svg>
-                    </button>
-                    <img
-                      src="/assets/branding/tab-3/primary-logo.svg"
-                      alt="Pomera primary logo"
-                      className="cr-bk-primary-logo-img"
-                    />
+                  <div className="cr-bk-logo-pair">
+                    <div className="cr-bk-card cr-bk-logo-card">
+                      <button type="button" className="cr-bk-card-dl-btn" onClick={() => handleDownload("/assets/logo/pomera_logo_light.png", "pomera-logo-ink.png")} aria-label="Download logo for light backgrounds">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                      </button>
+                      <img src="/assets/logo/pomera_logo_light.png" alt="Pomera logo for light backgrounds" className="cr-bk-logo-art" />
+                      <span className="cr-bk-logo-cap">On white and paper</span>
+                    </div>
+                    <div className="cr-bk-card cr-bk-logo-card" style={{ backgroundColor: "#111210" }}>
+                      <button type="button" className="cr-bk-card-dl-btn" onClick={() => handleDownload("/assets/logo/pomera_logo_white.png", "pomera-logo-white.png")} aria-label="Download logo for dark backgrounds">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                      </button>
+                      <img src="/assets/logo/pomera_logo_white.png" alt="Pomera logo for dark backgrounds" className="cr-bk-logo-art" />
+                      <span className="cr-bk-logo-cap cr-bk-logo-cap--light">On ink</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Safe Space */}
+                {/* Clear space */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Safe Space</h3>
-                  <div className="cr-bk-safe-space-grid">
-                    <div className="cr-bk-safe-col">
-                      <span className="cr-bk-pill-outline">Logomark</span>
-                      <div className="cr-bk-card cr-bk-card--safe">
-                        <img
-                          src="/assets/branding/tab-3/safe-space-1.svg"
-                          alt="Safe space logomark"
-                        />
-                      </div>
-                    </div>
-                    <div className="cr-bk-safe-col">
-                      <span className="cr-bk-pill-outline">Symbol</span>
-                      <div className="cr-bk-card cr-bk-card--safe">
-                        <img
-                          src="/assets/branding/tab-3/safe-space-2.svg"
-                          alt="Safe space symbol"
-                        />
-                      </div>
+                  <h3 className="cr-bk-sub-heading">Clear space</h3>
+                  <div className="cr-bk-card cr-bk-clear-card">
+                    <div className="cr-bk-clear-box">
+                      <img src="/assets/logo/pomera_logo_light.png" alt="Pomera logo with clear space" className="cr-bk-clear-art" />
                     </div>
                   </div>
                   <p className="cr-bk-sub-desc mt-3">
-                    Maintain the clear space around all logo forms equal to the size of the
-                    “X/2” in the logotype. This ensures visibility and prevents visual
-                    crowding.
+                    Keep generous clear space on every side. Nothing enters the dashed area: no text, edges or other graphics.
                   </p>
                 </div>
 
                 {/* Symbol */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Symbol</h3>
+                  <h3 className="cr-bk-sub-heading">The Beam</h3>
                   <p className="cr-bk-sub-desc">
-                    The standalone symbol is reserved for spaces where the full lockup is
-                    not practical (favicons, app icons, social avatars, watermarks). If the
-                    lockup is being used, the symbol should not appear separately.
+                    The Beam on its own is for small spaces such as favicons, app icons and avatars. When the full logo is shown, the Beam does not appear separately.
                   </p>
                   <div className="cr-bk-symbols-grid">
-                    <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--paper">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/logo/pomera_logo_light.png")}
-                        aria-label="Download symbol"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img src="/assets/logo/pomera_logo_light.png" alt="Pomera symbol" />
-                    </div>
-                    <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--white">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-3/symbol-2.svg")}
-                        aria-label="Download symbol dark"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img src="/assets/branding/tab-3/symbol-2.svg" alt="Symbol dark" />
-                    </div>
-                    <div className="cr-bk-card cr-bk-symbol-card cr-bk-symbol--dark">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-3/symbol-3.svg")}
-                        aria-label="Download symbol light"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img src="/assets/branding/tab-3/symbol-3.svg" alt="Symbol light" />
-                    </div>
+                    {[["paper", "#FAFAF7"], ["white", "#ffffff"], ["dark", "#111210"]].map(([k, bg]) => (
+                      <div key={k} className="cr-bk-card cr-bk-symbol-card" style={{ backgroundColor: bg }}>
+                        <button type="button" className="cr-bk-card-dl-btn" onClick={() => handleDownload("/assets/logo/pomera-icon.svg", "pomera-beam.svg")} aria-label="Download the Beam">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        </button>
+                        <img src="/assets/logo/pomera-icon.svg" alt="Pomera Beam" style={{ width: 96, height: 96 }} />
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Logo Scaling */}
+                {/* Scaling */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Logo Scaling</h3>
-                  <p className="cr-bk-sub-desc">
-                    Logo must scale proportionally and remain legible across all media.
-                    Minimum size for digital is 32 px in height. Never distort, stretch, or
-                    modify proportions.
-                  </p>
+                  <h3 className="cr-bk-sub-heading">Scaling</h3>
+                  <p className="cr-bk-sub-desc">Scale the logo proportionally. Never distort, stretch or modify its proportions.</p>
                   <div className="cr-bk-scaling-list">
-                    <div className="cr-bk-scaling-row">
-                      <span className="cr-bk-scaling-label">32px</span>
-                      <div className="cr-bk-scaling-box pt-4">
-                        <img
-                          src="/assets/branding/tab-3/primary-logo.svg"
-                          alt="32px logo"
-                          className="h-8 w-auto"
-                        />
+                    {[["32px", "h-8"], ["64px", "h-16"], ["128px", "h-28"]].map(([label, h]) => (
+                      <div key={label} className="cr-bk-scaling-row">
+                        <span className="cr-bk-scaling-label">{label}</span>
+                        <div className="cr-bk-scaling-box pt-4">
+                          <img src="/assets/logo/pomera_logo_light.png" alt={`${label} logo`} className={`${h} w-auto`} />
+                        </div>
                       </div>
-                    </div>
-                    <div className="cr-bk-scaling-row">
-                      <span className="cr-bk-scaling-label">64px</span>
-                      <div className="cr-bk-scaling-box pt-6">
-                        <img
-                          src="/assets/branding/tab-3/primary-logo.svg"
-                          alt="64px logo"
-                          className="h-16 w-auto"
-                        />
-                      </div>
-                    </div>
-                    <div className="cr-bk-scaling-row">
-                      <span className="cr-bk-scaling-label">128px</span>
-                      <div className="cr-bk-scaling-box pt-8">
-                        <img
-                          src="/assets/branding/tab-3/primary-logo.svg"
-                          alt="128px logo"
-                          className="h-28 w-auto"
-                        />
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Colour Variations */}
+                {/* Backgrounds */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Colour Variations</h3>
-                  <p className="cr-bk-sub-desc">
-                    The two-color lockup variant is designed for situations where
-                    background contrast requires more flexibility.
-                  </p>
+                  <h3 className="cr-bk-sub-heading">Backgrounds</h3>
+                  <p className="cr-bk-sub-desc">Ink logo on white, paper and lime tint. White logo on ink.</p>
                   <div className="cr-bk-color-var-grid">
-                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-dark">
-                      <img src="/assets/branding/tab-3/color-var-1.svg" alt="Variation dark" />
-                    </div>
-                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-white">
-                      <img src="/assets/branding/tab-3/color-var-2.svg" alt="Variation light" />
-                    </div>
-                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-paper">
-                      <img src="/assets/logo/pomera_logo_light.png" alt="Variation paper" />
-                    </div>
-                    <div className="cr-bk-card cr-bk-color-var-card cr-bk-bg-tint">
-                      <img src="/assets/branding/tab-3/color-var-4.svg" alt="Variation tint" />
-                    </div>
+                    {[
+                      ["#ffffff", "pomera_logo_light.png"],
+                      ["#FAFAF7", "pomera_logo_light.png"],
+                      ["#111210", "pomera_logo_white.png"],
+                      ["#F2FBD6", "pomera_logo_light.png"],
+                    ].map(([bg, src]) => (
+                      <div key={bg} className="cr-bk-card cr-bk-color-var-card" style={{ backgroundColor: bg }}>
+                        <img src={`/assets/logo/${src}`} alt="Logo on background" className="cr-bk-logo-art cr-bk-logo-art--sm" />
+                      </div>
+                    ))}
                   </div>
-                </div>
-
-                {/* Brand Partnership */}
-                <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Brand Partnership</h3>
-                  <div className="cr-bk-card cr-bk-partnership-card">
-                    <img
-                      src="/assets/branding/tab-3/brand-partnership.svg"
-                      alt="Brand partnership logo lockup"
-                      className="cr-bk-partnership-img"
-                    />
-                  </div>
-                  <p className="cr-bk-highlight-note">
-                    X = 1/2 height of lockup
-                  </p>
                 </div>
 
                 {/* Incorrect Usage */}
                 <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Incorrect Usage</h3>
+                  <h3 className="cr-bk-sub-heading">Incorrect usage</h3>
                   <p className="cr-bk-sub-desc">
-                    These examples represent incorrect applications of the logo. Such
-                    variations reduce visual clarity and weaken brand consistency.
+                    These applications weaken the logo and the brand. Avoid them.
                   </p>
                   <div className="cr-bk-incorrect-grid">
-                    {INCORRECT_EXAMPLES.map((item, idx) => (
-                      <div key={idx} className="cr-bk-card cr-bk-incorrect-card">
-                        <div className="cr-bk-incorrect-content">
-                          <img src={item.src} alt={item.alt} />
+                    {INCORRECT_LOGO.map((item) => (
+                      <div key={item.cap} className="cr-bk-card cr-bk-incorrect-card" style={item.bg ? { backgroundColor: item.bg } : undefined}>
+                        <div className="cr-bk-incorrect-content" style={{ overflow: "hidden" }}>
+                          <img src="/assets/logo/pomera_logo_light.png" alt={item.cap} className="cr-bk-logo-art cr-bk-logo-art--sm" style={item.style} />
                         </div>
-                        {/* Red Diagonal Strike Through */}
-                        <svg
-                          className="cr-bk-incorrect-cross"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 100 100"
-                        >
-                          <line
-                            x1="0"
-                            y1="0"
-                            x2="100"
-                            y2="100"
-                            stroke="#FF0000"
-                            strokeWidth="1.5"
-                            vectorEffect="non-scaling-stroke"
-                          />
+                        <svg className="cr-bk-incorrect-cross" preserveAspectRatio="none" viewBox="0 0 100 100">
+                          <line x1="0" y1="0" x2="100" y2="100" stroke="#FF0000" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
                         </svg>
+                        <span className="cr-bk-incorrect-cap">{item.cap}</span>
                       </div>
                     ))}
                   </div>
@@ -565,7 +411,7 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Pomera Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
                     <span>Geist Typography System</span>
@@ -732,7 +578,7 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Pomera Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
                     <span>Pomera Visual System</span>
@@ -743,168 +589,7 @@ export default function BrandKitSection() {
               </div>
             )}
 
-            {/* ── TAB 06: VISUAL ASSETS ────────────────────────────── */}
-            {activeTab === "06" && (
-              <div className="cr-bk-tab-pane cr-bk-tab-visuals">
-                <h2 className="cr-bk-page-heading">Visual Assets</h2>
-
-                {/* Illustrations - Lines */}
-                <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">Illustrations - Lines</h3>
-                  <p className="cr-bk-sub-desc">
-                    Structural illustrations are used to add depth and visual texture
-                    without competing for attention. Precise, refined, and minimal, they
-                    support content without overpowering it, working best in backgrounds.
-                  </p>
-                  <div className="cr-bk-lines-grid">
-                    <div className="cr-bk-card cr-bk-line-card">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-6/ill-1.svg")}
-                        aria-label="Download line illustration 1"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img
-                        src="/assets/branding/tab-6/ill-1.svg"
-                        alt="Line illustration 1"
-                        className="cr-bk-line-img"
-                      />
-                    </div>
-                    <div className="cr-bk-card cr-bk-line-card">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-6/ill-2.svg")}
-                        aria-label="Download line illustration 2"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img
-                        src="/assets/branding/tab-6/ill-2.svg"
-                        alt="Line illustration 2"
-                        className="cr-bk-line-img"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3d & 2d Illustrations */}
-                <div className="cr-bk-sub-section">
-                  <h3 className="cr-bk-sub-heading">3d & 2d Illustrations</h3>
-                  <p className="cr-bk-sub-desc">
-                    3d and 2d type illustrations bring the Pomera experience to
-                    life visually. They're expressive, energetic, and rooted in the core
-                    brand palette, used across campaigns, onboarding, and feature callouts
-                    to make complex ideas feel immediate and human.
-                  </p>
-                  <div className="cr-bk-3d-grid">
-                    {/* 2D Illustration */}
-                    <div className="cr-bk-card cr-bk-3d-card cr-bk-3d-tall">
-                      <button
-                        type="button"
-                        className="cr-bk-card-dl-btn"
-                        onClick={() => handleDownload("/assets/branding/tab-6/2d-ill.webp")}
-                        aria-label="Download 2D illustration"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                      </button>
-                      <img
-                        src="/assets/branding/tab-6/2d-ill.webp"
-                        alt="2D illustration"
-                        className="cr-bk-2d-img"
-                      />
-                    </div>
-
-                    <div className="cr-bk-3d-sub-col">
-                      <div className="cr-bk-card cr-bk-3d-card cr-bk-3d-short">
-                        <button
-                          type="button"
-                          className="cr-bk-card-dl-btn"
-                          onClick={() => handleDownload("/assets/branding/tab-6/3d-1.png")}
-                          aria-label="Download 3D ribbon 1"
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                          </svg>
-                        </button>
-                        <img
-                          src="/assets/branding/tab-6/3d-1.png"
-                          alt="3D ribbon 1"
-                          className="cr-bk-3d-img"
-                        />
                       </div>
-                      <div className="cr-bk-card cr-bk-3d-card cr-bk-3d-short">
-                        <button
-                          type="button"
-                          className="cr-bk-card-dl-btn"
-                          onClick={() => handleDownload("/assets/branding/tab-6/3d-2.png")}
-                          aria-label="Download 3D ribbon 2"
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                          </svg>
-                        </button>
-                        <img
-                          src="/assets/branding/tab-6/3d-2.png"
-                          alt="3D ribbon 2"
-                          className="cr-bk-3d-img"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="cr-bk-intro-footer">
-                  <p className="cr-bk-intro-copy">
-                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
-                  </p>
-                  <p className="cr-bk-intro-status">
-                    <span>Pomera Brand Guidelines</span>
-                    <span>—</span>
-                    <span>Updated 2026</span>
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* ── TAB 07: BRAND IN USE ─────────────────────────────── */}
-            {activeTab === "07" && (
-              <div className="cr-bk-tab-pane cr-bk-tab-in-use">
-                <h2 className="cr-bk-page-heading">Brand in Use</h2>
-                <p className="cr-bk-sub-desc">Brand in use examples coming soon.</p>
-
-                <div className="cr-bk-intro-footer">
-                  <p className="cr-bk-intro-copy">
-                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
-                  </p>
-                  <p className="cr-bk-intro-status">
-                    <span>Pomera Brand Guidelines</span>
-                    <span>—</span>
-                    <span>Updated 2026</span>
-                  </p>
-                </div>
-              </div>
-            )}
-
-          </div>
         </div>
       </div>
 
@@ -983,12 +668,6 @@ export default function BrandKitSection() {
         </section>
       </div>
 
-      {/* Ambient background watermark at bottom */}
-      <div
-        aria-hidden="true"
-        className="cr-bk-bottom-watermark"
-        style={{ backgroundImage: "url('/assets/branding/branding-bg.png')" }}
-      />
-    </section>
+          </section>
   );
 }

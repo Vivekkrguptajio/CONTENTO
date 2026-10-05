@@ -133,7 +133,7 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(ellipse 80% 42% at 50% 66%, rgba(200, 241, 53, 0.3) 0%, rgba(200, 241, 53, 0.08) 55%, transparent 100%),
+    radial-gradient(ellipse 80% 42% at 50% 66%, rgba(242, 251, 214, 0.95) 0%, rgba(242, 251, 214, 0.4) 55%, transparent 100%),
     #ffffff;
 }
 @media (min-width: 1200px) { .pb-hero { padding-top: 88px; } }
@@ -189,7 +189,7 @@
   cursor: pointer;
   transition: transform 0.15s ease, background 0.15s ease;
 }
-.pb-reels-arrow:hover { background: var(--pb-lime); }
+.pb-reels-arrow:hover { background: var(--pb-g100); }
 .pb-reels-arrow:active { transform: scale(0.94); }
 .pb-reels-arrow--l { left: 8px; }
 .pb-reels-arrow--r { right: 8px; }
@@ -211,7 +211,7 @@
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
 }
 .pb-reel--b { animation-delay: -3s; animation-direction: alternate-reverse; }
-.pb-reel:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.02); box-shadow: 0 0 0 3px rgba(200, 241, 53, 0.7); }
+.pb-reel:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.02); box-shadow: 0 0 0 3px rgba(17, 18, 16, 0.14); }
 
 @keyframes pbFloat {
   0%, 100% { transform: translateY(0); }
@@ -275,7 +275,8 @@
   gap: 8px 56px;
   align-items: center;
   padding: 40px 28px;
-  background: var(--pb-lime);
+  background: var(--pb-ink);
+  color: #ffffff;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -290,15 +291,15 @@
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: -0.06em;
-  color: var(--pb-ink);
+  color: #ffffff;
 }
 .pb-band__copy { position: relative; display: grid; gap: 14px; }
 .pb-band__t { font-size: clamp(24px, 3vw, 34px); font-weight: 500; line-height: 1.05; letter-spacing: -0.035em; }
-.pb-band__s { max-width: 520px; font-size: 16px; font-weight: 500; line-height: 1.5; color: rgba(17, 18, 16, 0.72); }
+.pb-band__s { max-width: 520px; font-size: 16px; font-weight: 500; line-height: 1.5; color: rgba(255, 255, 255, 0.72); }
 .pb-band__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 .pb-band__pills span {
   padding: 8px 14px;
-  border: 1.5px solid rgba(17, 18, 16, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
@@ -354,7 +355,7 @@
 }
 }
 .pb-tl__row:hover .pb-tl__n { color: var(--pb-ink); }
-.pb-tl__row:hover .pb-tl__tag { background: var(--pb-lime); color: var(--pb-ink); }
+.pb-tl__row:hover .pb-tl__tag { background: var(--pb-ink); color: #ffffff; }
 
 /* ── Earnings: dark calculator ───────────────────────────────────── */
 .pb-earn {
@@ -444,7 +445,7 @@
 .pb-prom__t { padding-bottom: 14px; border-bottom: 1px solid var(--pb-ink); font-family: var(--font-geist-mono), monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pb-g600); }
 .pb-prom ul { margin: 0; padding: 0; list-style: none; }
 .pb-prom li { display: flex; gap: 14px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--pb-line); font-size: 17px; font-weight: 500; line-height: 1.4; }
-.pb-prom__ck { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; margin-top: 1px; border-radius: 6px; background: var(--pb-lime); color: var(--pb-ink); }
+.pb-prom__ck { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; margin-top: 1px; border-radius: 6px; background: var(--pb-ink); color: #ffffff; }
 
 /* ── Join: split card ────────────────────────────────────────────── */
 .pb-join {
@@ -564,8 +565,11 @@ select.pb-inp {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pb-faq__q i::after { transform: rotate(90deg); }
-.pb-faq__q:hover i { background: var(--pb-lime); }
-.is-open .pb-faq__q i { background: var(--pb-lime); transform: rotate(180deg); }
+.pb-faq__q:hover i,
+.is-open .pb-faq__q i { background: var(--pb-ink); }
+.pb-faq__q:hover i::before, .pb-faq__q:hover i::after,
+.is-open .pb-faq__q i::before, .is-open .pb-faq__q i::after { background: #ffffff; }
+.is-open .pb-faq__q i { transform: rotate(180deg); }
 .is-open .pb-faq__q i::after { transform: rotate(0deg); }
 
 .pb-faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -576,3 +580,8 @@ select.pb-inp {
 @media (prefers-reduced-motion: reduce) {
   .pb-faq__a, .pb-faq__q i, .pb-faq__q i::before, .pb-faq__q i::after, .pb-tl__n { transition: none; }
 }
+
+/* "not" highlight on white: lime-tint chip. Dark mode (dark.css) brings lime back as a signal. */
+.pb-mk { background: var(--pb-lime); }
+/* the lime dot on the white "paid per verified view" pill reads as a signal green instead */
+.pb-reel__earn .pb-ldot { background: var(--pb-signal); }

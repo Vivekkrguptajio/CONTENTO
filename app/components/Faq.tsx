@@ -39,7 +39,7 @@ const FAQ_DATA: FaqItem[] = [
     id: 7,
     question: "What does my rate cover? Is it the same as what publishers earn?",
     answer:
-      "No. Your fixed ₹CPM is all-in. It covers publisher payouts, verification, reporting and our support. Publishers see their own rate in each brief. There is no separate platform fee on your pilot.",
+      "No. Your fixed ₹CPM is all-in. It covers publisher payouts, verification, reporting and our support. Publishers see their own rate in each brief.",
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const FAQ_DATA: FaqItem[] = [
     id: 6,
     question: "What is the minimum budget to get started?",
     answer:
-      "Founding pilot campaigns start at ₹10,000. There is no platform fee on your pilot, and you are billed only for verified views at the fixed rate. You get a report with every post link, so you can inspect performance before scaling spend.",
+      "Your first campaign is a free pilot for founding brands: we run it, you see the report, then you decide. After that, the minimum campaign is ₹10,000 and you are billed only for verified views at the fixed rate. You get a report with every post link, so you can inspect performance before scaling spend.",
   },
   {
     id: 8,

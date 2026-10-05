@@ -8,8 +8,8 @@ import { MARK_ARMS, MARK_CENTER } from "./pomeraMark";
 const CENTER = MARK_CENTER;
 const ARMS = MARK_ARMS;
 
-const MIN_VISIBLE_MS = 1300; // long enough to see the asterisk build and spin once
-const FADE_MS = 500;
+const MIN_VISIBLE_MS = 2200; // long enough to see the asterisk build smoothly and spin once
+const FADE_MS = 700;
 
 export default function PageLoader() {
   const [phase, setPhase] = useState<"loading" | "leaving" | "gone">("loading");

@@ -27,9 +27,9 @@ const STEPS = [
   },
   {
     step: "04",
-    title: "Verification & fraud filtering",
+    title: "Verification & spot-checks",
     desc: "Every post is tracked through its own link. We check the analytics the publisher submits and spot-check by hand. Suspicious traffic and bot activity are filtered out, and views are counted on day 7.",
-    badge: "Fraud Filtered",
+    badge: "Spot-checked",
     badgeType: "warning",
   },
   {

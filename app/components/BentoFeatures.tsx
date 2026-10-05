@@ -70,10 +70,10 @@ export default function BentoFeatures() {
                 <div className="bento-cpm-stat-row">
                   <div className="bento-cpm-val-wrap">
                     <span className="bento-cpm-curr">₹</span>
-                    <span className="bento-cpm-amount pm-num">50</span>
+                    <span className="bento-cpm-blank" aria-hidden="true" />
                     <span className="bento-cpm-unit">/ 1K views</span>
                   </div>
-                  <span className="bento-cpm-badge">Example rate</span>
+                  <span className="bento-cpm-badge">Agreed before launch</span>
                 </div>
 
                 <div className="bento-cpm-compare">
@@ -136,16 +136,16 @@ export default function BentoFeatures() {
         {/* ── BOTTOM ROW ───────────────────────────────────────────── */}
         <div className="bento-row bento-row--bottom">
           
-          {/* Card 3: Multi-Signal Fraud Defense (Left, col-span-7) */}
+          {/* Card 3: How views are verified (Left, col-span-7) */}
           <div className="bento-card bento-card--bot">
             <div className="bento-card__header">
               <div className="bento-card__badge-row">
                 <span className="bento-card__icon-box"><ShieldCheckIcon /></span>
-                <span className="bento-card__status pm-num">MULTI-SIGNAL CHECK</span>
+                <span className="bento-card__status pm-num">VERIFIED DELIVERY</span>
               </div>
-              <h3 className="bento-card__title">Multi-signal fraud filter</h3>
+              <h3 className="bento-card__title">Checked, then billed</h3>
               <p className="bento-card__desc">
-                Engagement ratios, view velocity spikes, and account history are checked before counting any view.
+                Every post is checked against its tracked link and the analytics the publisher submits, with manual spot-checks, before a view is billed.
               </p>
             </div>
 
@@ -159,25 +159,25 @@ export default function BentoFeatures() {
                       <span className="bento-bot-popover__shield">
                         <ShieldCheckIcon />
                       </span>
-                      <span>Delivery Verification Checks</span>
+                      <span>How a view gets verified</span>
                     </div>
 
                     <div className="bento-bot-popover__list">
                       <div className="bento-bot-row">
-                        <span>Like-to-view ratio (≥ 3%)</span>
-                        <span className="bento-bot-pass pm-num">Passed</span>
+                        <span>Tracked link matched</span>
+                        <span className="bento-bot-pass pm-num">Step 1</span>
                       </div>
                       <div className="bento-bot-row">
-                        <span>Velocity ramp analysis</span>
-                        <span className="bento-bot-pass pm-num">Natural</span>
+                        <span>Publisher analytics checked</span>
+                        <span className="bento-bot-pass pm-num">Step 2</span>
                       </div>
                       <div className="bento-bot-row">
-                        <span>Account history &amp; tenure</span>
-                        <span className="bento-bot-pass pm-num">Verified</span>
+                        <span>Spot-checked by hand</span>
+                        <span className="bento-bot-pass pm-num">Step 3</span>
                       </div>
                       <div className="bento-bot-row">
-                        <span>Bot spike (example)</span>
-                        <span className="bento-bot-filtered pm-num">Filtered, not billed</span>
+                        <span>Views that don’t hold up</span>
+                        <span className="bento-bot-filtered pm-num">Not billed</span>
                       </div>
                     </div>
 
@@ -193,7 +193,7 @@ export default function BentoFeatures() {
                     onClick={() => setShowTooltip(!showTooltip)}
                   >
                     <CheckCircleIcon />
-                    <span>Inspection Report Active</span>
+                    <span>How we check</span>
                   </button>
                 </div>
 

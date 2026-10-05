@@ -3,16 +3,9 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import "./Footer.css";
-import { PomeraMark } from "./pomeraMark";
+import BrandLogo from "./BrandLogo";
+import { useTheme } from "../lib/theme";
 import { whatsappLink } from "../lib/contact";
-
-/* ── Pomera Official Beam Logo ───────────────────────────────────── */
-const PomeraLogo = () => (
-  <div className="cr-footer-brand">
-    <PomeraMark size={28} bg="#121210" radius={40} />
-    <span className="cr-footer-brand__name">pomera</span>
-  </div>
-);
 
 /* ── Social icons (Instagram, YouTube, X, LinkedIn) ──────────────── */
 const InstagramIcon = () => (
@@ -51,23 +44,24 @@ const WhatsAppDeskIcon = () => (
 
 export default function Footer() {
   const pathname = usePathname() || "/";
-  const isPublisherPage = pathname === "/creator" || pathname === "/creators" || pathname.startsWith("/creator/") || pathname.startsWith("/creators/");
+  const isDark = useTheme() === "dark";
+  const isPublisherPage = pathname === "/clippercircle" || pathname.startsWith("/clippercircle/");
   const isAgencyPage = pathname === "/agencies" || pathname === "/agency" || pathname.startsWith("/agencies/");
 
   const cta = isPublisherPage
-    ? { heading: "Ready to get paid per view?", sub: "Free to join. No follower minimum. Paid weekly by UPI.", label: "Join the founding cohort", href: "/creator#join", wa: "Hi Pomera Team, I want to join as a publisher." }
+    ? { heading: "Ready to get paid per view?", sub: "Free to join. No follower minimum. Paid weekly by UPI.", label: "Join the founding cohort", href: "/clippercircle#join", wa: "Hi Pomera Team, I want to join as a publisher." }
     : isAgencyPage
-    ? { heading: "Ready to partner with Pomera?", sub: "Your first client campaign is a pilot with no platform fee.", label: "Become a partner", href: "/agencies#partner", wa: "Hi Pomera Team, we are an agency and want to partner." }
+    ? { heading: "Ready to partner with Pomera?", sub: "Your first client campaign is a free pilot.", label: "Become a partner", href: "/agencies#partner", wa: "Hi Pomera Team, we are an agency and want to partner." }
     : { heading: "Ready to buy certainty?", sub: "Agree your rate upfront. Pay only for verified views.", label: "Start a campaign", href: "/#contact", wa: "Hi Pomera Team, we want to discuss a campaign." };
 
   const navLinks: { label: string; href: string; desktopOnly?: boolean }[] = [
     { label: "How it works", href: "/#how-it-works" },
     { label: "Verification", href: "/#verification", desktopOnly: true },
     { label: "Pillars", href: "/#pillars" },
-    { label: "Dashboard", href: "/#dashboard", desktopOnly: true },
+    { label: "Report", href: "/#dashboard", desktopOnly: true },
     { label: "Founding Cohort", href: "/#founding-cohort" },
     { label: "For Agencies", href: "/agencies" },
-    { label: "For Publishers", href: "/creator" },
+    { label: "For Publishers", href: "/clippercircle" },
     { label: "Brand Guidelines", href: "/branding" },
   ];
 
@@ -115,7 +109,7 @@ export default function Footer() {
               {/* Left side: Logo + Social icons */}
               <div className="cr-footer-card__nav-left">
                 <a href="/" className="cr-footer-logo-link" aria-label="Pomera Home">
-                  <PomeraLogo />
+                  <BrandLogo isDark={isDark} />
                 </a>
 
                 <div className="cr-footer-socials">

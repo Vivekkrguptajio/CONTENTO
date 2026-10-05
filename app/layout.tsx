@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   title: "Pomera — Know your number before you spend.",
   description:
-    "An ad platform that sells certainty. Fixed ₹CPM distribution across verified Instagram Reels and YouTube Shorts with multi-signal fraud filtering.",
+    "An ad platform that sells certainty. Fixed ₹CPM distribution across verified Instagram Reels and YouTube Shorts where every view is tracked, checked and billed only when verified.",
 };
 
 export const viewport: Viewport = {

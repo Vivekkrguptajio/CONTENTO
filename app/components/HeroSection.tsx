@@ -5,14 +5,15 @@ import GlobePolaroids from "./GlobePolaroids";
 import "./HeroSection.css";
 
 const AUDIENCES = [
+  "Software",
+  "Consumer Products",
+  "Fintech",
+  "Real Estate",
+  "Ecommerce Brands",
+  "Personal Brands",
+  "Marketplaces",
+  "Mobile Apps",
   "D2C Brands",
-  "Online Brands",
-  "Consumer Brands",
-  "Beauty Brands",
-  "Fashion Brands",
-  "Food Brands",
-  "Fitness Brands",
-  "Tech Brands",
 ];
 
 const TYPE_MS = 70;
@@ -61,7 +62,7 @@ export default function HeroSection() {
           className="absolute left-1/2 -translate-x-1/2"
           style={{
             background:
-              "radial-gradient(50% 50% at 50% 50%, rgba(200,241,53,0.08) 0%, rgba(250,250,247,0.5) 45%, rgba(255,255,255,0) 75%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(242,251,214,0.5) 0%, rgba(250,250,247,0.5) 45%, rgba(255,255,255,0) 75%)",
             height: "1800px",
             top: "-350px",
             width: "2600px",
@@ -79,13 +80,13 @@ export default function HeroSection() {
 
         {/* Display Headline */}
         <h1
-          aria-label={`A fixed-price video ad channel. Built for ${AUDIENCES.join(", ")}.`}
+          aria-label={`The Alternative ad platform. Built for ${AUDIENCES.join(", ")}.`}
           className="hero-headline relative z-10 mt-3 max-w-[960px] text-center font-medium text-[#111210] tracking-[-0.035em] !text-[clamp(34px,6vw,52px)] lg:!text-[60px] leading-[1.05]">
           <span aria-hidden="true">
-            A fixed-price video ad channel
+            The Alternative ad platform
             <br />
             Built for{" "}
-            <span className="hero-typed block w-fit mx-auto mt-1 whitespace-nowrap rounded-[10px] bg-[#C8F135] px-3 pb-1 min-h-[1.25em] md:mt-0 md:inline-block md:min-h-0 md:mx-0 md:align-baseline">
+            <span className="hero-hl hero-typed block w-fit mx-auto mt-1 whitespace-nowrap rounded-[10px] px-3 pb-1 min-h-[1.25em] md:mt-0 md:inline-block md:min-h-0 md:mx-0 md:align-baseline">
               {typed}
               <span className="hero-caret" />
             </span>
@@ -104,7 +105,7 @@ export default function HeroSection() {
             className="pomera-btn-primary inline-flex items-center justify-center h-[52px] px-6 text-center font-medium text-[16px] leading-none whitespace-nowrap transition-all"
             style={{ borderRadius: "8px", backgroundColor: "#111210", borderColor: "#111210", color: "#FFFFFF" }}
           >
-            Book a pilot
+            Book a free pilot
           </a>
           <a
             href="#how-it-works"

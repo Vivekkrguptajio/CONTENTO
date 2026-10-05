@@ -8,9 +8,9 @@ import "./PublishersSection.css";
 const FORM_ENDPOINT = "";
 
 const PERKS = [
-  "Your first campaign runs as a pilot, from ₹10,000",
+  "Your first campaign is a free pilot: we run it, you see the report, then you decide",
   "Fixed ₹ rate agreed before you spend anything",
-  "No platform fee on your pilot. You pay only for verified views",
+  "After the pilot, you pay only for verified views. Minimum campaign ₹10,000",
   "A named Pomera contact on WhatsApp",
 ];
 
@@ -46,7 +46,7 @@ export default function BrandsContact() {
             <div className="pb-join__dark">
               <div className="pb-join__mark" aria-hidden="true"><PomeraMark size={300} fg="#C8F135" opacity={0.09} /></div>
               <p className="pb-eyebrow pb-eyebrow--left pb-eyebrow--lime"><span className="pb-ldot" />For brands</p>
-              <h2 className="pb-join__h">Book your pilot</h2>
+              <h2 className="pb-join__h">Book your free pilot</h2>
               <p className="pb-join__s">We’re booking in founding brands now. First campaigns start in November 2026. Tell us about your brand and we’ll message you on WhatsApp to set up a short call.</p>
 
               <ul className="pb-earn__ticks">
@@ -91,7 +91,7 @@ export default function BrandsContact() {
 
                   <div className="pb-full">
                     <button className="pb-btn pb-btn--dark pb-btn--full" type="submit" disabled={status === "sending"}>
-                      {status === "sending" ? "Sending…" : "Book a pilot"}
+                      {status === "sending" ? "Sending…" : "Book a free pilot"}
                     </button>
                   </div>
 

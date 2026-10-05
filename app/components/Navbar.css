@@ -666,11 +666,14 @@ svg.logo {
   background: #0B0B0A;
 }
 
+/* Solid (no see-through) in dark, scrolled or not, including over the agencies hero */
+.nav-sticky-wrapper.nav-theme-dark.is-scrolled,
+.nav-sticky-wrapper.nav-theme-dark.nav-over-hero {
+  background: #0B0B0A;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 .nav-sticky-wrapper.nav-theme-dark.is-scrolled {
-  background: rgba(11, 11, 10, 0.90);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -733,7 +736,7 @@ svg.logo {
 }
 
 /* ── Agencies: navbar mirrors the lime hero behind it until the page scrolls ── */
-.nav-sticky-wrapper.nav-over-hero {
+.nav-sticky-wrapper.nav-over-hero:not(.nav-theme-dark) {
   background: transparent;
 }
 
@@ -766,7 +769,7 @@ svg.logo {
   justify-content: center;
   overflow: hidden;
   border-radius: 3px;
-  background: #C8F135;
+  background: transparent;
 }
 .nav-logo-tag__text {
   display: block;
@@ -777,20 +780,9 @@ svg.logo {
   line-height: 1;
   white-space: nowrap;
   color: #111210;
-  animation: nav-tag-roll 3.6s cubic-bezier(0.22, 0.8, 0.3, 1) infinite;
-}
-@keyframes nav-tag-roll {
-  0%   { transform: translateY(130%); opacity: 0; }
-  14%  { transform: translateY(0); opacity: 1; }
-  78%  { transform: translateY(0); opacity: 1; }
-  92%  { transform: translateY(-130%); opacity: 0; }
-  100% { transform: translateY(-130%); opacity: 0; }
 }
 @media (max-width: 640px) {
   .nav-logo-box { width: 150px; height: 40px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .nav-logo-tag__text { animation: none; }
 }
 
 
@@ -815,3 +807,10 @@ svg.logo {
 .nav-sticky-wrapper.nav-theme-dark .nav-theme-btn { border-color: rgba(255, 255, 255, 0.18); color: #ededed; }
 .nav-sticky-wrapper.nav-theme-dark .nav-theme-btn:hover { background: rgba(255, 255, 255, 0.1); }
 @media (max-width: 860px) { .nav-right { gap: 10px; } }
+
+/* Dark navbar: the tagline box is the exact opposite (dark box, white text) */
+.nav-sticky-wrapper.nav-theme-dark .nav-logo-tag { background: transparent; }
+.nav-sticky-wrapper.nav-theme-dark .nav-logo-tag__text { color: #ffffff; }
+
+/* Dark lockup (also used by the footer): the descriptor text turns white */
+.nav-logo-box--dark .nav-logo-tag__text { color: #ffffff; }

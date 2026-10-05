@@ -15,7 +15,7 @@ export default function TermsPage() {
       <main className="w-full flex-grow">
         <LegalNotice
           title="Publisher terms"
-          intro="Pomera’s publisher terms are being finalised and will be published here before the first campaigns start in November 2026."
+          intro="The publisher terms are being finalised and will be published here before the first campaigns start in November 2026."
           points={["You post from your own account. We never ask for your Instagram password or login.", "Paid posts carry the paid partnership label, as Indian advertising rules (ASCI) require.", "Verified views are counted on day 7 after you post, and payouts are made weekly by UPI."]}
         />
       </main>

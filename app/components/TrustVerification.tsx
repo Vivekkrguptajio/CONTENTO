@@ -55,9 +55,9 @@ export default function TrustVerification() {
             <LayersIcon />
           </span>
           <div className="trust-text">
-            <span className="trust-title">Multi-signal fraud checks.</span>{" "}
+            <span className="trust-title">Reviewed before views count.</span>{" "}
             <span className="trust-desc">
-              Like-to-view ratios, view velocity spikes, and account posting history are reviewed before views count.
+              We review like-to-view ratios, view velocity and account posting history, and spot-check posts by hand.
             </span>
           </div>
         </div>
