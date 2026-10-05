@@ -55,7 +55,7 @@ export default function VerificationLayer() {
                   <span className="vl-platform-icon"><InstagramIcon /></span>
                   <div className="vl-platform-meta">
                     <span className="vl-platform-name">Instagram Reels</span>
-                    <span className="vl-platform-status">Verified data</span>
+                    <span className="vl-platform-status">Insights checked</span>
                   </div>
                 </div>
 
@@ -63,7 +63,7 @@ export default function VerificationLayer() {
                   <span className="vl-platform-icon"><YouTubeIcon /></span>
                   <div className="vl-platform-meta">
                     <span className="vl-platform-name">YouTube Shorts</span>
-                    <span className="vl-platform-status">Verified data</span>
+                    <span className="vl-platform-status">Insights checked</span>
                   </div>
                 </div>
 
@@ -71,7 +71,7 @@ export default function VerificationLayer() {
                   <span className="vl-platform-icon"><TrackedLinkIcon /></span>
                   <div className="vl-platform-meta">
                     <span className="vl-platform-name">Tracked Links</span>
-                    <span className="vl-platform-status">Live attribution</span>
+                    <span className="vl-platform-status">Unique link per post</span>
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function VerificationLayer() {
                 </div>
                 <div className="vl-flag-meta">
                   <span className="vl-flag-val pm-num">18,312</span>
-                  <span className="vl-flag-lbl">Bot views filtered &amp; not billed</span>
+                  <span className="vl-flag-lbl">Bot views filtered &amp; not billed (example)</span>
                 </div>
               </div>
             </div>

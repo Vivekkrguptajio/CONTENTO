@@ -275,3 +275,8 @@
     animation: none !important;
   }
 }
+
+/* Phones: same pilot offer is already shown in the founding-cohort card and the form below */
+@media (max-width: 768px) {
+  .cb-section { display: none; }
+}

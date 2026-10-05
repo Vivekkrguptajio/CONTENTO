@@ -1,12 +1,11 @@
 import Navbar from "../components/Navbar";
-import StandaloneLegal from "../components/StandaloneLegal";
+import LegalNotice from "../components/LegalNotice";
 import Footer from "../components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Creator Terms of Service | Content Rewards",
-  description:
-    "Official Creator Terms of Service, platform rules, and payout policies for Content Rewards.",
+  title: "Publisher Terms | Pomera",
+  description: "Terms for publishers who post brand videos through Pomera.",
 };
 
 export default function TermsPage() {
@@ -14,7 +13,11 @@ export default function TermsPage() {
     <div className="min-h-screen bg-[#1c1d1d] font-sans flex flex-col justify-between text-[#ededed]">
       <Navbar />
       <main className="w-full flex-grow">
-        <StandaloneLegal docKey="terms" />
+        <LegalNotice
+          title="Publisher terms"
+          intro="Pomera’s publisher terms are being finalised and will be published here before the first campaigns start in November 2026."
+          points={["You post from your own account. We never ask for your Instagram password or login.", "Paid posts carry the paid partnership label, as Indian advertising rules (ASCI) require.", "Verified views are counted on day 7 after you post, and payouts are made weekly by UPI."]}
+        />
       </main>
       <Footer />
     </div>

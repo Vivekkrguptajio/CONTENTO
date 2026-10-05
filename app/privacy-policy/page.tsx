@@ -1,12 +1,11 @@
 import Navbar from "../components/Navbar";
-import StandaloneLegal from "../components/StandaloneLegal";
+import LegalNotice from "../components/LegalNotice";
 import Footer from "../components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Content Rewards",
-  description:
-    "Official Privacy Policy, data collection, and processing details for Content Rewards.",
+  title: "Privacy Policy | Pomera",
+  description: "How Pomera handles the details you share with us.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -14,7 +13,10 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-[#1c1d1d] font-sans flex flex-col justify-between text-[#ededed]">
       <Navbar />
       <main className="w-full flex-grow">
-        <StandaloneLegal docKey="privacy" />
+        <LegalNotice
+          title="Privacy policy"
+          intro="Pomera’s full privacy policy is being finalised and will be published here. Until then: we use the details you submit in our forms only to contact you about Pomera, and we never ask for your Instagram password or login."
+        />
       </main>
       <Footer />
     </div>

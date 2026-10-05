@@ -35,7 +35,7 @@ const PROMISES = [
   "Free to join. You never pay us anything.",
   "We never ask for your Instagram password or login.",
   "Your account, your content, your audience.",
-  "Paid by UPI every week, even if a campaign under-performs.",
+  "You earn on every verified view your post gets, even if the campaign misses its overall target. Paid by UPI every week.",
   "Paid posts carry the paid partnership label, as Indian rules require.",
 ];
 
@@ -61,8 +61,11 @@ export default function PublishersSection() {
   const reelsRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState(0);
   const [views, setViews] = useState(100000);
-  const [rate, setRate] = useState(100);
+  const [rate, setRate] = useState(30);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error" | "unconnected">("idle");
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
 
   const payout = Math.round((views / 1000) * rate);
 
@@ -82,6 +85,48 @@ export default function PublishersSection() {
     io.observe(root);
     return () => io.disconnect();
   }, []);
+
+  /* Reels: left/right arrows, only shown when the row actually overflows */
+  useEffect(() => {
+    const el = reelsRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanLeft(el.scrollLeft > 4);
+      setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollReels = (dir: 1 | -1) => {
+    reelsRef.current?.scrollBy({ left: dir * 260, behavior: "smooth" });
+  };
+
+  /* Mouse drag-to-scroll (touch uses native swipe) */
+  const onReelsDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const el = reelsRef.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
+    el.classList.add("is-dragging");
+  };
+  const onReelsMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = drag.current;
+    const el = reelsRef.current;
+    if (!d.active || !el) return;
+    const dx = e.clientX - d.startX;
+    if (Math.abs(dx) > 3) d.moved = true;
+    el.scrollLeft = d.startScroll - dx;
+  };
+  const onReelsUp = () => {
+    drag.current.active = false;
+    reelsRef.current?.classList.remove("is-dragging");
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -119,12 +164,32 @@ export default function PublishersSection() {
               <a className="pb-btn pb-btn--dark" href="#join">Join the founding cohort</a>
               <a className="pb-btn pb-btn--soft" href="#how">How it works</a>
             </div>
-            <p className="pb-fine">Free to join. We never ask for money or your Instagram password.</p>
+            <p className="pb-fine">Free to join. We never ask for money or your Instagram password. Publishers join through ClipperCircle, Pomera’s publisher community.</p>
           </div>
 
-          <div className="pb-reels" ref={reelsRef} aria-hidden="true">
+          <div className="pb-reels-wrap">
+            {canLeft && (
+              <button type="button" className="pb-reels-arrow pb-reels-arrow--l" aria-label="Scroll reels left" onClick={() => scrollReels(-1)}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+            )}
+            {canRight && (
+              <button type="button" className="pb-reels-arrow pb-reels-arrow--r" aria-label="Scroll reels right" onClick={() => scrollReels(1)}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+              </button>
+            )}
+          <div
+            className="pb-reels"
+            ref={reelsRef}
+            aria-hidden="true"
+            onPointerDown={onReelsDown}
+            onPointerMove={onReelsMove}
+            onPointerUp={onReelsUp}
+            onPointerLeave={onReelsUp}
+            onPointerCancel={onReelsUp}
+          >
             {REELS.map((r, i) => (
-              <div key={r.src} style={{ marginTop: r.mt }} className={r.hideMobile ? "pb-reel-wrap pb-hide-m" : "pb-reel-wrap"}>
+              <div key={r.src} style={{ marginTop: r.mt }} className="pb-reel-wrap">
                 <div className={`pb-reel ${i % 2 ? "pb-reel--b" : ""}`} style={{ "--w": `${r.w}px`, "--h": `${r.h}px` } as CSSVars}>
                   <video className="pb-reel__video" src={r.src} autoPlay loop muted playsInline preload="metadata" />
                   <div className="pb-reel__shade" />
@@ -146,6 +211,7 @@ export default function PublishersSection() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>
@@ -235,12 +301,12 @@ export default function PublishersSection() {
                 <input
                   id="calc-rate"
                   type="range"
-                  min={20}
-                  max={400}
-                  step={10}
+                  min={10}
+                  max={100}
+                  step={5}
                   value={rate}
                   onChange={(e) => setRate(+e.target.value)}
-                  style={{ "--fill": `${((rate - 20) / (400 - 20)) * 100}%` } as CSSVars}
+                  style={{ "--fill": `${((rate - 10) / (100 - 10)) * 100}%` } as CSSVars}
                 />
               </div>
 

@@ -2,6 +2,9 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html { scroll-behavior: smooth; }
+#contact { scroll-margin-top: 100px; }
+
 :root {
   /* ══════════════════════════════════════════════════════════════════
      POMERA DESIGN TOKENS v2.1 (LIME SYSTEM) · MASTER SPECIFICATION

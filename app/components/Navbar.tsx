@@ -1,33 +1,48 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
 
-/* ── Assets Brand Logo (/assets/logo/pomera_logo_light.png - 108x24) ──── */
+/* ── Brand logo: wordmark image + lime tagline box whose text rolls up from below ── */
 const BrandLogo = ({
   isDark = false,
   className = "",
 }: {
   isDark?: boolean;
   className?: string;
-}) => (
-  <img
-    src={isDark ? "/assets/logo/pomera_logo_white_nav.webp" : "/assets/logo/pomera_logo_light_nav.webp"}
-    alt="Pomera"
-    width={192}
-    height={43}
-    className={`nav-brand-img logo ${className}`}
-  />
-);
+}) =>
+  isDark ? (
+    <img
+      src="/assets/logo/pomera_logo_white_nav.webp"
+      alt="Pomera"
+      width={180}
+      height={48}
+      className={`nav-brand-img logo ${className}`}
+    />
+  ) : (
+    <span className="nav-logo-box" aria-label="Pomera, alternative ad platform">
+      <img
+        src="/assets/logo/pomera-logo-nav.png"
+        alt=""
+        width={180}
+        height={48}
+        className={`nav-brand-img logo ${className}`}
+      />
+      <span className="nav-logo-tag" aria-hidden="true">
+        <span className="nav-logo-tag__text">alternative ad platform</span>
+      </span>
+    </span>
+  );
 
 export default function Navbar() {
   const pathname = usePathname();
   const isCreatorPage = pathname === "/creators" || pathname === "/creator" || pathname.startsWith("/creator/") || pathname.startsWith("/creators/");
   const isHomePage = pathname === "/";
   const [currentHash, setCurrentHash] = useState("");
-  // Home page is the Brand page by default (unless jumped to #discover)
-  const isBrandActive = isHomePage && !currentHash.includes("discover");
+  // Home page is the Brand page
+  const isBrandActive = isHomePage;
   const isAgenciesPage =
     pathname === "/agencies" ||
     pathname === "/agency" ||
@@ -133,18 +148,12 @@ export default function Navbar() {
                 className="nav-menu"
                 aria-label="Main Navigation"
               >
-                <a
-                  href="/#discover"
-                  className="nav-link"
-                >
-                  Discover
-                </a>
-                <a
-                  href="/#for-brands"
+                <Link
+                  href="/#hero"
                   className={`nav-link ${isBrandActive ? "is-active" : ""}`}
                 >
                   Brand
-                </a>
+                </Link>
                 <a
                   href="/creator"
                   className={`nav-link ${isCreatorPage ? "is-active" : ""}`}
@@ -162,20 +171,20 @@ export default function Navbar() {
 
             {/* Right: Sign In & Action Buttons & Mobile Hamburger Toggle */}
             <div className="nav-right">
-              <a href="#signin" className="nav-signin-link">
-                Sign in
-              </a>
               {isCreatorPage && !isLegalMode ? (
                 <a href="/creator#join" className="nav-btn nav-btn--primary">
-                  Join ClipperCircle
+                  Join the founding cohort
                 </a>
               ) : (
                 <>
-                  <a href="#campaign-cta" className="nav-btn nav-btn--primary">
-                    Start a campaign
+                  <a
+                    href={isAgenciesPage ? "#partner" : "/#contact"}
+                    className="nav-btn nav-btn--primary"
+                  >
+                    {isAgenciesPage ? "Become a partner" : "Start a campaign"}
                   </a>
                   <a href="#faq" className="nav-btn nav-btn--secondary">
-                    Talk to us
+                    FAQs
                   </a>
                 </>
               )}
@@ -242,20 +251,13 @@ export default function Navbar() {
 
           {/* Large Clean Navigation Links */}
           <nav className="nav-mobile-links-list">
-            <a
-              href="/#discover"
-              className="nav-mobile-large-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Discover
-            </a>
-            <a
-              href="/#for-brands"
+            <Link
+              href="/#hero"
               className={`nav-mobile-large-link ${isBrandActive ? "is-active" : ""}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               Brand
-            </a>
+            </Link>
             <a
               href="/creator"
               className={`nav-mobile-large-link ${isCreatorPage ? "is-active" : ""}`}
@@ -275,19 +277,11 @@ export default function Navbar() {
           {/* Bottom Action Buttons */}
           <div className="nav-mobile-bottom-actions">
             <a
-              href="#signin"
-              className="nav-mobile-btn-signin"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sign in
-            </a>
-
-            <a
-              href={mobileActiveTab === "creators" ? "/creator#join" : "/#campaign-cta"}
+              href={mobileActiveTab === "creators" ? "/creator#join" : isAgenciesPage ? "/agencies#partner" : "/#contact"}
               className="nav-mobile-btn-primary"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span>{mobileActiveTab === "creators" ? "Join the founding cohort" : "Start a campaign"}</span>
+              <span>{mobileActiveTab === "creators" ? "Join the founding cohort" : isAgenciesPage ? "Become a partner" : "Start a campaign"}</span>
               <svg
                 width="16"
                 height="16"

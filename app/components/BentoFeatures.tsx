@@ -45,7 +45,7 @@ export default function BentoFeatures() {
           <span className="bento-pill-tag">POMERA PILLARS</span>
           <h2 className="bento-main-heading">The platform built for certainty.</h2>
           <p className="bento-main-sub">
-            Everything an enterprise or D2C brand needs to buy short-form distribution like media space.
+            Everything a D2C or ecommerce brand needs to buy short-form distribution like media space.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export default function BentoFeatures() {
               </div>
               <h3 className="bento-card__title">Fixed ₹CPM</h3>
               <p className="bento-card__desc">
-                Lock your rate before launch. No auction drift, no festive spikes, no surprise bills.
+                Agree your rate before launch. No auction drift, no festive spikes, no surprise bills. The rate is all-in: publisher payouts, verification and reporting are included.
               </p>
             </div>
 
@@ -73,17 +73,17 @@ export default function BentoFeatures() {
                     <span className="bento-cpm-amount pm-num">50</span>
                     <span className="bento-cpm-unit">/ 1K views</span>
                   </div>
-                  <span className="bento-cpm-badge">Guaranteed Rate</span>
+                  <span className="bento-cpm-badge">Example rate</span>
                 </div>
 
                 <div className="bento-cpm-compare">
                   <div className="bento-cpm-bar bento-cpm-bar--pomera">
                     <span className="bento-cpm-bar-label">Pomera</span>
-                    <span className="bento-cpm-bar-val pm-num">₹250 (Fixed)</span>
+                    <span className="bento-cpm-bar-val pm-num">Fixed before launch</span>
                   </div>
                   <div className="bento-cpm-bar bento-cpm-bar--auction">
-                    <span className="bento-cpm-bar-label">Meta Auction</span>
-                    <span className="bento-cpm-bar-val pm-num">₹380 - ₹620 (Volatile)</span>
+                    <span className="bento-cpm-bar-label">Ad auction</span>
+                    <span className="bento-cpm-bar-val pm-num">Changes with demand</span>
                   </div>
                 </div>
               </div>
@@ -95,11 +95,11 @@ export default function BentoFeatures() {
             <div className="bento-card__header">
               <div className="bento-card__badge-row">
                 <span className="bento-card__icon-box"><RupeeIcon /></span>
-                <span className="bento-card__status pm-num">ZERO RISK</span>
+                <span className="bento-card__status pm-num">PAY ON DELIVERY</span>
               </div>
-              <h3 className="bento-card__title">Performance-pegged billing</h3>
+              <h3 className="bento-card__title">Billed on verified views</h3>
               <p className="bento-card__desc">
-                Under-performing posts don’t consume your budget. If a post delivers 500 views, you pay for 500. If it gets zero, you pay zero.
+                Under-performing posts don’t consume your budget. If a post gets 500 verified views, you pay for 500. If it gets none, you pay nothing for it.
               </p>
             </div>
 
@@ -110,21 +110,21 @@ export default function BentoFeatures() {
                 <div className="bento-billing-card">
                   <span className="bento-billing-card__lbl">Target views</span>
                   <span className="bento-billing-card__val pm-num">10,00,000</span>
-                  <span className="bento-billing-card__sub">Committed campaign target</span>
+                  <span className="bento-billing-card__sub">Example campaign target</span>
                 </div>
 
                 {/* 2. Verified views */}
                 <div className="bento-billing-card bento-billing-card--active">
                   <span className="bento-billing-card__lbl">Verified views</span>
                   <span className="bento-billing-card__val pm-num">10,00,000</span>
-                  <span className="bento-billing-card__sub">100% human delivery</span>
+                  <span className="bento-billing-card__sub">Billed at the agreed rate</span>
                 </div>
 
                 {/* 3. Under-delivering */}
                 <div className="bento-billing-card">
-                  <span className="bento-billing-card__lbl">Flop protection</span>
-                  <span className="bento-billing-card__val pm-num">₹0 Billed</span>
-                  <span className="bento-billing-card__sub">Under-delivery not charged</span>
+                  <span className="bento-billing-card__lbl">Under-delivery</span>
+                  <span className="bento-billing-card__val pm-num">Not billed</span>
+                  <span className="bento-billing-card__sub">Extends, or the shortfall isn’t charged</span>
                 </div>
 
               </div>
@@ -176,8 +176,8 @@ export default function BentoFeatures() {
                         <span className="bento-bot-pass pm-num">Verified</span>
                       </div>
                       <div className="bento-bot-row">
-                        <span>Bot spikes (18,312 views)</span>
-                        <span className="bento-bot-filtered pm-num">Filtered (₹0)</span>
+                        <span>Bot spike (example)</span>
+                        <span className="bento-bot-filtered pm-num">Filtered, not billed</span>
                       </div>
                     </div>
 
@@ -210,7 +210,7 @@ export default function BentoFeatures() {
               </div>
               <h3 className="bento-card__title">Built for Indian brands</h3>
               <p className="bento-card__desc">
-                Direct INR billing, GST-compliant invoicing, weekly UPI publisher payouts, and WhatsApp desk.
+                Direct INR billing, GST invoicing, weekly UPI publisher payouts, and a WhatsApp desk.
               </p>
             </div>
 
@@ -222,7 +222,7 @@ export default function BentoFeatures() {
                 </div>
                 <div className="bento-india-chip">
                   <span className="bento-india-chip__dot" />
-                  <span>GST Tax Compliant</span>
+                  <span>GST Invoicing</span>
                 </div>
                 <div className="bento-india-chip">
                   <span className="bento-india-chip__dot" />

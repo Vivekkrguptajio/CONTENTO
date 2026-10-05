@@ -5,15 +5,14 @@ import GlobePolaroids from "./GlobePolaroids";
 import "./HeroSection.css";
 
 const AUDIENCES = [
-  "Software",
-  "Consumer Products",
-  "Fintech",
-  "Real Estate",
-  "Ecommerce Brands",
-  "Personal Brands",
-  "Marketplaces",
-  "Mobile Apps",
   "D2C Brands",
+  "Online Brands",
+  "Consumer Brands",
+  "Beauty Brands",
+  "Fashion Brands",
+  "Food Brands",
+  "Fitness Brands",
+  "Tech Brands",
 ];
 
 const TYPE_MS = 70;
@@ -80,13 +79,13 @@ export default function HeroSection() {
 
         {/* Display Headline */}
         <h1
-          aria-label={`The Alternative ad platform. Built for ${AUDIENCES.join(", ")}.`}
+          aria-label={`A fixed-price video ad channel. Built for ${AUDIENCES.join(", ")}.`}
           className="hero-headline relative z-10 mt-3 max-w-[960px] text-center font-medium text-[#111210] tracking-[-0.035em] !text-[clamp(34px,6vw,52px)] lg:!text-[60px] leading-[1.05]">
           <span aria-hidden="true">
-            The Alternative ad platform
+            A fixed-price video ad channel
             <br />
             Built for{" "}
-            <span className="inline-block min-w-[1ch] rounded-[10px] bg-[#C8F135] px-3 pb-1 align-baseline">
+            <span className="hero-typed block w-fit mx-auto mt-1 whitespace-nowrap rounded-[10px] bg-[#C8F135] px-3 pb-1 min-h-[1.25em] md:mt-0 md:inline-block md:min-h-0 md:mx-0 md:align-baseline">
               {typed}
               <span className="hero-caret" />
             </span>
@@ -101,11 +100,11 @@ export default function HeroSection() {
         {/* CTA Buttons Row — 8px radius corners */}
         <div className="hero-cta-row relative z-10 flex w-full max-w-[420px] items-center justify-center gap-3 sm:w-auto mt-8 mx-auto">
           <a
-            href="#campaign-cta"
+            href="#contact"
             className="pomera-btn-primary inline-flex items-center justify-center h-[52px] px-6 text-center font-medium text-[16px] leading-none whitespace-nowrap transition-all"
             style={{ borderRadius: "8px", backgroundColor: "#111210", borderColor: "#111210", color: "#FFFFFF" }}
           >
-            Book a free pilot
+            Book a pilot
           </a>
           <a
             href="#how-it-works"

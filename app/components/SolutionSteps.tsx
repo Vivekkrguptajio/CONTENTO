@@ -28,14 +28,14 @@ const STEPS = [
   {
     step: "04",
     title: "Verification & fraud filtering",
-    desc: "Every post is tracked. Suspicious traffic, bot activity, and anomalies are filtered out. Views are verified before being logged.",
+    desc: "Every post is tracked through its own link. We check the analytics the publisher submits and spot-check by hand. Suspicious traffic and bot activity are filtered out, and views are counted on day 7.",
     badge: "Fraud Filtered",
     badgeType: "warning",
   },
   {
     step: "05",
     title: "Verified delivery report",
-    desc: "You receive transparent reports showing every post link, verified view count, and achieved CPM. You are billed strictly for verified delivery.",
+    desc: "You receive a report showing every post link, verified view count, and achieved CPM. You are billed only for verified delivery.",
     badge: "Pay on Delivery",
     badgeType: "accent",
   },
@@ -93,8 +93,8 @@ export default function SolutionSteps() {
 
             <h2 className="sp-heading">How a campaign runs.</h2>
             <p className="sp-lead">
-              Five predictable steps from initial video assets to delivered, verified reach. No guesswork and no upfront
-              billing risk.
+              Five predictable steps from your video assets to verified reach. You know the rate before you spend, and you pay
+              only for views that are verified.
             </p>
 
             {/* Stage: one step at a time, swapped by scroll */}
@@ -131,6 +131,27 @@ export default function SolutionSteps() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Phones: plain vertical timeline instead of the scroll-pinned stage */}
+      <div className="sp-mobile">
+        <h2 className="sp-heading">How a campaign runs.</h2>
+        <p className="sp-lead">
+          Five predictable steps from your video assets to verified reach. You know the rate before you spend, and you pay
+          only for views that are verified.
+        </p>
+        <ol className="sp-tl">
+          {STEPS.map((item) => (
+            <li key={item.step} className="sp-tl__item">
+              <span className="sp-tl__n">{item.step}</span>
+              <div className="sp-tl__card">
+                <span className="sp-badge">{item.badge}</span>
+                <h3 className="sp-tl__title">{item.title}</h3>
+                <p className="sp-tl__desc">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* Supported Distribution Platforms Banner */}

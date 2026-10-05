@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import "./Footer.css";
 import { PomeraMark } from "./pomeraMark";
+import { whatsappLink } from "../lib/contact";
 
 /* ── Pomera Official Beam Logo ───────────────────────────────────── */
 const PomeraLogo = () => (
@@ -48,15 +50,25 @@ const WhatsAppDeskIcon = () => (
 );
 
 export default function Footer() {
-  const navLinks = [
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Positioning", href: "#positioning" },
-    { label: "Verification", href: "#verification" },
-    { label: "Pillars", href: "#pillars" },
-    { label: "Dashboard", href: "#dashboard" },
-    { label: "Founding Cohort", href: "#founding-cohort" },
+  const pathname = usePathname() || "/";
+  const isPublisherPage = pathname === "/creator" || pathname === "/creators" || pathname.startsWith("/creator/") || pathname.startsWith("/creators/");
+  const isAgencyPage = pathname === "/agencies" || pathname === "/agency" || pathname.startsWith("/agencies/");
+
+  const cta = isPublisherPage
+    ? { heading: "Ready to get paid per view?", sub: "Free to join. No follower minimum. Paid weekly by UPI.", label: "Join the founding cohort", href: "/creator#join", wa: "Hi Pomera Team, I want to join as a publisher." }
+    : isAgencyPage
+    ? { heading: "Ready to partner with Pomera?", sub: "Your first client campaign is a pilot with no platform fee.", label: "Become a partner", href: "/agencies#partner", wa: "Hi Pomera Team, we are an agency and want to partner." }
+    : { heading: "Ready to buy certainty?", sub: "Agree your rate upfront. Pay only for verified views.", label: "Start a campaign", href: "/#contact", wa: "Hi Pomera Team, we want to discuss a campaign." };
+
+  const navLinks: { label: string; href: string; desktopOnly?: boolean }[] = [
+    { label: "How it works", href: "/#how-it-works" },
+    { label: "Verification", href: "/#verification", desktopOnly: true },
+    { label: "Pillars", href: "/#pillars" },
+    { label: "Dashboard", href: "/#dashboard", desktopOnly: true },
+    { label: "Founding Cohort", href: "/#founding-cohort" },
+    { label: "For Agencies", href: "/agencies" },
     { label: "For Publishers", href: "/creator" },
-    { label: "Brand Guidelines", href: "/pomera_brand_guidelines.html" },
+    { label: "Brand Guidelines", href: "/branding" },
   ];
 
   const socialLinks = [
@@ -77,18 +89,18 @@ export default function Footer() {
             {/* Top CTA area */}
             <div className="cr-footer-card__cta">
               <h2 className="cr-footer-card__heading">
-                Ready to buy certainty?
+                {cta.heading}
               </h2>
               <p className="cr-footer-card__sub">
-                Lock your CPM upfront. Pay strictly for confirmed delivery.
+                {cta.sub}
               </p>
 
               <div className="cr-footer-card__actions">
-                <a href="#campaign-cta" className="cr-footer-btn cr-footer-btn--primary">
-                  Start a campaign
+                <a href={cta.href} className="cr-footer-btn cr-footer-btn--primary">
+                  {cta.label}
                 </a>
                 <a
-                  href="https://wa.me/919999999999?text=Hi%20Pomera%20Team%2C%20we%20want%20to%20discuss%20a%20campaign."
+                  href={whatsappLink(cta.wa)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cr-footer-btn cr-footer-btn--secondary"
@@ -125,7 +137,7 @@ export default function Footer() {
               {/* Right side: Navigation links */}
               <nav className="cr-footer-links" aria-label="Footer navigation">
                 {navLinks.map((link) => (
-                  <a key={link.label} href={link.href} className="cr-footer-links__item">
+                  <a key={link.label} href={link.href} className={`cr-footer-links__item${link.desktopOnly ? " cr-footer-links__item--desktop" : ""}`}>
                     {link.label}
                   </a>
                 ))}
@@ -154,7 +166,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Action Button */}
       <a
-        href="https://wa.me/919999999999?text=Hi%20Pomera%20Team%2C%20we%20have%20an%20inquiry%20regarding%20distribution."
+        href={whatsappLink("Hi Pomera Team, we have an inquiry regarding distribution.")}
         target="_blank"
         rel="noopener noreferrer"
         className="cr-fab-chat"

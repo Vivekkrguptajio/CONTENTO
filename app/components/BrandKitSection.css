@@ -1218,3 +1218,25 @@
   margin-left: auto;
   letter-spacing: 0.05em;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   CONTACT SECTION (reuses pb-* form styles from PublishersSection.css)
+   ════════════════════════════════════════════════════════════════════ */
+.cr-bk-contact {
+  position: relative;
+  z-index: 1;
+}
+.cr-bk-contact .pb-sec { padding-top: calc(var(--pb-sec) * 0.6); }
+.cr-bk-contact__area {
+  height: auto;
+  min-height: 132px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Phones: the site navbar is already on top, so drop the duplicate header bar and extra gap */
+@media (max-width: 767px) {
+  .cr-bk-mobile-header-bar { display: none; }
+  .cr-bk-section { margin-top: -125px; }
+}

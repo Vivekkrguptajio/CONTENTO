@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "./Faq.css";
+import { whatsappLink } from "../lib/contact";
 
 interface FaqItem {
   id: number;
@@ -14,25 +15,31 @@ const FAQ_DATA: FaqItem[] = [
     id: 1,
     question: "How is Pomera different from running Meta or Google ads?",
     answer:
-      "Meta runs an auction where your CPM changes daily and surges 2-3x during peak festive seasons like Diwali. Pomera sells a fixed CPM agreed upfront before launch. Plus, Pomera content appears organically on active theme and publisher pages without disruptive 'Sponsored' labels that users scroll past.",
+      "Meta runs an auction, so your CPM moves with demand and can rise sharply in peak seasons like Diwali. Pomera sells a fixed CPM agreed before launch. Your video is edited and posted by an independent publisher from their own account, with the paid partnership label on, as Indian ad rules (ASCI) require. It reads like an editor's video, not an ad slot.",
   },
   {
     id: 2,
     question: "How do you verify that views are authentic human delivery?",
     answer:
-      "Every view is audited against multi-signal platform insights, unique attribution links, and engagement ratios. Accounts with unnatural velocity spikes or low like-to-view ratios are automatically flagged and filtered out. You are never billed for bot views.",
+      "Every post is tracked through its own link. We check the post and the platform analytics the publisher submits, review engagement ratios, view velocity and account history, and spot-check by hand. Views are counted on day 7 after posting, and views that don't hold up are not billed.",
   },
   {
     id: 3,
     question: "What happens if a campaign doesn't hit its target verified views?",
     answer:
-      "You only pay for verified views delivered. If you commit to 10,00,000 views and 8,00,000 are delivered, you are only billed for 8,00,000, or we extend distribution to hit 100% fulfillment at no additional charge under our make-good guarantee.",
+      "The campaign extends, or the shortfall is not billed. If you commit to 10,00,000 views and 8,00,000 are verified, you are billed for 8,00,000 at most. We guarantee the price and the billing. We don't guarantee virality, because nobody honestly can.",
   },
   {
     id: 4,
-    question: "Why work with Pomera instead of negotiating with creators directly?",
+    question: "Why work with Pomera instead of negotiating with influencers directly?",
     answer:
-      "Direct influencer outreach requires negotiating individual rates, chasing deliverables, and bearing 100% of the financial risk if their video flops. With Pomera, you negotiate one rate with us, we coordinate across dozens of verified publishers, and you only pay for the views that actually happen.",
+      "Direct outreach means negotiating individual rates, chasing deliverables, and carrying all the risk if a video flops. With Pomera you agree one rate with us, we source and brief the publishers, check every post and handle payouts, and you pay only for views that are verified.",
+  },
+  {
+    id: 7,
+    question: "What does my rate cover? Is it the same as what publishers earn?",
+    answer:
+      "No. Your fixed ₹CPM is all-in. It covers publisher payouts, verification, reporting and our support. Publishers see their own rate in each brief. There is no separate platform fee on your pilot.",
   },
   {
     id: 5,
@@ -44,7 +51,19 @@ const FAQ_DATA: FaqItem[] = [
     id: 6,
     question: "What is the minimum budget to get started?",
     answer:
-      "Founding pilot campaigns start at ₹10,000. This allows brands to run a controlled test, review verified reporting in the dashboard, and inspect performance before scaling spend.",
+      "Founding pilot campaigns start at ₹10,000. There is no platform fee on your pilot, and you are billed only for verified views at the fixed rate. You get a report with every post link, so you can inspect performance before scaling spend.",
+  },
+  {
+    id: 8,
+    question: "When do campaigns start?",
+    answer:
+      "We are onboarding the founding cohort now. First campaigns start in November 2026, and pilot brands are booked in first.",
+  },
+  {
+    id: 9,
+    question: "I work with an agency. Can I still contact Pomera directly?",
+    answer:
+      "Yes. If an agency already brought you to Pomera, mention it in the form and we will work through them. We never pitch an agency's clients behind their back.",
   },
 ];
 
@@ -119,7 +138,7 @@ export default function Faq() {
         <div className="faq-footer-note">
           <span>Need custom flight parameters?</span>
           <a
-            href="https://wa.me/919999999999?text=Hi%20Pomera%20Team%2C%20we%20have%20questions%20about%20campaign%20distribution."
+            href={whatsappLink("Hi Pomera Team, we have questions about campaign distribution.")}
             target="_blank"
             rel="noopener noreferrer"
             className="faq-support-pill"

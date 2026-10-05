@@ -59,11 +59,11 @@ interface PublisherRow {
 }
 
 const PUBLISHERS_LIST: PublisherRow[] = [
-  { id: 1, name: "reels_velocity", joined: "Oct '25", avatarBg: "#111210", initials: "RV", platforms: ["instagram", "youtube"], disbursed: "₹48,200", views: "6,40,000", match: 94, engRate: "4.8%", status: "Verified" },
-  { id: 2, name: "d2c_curator", joined: "Nov '25", avatarBg: "#1f2937", initials: "DC", platforms: ["instagram"], disbursed: "₹36,500", views: "5,20,000", match: 91, engRate: "4.2%", status: "Verified" },
-  { id: 3, name: "urban_street_edits", joined: "Jan '26", avatarBg: "#374151", initials: "US", platforms: ["instagram", "youtube"], disbursed: "₹52,000", views: "7,50,000", match: 95, engRate: "5.1%", status: "Verified" },
-  { id: 4, name: "tech_india_shorts", joined: "Feb '26", avatarBg: "#4b5563", initials: "TI", platforms: ["youtube"], disbursed: "₹28,400", views: "4,10,000", match: 88, engRate: "3.6%", status: "Verified" },
-  { id: 5, name: "lifestyle_capsules", joined: "Mar '26", avatarBg: "#0f172a", initials: "LC", platforms: ["instagram", "youtube"], disbursed: "₹42,100", views: "5,80,000", match: 92, engRate: "4.4%", status: "Verified" },
+  { id: 1, name: "reels_velocity", joined: "Oct '26", avatarBg: "#111210", initials: "RV", platforms: ["instagram", "youtube"], disbursed: "₹48,200", views: "6,40,000", match: 94, engRate: "4.8%", status: "Verified" },
+  { id: 2, name: "d2c_curator", joined: "Oct '26", avatarBg: "#1f2937", initials: "DC", platforms: ["instagram"], disbursed: "₹36,500", views: "5,20,000", match: 91, engRate: "4.2%", status: "Verified" },
+  { id: 3, name: "urban_street_edits", joined: "Oct '26", avatarBg: "#374151", initials: "US", platforms: ["instagram", "youtube"], disbursed: "₹52,000", views: "7,50,000", match: 95, engRate: "5.1%", status: "Verified" },
+  { id: 4, name: "tech_india_shorts", joined: "Oct '26", avatarBg: "#4b5563", initials: "TI", platforms: ["youtube"], disbursed: "₹28,400", views: "4,10,000", match: 88, engRate: "3.6%", status: "Verified" },
+  { id: 5, name: "lifestyle_capsules", joined: "Oct '26", avatarBg: "#0f172a", initials: "LC", platforms: ["instagram", "youtube"], disbursed: "₹42,100", views: "5,80,000", match: 92, engRate: "4.4%", status: "Verified" },
 ];
 
 /* ── Payout Table Data (UPI INR) ─────────────────────────────────── */
@@ -80,18 +80,18 @@ interface PayoutRow {
 }
 
 const PAYOUTS_LIST: PayoutRow[] = [
-  { id: 1, name: "reels_velocity", platforms: ["instagram", "youtube"], campaign: "Minimalist · Sunscreen Drop", views: "6,40,000", rate: "₹250 CPM", disbursed: "₹1,60,000", status: "UPI Paid" },
-  { id: 2, name: "d2c_curator", platforms: ["instagram"], campaign: "Mokobara · Luggage Series", views: "3,80,000", rate: "₹250 CPM", disbursed: "₹95,000", status: "UPI Paid" },
-  { id: 3, name: "urban_street_edits", platforms: ["instagram", "youtube"], campaign: "Snitch · Winter Fit Launch", views: "2,40,000", rate: "₹250 CPM", disbursed: "₹60,000", status: "In Review" },
-  { id: 4, name: "suspicious_node_4", platforms: ["instagram"], campaign: "Plum · Green Tea Push", views: "18,312", rate: "₹0 CPM", disbursed: "₹0 (Blocked)", status: "Bot Flagged", isBlocked: true },
+  { id: 1, name: "reels_velocity", platforms: ["instagram", "youtube"], campaign: "Skincare brand · Sunscreen drop", views: "6,40,000", rate: "₹30 per 1K", disbursed: "₹19,200", status: "UPI Paid" },
+  { id: 2, name: "d2c_curator", platforms: ["instagram"], campaign: "Luggage brand · Travel series", views: "3,80,000", rate: "₹30 per 1K", disbursed: "₹11,400", status: "UPI Paid" },
+  { id: 3, name: "urban_street_edits", platforms: ["instagram", "youtube"], campaign: "Fashion brand · Winter launch", views: "2,40,000", rate: "₹30 per 1K", disbursed: "₹7,200", status: "In Review" },
+  { id: 4, name: "suspicious_node_4", platforms: ["instagram"], campaign: "Tea brand · Green tea push", views: "18,312", rate: "Bot views", disbursed: "₹0 (Excluded)", status: "Bot Flagged", isBlocked: true },
 ];
 
 const PAYOUT_STATS = [
-  { value: "₹2,50,000", label: "Committed Budget" },
-  { value: "₹1,84,000", label: "UPI Disbursed" },
-  { value: "₹46,000", label: "Pending Verification" },
-  { value: "₹20,000", label: "Upcoming Flight" },
-  { value: "₹0", label: "Bot Surcharges (Protected)" },
+  { value: "₹50,000", label: "Committed Budget" },
+  { value: "₹30,600", label: "Paid to Publishers" },
+  { value: "₹7,200", label: "Pending Verification" },
+  { value: "₹10,000", label: "Upcoming Flight" },
+  { value: "₹0", label: "Billed for Bot Views" },
   { value: "18,312", label: "Bot Views Filtered" },
 ];
 
@@ -135,8 +135,8 @@ export default function DashboardFeature() {
   const payoutTimeTabs = ["Current flight", "This month", "All campaigns"];
 
   const tabs = [
-    { id: 0, label: "Live verification", icon: <TabReviewIcon /> },
-    { id: 1, label: "Weekly UPI disbursements", icon: <TabPayoutIcon /> },
+    { id: 0, label: "Verification", icon: <TabReviewIcon /> },
+    { id: 1, label: "Publisher payouts", icon: <TabPayoutIcon /> },
     { id: 2, label: "Publisher network", icon: <TabPublishersIcon /> },
   ];
 
@@ -146,9 +146,12 @@ export default function DashboardFeature() {
         
         {/* Main Heading */}
         <h2 className="df-heading">
-          Real-time visibility.<br />
+          Clear visibility.<br />
           Verified numbers before payout.
         </h2>
+        <p className="dfx-sub" style={{ textAlign: "center", marginTop: 12 }}>
+          Example data. A preview of the campaign report and dashboard, not live campaigns.
+        </p>
 
         {/* 3 Navigation Tabs */}
         <div className="df-tabs-wrapper">
@@ -187,7 +190,7 @@ export default function DashboardFeature() {
                 <div className="dfx-card__head">
                   <span className="dfx-chip">Delivery review</span>
                   <span className="dfx-card__meta">
-                    <InstagramIconMini /> reels_velocity · Minimalist Sunscreen
+                    <InstagramIconMini /> reels_velocity · Sunscreen drop
                   </span>
                 </div>
 
@@ -214,11 +217,11 @@ export default function DashboardFeature() {
                       <span className="dfx-bubble__avatar">
                         <PomeraMark size={22} bg="#121210" radius={90} />
                       </span>
-                      <p>Verified. Payout is queued for the next weekly UPI run.</p>
+                      <p>Verified on day 7. Payout is queued for the next weekly UPI run.</p>
                     </div>
                     <div className="dfx-audit">
                       <div><span>Attribution link</span><b className="pm-num">pomera.link/min-sun-08</b></div>
-                      <div><span>Billed</span><b className="pm-num">₹1,60,000 · ₹250 CPM</b></div>
+                      <div><span>Billed to brand</span><b className="pm-num">₹32,000 · ₹50 CPM</b></div>
                     </div>
                   </div>
                 </div>
@@ -228,7 +231,7 @@ export default function DashboardFeature() {
               <div className="dfx-card dfx-bots">
                 <div className="dfx-card__head">
                   <span className="dfx-chip dfx-chip--lime">Bot detection</span>
-                  <span className="dfx-card__meta">Updated live</span>
+                  <span className="dfx-card__meta">Example</span>
                 </div>
 
                 <div className="dfx-metrics">
@@ -270,8 +273,8 @@ export default function DashboardFeature() {
             <div className="dfx-stack">
               <div className="dfx-bar">
                 <div>
-                  <h3 className="dfx-title">Weekly UPI Disbursements</h3>
-                  <p className="dfx-sub">Publishers paid strictly on confirmed delivery reports</p>
+                  <h3 className="dfx-title">Weekly publisher payouts (example)</h3>
+                  <p className="dfx-sub">Publishers are paid by UPI for verified views. Your rate is all-in and covers these payouts, verification and reporting.</p>
                 </div>
                 <div className="df-payouts-time-capsule">
                   {payoutTimeTabs.map((pt) => (
@@ -292,7 +295,7 @@ export default function DashboardFeature() {
                   <div key={stat.label} className={`dfx-card dfx-kpi ${i === 1 ? "dfx-kpi--dark" : ""}`}>
                     <small>{stat.label}</small>
                     <b className="pm-num">{stat.value}</b>
-                    <span className="dfx-meter"><i style={{ width: i === 0 ? "100%" : i === 1 ? "74%" : "18%" }} /></span>
+                    <span className="dfx-meter"><i style={{ width: i === 0 ? "100%" : i === 1 ? "61%" : "14%" }} /></span>
                   </div>
                 ))}
               </div>
@@ -335,10 +338,10 @@ export default function DashboardFeature() {
             <div className="dfx-stack">
               <div className="dfx-bar">
                 <div>
-                  <h3 className="dfx-title">Publisher Distribution Network</h3>
-                  <p className="dfx-sub">Verified Indian short-form accounts vetted for organic reach</p>
+                  <h3 className="dfx-title">Publisher network (example)</h3>
+                  <p className="dfx-sub">Independent Indian video editors who post from their own accounts</p>
                 </div>
-                <span className="dfx-chip dfx-chip--lime">Active fleet · 48 accounts</span>
+                <span className="dfx-chip dfx-chip--lime">Example publishers</span>
               </div>
 
               <div className="dfx-pubs">
@@ -364,8 +367,8 @@ export default function DashboardFeature() {
                   </div>
                 ))}
                 <div className="dfx-card dfx-pub dfx-pub--more">
-                  <b className="pm-num">+43</b>
-                  <small>more verified publishers</small>
+                  <b className="pm-num">+</b>
+                  <small>more publishers in the founding cohort</small>
                 </div>
               </div>
             </div>

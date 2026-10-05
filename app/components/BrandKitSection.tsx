@@ -1,7 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
+import { PomeraMark } from "./pomeraMark";
+import "./PublishersSection.css";
+import { CONTACT_EMAIL } from "../lib/contact";
 import "./BrandKitSection.css";
+
+/* Set this to your form-handler URL (Google Apps Script, Formspree, your API…). Empty = form shows a WhatsApp fallback. */
+const FORM_ENDPOINT = "";
+
+const CONTACT_NEXT = [
+  "We read every message ourselves. No bots.",
+  "You get a reply by email within one working day.",
+  "For press and partnerships, we set up a quick call.",
+];
 
 interface TabItem {
   number: string;
@@ -48,6 +60,28 @@ const INCORRECT_EXAMPLES = [
 export default function BrandKitSection() {
   const [activeTab, setActiveTab] = useState<string>("01");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error" | "unconnected">("idle");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (!FORM_ENDPOINT) {
+      setStatus("unconnected");
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form) });
+      if (!res.ok) throw new Error("bad response");
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   const handleDownload = (filePath: string, fileName?: string) => {
     const a = document.createElement("a");
@@ -145,7 +179,7 @@ export default function BrandKitSection() {
             <button
               type="button"
               className="cr-bk-btn-primary"
-              onClick={() => handleDownload("/assets/branding/logo.svg", "content-rewards-brand-kit.svg")}
+              onClick={() => handleDownload("/assets/branding/logo.svg", "pomera-brand-kit.svg")}
             >
               <span>Download all assets</span>
             </button>
@@ -167,10 +201,10 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Brand Guidelines</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -194,10 +228,10 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Brand Guidelines</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -213,7 +247,7 @@ export default function BrandKitSection() {
                   <button
                     type="button"
                     className="cr-bk-btn-primary cr-bk-btn-compact"
-                    onClick={() => handleDownload("/assets/branding/tab-3/primary-logo.svg", "content-rewards-logo.svg")}
+                    onClick={() => handleDownload("/assets/branding/tab-3/primary-logo.svg", "pomera-logo.svg")}
                   >
                     <span>Download logo</span>
                   </button>
@@ -242,7 +276,7 @@ export default function BrandKitSection() {
                     </button>
                     <img
                       src="/assets/branding/tab-3/primary-logo.svg"
-                      alt="Content Rewards primary logo"
+                      alt="Pomera primary logo"
                       className="cr-bk-primary-logo-img"
                     />
                   </div>
@@ -451,10 +485,10 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Brand Guidelines</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -768,7 +802,7 @@ export default function BrandKitSection() {
                 <div className="cr-bk-sub-section">
                   <h3 className="cr-bk-sub-heading">3d & 2d Illustrations</h3>
                   <p className="cr-bk-sub-desc">
-                    3d and 2d type illustrations bring the Content Rewards experience to
+                    3d and 2d type illustrations bring the Pomera experience to
                     life visually. They're expressive, energetic, and rooted in the core
                     brand palette, used across campaigns, onboarding, and feature callouts
                     to make complex ideas feel immediate and human.
@@ -840,10 +874,10 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Brand Guidelines</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -859,10 +893,10 @@ export default function BrandKitSection() {
 
                 <div className="cr-bk-intro-footer">
                   <p className="cr-bk-intro-copy">
-                    © 2026 Content Rewards Inc. All rights reserved.
+                    © 2026 Pomera Technologies Pvt. Ltd. All rights reserved.
                   </p>
                   <p className="cr-bk-intro-status">
-                    <span>Brand Guidelines</span>
+                    <span>Pomera Brand Guidelines</span>
                     <span>—</span>
                     <span>Updated 2026</span>
                   </p>
@@ -872,6 +906,81 @@ export default function BrandKitSection() {
 
           </div>
         </div>
+      </div>
+
+      {/* ── CONTACT ──────────────────────────────────────────── */}
+      <div className="pb-page cr-bk-contact">
+        <section className="pb-sec pb-sec--last" id="contact">
+          <div className="pb-wrap">
+            <div className="pb-join">
+              <div className="pb-join__dark">
+                <div className="pb-join__mark" aria-hidden="true"><PomeraMark size={300} fg="#C8F135" opacity={0.09} /></div>
+                <p className="pb-eyebrow pb-eyebrow--left pb-eyebrow--lime"><span className="pb-ldot" />Get in touch</p>
+                <h2 className="pb-join__h">Talk to the Pomera team</h2>
+                <p className="pb-join__s">Questions about the brand, press, or using these assets? Send a note and a real person replies.</p>
+
+                <div className="pb-join__next">
+                  <p>What happens next</p>
+                  {CONTACT_NEXT.map((t, i) => (
+                    <div key={t}>
+                      <span>0{i + 1}</span>
+                      <span>{t}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="pb-join__share">Prefer email? Write to us at {CONTACT_EMAIL}.</p>
+              </div>
+
+              <div className="pb-join__form">
+                {status === "done" ? (
+                  <div className="pb-done">
+                    <PomeraMark size={56} bg="#111210" radius={90} />
+                    <h3>Thanks.</h3>
+                    <p>We’ve got your message and will reply by email within one working day.</p>
+                  </div>
+                ) : (
+                  <form className="pb-form" onSubmit={onSubmit} noValidate>
+                    <div className="pb-fld"><label htmlFor="c-name">Your name</label><input className="pb-inp" id="c-name" name="name" type="text" required /></div>
+                    <div className="pb-fld"><label htmlFor="c-email">Work email</label><input className="pb-inp" id="c-email" name="email" type="email" required /></div>
+                    <div className="pb-fld pb-full"><label htmlFor="c-org">Organisation</label><input className="pb-inp" id="c-org" name="organisation" type="text" placeholder="Company, agency or publication" /></div>
+                    <div className="pb-fld pb-full">
+                      <label htmlFor="c-topic">What’s this about?</label>
+                      <select className="pb-inp" id="c-topic" name="topic" required defaultValue="">
+                        <option value="" disabled>Select</option>
+                        <option>Press and media</option>
+                        <option>Brand partnership</option>
+                        <option>Asset and logo usage</option>
+                        <option>Something else</option>
+                      </select>
+                    </div>
+                    <div className="pb-fld pb-full">
+                      <label htmlFor="c-msg">Your message</label>
+                      <textarea className="pb-inp cr-bk-contact__area" id="c-msg" name="message" rows={4} required />
+                    </div>
+
+                    <label className="pb-consent pb-full" htmlFor="c-ok">
+                      <input type="checkbox" id="c-ok" name="consent" required />
+                      <span>I agree that Pomera can contact me about this, and to the <a href="/privacy-policy">privacy policy</a>.</span>
+                    </label>
+
+                    <div className="pb-full">
+                      <button className="pb-btn pb-btn--dark pb-btn--full" type="submit" disabled={status === "sending"}>
+                        {status === "sending" ? "Sending…" : "Send message"}
+                      </button>
+                    </div>
+
+                    {status === "unconnected" && (
+                      <p className="pb-msg pb-full" role="status">This form is not connected yet. Email us at {CONTACT_EMAIL} instead.</p>
+                    )}
+                    {status === "error" && (
+                      <p className="pb-msg pb-full" role="status">That didn’t go through. Check your connection and try again, or email us at {CONTACT_EMAIL}.</p>
+                    )}
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Ambient background watermark at bottom */}

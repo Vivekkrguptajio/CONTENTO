@@ -143,10 +143,10 @@
 .nav-brand-img,
 img.logo,
 svg.logo {
-  width: 192px;
-  height: 43px;
-  max-width: 192px;
-  max-height: 43px;
+  width: 180px;
+  height: 48px;
+  max-width: 180px;
+  max-height: 48px;
   object-fit: contain;
   display: block;
 }
@@ -155,10 +155,10 @@ svg.logo {
   .nav-brand-img,
   img.logo,
   svg.logo {
-    width: 168px;
-    height: 38px;
-    max-width: 168px;
-    max-height: 38px;
+    width: 150px;
+    height: 40px;
+    max-width: 150px;
+    max-height: 40px;
   }
 }
 
@@ -744,3 +744,51 @@ svg.logo {
   fill: #FCFBF8 !important;
 }
 
+
+
+/* ── Logo tagline: lime box, text rolls up from below ───────────────── */
+.nav-logo-box {
+  position: relative;
+  display: block;
+  width: 180px;
+  height: 48px;
+  container-type: inline-size;
+}
+.nav-logo-box .nav-brand-img { width: 100%; height: 100%; max-width: none; max-height: none; }
+.nav-logo-tag {
+  position: absolute;
+  left: 31.5%;
+  top: 77%;
+  width: 66%;
+  height: 23%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #C8F135;
+}
+.nav-logo-tag__text {
+  display: block;
+  font-family: var(--font-geist-sans), -apple-system, sans-serif;
+  font-size: 4.4cqw;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  color: #111210;
+  animation: nav-tag-roll 3.6s cubic-bezier(0.22, 0.8, 0.3, 1) infinite;
+}
+@keyframes nav-tag-roll {
+  0%   { transform: translateY(130%); opacity: 0; }
+  14%  { transform: translateY(0); opacity: 1; }
+  78%  { transform: translateY(0); opacity: 1; }
+  92%  { transform: translateY(-130%); opacity: 0; }
+  100% { transform: translateY(-130%); opacity: 0; }
+}
+@media (max-width: 640px) {
+  .nav-logo-box { width: 150px; height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-tag__text { animation: none; }
+}

@@ -447,3 +447,8 @@
     font-size: 14px;
   }
 }
+
+/* Phones: fraud checks are already covered in the verification section */
+@media (max-width: 768px) {
+  .bento-card--bot { display: none; }
+}

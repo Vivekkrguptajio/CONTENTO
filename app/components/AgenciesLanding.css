@@ -315,3 +315,9 @@
   .ag-split { grid-template-columns: 1fr; }
   .ag-split > div + div { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.14); }
 }
+
+/* Phones: skeleton mock-ups add height but no information; the text beside them says it all */
+@media (max-width: 640px) {
+  .ag-ticket, .ag-rep { display: none; }
+}
+.ag-plan__sticker { white-space: nowrap; }

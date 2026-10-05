@@ -8,6 +8,7 @@ import QuoteSection from "./components/QuoteSection";
 import TestimonialCard from "./components/TestimonialCard";
 import DashboardFeature from "./components/DashboardFeature";
 import CampaignBanner from "./components/CampaignBanner";
+import BrandsContact from "./components/BrandsContact";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 
@@ -25,6 +26,7 @@ export default function Home() {
         <TestimonialCard />
         <DashboardFeature />
         <CampaignBanner />
+        <BrandsContact />
         <Faq />
       </main>
       <Footer />

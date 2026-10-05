@@ -42,9 +42,9 @@ export default function TrustVerification() {
             <ShieldCheckIcon />
           </span>
           <div className="trust-text">
-            <span className="trust-title">Verified against platform signals.</span>{" "}
+            <span className="trust-title">Checked against platform data.</span>{" "}
             <span className="trust-desc">
-              Delivery is verified through native platform insights, engagement ratios, and unique campaign link attribution.
+              Every post is tracked through its own link and checked against the platform analytics the publisher submits, with manual spot-checks. Views are counted on day 7.
             </span>
           </div>
         </div>
@@ -55,9 +55,9 @@ export default function TrustVerification() {
             <LayersIcon />
           </span>
           <div className="trust-text">
-            <span className="trust-title">Multi-signal fraud detection.</span>{" "}
+            <span className="trust-title">Multi-signal fraud checks.</span>{" "}
             <span className="trust-desc">
-              Like-to-view ratios, view velocity spikes, and account posting history are cross-analyzed before views count.
+              Like-to-view ratios, view velocity spikes, and account posting history are reviewed before views count.
             </span>
           </div>
         </div>
@@ -68,9 +68,9 @@ export default function TrustVerification() {
             <BadgeCheckIcon />
           </span>
           <div className="trust-text">
-            <span className="trust-title">Zero risk on under-delivery.</span>{" "}
+            <span className="trust-title">You pay only for verified views.</span>{" "}
             <span className="trust-desc">
-              If a post receives 500 views, you only pay for 500 views. If it gets zero, you pay zero. Your cost is pegged strictly to delivery.
+              If a post gets 500 verified views, you pay for 500. If it gets none, you pay nothing for it. Your cost follows delivery.
             </span>
           </div>
         </div>
@@ -81,9 +81,9 @@ export default function TrustVerification() {
             <GuaranteeIcon />
           </span>
           <div className="trust-text">
-            <span className="trust-title">Make-good delivery commitment.</span>{" "}
+            <span className="trust-title">If it under-delivers, it extends or isn’t billed.</span>{" "}
             <span className="trust-desc">
-              If a campaign does not hit its agreed verified view target within the flight window, we extend distribution at no extra charge.
+              If a campaign misses its agreed verified view target, we extend it at no extra charge, or the shortfall is not billed. We guarantee the price and the billing, not virality.
             </span>
           </div>
         </div>
