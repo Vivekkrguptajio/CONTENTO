@@ -23,7 +23,7 @@
 }
 
 .nav-fixed-spacer--dark {
-  background: #1c1d1d;
+  background: #0B0B0A;
 }
 
 .nav-sticky-wrapper.is-scrolled {
@@ -382,7 +382,7 @@ svg.logo {
 }
 
 .nav-sticky-wrapper.is-menu-open.nav-theme-dark {
-  background: #1c1d1d !important;
+  background: #0B0B0A !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -560,9 +560,9 @@ svg.logo {
   transform: translateX(3px);
 }
 
-/* ── Dark Theme Mobile Drawer (#1c1d1d mode) ─────────────────────── */
+/* ── Dark Theme Mobile Drawer (#0B0B0A mode) ─────────────────────── */
 .nav-mobile-drawer.is-dark {
-  background-color: #1c1d1d;
+  background-color: #0B0B0A;
 }
 
 .nav-mobile-drawer.is-dark .nav-mobile-tab-switch {
@@ -574,7 +574,7 @@ svg.logo {
 }
 
 .nav-mobile-drawer.is-dark .nav-mobile-tab.is-active {
-  background: #1c1d1d;
+  background: #0B0B0A;
   color: #ededed;
   
 }
@@ -661,13 +661,13 @@ svg.logo {
   }
 }
 
-/* ── Dark Navbar for #1c1d1d pages (Legal / #term) ────────────────────────── */
+/* ── Dark Navbar for #0B0B0A pages (Legal / #term) ────────────────────────── */
 .nav-sticky-wrapper.nav-theme-dark {
-  background: #1c1d1d;
+  background: #0B0B0A;
 }
 
 .nav-sticky-wrapper.nav-theme-dark.is-scrolled {
-  background: rgba(28, 29, 29, 0.90);
+  background: rgba(11, 11, 10, 0.90);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   
@@ -792,3 +792,26 @@ svg.logo {
 @media (prefers-reduced-motion: reduce) {
   .nav-logo-tag__text { animation: none; }
 }
+
+
+/* ── Theme toggle ───────────────────────────────────────────────────── */
+.nav-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(17, 18, 16, 0.15);
+  border-radius: 8px;
+  background: transparent;
+  color: #110D0C;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.nav-theme-btn:hover { background: #F3F2EE; }
+.nav-theme-btn:focus-visible { outline: 2px solid rgba(234, 88, 12, 0.4); outline-offset: 2px; }
+.nav-sticky-wrapper.nav-theme-dark .nav-theme-btn { border-color: rgba(255, 255, 255, 0.18); color: #ededed; }
+.nav-sticky-wrapper.nav-theme-dark .nav-theme-btn:hover { background: rgba(255, 255, 255, 0.1); }
+@media (max-width: 860px) { .nav-right { gap: 10px; } }

@@ -203,8 +203,3 @@
   .hero-caret { animation: none; }
 }
 
-/* Phones: the decorative globe pushes the page down for no gain */
-@media (max-width: 768px) {
-  .hero-globe-wrapper { display: none; }
-  .hero-main-container { padding-bottom: 40px; }
-}

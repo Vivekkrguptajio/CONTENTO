@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../lib/theme";
 
 /* ── Brand logo: wordmark image + lime tagline box whose text rolls up from below ── */
 const BrandLogo = ({
@@ -13,18 +15,10 @@ const BrandLogo = ({
   isDark?: boolean;
   className?: string;
 }) =>
-  isDark ? (
-    <img
-      src="/assets/logo/pomera_logo_white_nav.webp"
-      alt="Pomera"
-      width={180}
-      height={48}
-      className={`nav-brand-img logo ${className}`}
-    />
-  ) : (
+  (
     <span className="nav-logo-box" aria-label="Pomera, alternative ad platform">
       <img
-        src="/assets/logo/pomera-logo-nav.png"
+        src={isDark ? "/assets/logo/pomera-logo-nav-white.png" : "/assets/logo/pomera-logo-nav.png"}
         alt=""
         width={180}
         height={48}
@@ -91,7 +85,8 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  const isLegalMode =
+  const theme = useTheme();
+  const isLegalPage =
     currentHash.includes("term") ||
     currentHash.includes("ftc") ||
     currentHash.includes("privacy") ||
@@ -99,6 +94,8 @@ export default function Navbar() {
     pathname.includes("terms") ||
     pathname.includes("ftc") ||
     pathname.includes("privacy");
+  // Legal pages are always dark; everywhere else follows the chosen theme
+  const isLegalMode = isLegalPage || theme === "dark";
 
   // Sticky header scroll shadow
   useEffect(() => {
@@ -171,7 +168,8 @@ export default function Navbar() {
 
             {/* Right: Sign In & Action Buttons & Mobile Hamburger Toggle */}
             <div className="nav-right">
-              {isCreatorPage && !isLegalMode ? (
+              <ThemeToggle />
+              {isCreatorPage && !isLegalPage ? (
                 <a href="/creator#join" className="nav-btn nav-btn--primary">
                   Join the founding cohort
                 </a>

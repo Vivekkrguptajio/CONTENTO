@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback, useState, useMemo } from "react"
 import createGlobe from "cobe"
+import { useTheme } from "../lib/theme"
 
 export interface PolaroidMarker {
   id: string
@@ -271,9 +272,12 @@ export function GlobePolaroids({
     }
   }, [handlePointerUp])
 
+  const theme = useTheme()
+
   useEffect(() => {
     if (!canvasRef.current) return
     const canvas = canvasRef.current
+    const isDarkTheme = theme === "dark"
     let globe: ReturnType<typeof createGlobe> | null = null
     let animationId: number
     let phi = 0
@@ -289,13 +293,13 @@ export function GlobePolaroids({
           height: width,
           phi: 0,
           theta: 0.04, // Perfectly centered equator to show bottom portion (Chile, Australia, etc.)
-          dark: 0,
-          diffuse: 1.5,
+          dark: isDarkTheme ? 1 : 0,
+          diffuse: isDarkTheme ? 1.2 : 1.5,
           mapSamples: 6000,
-          mapBrightness: 9,
-          baseColor: [1, 1, 1],
+          mapBrightness: isDarkTheme ? 8 : 9,
+          baseColor: isDarkTheme ? [0.3, 0.32, 0.27] : [1, 1, 1],
           markerColor: [0.784, 0.945, 0.208],
-          glowColor: [0.94, 0.93, 0.91],
+          glowColor: isDarkTheme ? [0.16, 0.19, 0.08] : [0.94, 0.93, 0.91],
           markerElevation: 0,
           markers: activeMarkers.map((m) => ({ location: m.location, size: 0.02, id: m.id })),
           arcs: [],
@@ -348,7 +352,7 @@ export function GlobePolaroids({
       if (animationId) cancelAnimationFrame(animationId)
       if (globe) globe.destroy()
     }
-  }, [activeMarkers, speed])
+  }, [activeMarkers, speed, theme])
 
   return (
     <div ref={wrapperRef} className={`relative aspect-square select-none ${className}`}>
