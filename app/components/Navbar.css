@@ -814,3 +814,7 @@ svg.logo {
 
 /* Dark lockup (also used by the footer): the descriptor text turns white */
 .nav-logo-box--dark .nav-logo-tag__text { color: #ffffff; }
+
+/* Navbar logo: a size smaller than the shared lockup (the footer keeps the full size) */
+.nav-sticky-wrapper .nav-logo-box { width: 148px; height: 39.5px; }
+@media (max-width: 640px) { .nav-sticky-wrapper .nav-logo-box { width: 124px; height: 33px; } }
