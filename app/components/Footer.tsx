@@ -58,7 +58,7 @@ export default function Footer() {
     { label: "How it works", href: "/#how-it-works" },
     { label: "Verification", href: "/#verification", desktopOnly: true },
     { label: "Pillars", href: "/#pillars" },
-    { label: "Report", href: "/#dashboard", desktopOnly: true },
+    { label: "Dashboard", href: "/#dashboard" },
     { label: "Founding Cohort", href: "/#founding-cohort" },
     { label: "For Agencies", href: "/agencies" },
     { label: "For Publishers", href: "/clippercircle" },

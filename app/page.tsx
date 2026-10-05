@@ -7,7 +7,7 @@ import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
 import QuoteSection from "./components/QuoteSection";
 import TestimonialCard from "./components/TestimonialCard";
-import DashboardFeature from "./components/DashboardFeature";
+import DashboardPreviewSection from "./components/DashboardPreviewSection";
 import CampaignBanner from "./components/CampaignBanner";
 import BrandsContact from "./components/BrandsContact";
 import Faq from "./components/Faq";
@@ -26,7 +26,7 @@ export default function Home() {
         <BentoFeatures />
         <QuoteSection />
         <TestimonialCard />
-        <DashboardFeature />
+        <DashboardPreviewSection />
         <CampaignBanner />
         <BrandsContact />
         <Faq />

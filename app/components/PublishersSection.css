@@ -585,3 +585,8 @@ select.pb-inp {
 .pb-mk { background: var(--pb-lime); }
 /* the lime dot on the white "paid per verified view" pill reads as a signal green instead */
 .pb-reel__earn .pb-ldot { background: var(--pb-signal); }
+
+/* Dashboard preview section */
+.pb-dash__head { display: grid; justify-items: center; gap: 14px; margin-bottom: 36px; text-align: center; }
+.pb-dash__head .pb-lead { max-width: 560px; }
+.pb-dash__note { max-width: 680px; margin: 18px auto 0; text-align: center; }

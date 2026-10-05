@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { PomeraMark } from "./pomeraMark";
 import "./PublishersSection.css";
+import DashboardPreview from "./DashboardPreview";
 
 /* Set this to your form-handler URL (Google Apps Script, Formspree, your API…). Empty = form shows a WhatsApp fallback. */
 const FORM_ENDPOINT = "";
@@ -322,6 +323,19 @@ export default function PublishersSection() {
               <p className="pb-calc__note">The real rate is in every brief, before you start.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Your dashboard (preview) ─────────────────────── */}
+      <section className="pb-sec" id="dashboard">
+        <div className="pb-wrap">
+          <div className="pb-dash__head">
+            <p className="pb-eyebrow">Your dashboard</p>
+            <h2 className="pb-h2">Your briefs, proof and payouts in one place.</h2>
+            <p className="pb-lead">Pick a campaign, send your post link, and watch your views get verified. Paid every week by UPI.</p>
+          </div>
+          <DashboardPreview variant="publisher" />
+          <p className="pb-fine pb-dash__note">Preview with sample data. The ClipperCircle dashboard is in build. Until it ships, briefs and payouts come through the WhatsApp group.</p>
         </div>
       </section>
 
