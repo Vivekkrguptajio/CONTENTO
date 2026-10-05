@@ -70,10 +70,10 @@ export default function BentoFeatures() {
                 <div className="bento-cpm-stat-row">
                   <div className="bento-cpm-val-wrap">
                     <span className="bento-cpm-curr">₹</span>
-                    <span className="bento-cpm-blank" aria-hidden="true" />
+                    <span className="bento-cpm-amount pm-num">50</span>
                     <span className="bento-cpm-unit">/ 1K views</span>
                   </div>
-                  <span className="bento-cpm-badge">Agreed before launch</span>
+                  <span className="bento-cpm-badge">Example rate</span>
                 </div>
 
                 <div className="bento-cpm-compare">
@@ -116,14 +116,14 @@ export default function BentoFeatures() {
                 {/* 2. Verified views */}
                 <div className="bento-billing-card bento-billing-card--active">
                   <span className="bento-billing-card__lbl">Verified views</span>
-                  <span className="bento-billing-card__val pm-num">10,00,000</span>
+                  <span className="bento-billing-card__val pm-num">9,64,300</span>
                   <span className="bento-billing-card__sub">Billed at the agreed rate</span>
                 </div>
 
                 {/* 3. Under-delivering */}
                 <div className="bento-billing-card">
-                  <span className="bento-billing-card__lbl">Under-delivery</span>
-                  <span className="bento-billing-card__val pm-num">Not billed</span>
+                  <span className="bento-billing-card__lbl">Shortfall</span>
+                  <span className="bento-billing-card__val pm-num">35,700</span>
                   <span className="bento-billing-card__sub">Extends, or the shortfall isn’t charged</span>
                 </div>
 
