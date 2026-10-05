@@ -1,5 +1,5 @@
 /* Server-safe (no React): the key and the pre-paint script used by layout.tsx */
-export const THEME_KEY = "pomera-theme";
+export const THEME_KEY = "pomera-theme-v2"; // bumped so choices saved during testing do not override the dark default
 
 /* Runs before first paint: the saved choice, otherwise dark (the default theme). */
 export const THEME_INIT_SCRIPT = `(function(){var t='dark';try{var s=localStorage.getItem('${THEME_KEY}');if(s==='light'||s==='dark'){t=s}}catch(e){}document.documentElement.setAttribute('data-theme',t)})();`;
