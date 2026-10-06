@@ -142,7 +142,7 @@ export default function Faq() {
 
         {/* Footer Support Note */}
         <div className="faq-footer-note">
-          <span>Need custom flight parameters?</span>
+          <span>Have a question that is not here?</span>
           <a
             href={whatsappLink("Hi Pomera Team, we have questions about campaign distribution.")}
             target="_blank"

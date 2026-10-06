@@ -245,3 +245,8 @@
   color: #5B5B58;
   text-wrap: balance;
 }
+
+@media (max-width: 560px) {
+  .hero-trust { display: flex; flex-direction: column; gap: 2px; }
+  .hero-trust__dot { display: none; }
+}

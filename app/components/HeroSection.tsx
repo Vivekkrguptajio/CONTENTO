@@ -126,7 +126,9 @@ export default function HeroSection() {
 
         {/* Line under the buttons */}
         <p className="hero-trust relative z-10 mx-auto mt-5 max-w-[680px] text-center">
-          Instagram Reels and YouTube Shorts · Publishers paid weekly by UPI
+          <span>Instagram Reels and YouTube Shorts</span>
+          <span className="hero-trust__dot" aria-hidden="true"> · </span>
+          <span>Publishers paid weekly by UPI</span>
         </p>
 
         {/* Globe Visualization (Responsive vertical reels preview) */}

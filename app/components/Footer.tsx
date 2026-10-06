@@ -146,9 +146,9 @@ export default function Footer() {
               </span>
               <div className="cr-footer-legal">
                 <a href="/privacy-policy" className="cr-footer-legal__link">Privacy policy</a>
-                <span className="cr-footer-dot">·</span>
+                <span className="cr-footer-dot" aria-hidden="true">·</span>
                 <a href="/terms" className="cr-footer-legal__link">Terms of service</a>
-                <span className="cr-footer-dot">·</span>
+                <span className="cr-footer-dot" aria-hidden="true">·</span>
                 <span className="cr-footer-sub-brand">
                   Publishers join through <a href="/clippercircle"><strong>ClipperCircle by Pomera</strong></a>
                 </span>

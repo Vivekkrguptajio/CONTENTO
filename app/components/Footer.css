@@ -331,3 +331,14 @@
 }
 .cr-footer-sub-brand a { color: inherit; text-decoration: none; }
 .cr-footer-sub-brand a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Phone: bigger tap targets in the footer, no stray separator dots */
+@media (max-width: 640px) {
+  .cr-footer-links { gap: 4px 20px; }
+  .cr-footer-links__item,
+  .cr-footer-legal__link { display: inline-flex; align-items: center; min-height: 40px; }
+  .cr-footer-legal { flex-direction: column; align-items: flex-start; gap: 0; }
+  .cr-footer-dot { display: none; }
+  .cr-footer-sub-brand { padding: 8px 0 4px; }
+  .cr-footer-sub-brand a { display: inline-flex; align-items: center; min-height: 32px; }
+}
