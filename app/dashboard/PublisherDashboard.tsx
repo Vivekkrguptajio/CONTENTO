@@ -95,20 +95,16 @@ function ProofCard() {
   return (
     <section className="db-card">
       <div className="db-card__head">
-        <div><h2 className="db-card__title">Submit your proof</h2><p className="db-card__sub">So your views can be verified and paid.</p></div>
+        <div><h2 className="db-card__title">Submit your post</h2><p className="db-card__sub">So we can find your post and pay you.</p></div>
       </div>
       <div className="db-card__body" style={{ display: "grid", gap: 14 }}>
         <ol className="db-steps">
           <li>Post from your own account with the paid partnership label on.</li>
           <li>Paste your post link below.</li>
-          <li>On day 7, upload a screenshot of your Insights.</li>
+          <li>That is it. We pull your views from the platform and count them on day 7.</li>
         </ol>
         <input className="db-input" placeholder="https://instagram.com/reel/…" aria-label="Post link" />
-        <div className="db-drop">
-          <b style={{ color: "var(--pm-c-text)", fontWeight: 500 }}>Insights screenshot</b>
-          Drag a file here, or choose one on day 7
-        </div>
-        <button type="button" className="db-btn db-btn--ink" disabled>Submit proof</button>
+        <button type="button" className="db-btn db-btn--ink" disabled>Submit post</button>
       </div>
     </section>
   );
@@ -224,7 +220,7 @@ function Profile() {
     <section className="db-card">
       <div className="db-card__head"><div><h2 className="db-card__title">Profile</h2><p className="db-card__sub">Used only to match you to campaigns and pay you.</p></div></div>
       <div className="db-card__body" style={{ display: "grid", gap: 14, maxWidth: 520 }}>
-        {[["Instagram handle", "@sample.editor"], ["YouTube channel", "Sample editor"], ["UPI ID", "sample@upi"], ["What you post", "Beauty and skincare, Fashion"], ["Languages", "Hindi, English"]].map(([l, v]) => (
+        {[["Instagram handle", "@sample.publisher"], ["YouTube channel", "Sample editor"], ["UPI ID", "sample@upi"], ["What you post", "Beauty and skincare, Fashion"], ["Languages", "Hindi, English"]].map(([l, v]) => (
           <label key={l} style={{ display: "grid", gap: 6, fontSize: 13.5, fontWeight: 500 }}>{l}<input className="db-input" defaultValue={v} /></label>
         ))}
         <button type="button" className="db-btn db-btn--ink" style={{ justifySelf: "start" }} disabled>Save changes</button>
@@ -234,7 +230,7 @@ function Profile() {
 }
 
 const TITLES: Record<string, [string, string]> = {
-  home: ["Hi, @sample.editor", "Founding cohort · paid per view, not per follower"],
+  home: ["Hi, @sample.publisher", "Founding cohort · paid per view, not per follower"],
   campaigns: ["Campaigns", "Every brief shows the rate and the maximum per post"],
   posts: ["My posts", "Verified views are counted on day 7"],
   payouts: ["Payouts", "Weekly by UPI"],

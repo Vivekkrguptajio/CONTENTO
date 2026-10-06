@@ -7,8 +7,8 @@
   width: 100%;
   background: 
     /* Glow is sized to die out before the bottom edge, so it melts into the white section below */
-    radial-gradient(ellipse 90% 42% at 50% 58%, rgba(242, 251, 214, 0.95) 0%, rgba(242, 251, 214, 0.45) 45%, rgba(255, 255, 255, 0) 100%),
-    linear-gradient(180deg, #ffffff 0%, #ffffff 36%, rgba(242, 251, 214, 0.35) 62%, #ffffff 92%);
+    radial-gradient(ellipse 90% 42% at 50% 58%, rgba(200, 241, 53, 0.25) 0%, rgba(200, 241, 53, 0.1) 45%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 36%, rgba(200, 241, 53, 0.05) 62%, #ffffff 92%);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -213,7 +213,35 @@
   background: #C8F135;
 }
 
-/* Phones: the typed word sits on its own line; scale it so the longest word never overflows */
-@media (max-width: 767px) {
-  .hero-typed { font-size: min(1em, 8vw); line-height: 1.2; padding-left: 0.5em; padding-right: 0.5em; }
+/* Rotating line: Geist 500, 28 to 36 px. Line 1 is fixed: the chip reserves the width of the
+   longest word, so only the typed letters change. Line 2 is static. Nothing else moves. */
+.hero-rot {
+  display: block;
+  font-size: clamp(28px, 2.9vw, 32px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: var(--pomera-ink, #111210);
+}
+.hero-rot__l1 { display: block; white-space: nowrap; }
+.hero-rot__l2 { display: block; }
+.hero-slot { display: inline-grid; text-align: left; }
+.hero-slot > span { grid-area: 1 / 1; }
+.hero-slot__sizer { visibility: hidden; }
+/* very narrow phones: shrink slightly so the fixed first line always fits on one line */
+@media (max-width: 420px) { .hero-rot { font-size: min(28px, 6.3vw); } }
+
+/* even line breaks (no lonely last word) */
+.hero-headline, .hero-rot { text-wrap: balance; }
+
+/* the rotating words and their comma never split across lines */
+.hero-nw { white-space: nowrap; }
+
+/* Line under the buttons: Geist 400, 13 to 15 px, grey */
+.hero-trust {
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #5B5B58;
+  text-wrap: balance;
 }

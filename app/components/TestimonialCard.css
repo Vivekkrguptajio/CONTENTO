@@ -47,9 +47,9 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--pm-lime, #C8F135);
-  background: rgba(200, 241, 53, 0.08);
-  border: 1px solid rgba(200, 241, 53, 0.25);
+  color: #B8B8B2;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 5px 14px;
   border-radius: var(--pm-radius-sm, 6px);
 }

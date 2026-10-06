@@ -395,8 +395,8 @@ export function GlobePolaroids({
             {/* Reels Phone-Style Vertical Card (9:16 Aspect Ratio) */}
             <div
               style={{
-                width: isMobile ? 58 : 68,
-                height: isMobile ? 102 : 120,
+                width: isMobile ? 48 : 55,
+                height: isMobile ? 84 : 96,
                 position: "relative",
                 borderRadius: isMobile ? "10px" : "12px",
                 overflow: "hidden",
@@ -465,7 +465,7 @@ export function GlobePolaroids({
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  padding: isMobile ? "16px 3px 5px" : "22px 5px 6px",
+                  padding: isMobile ? "14px 2px 5px" : "19px 5px 6px",
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%)",
                   zIndex: 2,
@@ -477,7 +477,7 @@ export function GlobePolaroids({
                   style={{
                     display: "block",
                     fontFamily: "system-ui, -apple-system, sans-serif",
-                    fontSize: isMobile ? "8.5px" : "10px",
+                    fontSize: isMobile ? "7.8px" : "9px",
                     fontWeight: 600,
                     color: "#ffffff",
                     letterSpacing: "0.01em",

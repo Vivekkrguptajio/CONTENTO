@@ -44,7 +44,7 @@ const FAQS = [
   { q: "What is a clipper?", a: "A video editor who posts brand videos on their own account and gets paid for every verified view. You edit and you publish; that’s what brands pay for." },
   { q: "Do I have to pay anything?", a: "No. Joining is free, always. Pomera will never ask you for money." },
   { q: "How many followers do I need?", a: "None. There is no follower minimum. What matters is whether people watch your edits." },
-  { q: "Will you post from my account or ask for my password?", a: "Never. You post yourself. We only need your post link and a screenshot of your Insights." },
+  { q: "Will you post from my account or ask for my password?", a: "Never. You post yourself. We only need your post link. We pull the views for it ourselves." },
   { q: "When does the first campaign start?", a: "We’re onboarding the founding cohort now. First campaigns start in November 2026, and founding clippers get them first." },
   { q: "How and when do I get paid?", a: "Every week by UPI, for posts verified that week. Verified views are counted on day 7 after you post." },
   { q: "Why do posts need a paid label?", a: "Indian advertising rules (ASCI) require paid posts to be labelled. It protects you and your account, and it takes one tap. A post without the label is not counted and not paid until it is fixed." },

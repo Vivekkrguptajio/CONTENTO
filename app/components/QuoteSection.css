@@ -57,3 +57,15 @@
     margin-bottom: 32px;
   }
 }
+
+/* "From the founder": labels this as a founder note, not a customer testimonial */
+.qt-label {
+  margin: 0 0 18px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6F6F6A;
+}
+.qt-author__photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; }

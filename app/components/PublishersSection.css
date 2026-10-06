@@ -133,7 +133,7 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(ellipse 80% 42% at 50% 66%, rgba(242, 251, 214, 0.95) 0%, rgba(242, 251, 214, 0.4) 55%, transparent 100%),
+    radial-gradient(ellipse 80% 42% at 50% 66%, rgba(200, 241, 53, 0.3) 0%, rgba(200, 241, 53, 0.08) 55%, transparent 100%),
     #ffffff;
 }
 @media (min-width: 1200px) { .pb-hero { padding-top: 88px; } }
@@ -590,3 +590,12 @@ select.pb-inp {
 .pb-dash__head { display: grid; justify-items: center; gap: 14px; margin-bottom: 36px; text-align: center; }
 .pb-dash__head .pb-lead { max-width: 560px; }
 .pb-dash__note { max-width: 680px; margin: 18px auto 0; text-align: center; }
+
+/* Form errors (shown under each field) and the "what happens next" list */
+.pb-err { font-size: 13px; line-height: 1.35; font-weight: 500; color: var(--pm-danger, #9A1F1F); }
+.pb-inp[aria-invalid="true"] { border-color: var(--pm-danger, #9A1F1F); }
+.pb-consent input[aria-invalid="true"] { outline: 2px solid var(--pm-danger, #9A1F1F); outline-offset: 2px; }
+.pb-fld .pb-fine { font-weight: 400; }
+.pb-next { display: grid; gap: 12px; margin: 18px 0 0; padding: 0; list-style: none; }
+.pb-next li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; font-size: 15px; line-height: 1.45; color: var(--pb-g600); }
+.pb-next b { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: var(--pb-ink); color: var(--pb-lime); font-size: 12px; font-weight: 500; }

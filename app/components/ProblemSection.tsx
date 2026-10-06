@@ -54,8 +54,7 @@ export default function ProblemSection() {
           <div className="pr-answer__copy">
             <p className="pr-answer__kicker">The opposite</p>
             <p className="pr-answer__main">
-              Pomera sells the opposite: a fixed price, a verified unit, and payment only on delivery.{" "}
-              <span className="pr-hl">You know your number before you spend.</span>
+              Pomera sells the opposite: a fixed rate, a verified view, and a bill only for what was delivered.
             </p>
           </div>
 
@@ -70,7 +69,7 @@ export default function ProblemSection() {
               <span>100%</span>
             </div>
             <p className="pr-answer__note">
-              Pomera doesn’t replace your Meta or Google ads. It’s the part of your budget that buys certainty, typically <span style={{ whiteSpace: "nowrap" }}>10–20%</span>.
+              Pomera doesn’t replace your Meta or Google ads. We suggest starting with <span style={{ whiteSpace: "nowrap" }}>10–20%</span> of your paid social budget.
             </p>
           </div>
         </div>

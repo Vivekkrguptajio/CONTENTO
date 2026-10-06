@@ -30,7 +30,7 @@
   padding: 124px 0 72px;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(180deg, #F2FBD6 0%, #F8FCE9 50%, #ffffff 100%);
+  background: linear-gradient(180deg, #E3F5AE 0%, #F2FBD6 55%, #ffffff 100%);
 }
 @media (min-width: 1200px) { .ag-hero { padding: 156px 0 96px; } }
 

@@ -13,57 +13,63 @@ interface FaqItem {
 const FAQ_DATA: FaqItem[] = [
   {
     id: 1,
-    question: "How is Pomera different from running Meta or Google ads?",
+    question: "How is Pomera different from Meta or Google ads?",
     answer:
-      "Meta runs an auction, so your CPM moves with demand and can rise sharply in peak seasons like Diwali. Pomera sells a fixed CPM agreed before launch. Your video is edited and posted by an independent publisher from their own account, with the paid partnership label on, as Indian ad rules (ASCI) require. It reads like an editor's video, not an ad slot.",
+      "Meta and Google run auctions, so the price of your views changes with demand and can jump in peak seasons like Diwali. With Pomera, your rate per 1,000 verified views is fixed before the campaign starts. Independent publishers turn your footage into short videos and post them on Instagram Reels and YouTube Shorts from their own accounts, with the paid partnership label on, as ASCI requires. It reads like a regular post, not an ad slot.",
   },
   {
     id: 2,
-    question: "How do you verify that views are authentic human delivery?",
+    question: "Do I need to make the videos?",
     answer:
-      "Every post is tracked through its own link. We check the post and the platform analytics the publisher submits, review engagement ratios, view velocity and account history, and spot-check by hand. Views are counted on day 7 after posting, and views that don't hold up are not billed.",
+      "No. Send us what you already have: long-form videos, raw footage or product shots, plus a short brief with your claims and rules. Publishers edit it into short vertical videos.",
   },
   {
     id: 3,
-    question: "What happens if a campaign doesn't hit its target verified views?",
+    question: "How do you know the views are from real people?",
     answer:
-      "The campaign extends, or the shortfall is not billed. If you commit to 10,00,000 views and 8,00,000 are verified, you are billed for 8,00,000 at most. We guarantee the price and the billing. We don't guarantee virality, because nobody honestly can.",
+      "Every post has its own tracking link. We pull each post’s platform data and review engagement ratios, how fast views come in, and the account’s history. We also spot-check posts by hand. Views are counted 7 days after each post goes live, and views that don’t hold up are not billed.",
   },
   {
     id: 4,
-    question: "Why work with Pomera instead of negotiating with influencers directly?",
+    question: "What if a post goes off-brief?",
     answer:
-      "Direct outreach means negotiating individual rates, chasing deliverables, and carrying all the risk if a video flops. With Pomera you agree one rate with us, we source and brief the publishers, check every post and handle payouts, and you pay only for views that are verified.",
-  },
-  {
-    id: 7,
-    question: "What does my rate cover? Is it the same as what publishers earn?",
-    answer:
-      "No. Your fixed ₹CPM is all-in. It covers publisher payouts, verification, reporting and our support. Publishers see their own rate in each brief.",
+      "Pomera checks every post. You can also flag a post within 48 hours of it going live. A flagged post isn’t billed while we review it, and we ask the publisher to fix it or take it down.",
   },
   {
     id: 5,
-    question: "What platforms does Pomera distribute on?",
+    question: "What happens if a campaign doesn’t reach its target views?",
     answer:
-      "We distribute short-form video primarily across Instagram Reels and YouTube Shorts, where user engagement and short-form consumption in India are highest.",
+      "You’re never billed for the shortfall. Say your budget covers up to 10,00,000 verified views and 8,00,000 are verified: you pay for 8,00,000, and the rest of your budget comes back to your balance. We guarantee the price and the billing. We don’t guarantee virality, because nobody honestly can.",
   },
   {
     id: 6,
-    question: "What is the minimum budget to get started?",
+    question: "What does my rate cover?",
     answer:
-      "Your first campaign is a free pilot for founding brands: we run it, you see the report, then you decide. After that, the minimum campaign is ₹10,000 and you are billed only for verified views at the fixed rate. You get a report with every post link, so you can inspect performance before scaling spend.",
+      "Everything: publisher payouts, verification, reporting and support. There are no other fees. Publishers are paid from your rate, and their pay is set separately for each campaign.",
+  },
+  {
+    id: 7,
+    question: "Why use Pomera instead of working with influencers directly?",
+    answer:
+      "Going direct means negotiating rates one by one, chasing deliverables, and carrying the risk if a video flops. With Pomera you pay one fixed rate. We find and brief the publishers, check every post and pay them, and you pay only for verified views.",
   },
   {
     id: 8,
-    question: "When do campaigns start?",
+    question: "What does it cost to start?",
     answer:
-      "We are onboarding the founding cohort now. First campaigns start in November 2026, and pilot brands are booked in first.",
+      "Your first campaign is a free pilot for founding brands. We run it, you see the report with every post link, then you decide. After that, the minimum campaign is ₹10,000, billed only for verified views at your fixed rate.",
   },
   {
     id: 9,
-    question: "I work with an agency. Can I still contact Pomera directly?",
+    question: "When do campaigns start?",
     answer:
-      "Yes. If an agency already brought you to Pomera, mention it in the form and we will work through them. We never pitch an agency's clients behind their back.",
+      "We’re onboarding founding brands now. First campaigns start in November 2026, and pilot brands are booked in first.",
+  },
+  {
+    id: 10,
+    question: "I work with an agency. Can they run Pomera for me?",
+    answer:
+      "Yes. Mention your agency in the form and we’ll work through them. We never pitch an agency’s clients behind their back.",
   },
 ];
 

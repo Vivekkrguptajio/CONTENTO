@@ -167,7 +167,7 @@
 .db-chart text { font-family: var(--font-geist-mono), monospace; font-size: 11px; fill: var(--pm-c-text-3); }
 .db-chart .grid { stroke: var(--pm-c-line); stroke-width: 1; }
 .db-chart .line { fill: none; stroke: var(--pm-c-text); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
-.db-chart .area { fill: var(--pm-c-accent-tint); }
+.db-chart .area { fill: var(--pm-c-surface-2); }
 .db-chart .pt { fill: var(--pm-c-surface); stroke: var(--pm-c-text); stroke-width: 2; }
 .db-chart .bar { fill: var(--pm-c-text); }
 .db-chart .bar--soft { fill: var(--pm-c-line-strong); }

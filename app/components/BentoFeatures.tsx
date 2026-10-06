@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import "./BentoFeatures.css";
 
 /* ── Custom SVGs for Bento Cards ──────────────────────────────────── */
@@ -11,10 +11,11 @@ const LockIcon = () => (
   </svg>
 );
 
-const ShieldCheckIcon = () => (
+const UsersIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="M9 12l2 2 4-4" />
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
   </svg>
 );
 
@@ -27,16 +28,7 @@ const RupeeIcon = () => (
   </svg>
 );
 
-const CheckCircleIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="m9 12 2 2 4-4" />
-  </svg>
-);
-
 export default function BentoFeatures() {
-  const [showTooltip, setShowTooltip] = useState(true);
-
   return (
     <section className="bento-section" id="pillars" aria-label="Key Product Features">
       <div className="bento-container">
@@ -45,7 +37,7 @@ export default function BentoFeatures() {
           <span className="bento-pill-tag">POMERA PILLARS</span>
           <h2 className="bento-main-heading">The platform built for certainty.</h2>
           <p className="bento-main-sub">
-            Everything a D2C or ecommerce brand needs to buy short-form distribution like media space.
+            Buy short-form video distribution the way you buy media: a fixed rate, a known unit, a clear bill.
           </p>
         </div>
 
@@ -59,9 +51,9 @@ export default function BentoFeatures() {
                 <span className="bento-card__icon-box"><LockIcon /></span>
                 <span className="bento-card__status pm-num">NO AUCTION DRIFT</span>
               </div>
-              <h3 className="bento-card__title">Fixed ₹CPM</h3>
+              <h3 className="bento-card__title">A fixed rate</h3>
               <p className="bento-card__desc">
-                Agree your rate before launch. No auction drift, no festive spikes, no surprise bills. The rate is all-in: publisher payouts, verification and reporting are included.
+                Your rate per 1,000 verified views is fixed before launch. No auction, no festive spikes. It covers publisher payouts, verification and reporting.
               </p>
             </div>
 
@@ -104,6 +96,8 @@ export default function BentoFeatures() {
             </div>
 
             <div className="bento-card__visual bento-card__visual--billing">
+              <div className="bento-billing-wrap">
+              <span className="bento-example-tag">Example</span>
               <div className="bento-billing-grid">
                 
                 {/* 1. Target views */}
@@ -128,6 +122,7 @@ export default function BentoFeatures() {
                 </div>
 
               </div>
+              </div>
             </div>
           </div>
 
@@ -136,67 +131,31 @@ export default function BentoFeatures() {
         {/* ── BOTTOM ROW ───────────────────────────────────────────── */}
         <div className="bento-row bento-row--bottom">
           
-          {/* Card 3: How views are verified (Left, col-span-7) */}
+          {/* Card 3: No follower minimum (Left, col-span-7) */}
           <div className="bento-card bento-card--bot">
             <div className="bento-card__header">
               <div className="bento-card__badge-row">
-                <span className="bento-card__icon-box"><ShieldCheckIcon /></span>
-                <span className="bento-card__status pm-num">VERIFIED DELIVERY</span>
+                <span className="bento-card__icon-box"><UsersIcon /></span>
+                <span className="bento-card__status pm-num">NO GATEKEEPING</span>
               </div>
-              <h3 className="bento-card__title">Checked, then billed</h3>
+              <h3 className="bento-card__title">No follower minimum</h3>
               <p className="bento-card__desc">
-                Every post is checked against its tracked link and the analytics the publisher submits, with manual spot-checks, before a view is billed.
+                Publishers are picked for reach in your category, not follower count.
               </p>
             </div>
 
             <div className="bento-card__visual bento-card__visual--bot">
-              <div className="bento-bot-wrapper">
-                
-                {/* Floating Dark Popup Menu */}
-                {showTooltip && (
-                  <div className="bento-bot-popover">
-                    <div className="bento-bot-popover__header">
-                      <span className="bento-bot-popover__shield">
-                        <ShieldCheckIcon />
-                      </span>
-                      <span>How a view gets verified</span>
-                    </div>
-
-                    <div className="bento-bot-popover__list">
-                      <div className="bento-bot-row">
-                        <span>Tracked link matched</span>
-                        <span className="bento-bot-pass pm-num">Step 1</span>
-                      </div>
-                      <div className="bento-bot-row">
-                        <span>Publisher analytics checked</span>
-                        <span className="bento-bot-pass pm-num">Step 2</span>
-                      </div>
-                      <div className="bento-bot-row">
-                        <span>Spot-checked by hand</span>
-                        <span className="bento-bot-pass pm-num">Step 3</span>
-                      </div>
-                      <div className="bento-bot-row">
-                        <span>Views that don’t hold up</span>
-                        <span className="bento-bot-filtered pm-num">Not billed</span>
-                      </div>
-                    </div>
-
-                    <div className="bento-bot-popover__arrow" />
+              <div className="bento-cpm-widget bento-pick">
+                <div className="bento-cpm-compare">
+                  <div className="bento-cpm-bar bento-cpm-bar--pomera">
+                    <span className="bento-cpm-bar-label">Picked for</span>
+                    <span className="bento-cpm-bar-val pm-num">Reach in your category</span>
                   </div>
-                )}
-
-                {/* Pill Button with Pointer */}
-                <div className="bento-bot-trigger-wrap">
-                  <button
-                    type="button"
-                    className="bento-bot-pill"
-                    onClick={() => setShowTooltip(!showTooltip)}
-                  >
-                    <CheckCircleIcon />
-                    <span>How we check</span>
-                  </button>
+                  <div className="bento-cpm-bar bento-cpm-bar--auction">
+                    <span className="bento-cpm-bar-label">Not picked on</span>
+                    <span className="bento-cpm-bar-val pm-num">Follower count</span>
+                  </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -216,30 +175,12 @@ export default function BentoFeatures() {
 
             <div className="bento-card__visual bento-card__visual--india">
               <div className="bento-india-chips">
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>INR (₹) Direct Billing</span>
-                </div>
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>GST Invoicing</span>
-                </div>
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>Weekly UPI Payouts</span>
-                </div>
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>WhatsApp Brand Desk</span>
-                </div>
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>Reels &amp; YouTube Shorts</span>
-                </div>
-                <div className="bento-india-chip">
-                  <span className="bento-india-chip__dot" />
-                  <span>Bengaluru Operations</span>
-                </div>
+                <div className="bento-india-chip"><span>₹ billing</span></div>
+                <div className="bento-india-chip"><span>GST invoices</span></div>
+                <div className="bento-india-chip"><span>Weekly UPI payouts to publishers</span></div>
+                <div className="bento-india-chip"><span>WhatsApp support</span></div>
+                <div className="bento-india-chip"><span>Reels and Shorts</span></div>
+                <div className="bento-india-chip"><span>Run from Bengaluru</span></div>
               </div>
             </div>
           </div>

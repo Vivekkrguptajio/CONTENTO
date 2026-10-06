@@ -1,14 +1,12 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import VerificationLayer from "./components/VerificationLayer";
-import TrustVerification from "./components/TrustVerification";
 import ProblemSection from "./components/ProblemSection";
 import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
 import QuoteSection from "./components/QuoteSection";
 import TestimonialCard from "./components/TestimonialCard";
 import DashboardPreviewSection from "./components/DashboardPreviewSection";
-import CampaignBanner from "./components/CampaignBanner";
 import BrandsContact from "./components/BrandsContact";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
@@ -22,12 +20,10 @@ export default function Home() {
         <ProblemSection />
         <SolutionSteps />
         <VerificationLayer />
-        <TrustVerification />
         <BentoFeatures />
+        <DashboardPreviewSection />
         <QuoteSection />
         <TestimonialCard />
-        <DashboardPreviewSection />
-        <CampaignBanner />
         <BrandsContact />
         <Faq />
       </main>

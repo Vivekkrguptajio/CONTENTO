@@ -8,20 +8,21 @@ import { AreaChart } from "./charts";
 /* All data below is SAMPLE data for a design preview. Pomera has no delivery data yet. */
 
 const inr = (n: number) => n.toLocaleString("en-IN");
-const RATE = 120; // sample agreed rate per 1,000 verified views
+const RATE = 50; // sample agreed rate per 1,000 verified views (same example as the pillars card)
+const BUDGET = 40000; // sample committed budget
 
 const DAILY = [4200, 6100, 7800, 9400, 8800, 12300, 15100, 14200, 13800, 17200, 19800, 18400, 21100, 16000];
 const DAYS = DAILY.map((_, i) => `Day ${i + 1}`);
 
 type Status = "verified" | "counting" | "review";
 const POSTS: { src: string; title: string; who: string; platform: string; posted: string; views: number; status: Status; day?: number }[] = [
-  { src: "/videos/reel-bike.mp4", title: "Summer launch · Reel 1", who: "@sample.editor1", platform: "Instagram", posted: "Day 2", views: 42300, status: "verified" },
-  { src: "/videos/reel-dog.mp4", title: "Summer launch · Short 1", who: "@sample.editor2", platform: "YouTube Shorts", posted: "Day 2", views: 38900, status: "verified" },
-  { src: "/videos/reel-snow.mp4", title: "Summer launch · Reel 2", who: "@sample.editor3", platform: "Instagram", posted: "Day 3", views: 29100, status: "verified" },
-  { src: "/videos/reel-rafting.mp4", title: "Summer launch · Reel 3", who: "@sample.editor4", platform: "Instagram", posted: "Day 4", views: 21700, status: "verified" },
-  { src: "/videos/clip1.mp4", title: "Summer launch · Reel 4", who: "@sample.editor5", platform: "Instagram", posted: "Day 9", views: 31400, status: "counting", day: 5 },
-  { src: "/videos/reel-bike.mp4", title: "Summer launch · Short 2", who: "@sample.editor6", platform: "YouTube Shorts", posted: "Day 12", views: 20800, status: "counting", day: 2 },
-  { src: "/videos/reel-dog.mp4", title: "Summer launch · Reel 5", who: "@sample.editor7", platform: "Instagram", posted: "Day 6", views: 0, status: "review" },
+  { src: "/videos/reel-bike.mp4", title: "Summer launch · Reel 1", who: "@sample.publisher1", platform: "Instagram", posted: "Day 2", views: 42300, status: "verified" },
+  { src: "/videos/reel-dog.mp4", title: "Summer launch · Short 1", who: "@sample.publisher2", platform: "YouTube Shorts", posted: "Day 2", views: 38900, status: "verified" },
+  { src: "/videos/reel-snow.mp4", title: "Summer launch · Reel 2", who: "@sample.publisher3", platform: "Instagram", posted: "Day 3", views: 29100, status: "verified" },
+  { src: "/videos/reel-rafting.mp4", title: "Summer launch · Reel 3", who: "@sample.publisher4", platform: "Instagram", posted: "Day 4", views: 21700, status: "verified" },
+  { src: "/videos/clip1.mp4", title: "Summer launch · Reel 4", who: "@sample.publisher5", platform: "Instagram", posted: "Day 9", views: 31400, status: "counting", day: 5 },
+  { src: "/videos/reel-bike.mp4", title: "Summer launch · Short 2", who: "@sample.publisher6", platform: "YouTube Shorts", posted: "Day 12", views: 20800, status: "counting", day: 2 },
+  { src: "/videos/reel-dog.mp4", title: "Summer launch · Reel 5", who: "@sample.publisher7", platform: "Instagram", posted: "Day 6", views: 0, status: "review" },
 ];
 
 const NAV: NavItem[] = [
@@ -38,7 +39,7 @@ function StatusPill({ s, day }: { s: Status; day?: number }) {
   return <span className="db-pill db-pill--info"><i />Under review</span>;
 }
 
-function Overview({ safe = false }: { safe?: boolean }) {
+function Overview() {
   const [metric, setMetric] = useState<"views" | "billed">("views");
   const [filter, setFilter] = useState<"all" | Status>("all");
 
@@ -57,45 +58,22 @@ function Overview({ safe = false }: { safe?: boolean }) {
           <span className="db-kpi__val">{inr(total)}</span>
           <span className="db-kpi__note">Counted on day 7 after each post</span>
         </div>
-        {safe ? (
-          <>
-            <div className="db-card db-kpi">
-              <span className="db-label">Posts verified</span>
-              <span className="db-kpi__val">11<span style={{ fontSize: 14, color: "var(--pm-c-text-2)" }}> of 18</span></span>
-              <span className="db-kpi__note">Every post is checked before it is billed</span>
-            </div>
-            <div className="db-card db-kpi">
-              <span className="db-label">Delivery target</span>
-              <span className="db-kpi__val">{pct}%</span>
-              <span className="db-kpi__note">of {inr(target)} verified views</span>
-            </div>
-            <div className="db-card db-kpi db-kpi--ink">
-              <span className="db-label">Budget used</span>
-              <span className="db-kpi__val">55%</span>
-              <div className="db-meter"><i style={{ width: "55%" }} /></div>
-              <span className="db-kpi__note">of your committed budget</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="db-card db-kpi">
-              <span className="db-label">Agreed rate</span>
-              <span className="db-kpi__val">₹{RATE}<span style={{ fontSize: 14, color: "var(--pm-c-text-2)" }}> / 1K</span></span>
-              <span className="db-kpi__note">Fixed before launch. It does not move.</span>
-            </div>
-            <div className="db-card db-kpi">
-              <span className="db-label">Billed so far</span>
-              <span className="db-kpi__val">₹{inr(billed)}</span>
-              <span className="db-kpi__note">Verified views only</span>
-            </div>
-            <div className="db-card db-kpi db-kpi--ink">
-              <span className="db-label">Budget committed</span>
-              <span className="db-kpi__val">₹40,000</span>
-              <div className="db-meter"><i style={{ width: `${Math.round((billed / 40000) * 100)}%` }} /></div>
-              <span className="db-kpi__note">{Math.round((billed / 40000) * 100)}% used · ₹{inr(40000 - billed)} left</span>
-            </div>
-          </>
-        )}
+        <div className="db-card db-kpi">
+          <span className="db-label">Billed so far</span>
+          <span className="db-kpi__val">₹{inr(billed)}</span>
+          <span className="db-kpi__note">Verified views only</span>
+        </div>
+        <div className="db-card db-kpi">
+          <span className="db-label">Achieved rate</span>
+          <span className="db-kpi__val">₹{RATE}<span style={{ fontSize: 14, color: "var(--pm-c-text-2)" }}> / 1K</span></span>
+          <span className="db-kpi__note">Fixed before launch</span>
+        </div>
+        <div className="db-card db-kpi">
+          <span className="db-label">Budget left</span>
+          <span className="db-kpi__val">₹{inr(BUDGET - billed)}</span>
+          <div className="db-meter"><i style={{ width: `${Math.round((billed / BUDGET) * 100)}%` }} /></div>
+          <span className="db-kpi__note">of ₹{inr(BUDGET)} committed</span>
+        </div>
       </div>
 
       <div className="db-grid2">
@@ -106,10 +84,10 @@ function Overview({ safe = false }: { safe?: boolean }) {
                 <h2 className="db-card__title">Verified views per day</h2>
                 <p className="db-card__sub">Summer launch · sample brand</p>
               </div>
-              {!safe && <div className="db-seg" role="tablist" aria-label="Chart metric">
+              <div className="db-seg" role="tablist" aria-label="Chart metric">
                 <button type="button" className={metric === "views" ? "is-on" : ""} onClick={() => setMetric("views")}>Views</button>
                 <button type="button" className={metric === "billed" ? "is-on" : ""} onClick={() => setMetric("billed")}>Billed ₹</button>
-              </div>}
+              </div>
             </div>
             <div className="db-card__body">
               <AreaChart values={series} labels={DAYS} />
@@ -170,7 +148,7 @@ function Overview({ safe = false }: { safe?: boolean }) {
                       <td>{p.posted}</td>
                       <td className="num">{p.status === "review" ? "—" : inr(p.views)}{p.status === "counting" ? "*" : ""}</td>
                       <td><StatusPill s={p.status} day={p.day} /></td>
-                      <td className="num">{safe ? (p.status === "verified" ? "Billed" : p.status === "counting" ? "On day 7" : "On hold") : p.status === "verified" ? `₹${inr(Math.round((p.views / 1000) * RATE))}` : "—"}</td>
+                      <td className="num">{p.status === "verified" ? `₹${inr(Math.round((p.views / 1000) * RATE))}` : "—"}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -185,7 +163,7 @@ function Overview({ safe = false }: { safe?: boolean }) {
             <div className="db-card__head">
               <div>
                 <h2 className="db-card__title">Delivery target</h2>
-                <p className="db-card__sub">Your make-good protection</p>
+                
               </div>
               <span className="db-pill db-pill--ok"><i />On track</span>
             </div>
@@ -195,7 +173,7 @@ function Overview({ safe = false }: { safe?: boolean }) {
                 <span className="db-muted" style={{ fontSize: 13 }}>{inr(total)} of {inr(target)}</span>
               </div>
               <div className="db-meter"><i style={{ width: `${pct}%` }} /></div>
-              <p className="db-card__sub">If the campaign under-delivers, it extends, or the shortfall is not billed.</p>
+              <p className="db-card__sub">If the campaign under-delivers, we extend it or you aren&apos;t billed for the shortfall.</p>
             </div>
           </section>
 
@@ -208,11 +186,11 @@ function Overview({ safe = false }: { safe?: boolean }) {
             </div>
             <div className="db-card__body">
               <ol className="db-log">
-                <li className="is-done"><i /><div>Tracked link matched<small>@sample.editor4 · Reel 3</small></div></li>
-                <li className="is-done"><i /><div>Publisher analytics checked<small>@sample.editor3 · Reel 2</small></div></li>
-                <li className="is-done"><i /><div>Spot-check passed<small>@sample.editor1 · Reel 1</small></div></li>
-                <li className="is-done"><i /><div>Counted on day 7 and billed<small>@sample.editor2 · Short 1</small></div></li>
-                <li><i /><div>Analytics mismatch, under review<small>@sample.editor7 · Reel 5</small></div></li>
+                <li className="is-done"><i /><div>Tracked link matched<small>@sample.publisher4 · Reel 3</small></div></li>
+                <li className="is-done"><i /><div>Platform insights checked<small>@sample.publisher3 · Reel 2</small></div></li>
+                <li className="is-done"><i /><div>Spot-check passed<small>@sample.publisher1 · Reel 1</small></div></li>
+                <li className="is-done"><i /><div>Counted on day 7 and billed<small>@sample.publisher2 · Short 1</small></div></li>
+                <li><i /><div>Analytics mismatch, under review<small>@sample.publisher7 · Reel 5</small></div></li>
               </ol>
             </div>
           </section>
@@ -231,7 +209,7 @@ function Overview({ safe = false }: { safe?: boolean }) {
   );
 }
 
-function Campaigns({ safe = false }: { safe?: boolean }) {
+function Campaigns() {
   return (
     <section className="db-card">
       <div className="db-card__head">
@@ -241,7 +219,7 @@ function Campaigns({ safe = false }: { safe?: boolean }) {
         <table className="db-table">
           <thead><tr><th>Campaign</th><th>Status</th><th className="num">Target views</th><th className="num">Verified</th><th className="num">Rate / 1K</th><th className="num">Budget</th></tr></thead>
           <tbody>
-            <tr><td><b>Summer launch</b></td><td><span className="db-pill db-pill--ok"><i />Live</span></td><td className="num">3,00,000</td><td className="num">1,84,200</td><td className="num">{safe ? "Fixed" : `₹${RATE}`}</td><td className="num">{safe ? "Agreed" : "₹40,000"}</td></tr>
+            <tr><td><b>Summer launch</b></td><td><span className="db-pill db-pill--ok"><i />Live</span></td><td className="num">3,00,000</td><td className="num">1,84,200</td><td className="num">₹{RATE}</td><td className="num">₹{inr(BUDGET)}</td></tr>
             <tr><td><b>Festive push</b></td><td><span className="db-pill db-pill--plain"><i />Draft</span></td><td className="num">—</td><td className="num">—</td><td className="num">—</td><td className="num">—</td></tr>
           </tbody>
         </table>
@@ -279,8 +257,8 @@ function Billing() {
         <table className="db-table">
           <thead><tr><th>Invoice</th><th>Period</th><th className="num">Verified views</th><th className="num">Amount</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td><b>SAMPLE-0001</b></td><td>Week 1</td><td className="num">1,12,400</td><td className="num">₹13,488</td><td><span className="db-pill db-pill--ok"><i />Paid</span></td></tr>
-            <tr><td><b>SAMPLE-0002</b></td><td>Week 2</td><td className="num">71,800</td><td className="num">₹8,616</td><td><span className="db-pill db-pill--wait"><i />Due</span></td></tr>
+            <tr><td><b>SAMPLE-0001</b></td><td>Week 1</td><td className="num">1,12,400</td><td className="num">₹5,620</td><td><span className="db-pill db-pill--ok"><i />Paid</span></td></tr>
+            <tr><td><b>SAMPLE-0002</b></td><td>Week 2</td><td className="num">71,800</td><td className="num">₹3,590</td><td><span className="db-pill db-pill--wait"><i />Due</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -333,8 +311,8 @@ export function BrandDashboardView({ embedded = false, safe = false }: { embedde
         </button>
       }
     >
-      {tab === "overview" && <Overview safe={safe} />}
-      {tab === "campaigns" && <Campaigns safe={safe} />}
+      {tab === "overview" && <Overview />}
+      {tab === "campaigns" && <Campaigns />}
       {tab === "reports" && <Reports />}
       {tab === "billing" && <Billing />}
       {tab === "settings" && <Settings />}

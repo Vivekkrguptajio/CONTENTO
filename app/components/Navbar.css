@@ -35,72 +35,6 @@
 }
 
 /* ── 1. Top Announcement Bar (Lime Band with Ink Text — Rationed 5%) ─ */
-.nav-announcement {
-  width: 100%;
-  background: var(--pomera-ink, #111210);
-  color: var(--pomera-lime, #C8F135);
-  padding: 10px 24px;
-  min-height: 40px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-size: 13.5px;
-  letter-spacing: -0.01em;
-  font-weight: 500;
-}
-
-.nav-announcement-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-announcement-bold {
-  font-weight: 600;
-}
-
-.nav-announcement-divider {
-  opacity: 0.35;
-  font-weight: 400;
-}
-
-.nav-announcement-link {
-  color: var(--pomera-lime, #C8F135);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.15s ease;
-}
-
-.nav-announcement-link:hover {
-  opacity: 0.85;
-}
-
-.nav-announcement-close {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: var(--pomera-lime, #C8F135);
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  opacity: 0.75;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.15s ease;
-}
-
-.nav-announcement-close:hover {
-  opacity: 1;
-}
-
 /* ── 2. Navigation Header ────────────────────────────────────────── */
 .max-w-global {
   max-width: 1240px;
@@ -368,7 +302,7 @@ svg.logo {
 }
 
 .nav-mobile-toggle:focus-visible {
-  outline: 2px solid rgba(234, 88, 12, 0.4);
+  outline: 2px solid var(--pm-c-focus, #111210);
   outline-offset: 2px;
 }
 
@@ -626,29 +560,7 @@ svg.logo {
     padding: 16px;
   }
 
-  .nav-announcement {
-    padding: 10px 32px 10px 14px;
-    min-height: 38px;
-    font-size: 12px;
-    line-height: 1.3;
-  }
-
-  .nav-announcement-content {
-    display: block;
-    text-align: center;
-  }
-
-  .nav-announcement-bold,
-  .nav-announcement-divider {
-    display: none;
-  }
-
-  .nav-announcement-close {
-    right: 8px;
-    font-size: 16px;
-  }
-
-  .nav-signin-link {
+          .nav-signin-link {
     display: none;
   }
 
@@ -803,7 +715,7 @@ svg.logo {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .nav-theme-btn:hover { background: #F3F2EE; }
-.nav-theme-btn:focus-visible { outline: 2px solid rgba(234, 88, 12, 0.4); outline-offset: 2px; }
+.nav-theme-btn:focus-visible { outline: 2px solid var(--pm-c-focus, #111210); outline-offset: 2px; }
 .nav-sticky-wrapper.nav-theme-dark .nav-theme-btn { border-color: rgba(255, 255, 255, 0.18); color: #ededed; }
 .nav-sticky-wrapper.nav-theme-dark .nav-theme-btn:hover { background: rgba(255, 255, 255, 0.1); }
 @media (max-width: 860px) { .nav-right { gap: 10px; } }

@@ -22,7 +22,6 @@ export default function Navbar() {
     pathname.startsWith("/agency/") ||
     (isCreatorPage && currentHash.includes("agenc"));
 
-  const [bannerVisible, setBannerVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileActiveTab, setMobileActiveTab] = useState<"brands" | "creators">(
@@ -88,25 +87,6 @@ export default function Navbar() {
   return (
     <>
       <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgenciesPage && !isScrolled && !mobileMenuOpen ? "nav-over-hero" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
-        {/* ── 1. Top Announcement Bar (Explicit Publisher Routing) ── */}
-        {bannerVisible && !isCreatorPage && !isAgenciesPage && (
-          <aside className="nav-announcement" aria-label="Announcement">
-            <div className="nav-announcement-content">
-              <a href="/clippercircle" className="nav-announcement-link">
-                Publishers join through ClipperCircle, our publisher community &rarr;
-              </a>
-            </div>
-            <button
-              type="button"
-              className="nav-announcement-close"
-              onClick={() => setBannerVisible(false)}
-              aria-label="Close announcement"
-            >
-              &times;
-            </button>
-          </aside>
-        )}
-
         {/* ── 2. Sticky Navigation Header ───────────────────────────── */}
         <header className="nav-header">
           <div className="nav-container relative mx-auto flex max-w-global items-center justify-between gap-8">
@@ -131,7 +111,7 @@ export default function Navbar() {
                   href="/clippercircle"
                   className={`nav-link ${isCreatorPage ? "is-active" : ""}`}
                 >
-                  Publisher
+                  For publishers →
                 </a>
                 <a
                   href="/agencies"
@@ -155,7 +135,7 @@ export default function Navbar() {
                     href={isAgenciesPage ? "#partner" : "/#contact"}
                     className="nav-btn nav-btn--primary"
                   >
-                    {isAgenciesPage ? "Become a partner" : "Start a campaign"}
+                    {isAgenciesPage ? "Become a partner" : "Book a pilot"}
                   </a>
                   <a href="#faq" className="nav-btn nav-btn--secondary">
                     FAQs
@@ -187,7 +167,7 @@ export default function Navbar() {
       >
         <div
           className="nav-mobile-content"
-          style={{ paddingTop: bannerVisible && !isCreatorPage && !isAgenciesPage ? 110 : 68 }}
+          style={{ paddingTop: 68 }}
         >
           {/* Segmented Switcher: Brands | Publishers */}
           <div className="nav-mobile-tab-switch" role="tablist" aria-label="Audience Switcher">
@@ -237,7 +217,7 @@ export default function Navbar() {
               className={`nav-mobile-large-link ${isCreatorPage ? "is-active" : ""}`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Publisher
+              For publishers →
             </a>
             <a
               href="/agencies"
@@ -255,7 +235,7 @@ export default function Navbar() {
               className="nav-mobile-btn-primary"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span>{mobileActiveTab === "creators" ? "Join the founding cohort" : isAgenciesPage ? "Become a partner" : "Start a campaign"}</span>
+              <span>{mobileActiveTab === "creators" ? "Join the founding cohort" : isAgenciesPage ? "Become a partner" : "Book a pilot"}</span>
               <svg
                 width="16"
                 height="16"
@@ -278,7 +258,7 @@ export default function Navbar() {
       {!isHomePage && !isAgenciesPage && (
         <div
           className={`nav-fixed-spacer ${isLegalMode ? "nav-fixed-spacer--dark" : ""}`}
-          style={{ height: (bannerVisible && !isCreatorPage) ? 110 : 68 }}
+          style={{ height: 68 }}
           aria-hidden="true"
         />
       )}

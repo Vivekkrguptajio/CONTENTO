@@ -14,8 +14,8 @@
   --footer-card-half: min(660px, calc(50% - 24px));
   /* Lime glow rises from the card's left and right edges and drifts outward toward the page sides */
   background:
-    radial-gradient(ellipse 340px 70% at calc(50% - var(--footer-card-half)) 80%, rgba(242, 251, 214, 0.95) 0%, rgba(242, 251, 214, 0.45) 55%, transparent 100%),
-    radial-gradient(ellipse 340px 70% at calc(50% + var(--footer-card-half)) 80%, rgba(242, 251, 214, 0.95) 0%, rgba(242, 251, 214, 0.45) 55%, transparent 100%),
+    radial-gradient(ellipse 340px 70% at calc(50% - var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.38) 0%, rgba(200, 241, 53, 0.14) 55%, transparent 100%),
+    radial-gradient(ellipse 340px 70% at calc(50% + var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.38) 0%, rgba(200, 241, 53, 0.14) 55%, transparent 100%),
     /* Starts pure white so it melts into the FAQ section above */
     linear-gradient(to bottom, #ffffff 0%, #FBFBF7 55%);
   display: flex;
@@ -59,7 +59,7 @@
 
 .cr-footer-card__heading {
   font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.035em;
   color: var(--pm-ink, #111210);
@@ -329,3 +329,5 @@
 @media (max-width: 860px) {
   .cr-footer-links__item--desktop { display: none; }
 }
+.cr-footer-sub-brand a { color: inherit; text-decoration: none; }
+.cr-footer-sub-brand a:hover { text-decoration: underline; text-underline-offset: 3px; }

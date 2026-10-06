@@ -32,7 +32,7 @@ export default function TestimonialCard() {
             <div className="tc-spec-divider" />
             <div className="tc-spec-item">
               <span className="tc-spec-val pm-num">Fixed</span>
-              <span className="tc-spec-lbl">₹CPM, agreed before launch</span>
+              <span className="tc-spec-lbl">Rate fixed before launch</span>
             </div>
             <div className="tc-spec-divider" />
             <div className="tc-spec-item">

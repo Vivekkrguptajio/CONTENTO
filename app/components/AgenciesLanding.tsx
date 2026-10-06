@@ -35,7 +35,7 @@ const PERKS = [
 const FAQS = [
   { q: "Does Pomera replace Meta or Google ads?", a: "No. It’s a separate line in the plan, usually 10–20% of the paid social budget, for the part your client wants to be predictable. The rest stays where it is." },
   { q: "Who owns the client relationship?", a: "You do. We work through you and never pitch your clients directly." },
-  { q: "How are views verified?", a: "Every post is tracked through its link. We check the post and the analytics the publisher submits, spot-check by hand, and bill only the views that hold up. We’ll tell you exactly what we check on the call." },
+  { q: "How are views verified?", a: "Every post is tracked through its link. We check the post against platform insights we pull for each post, spot-check by hand, and bill only the views that hold up. We’ll tell you exactly what we check on the call." },
   { q: "Another platform charges a flat 10%. How is this different?", a: "That one is self-serve software on top of a rate you set. Pomera is a managed service: we source the publishers, write the briefs, run the campaign and handle payouts in ₹ through UPI. Our rate is all-in." },
   { q: "What if the campaign under-delivers?", a: "The campaign extends, or the shortfall is not billed. Your risk is capped by the budget you set." },
   { q: "Where do the publishers come from?", a: "They’re independent video editors who post from their own accounts. They join through ClipperCircle, our publisher community." },

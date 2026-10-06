@@ -5,16 +5,16 @@ import GlobePolaroids from "./GlobePolaroids";
 import "./HeroSection.css";
 
 const AUDIENCES = [
-  "Software",
-  "Consumer Products",
-  "Fintech",
-  "Real Estate",
-  "Ecommerce Brands",
-  "Personal Brands",
-  "Marketplaces",
-  "Mobile Apps",
-  "D2C Brands",
+  "D2C brands",
+  "beauty brands",
+  "fashion brands",
+  "food brands",
+  "fitness brands",
+  "tech brands",
 ];
+
+/* The longest option reserves the height of the rotating line, so the page never jumps. */
+const LONGEST = AUDIENCES.reduce((a, b) => (b.length > a.length ? b : a));
 
 const TYPE_MS = 70;
 const DELETE_MS = 35;
@@ -62,7 +62,7 @@ export default function HeroSection() {
           className="absolute left-1/2 -translate-x-1/2"
           style={{
             background:
-              "radial-gradient(50% 50% at 50% 50%, rgba(242,251,214,0.5) 0%, rgba(250,250,247,0.5) 45%, rgba(255,255,255,0) 75%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(200,241,53,0.08) 0%, rgba(250,250,247,0.5) 45%, rgba(255,255,255,0) 75%)",
             height: "1800px",
             top: "-350px",
             width: "2600px",
@@ -73,29 +73,37 @@ export default function HeroSection() {
       {/* ── Main Hero Content Wrapper ── */}
       <div className="hero-main-container relative flex flex-col items-center px-5 pt-[calc(var(--header-height)+5.5rem)] pb-12 sm:pt-[calc(var(--header-height)+7rem)] sm:pb-16 w-full max-w-[1200px] mx-auto">
         
-        {/* Eyebrow */}
-        <div className="relative z-10 mb-4 inline-flex items-center gap-2 font-mono text-[12px] font-medium tracking-[0.06em] text-[#5B5B58] uppercase">
-          <span></span>
-        </div>
+        {/* Label */}
+        <p className="hero-eyebrow relative z-10 mb-4 font-mono text-[12px] font-medium tracking-[0.06em] text-[#5B5B58] uppercase">
+          Alternative ad platform
+        </p>
 
-        {/* Display Headline */}
-        <h1
-          aria-label={`The Alternative ad platform. Built for ${AUDIENCES.join(", ")}.`}
-          className="hero-headline relative z-10 mt-3 max-w-[960px] text-center font-medium text-[#111210] tracking-[-0.035em] !text-[clamp(34px,6vw,52px)] lg:!text-[60px] leading-[1.05]">
-          <span aria-hidden="true">
-            The Alternative ad platform
-            <br />
-            Built for{" "}
-            <span className="hero-hl hero-typed block w-fit mx-auto mt-1 whitespace-nowrap rounded-[10px] px-3 pb-1 min-h-[1.25em] md:mt-0 md:inline-block md:min-h-0 md:mx-0 md:align-baseline">
-              {typed}
-              <span className="hero-caret" />
-            </span>
-          </span>
+        {/* Headline: the locked brand-facing tagline */}
+        <h1 className="hero-headline relative z-10 max-w-[960px] text-center font-medium text-[#111210] tracking-[-0.035em] !text-[40px] md:!text-[64px] leading-[1.05]">
+          Know your number before you spend.
         </h1>
 
-        {/* Subheadline */}
-        <p className="hero-subheadline relative z-10 mt-5 max-w-[640px] text-center font-normal text-[#5B5B58] !text-[18px] !leading-[1.5] mx-auto">
-          Pomera delivers verified views at a fixed ₹CPM through a network of independent publishers. You set your number upfront, and you pay only for views that are delivered and verified.
+        {/* Rotating line: lime box on the rotating words only */}
+        <p
+          className="hero-rot relative z-10 mt-5 mx-auto max-w-[880px] text-center"
+          aria-label={`Video ads for ${AUDIENCES.join(", ")}, billed only on verified views.`}
+        >
+          <span className="hero-rot__l1" aria-hidden="true">
+            Video ads for{" "}
+            <span className="hero-nw">
+              <span className="hero-hl hero-slot">
+                <span className="hero-slot__sizer">{LONGEST}</span>
+                <span className="hero-slot__live">{typed}<span className="hero-caret" /></span>
+              </span>
+              ,
+            </span>
+          </span>
+          <span className="hero-rot__l2" aria-hidden="true">billed only on verified views.</span>
+        </p>
+
+        {/* Paragraph */}
+        <p className="hero-subheadline relative z-10 mt-4 max-w-[560px] text-center font-normal text-[#5B5B58] !text-[19px] !leading-[1.5] mx-auto">
+          Set a budget and we fix your rate per 1,000 verified views, so you know what it buys before you spend. Independent publishers post your videos from their own accounts.
         </p>
 
         {/* CTA Buttons Row — 8px radius corners */}
@@ -105,7 +113,7 @@ export default function HeroSection() {
             className="pomera-btn-primary inline-flex items-center justify-center h-[52px] px-6 text-center font-medium text-[16px] leading-none whitespace-nowrap transition-all"
             style={{ borderRadius: "8px", backgroundColor: "#111210", borderColor: "#111210", color: "#FFFFFF" }}
           >
-            Book a free pilot
+            Book a pilot
           </a>
           <a
             href="#how-it-works"
@@ -115,6 +123,11 @@ export default function HeroSection() {
             See how it works
           </a>
         </div>
+
+        {/* Line under the buttons */}
+        <p className="hero-trust relative z-10 mx-auto mt-5 max-w-[680px] text-center">
+          Instagram Reels and YouTube Shorts · Publishers paid weekly by UPI
+        </p>
 
         {/* Globe Visualization (Responsive vertical reels preview) */}
         <div className="hero-globe-wrapper relative z-[3] mt-10 sm:mt-12 flex h-[380px] w-full justify-center md:h-[620px]">

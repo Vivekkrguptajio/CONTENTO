@@ -83,10 +83,10 @@ html { scroll-behavior: smooth; }
   --pm-c-surface: #141413;
   --pm-c-surface-2: #1C1C1A;
   --pm-c-line: #262624;
-  --pm-c-line-strong: #34342F;
+  --pm-c-line-strong: #3F403A;
   --pm-c-text: #EDEDEA;
   --pm-c-text-2: #9A9A95;
-  --pm-c-text-3: #6E6E69;
+  --pm-c-text-3: #8A8A85;
   --pm-c-signal: #C8F135;
   --pm-c-accent-tint: #1D2410;
   --pm-c-btn-bg: #FFFFFF;
@@ -310,4 +310,25 @@ body {
   font-size: 12px;
   letter-spacing: .06em;
   text-transform: uppercase;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   UI POLISH LAYER
+   ══════════════════════════════════════════════════════════════════ */
+
+/* One consistent keyboard focus ring everywhere (ink on light, white on dark) */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--pm-c-focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+:where(input, select, textarea):focus-visible { outline-offset: 1px; }
+
+/* Text selection in the brand colours */
+::selection { background: #C8F135; color: #111210; }
+
+/* Respect reduced motion for smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

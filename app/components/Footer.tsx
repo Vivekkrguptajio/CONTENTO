@@ -52,7 +52,7 @@ export default function Footer() {
     ? { heading: "Ready to get paid per view?", sub: "Free to join. No follower minimum. Paid weekly by UPI.", label: "Join the founding cohort", href: "/clippercircle#join", wa: "Hi Pomera Team, I want to join as a publisher." }
     : isAgencyPage
     ? { heading: "Ready to partner with Pomera?", sub: "Your first client campaign is a free pilot.", label: "Become a partner", href: "/agencies#partner", wa: "Hi Pomera Team, we are an agency and want to partner." }
-    : { heading: "Ready to buy certainty?", sub: "Agree your rate upfront. Pay only for verified views.", label: "Start a campaign", href: "/#contact", wa: "Hi Pomera Team, we want to discuss a campaign." };
+    : { heading: "Ready to buy certainty?", sub: "A fixed rate before you spend. A bill only for verified views.", label: "Book a free pilot", href: "/#contact", wa: "Hi Pomera Team, we want to discuss a campaign." };
 
   const navLinks: { label: string; href: string; desktopOnly?: boolean }[] = [
     { label: "How it works", href: "/#how-it-works" },
@@ -62,15 +62,16 @@ export default function Footer() {
     { label: "Founding Cohort", href: "/#founding-cohort" },
     { label: "For Agencies", href: "/agencies" },
     { label: "For Publishers", href: "/clippercircle" },
-    { label: "Brand Guidelines", href: "/branding" },
   ];
 
+  /* Only link an account once it exists. Add the real URL to show its icon; an empty URL hides it.
+     Instagram @pomera is the one named in the brand book. X, YouTube and LinkedIn are left empty until confirmed. */
   const socialLinks = [
-    { icon: <InstagramIcon />, href: "https://instagram.com", label: "Instagram" },
-    { icon: <YouTubeIcon />, href: "https://youtube.com", label: "YouTube" },
-    { icon: <XIcon />, href: "https://x.com", label: "X" },
-    { icon: <LinkedInIcon />, href: "https://linkedin.com", label: "LinkedIn" },
-  ];
+    { icon: <InstagramIcon />, href: "https://instagram.com/pomera", label: "Instagram" },
+    { icon: <YouTubeIcon />, href: "", label: "YouTube" },
+    { icon: <XIcon />, href: "", label: "X" },
+    { icon: <LinkedInIcon />, href: "", label: "LinkedIn" },
+  ].filter((s) => s.href);
 
   return (
     <>
@@ -149,7 +150,7 @@ export default function Footer() {
                 <a href="/terms" className="cr-footer-legal__link">Terms of service</a>
                 <span className="cr-footer-dot">·</span>
                 <span className="cr-footer-sub-brand">
-                  Supply powered by <strong>ClipperCircle by Pomera</strong>
+                  Publishers join through <a href="/clippercircle"><strong>ClipperCircle by Pomera</strong></a>
                 </span>
               </div>
             </div>

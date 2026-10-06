@@ -37,11 +37,13 @@ html[data-theme="dark"] .hero-section > div[aria-hidden="true"] > div {
   background: radial-gradient(50% 50% at 50% 50%, rgba(200, 241, 53, 0.06) 0%, transparent 75%) !important;
 }
 html[data-theme="dark"] .hero-headline { color: var(--pm-c-text); }
-html[data-theme="dark"] .hero-subheadline { color: var(--pm-c-text-2); }
+html[data-theme="dark"] .hero-subheadline,
+html[data-theme="dark"] .hero-eyebrow { color: var(--pm-c-text-2); }
+html[data-theme="dark"] .hero-rot { color: var(--pm-c-text); }
 html[data-theme="dark"] .hero-hl { background: #C8F135; box-shadow: none; color: #111210; }
 html[data-theme="dark"] .hero-cta-row .pomera-btn-primary {
-  background-color: #EDEDEA !important;
-  border-color: #EDEDEA !important;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
   color: #111210 !important;
 }
 html[data-theme="dark"] .hero-cta-row .pomera-btn-primary:hover { background-color: #ffffff !important; }
@@ -83,12 +85,6 @@ html[data-theme="dark"] .vl-section { background: var(--pm-c-bg); }
 html[data-theme="dark"] .vl-card { background: var(--d-panel); border-color: var(--d-panel-line); }
 html[data-theme="dark"] .vl-radar-wrap::before { background: var(--d-panel); }
 
-html[data-theme="dark"] .trust-section { background: var(--pm-c-bg); }
-html[data-theme="dark"] .trust-item { border-color: var(--pm-c-line); }
-html[data-theme="dark"] .trust-icon,
-html[data-theme="dark"] .trust-text,
-html[data-theme="dark"] .trust-title { color: var(--pm-c-text); }
-html[data-theme="dark"] .trust-desc { color: var(--pm-c-text-2); }
 
 /* ── Pillars (bento) ─────────────────────────────────────────────── */
 html[data-theme="dark"] .bento-section { background: var(--pm-c-bg); }
@@ -109,7 +105,8 @@ html[data-theme="dark"] .bento-billing-card__val { color: var(--pm-c-text); }
 html[data-theme="dark"] .bento-cpm-unit,
 html[data-theme="dark"] .bento-billing-card__lbl,
 html[data-theme="dark"] .bento-billing-card__sub { color: var(--pm-c-text-2); }
-html[data-theme="dark"] .bento-cpm-badge { background: var(--pm-success-bg); color: var(--pm-success); border-color: #1D4A2E; }
+html[data-theme="dark"] .bento-cpm-badge,
+html[data-theme="dark"] .bento-example-tag { background: var(--pm-c-surface); color: var(--pm-c-text-2); border-color: var(--pm-c-line-strong); }
 html[data-theme="dark"] .bento-cpm-bar--pomera { background: #EDEDEA; color: #111210; }
 html[data-theme="dark"] .bento-cpm-bar--auction { background: var(--pm-c-surface); color: var(--pm-c-text-3); }
 html[data-theme="dark"] .bento-billing-card--active { border-color: #EDEDEA; }
@@ -129,9 +126,6 @@ html[data-theme="dark"] .qt-author__role { color: var(--pm-c-text-2); }
 /* ── Pilot card + campaign banner ────────────────────────────────── */
 html[data-theme="dark"] .tc-section { background: var(--pm-c-bg); }
 html[data-theme="dark"] .tc-card { background: var(--d-panel); border-color: var(--d-panel-line); }
-html[data-theme="dark"] .cb-section { background: var(--pm-c-bg); }
-html[data-theme="dark"] .cb-card { background: var(--d-panel); border-color: var(--d-panel-line); }
-html[data-theme="dark"] .cb-stage { background: var(--pm-c-surface-2); }
 
 /* ── Dashboard preview ───────────────────────────────────────────── */
 html[data-theme="dark"] .df-section { background: var(--pm-c-bg); }
@@ -385,6 +379,13 @@ html[data-theme="dark"] .pr-row__d { color: var(--pm-c-text-2); }
 html[data-theme="dark"] .pr-list { border-top-color: var(--pm-c-line-strong); }
 html[data-theme="dark"] .pr-row { border-bottom-color: var(--pm-c-line); }
 html[data-theme="dark"] .pr-row__n { color: var(--pm-c-text-3); }
-html[data-theme="dark"] .pr-row__q { border-color: #3A3B34; color: var(--pm-c-text-3); }
+html[data-theme="dark"] .pr-row__q { color: #55554F; }
 html[data-theme="dark"] .pr-answer { background: var(--d-panel); border: 1px solid var(--d-panel-line); }
-html[data-theme="dark"] .pr-hl { background: #C8F135; color: #111210; }
+html[data-theme="dark"] .hero-trust { color: var(--pm-c-text-2); }
+html[data-theme="dark"] .qt-label { color: var(--pm-c-text-2); }
+html[data-theme="dark"] .pb-next b { background: #EDEDEA; color: #111210; }
+
+/* Form fields: borders that are visible on dark panels */
+html[data-theme="dark"] .pb-inp,
+html[data-theme="dark"] .db-input { border-color: #4A4B45; }
+html[data-theme="dark"] .pb-inp:hover { border-color: #6A6B64; }
