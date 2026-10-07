@@ -308,13 +308,24 @@
     font-size: 28px;
   }
 
+  /* Both buttons share one line on phones */
   .cr-footer-card__actions {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
     width: 100%;
   }
 
   .cr-footer-btn {
-    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    height: auto;
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .cr-fab-chat {
