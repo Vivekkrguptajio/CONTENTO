@@ -323,3 +323,11 @@
   .ag-ticket, .ag-rep { display: none; }
 }
 .ag-plan__sticker { white-space: nowrap; }
+
+/* Phone polish */
+@media (max-width: 640px) {
+  .ag-legend > div { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .ag-legend dd { white-space: nowrap; padding-left: 22px; }
+  .ag-nos { flex-direction: column; gap: 6px; }
+  .ag-faq-mark { width: 120px; margin-top: 20px; }
+}
