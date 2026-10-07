@@ -71,7 +71,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Main Hero Content Wrapper ── */}
-      <div className="hero-main-container relative flex flex-col items-center px-5 pt-[calc(var(--header-height)+5.5rem)] pb-12 sm:pt-[calc(var(--header-height)+7rem)] sm:pb-16 w-full max-w-[1200px] mx-auto">
+      <div className="hero-main-container relative flex flex-col items-center px-5 pt-[calc(var(--header-height)+3.25rem)] pb-12 sm:pt-[calc(var(--header-height)+4.5rem)] sm:pb-16 w-full max-w-[1200px] mx-auto">
         
         {/* Label */}
         <p className="hero-eyebrow relative z-10 mb-4 font-mono text-[12px] font-medium tracking-[0.06em] text-[#5B5B58] uppercase">
@@ -123,13 +123,6 @@ export default function HeroSection() {
             See how it works
           </a>
         </div>
-
-        {/* Line under the buttons */}
-        <p className="hero-trust relative z-10 mx-auto mt-5 max-w-[680px] text-center">
-          <span>Instagram Reels and YouTube Shorts</span>
-          <span className="hero-trust__dot" aria-hidden="true"> · </span>
-          <span>Publishers paid weekly by UPI</span>
-        </p>
 
         {/* Globe Visualization (Responsive vertical reels preview) */}
         <div className="hero-globe-wrapper relative z-[3] mt-10 sm:mt-12 flex h-[380px] w-full justify-center md:h-[620px]">

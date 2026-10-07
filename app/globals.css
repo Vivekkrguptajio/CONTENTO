@@ -332,3 +332,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   SECTION RHYTHM: one vertical padding for every home-page section,
+   so the gap between any two sections is the same (2 x --sec-y).
+   ══════════════════════════════════════════════════════════════════ */
+main { --sec-y: 40px; }
+@media (min-width: 768px) { main { --sec-y: 64px; } }
+
+main :is(.pr-section, .dp-section, .bento-section, .vl-section, .qt-section, .tc-section, .faq-section) {
+  padding-block: var(--sec-y);
+}
+main .pb-page { --pb-sec: var(--sec-y); }
