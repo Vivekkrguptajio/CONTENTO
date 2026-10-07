@@ -87,6 +87,12 @@ export default function Navbar() {
   return (
     <>
       <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgenciesPage && !isScrolled && !mobileMenuOpen ? "nav-over-hero" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
+        {isCreatorPage && (
+          <div className="nav-announce">
+            <span className="nav-announce__dot" aria-hidden="true" />
+            <span>ClipperCircle by Pomera · Founding cohort · first campaigns start November 2026</span>
+          </div>
+        )}
         {/* ── 2. Sticky Navigation Header ───────────────────────────── */}
         <header className="nav-header">
           <div className="nav-container relative mx-auto flex max-w-global items-center justify-between gap-8">
@@ -258,7 +264,7 @@ export default function Navbar() {
       {!isHomePage && !isAgenciesPage && (
         <div
           className={`nav-fixed-spacer ${isLegalMode ? "nav-fixed-spacer--dark" : ""}`}
-          style={{ height: 68 }}
+          style={{ height: isCreatorPage ? "calc(68px + var(--nav-announce-h, 34px))" : 68 }}
           aria-hidden="true"
         />
       )}

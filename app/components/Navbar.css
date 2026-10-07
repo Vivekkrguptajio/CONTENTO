@@ -730,3 +730,30 @@ svg.logo {
 /* Navbar logo: a size smaller than the shared lockup (the footer keeps the full size) */
 .nav-sticky-wrapper .nav-logo-box { width: 148px; height: 39.5px; }
 @media (max-width: 640px) { .nav-sticky-wrapper .nav-logo-box { width: 124px; height: 33px; } }
+
+/* Thin notice above the navbar (ClipperCircle page). It hides once you scroll. */
+
+:root { --nav-announce-h: 34px; }
+.nav-announce {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--nav-announce-h);
+  padding: 6px 16px;
+  background: #111210;
+  color: #EDEDEA;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.35;
+}
+.nav-announce__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #C8F135; }
+.nav-sticky-wrapper.is-scrolled .nav-announce,
+.nav-sticky-wrapper.is-menu-open .nav-announce { display: none; }
+@media (max-width: 640px) {
+  :root { --nav-announce-h: 44px; }
+  .nav-announce { font-size: 10px; padding: 6px 12px; }
+}

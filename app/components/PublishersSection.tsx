@@ -156,7 +156,6 @@ export default function PublishersSection() {
       <section className="pb-hero">
         <div className="pb-wrap">
           <div className="pb-hero__copy">
-            <p className="pb-eyebrow"><span className="pb-dot" />ClipperCircle by Pomera · Founding cohort · first campaigns start November 2026</p>
             <h1 className="pb-h1">Paid per view, <span className="pb-mk">not</span> per follower.</h1>
             <p className="pb-lead">
               Edit brand videos, post them from your own Instagram or YouTube account, and get paid for every verified view. Weekly, by UPI.
