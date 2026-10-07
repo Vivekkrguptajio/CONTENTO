@@ -73,11 +73,6 @@ export default function HeroSection() {
       {/* ── Main Hero Content Wrapper ── */}
       <div className="hero-main-container relative flex flex-col items-center px-5 pt-[calc(var(--header-height)+3.25rem)] pb-12 sm:pt-[calc(var(--header-height)+4.5rem)] sm:pb-16 w-full max-w-[1200px] mx-auto">
         
-        {/* Label */}
-        <p className="hero-eyebrow relative z-10 mb-4 font-mono text-[12px] font-medium tracking-[0.06em] text-[#5B5B58] uppercase">
-          Alternative ad platform
-        </p>
-
         {/* Headline: the locked brand-facing tagline */}
         <h1 className="hero-headline relative z-10 max-w-[960px] text-center font-medium text-[#111210] tracking-[-0.035em] !text-[40px] md:!text-[64px] leading-[1.05]">
           Know your number before you spend.
