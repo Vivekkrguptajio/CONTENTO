@@ -389,3 +389,14 @@ html[data-theme="dark"] .pb-next b { background: #EDEDEA; color: #111210; }
 html[data-theme="dark"] .pb-inp,
 html[data-theme="dark"] .db-input { border-color: #4A4B45; }
 html[data-theme="dark"] .pb-inp:hover { border-color: #6A6B64; }
+
+/* Dark: the navbar melts into the hero at the top of the page, and turns solid once you scroll. */
+html[data-theme="dark"] .nav-sticky-wrapper:not(.is-scrolled):not(.is-menu-open) {
+  background: transparent !important;
+}
+html[data-theme="dark"] .nav-sticky-wrapper {
+  transition: background-color 0.25s ease;
+}
+html[data-theme="dark"] .nav-sticky-wrapper.is-scrolled {
+  background: #0B0B0A !important;
+}
