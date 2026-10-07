@@ -120,7 +120,7 @@ export default function HeroSection() {
         </div>
 
         {/* Globe Visualization (Responsive vertical reels preview) */}
-        <div className="hero-globe-wrapper relative z-[3] mt-10 sm:mt-12 flex h-[380px] w-full justify-center md:h-[620px]">
+        <div className="hero-globe-wrapper relative z-[3] mt-3 sm:mt-2 flex h-[380px] w-full justify-center md:h-[620px]">
           <div className="relative h-full w-full max-w-[1040px] flex items-center justify-center">
             <GlobePolaroids className="w-full max-w-[380px] sm:max-w-[460px] md:max-w-[620px] lg:max-w-[680px]" />
           </div>
