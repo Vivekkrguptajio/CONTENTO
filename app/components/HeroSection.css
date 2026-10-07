@@ -126,14 +126,18 @@
 
 @media (max-width: 480px) {
 
+  /* Both buttons share one line on phones */
   .hero-cta-row {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
-    gap: 10px;
+    gap: 8px;
   }
 
   .hero-cta-row > a {
-    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 15px;
   }
 
   .hero-headline {
