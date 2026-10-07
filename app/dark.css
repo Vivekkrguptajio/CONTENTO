@@ -71,7 +71,7 @@ html[data-theme="dark"] .sp-channels { background: var(--pm-c-surface); border-c
 html[data-theme="dark"] .sp-channels span { color: var(--pm-c-text-2); }
 html[data-theme="dark"] .sp-channels .bg-white { background: var(--pm-c-surface-2); border-color: var(--pm-c-line-strong); color: var(--pm-c-text); }
 /* phone timeline */
-html[data-theme="dark"] .sp-tl::before { background: var(--pm-c-line-strong); }
+html[data-theme="dark"] .sp-tl__card { box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.55); }
 html[data-theme="dark"] .sp-tl__n { background: #EDEDEA; color: #111210; }
 html[data-theme="dark"] .sp-tl__card { background: var(--pm-c-surface); border-color: var(--pm-c-line); }
 html[data-theme="dark"] .sp-tl__item:last-child .sp-tl__card { background: #1F201C; border-color: #3A3B34; }

@@ -143,9 +143,11 @@ export default function SolutionSteps() {
         <ol className="sp-tl">
           {STEPS.map((item) => (
             <li key={item.step} className="sp-tl__item">
-              <span className="sp-tl__n">{item.step}</span>
               <div className="sp-tl__card">
-                <span className="sp-badge">{item.badge}</span>
+                <div className="sp-tl__top">
+                  <span className="sp-tl__n">{item.step}</span>
+                  <span className="sp-badge">{item.badge}</span>
+                </div>
                 <h3 className="sp-tl__title">{item.title}</h3>
                 <p className="sp-tl__desc">{item.desc}</p>
               </div>

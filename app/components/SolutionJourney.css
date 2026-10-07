@@ -264,45 +264,36 @@
   }
   .sp-mobile .sp-lead { margin: 0 auto 32px; }
 
+  /* Stacking cards: each card sticks under the navbar and the next one slides over it */
   .sp-tl {
-    position: relative;
     margin: 0;
     padding: 0;
     list-style: none;
-    display: grid;
-    gap: 14px;
+    display: block;
   }
-  /* the line running through the step numbers */
-  .sp-tl::before {
-    content: "";
-    position: absolute;
-    left: 19px;
-    top: 20px;
-    bottom: 20px;
-    width: 2px;
-    background: #E7E7E3;
-  }
-
   .sp-tl__item {
-    position: relative;
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 14px;
-    align-items: start;
+    position: sticky;
+    top: calc(var(--header-height, 71px) + 14px + (var(--i, 0) * 12px));
+    margin-bottom: 28px;
   }
+  .sp-tl__item:last-child { margin-bottom: 0; }
+  .sp-tl__item:nth-child(1) { --i: 0; }
+  .sp-tl__item:nth-child(2) { --i: 1; }
+  .sp-tl__item:nth-child(3) { --i: 2; }
+  .sp-tl__item:nth-child(4) { --i: 3; }
+  .sp-tl__item:nth-child(5) { --i: 4; }
+  .sp-tl__top { display: flex; align-items: center; gap: 10px; }
   .sp-tl__n {
-    position: relative;
-    z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
     background: #111210;
     color: #C8F135;
     font-family: var(--font-geist-mono), ui-monospace, monospace;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
   }
   .sp-tl__card {
@@ -310,6 +301,7 @@
     border: 1px solid #E7E7E3;
     border-radius: 14px;
     background: #FAFAF7;
+    box-shadow: 0 -6px 18px rgba(17, 18, 16, 0.06);
   }
   .sp-tl__item:last-child .sp-tl__card { background: #111210; border-color: #111210; }
   .sp-tl__title {
