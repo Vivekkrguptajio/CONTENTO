@@ -198,7 +198,14 @@ html[data-theme="dark"] .cr-footer-section {
     radial-gradient(ellipse 340px 70% at calc(50% + var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.16) 0%, rgba(200, 241, 53, 0.05) 55%, transparent 100%),
     linear-gradient(to bottom, #0B0B0A 0%, #0D0E0B 55%);
 }
-html[data-theme="dark"] .cr-footer-card { background: var(--pm-c-surface); border: 1px solid var(--pm-c-line); }
+/* The card melts into the page: no solid panel, just a faint lift and a hairline that fades out toward the bottom */
+html[data-theme="dark"] .cr-footer-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.012) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 0;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
 html[data-theme="dark"] .cr-footer-card__heading,
 html[data-theme="dark"] .cr-footer-brand__name,
 html[data-theme="dark"] .cr-footer-sub-brand strong { color: var(--pm-c-text); }
