@@ -400,3 +400,7 @@ html[data-theme="dark"] .nav-sticky-wrapper {
 html[data-theme="dark"] .nav-sticky-wrapper.is-scrolled {
   background: #0B0B0A !important;
 }
+
+/* Agencies hero watermark: ink on light disappears on dark, so draw it in lime */
+html[data-theme="dark"] .ag-hero__mark { opacity: 0.12; }
+html[data-theme="dark"] .ag-hero__mark svg path { fill: #C8F135; }
