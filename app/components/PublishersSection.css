@@ -124,7 +124,11 @@
 .pb-btn--full { width: 100%; }
 
 .pb-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
-@media (max-width: 560px) { .pb-ctas .pb-btn { width: 100%; } }
+/* Phones: both buttons on one line, text wraps inside if needed */
+@media (max-width: 560px) {
+  .pb-ctas { flex-wrap: nowrap; align-items: stretch; gap: 8px; width: 100%; }
+  .pb-ctas .pb-btn { flex: 1 1 0; min-width: 0; height: auto; min-height: 48px; padding: 8px 10px; font-size: 14px; line-height: 1.2; text-align: center; white-space: normal; }
+}
 
 /* ── Hero ────────────────────────────────────────────────────────── */
 .pb-hero {
