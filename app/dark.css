@@ -39,14 +39,14 @@ html[data-theme="dark"] .hero-section > div[aria-hidden="true"] > div {
 html[data-theme="dark"] .hero-alt-badge {
   border-color: rgba(200, 241, 53, 0.25);
   background: rgba(200, 241, 53, 0.08);
-  box-shadow: 0 0 22px rgba(200, 241, 53, 0.28), 0 0 6px rgba(200, 241, 53, 0.25), inset 0 0 12px rgba(200, 241, 53, 0.08);
+  box-shadow: 0 0 14px rgba(200, 241, 53, 0.14), 0 0 4px rgba(200, 241, 53, 0.12), inset 0 0 8px rgba(200, 241, 53, 0.04);
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both, heroBadgeGlow 3s ease-in-out 0.8s infinite;
   animation-play-state: paused;
 }
-html[data-theme="dark"] .hero-alt-badge__text { color: #C8F135; text-shadow: 0 0 10px rgba(200, 241, 53, 0.55); }
+html[data-theme="dark"] .hero-alt-badge__text { color: #C8F135; text-shadow: 0 0 8px rgba(200, 241, 53, 0.25); }
 @keyframes heroBadgeGlow {
-  0%, 100% { box-shadow: 0 0 22px rgba(200, 241, 53, 0.28), 0 0 6px rgba(200, 241, 53, 0.25), inset 0 0 12px rgba(200, 241, 53, 0.08); }
-  50% { box-shadow: 0 0 34px rgba(200, 241, 53, 0.45), 0 0 10px rgba(200, 241, 53, 0.4), inset 0 0 16px rgba(200, 241, 53, 0.14); }
+  0%, 100% { box-shadow: 0 0 14px rgba(200, 241, 53, 0.14), 0 0 4px rgba(200, 241, 53, 0.12), inset 0 0 8px rgba(200, 241, 53, 0.04); }
+  50% { box-shadow: 0 0 20px rgba(200, 241, 53, 0.22), 0 0 6px rgba(200, 241, 53, 0.2), inset 0 0 10px rgba(200, 241, 53, 0.07); }
 }
 @media (prefers-reduced-motion: reduce) {
   html[data-theme="dark"] .hero-alt-badge { animation: none; }
