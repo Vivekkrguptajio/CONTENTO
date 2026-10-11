@@ -87,10 +87,16 @@ export default function Navbar() {
   return (
     <>
       <div className={`nav-sticky-wrapper ${isScrolled ? "is-scrolled" : ""} ${isLegalMode ? "nav-theme-dark" : ""} ${isAgenciesPage && !isScrolled && !mobileMenuOpen ? "nav-over-hero" : ""} ${mobileMenuOpen ? "is-menu-open" : ""}`}>
-        {isCreatorPage && (
+        {isCreatorPage ? (
           <div className="nav-announce">
             <span className="nav-announce__dot" aria-hidden="true" />
             <span>ClipperCircle by Pomera · Founding cohort · first campaigns start November 2026</span>
+          </div>
+        ) : (
+          <div className="nav-announce">
+            <span className="nav-announce__dot" aria-hidden="true" />
+            <span>Are you a video editor?</span>
+            <a href="/clippercircle" className="nav-announce__link">Join as a publisher →</a>
           </div>
         )}
         {/* ── 2. Sticky Navigation Header ───────────────────────────── */}

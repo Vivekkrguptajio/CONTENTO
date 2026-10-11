@@ -751,6 +751,13 @@ svg.logo {
   line-height: 1.35;
 }
 .nav-announce__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #C8F135; }
+.nav-announce__link {
+  color: #C8F135;
+  text-decoration: none;
+  margin-left: 4px;
+  transition: opacity 0.15s ease;
+}
+.nav-announce__link:hover { opacity: 0.8; }
 .nav-sticky-wrapper.is-scrolled .nav-announce,
 .nav-sticky-wrapper.is-menu-open .nav-announce { display: none; }
 @media (max-width: 640px) {
