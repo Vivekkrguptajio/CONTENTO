@@ -36,6 +36,28 @@
   }
 }
 
+/* Alternative ad platform badge */
+.hero-alt-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(17, 18, 16, 0.1);
+  background: rgba(17, 18, 16, 0.04);
+  margin-bottom: 10px;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-alt-badge__text {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pomera-ink, #111210);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
 .hero-headline {
   font-family: var(--font-geist-sans), sans-serif;
   font-size: clamp(48px, 6.8vw, 76px);
@@ -55,7 +77,7 @@
   color: var(--pomera-muted, #5b5b58);
   font-weight: 400;
   max-width: 580px;
-  margin: 18px auto 0;
+  margin: 8px auto 0;
   text-align: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
@@ -65,7 +87,7 @@
     font-size: 17px;
     line-height: 1.55;
     max-width: 660px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 }
 
@@ -210,11 +232,16 @@
 
 /* Highlighted phrase: lime-tint chip on white (lime itself is for dark surfaces only) */
 .hero-hl {
-  padding: 0 0.16em 0.04em;
-  border-radius: 10px;
+  padding: 0.04em 0;
+  border-radius: 8px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  background: transparent;
+  transition: background 0.1s ease, padding 0.1s ease;
+}
+.hero-hl--on {
   background: #C8F135;
+  padding: 0.04em 0.16em;
 }
 
 /* Rotating line: Geist 500, 28 to 36 px. Line 1 is fixed: the chip reserves the width of the
