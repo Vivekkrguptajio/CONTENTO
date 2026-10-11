@@ -84,7 +84,7 @@ export default function HeroSection() {
         </div>
 
         {/* Headline: the locked brand-facing tagline */}
-        <h1 className="hero-headline relative z-10 max-w-[960px] text-center font-semibold text-[#111210] tracking-[-0.035em] !text-[40px] md:!text-[64px] leading-[1.05]">
+        <h1 className="hero-headline relative z-10 max-w-[960px] text-center font-semibold text-[#111210] tracking-[-0.035em] !text-[40px] md:!text-[52px] leading-[1.05]">
           Know your number before you spend.
         </h1>
 
