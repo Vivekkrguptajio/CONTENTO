@@ -94,9 +94,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="nav-announce">
-            <span className="nav-announce__dot" aria-hidden="true" />
-            <span>Are you a video editor?</span>
-            <a href="/clippercircle" className="nav-announce__link">Join as a publisher →</a>
+            <a href="/clippercircle" className="nav-announce__link">Publishers join through ClipperCircle, our publisher community →</a>
           </div>
         )}
         {/* ── 2. Sticky Navigation Header ───────────────────────────── */}
