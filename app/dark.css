@@ -200,8 +200,8 @@ html[data-theme="dark"] .faq-support-pill:hover { background: #222320; border-co
 /* ── Footer ──────────────────────────────────────────────────────── */
 html[data-theme="dark"] .cr-footer-section {
   background:
-    radial-gradient(ellipse 340px 70% at calc(50% - var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.16) 0%, rgba(200, 241, 53, 0.05) 55%, transparent 100%),
-    radial-gradient(ellipse 340px 70% at calc(50% + var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.16) 0%, rgba(200, 241, 53, 0.05) 55%, transparent 100%),
+    radial-gradient(ellipse 340px 70% at calc(50% - var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.04) 0%, rgba(200, 241, 53, 0.01) 55%, transparent 100%),
+    radial-gradient(ellipse 340px 70% at calc(50% + var(--footer-card-half)) 80%, rgba(200, 241, 53, 0.04) 0%, rgba(200, 241, 53, 0.01) 55%, transparent 100%),
     linear-gradient(to bottom, #0B0B0A 0%, #0D0E0B 55%);
 }
 /* The card melts into the page: no solid panel, just a faint lift and a hairline that fades out toward the bottom */
