@@ -752,7 +752,7 @@ svg.logo {
 }
 .nav-announce__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #C8F135; }
 .nav-announce__link {
-  color: #C8F135;
+  color: #9A9A96;
   text-decoration: none;
   margin-left: 4px;
   transition: opacity 0.15s ease;
