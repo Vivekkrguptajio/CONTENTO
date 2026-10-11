@@ -53,9 +53,14 @@ function useTypewriter(words: string[]) {
 
 export default function HeroSection() {
   const typed = useTypewriter(AUDIENCES);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    requestAnimationFrame(() => setReady(true));
+  }, []);
 
   return (
-    <section className="relative overflow-x-clip bg-white hero-section" id="hero" aria-label="Hero Section">
+    <section className={`relative overflow-x-clip bg-white hero-section${ready ? " is-ready" : ""}`} id="hero" aria-label="Hero Section">
       {/* Background radial glow and subtle texture */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <div

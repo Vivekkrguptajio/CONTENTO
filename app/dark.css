@@ -36,11 +36,17 @@ html[data-theme="dark"] .hero-section {
 html[data-theme="dark"] .hero-section > div[aria-hidden="true"] > div {
   background: radial-gradient(50% 50% at 50% 50%, rgba(200, 241, 53, 0.06) 0%, transparent 75%) !important;
 }
+html[data-theme="dark"] .hero-alt-badge {
+  border-color: rgba(200, 241, 53, 0.25);
+  background: rgba(200, 241, 53, 0.08);
+  box-shadow: 0 0 16px rgba(200, 241, 53, 0.15), 0 0 4px rgba(200, 241, 53, 0.1);
+}
+html[data-theme="dark"] .hero-alt-badge__text { color: #C8F135; }
 html[data-theme="dark"] .hero-headline { color: var(--pm-c-text); }
 html[data-theme="dark"] .hero-subheadline,
 html[data-theme="dark"] .hero-eyebrow { color: var(--pm-c-text-2); }
 html[data-theme="dark"] .hero-rot { color: var(--pm-c-text); }
-html[data-theme="dark"] .hero-hl { background: #C8F135; box-shadow: none; color: #111210; }
+html[data-theme="dark"] .hero-hl--on { background: #C8F135; box-shadow: none; color: #111210; }
 html[data-theme="dark"] .hero-cta-row .pomera-btn-primary {
   background-color: #ffffff !important;
   border-color: #ffffff !important;

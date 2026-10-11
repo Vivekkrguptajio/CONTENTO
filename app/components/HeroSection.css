@@ -36,6 +36,13 @@
   }
 }
 
+.hero-section.is-ready .hero-alt-badge,
+.hero-section.is-ready .hero-headline,
+.hero-section.is-ready .hero-subheadline,
+.hero-section.is-ready .hero-cta-row {
+  animation-play-state: running;
+}
+
 /* Alternative ad platform badge */
 .hero-alt-badge {
   display: inline-flex;
@@ -47,6 +54,7 @@
   background: rgba(17, 18, 16, 0.04);
   margin-bottom: 10px;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-play-state: paused;
 }
 
 .hero-alt-badge__text {
@@ -67,6 +75,7 @@
   letter-spacing: -0.035em;
   margin: 0;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-play-state: paused;
 }
 
 .hero-subheadline {
@@ -80,6 +89,7 @@
   margin: 8px auto 0;
   text-align: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  animation-play-state: paused;
 }
 
 @media (min-width: 640px) {
@@ -96,6 +106,7 @@
   align-items: center;
   justify-content: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  animation-play-state: paused;
 }
 
 /* ── 4. Glowing Globe Visualization ──────────────────────────────── */
