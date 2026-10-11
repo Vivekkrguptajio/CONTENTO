@@ -107,8 +107,8 @@ export default function HeroSection() {
         </p>
 
         {/* Paragraph */}
-        <p className="hero-subheadline relative z-10 mt-2 max-w-[560px] text-center font-normal text-[#5B5B58] !text-[19px] !leading-[1.5] mx-auto">
-          Set a budget and we fix your rate per 1,000 verified views, so you know what it buys before you spend. Independent publishers post your videos from their own accounts.
+        <p className="hero-subheadline relative z-10 mt-2 max-w-[560px] text-center font-normal text-[#5B5B58] !text-[16px] !leading-[1.5] mx-auto">
+          Set a budget and we fix your rate per 1,000 verified views,<br />so you know what it buys before you spend.
         </p>
 
         {/* CTA Buttons Row — 8px radius corners */}
