@@ -265,8 +265,8 @@
   letter-spacing: -0.025em;
   color: var(--pomera-ink, #111210);
 }
-.hero-rot__l1 { display: block; white-space: nowrap; }
-.hero-rot__l2 { display: block; }
+.hero-rot__l1 { display: inline; white-space: nowrap; }
+.hero-rot__l2 { display: inline; }
 .hero-slot { display: inline-grid; text-align: left; }
 .hero-slot > span { grid-area: 1 / 1; }
 .hero-slot__sizer { visibility: hidden; }
