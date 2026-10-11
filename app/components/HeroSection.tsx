@@ -79,7 +79,7 @@ export default function HeroSection() {
       <div className="hero-main-container relative flex flex-col items-center px-5 pt-[calc(var(--header-height)+3.25rem)] pb-12 sm:pt-[calc(var(--header-height)+4.5rem)] sm:pb-16 w-full max-w-[1200px] mx-auto">
         
         {/* Alternative ad platform badge */}
-        <div className="hero-alt-badge relative z-10 mt-8">
+        <div className="hero-alt-badge relative z-10 mt-12">
           <span className="hero-alt-badge__text">Alternative ad platform</span>
         </div>
 
