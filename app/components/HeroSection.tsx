@@ -67,7 +67,7 @@ export default function HeroSection() {
           className="absolute left-1/2 -translate-x-1/2"
           style={{
             background:
-              "radial-gradient(50% 50% at 50% 50%, rgba(200,241,53,0.08) 0%, rgba(250,250,247,0.5) 45%, rgba(255,255,255,0) 75%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(200,241,53,0.03) 0%, rgba(250,250,247,0.3) 45%, rgba(255,255,255,0) 75%)",
             height: "1800px",
             top: "-350px",
             width: "2600px",
