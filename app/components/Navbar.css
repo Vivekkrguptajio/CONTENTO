@@ -44,7 +44,9 @@
   width: 100%;
   padding: 14px 24px;
   box-sizing: border-box;
+  border-bottom: 1px solid rgba(17, 18, 16, 0.08);
 }
+html[data-theme="dark"] .nav-header { border-bottom-color: transparent; }
 
 .nav-container {
   width: 100%;
@@ -757,6 +759,7 @@ svg.logo {
   margin-left: 4px;
   transition: opacity 0.15s ease;
 }
+.nav-announce__underline { text-decoration: underline; text-underline-offset: 2px; }
 .nav-announce__link:hover { opacity: 0.8; }
 .nav-sticky-wrapper.is-scrolled .nav-announce,
 .nav-sticky-wrapper.is-menu-open .nav-announce { display: none; }
