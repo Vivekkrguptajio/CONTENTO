@@ -90,7 +90,7 @@ export default function HeroSection() {
 
         {/* Rotating line: lime box on the rotating words only */}
         <p
-          className="hero-rot relative z-10 mt-2 mx-auto max-w-[880px] text-center"
+          className="hero-rot relative z-10 mt-5 mx-auto max-w-[880px] text-center"
           aria-label={`Video ads for ${AUDIENCES.join(", ")}, billed only on verified views.`}
         >
           <span className="hero-rot__l1" aria-hidden="true">
@@ -107,12 +107,12 @@ export default function HeroSection() {
         </p>
 
         {/* Paragraph */}
-        <p className="hero-subheadline relative z-10 mt-2 max-w-[560px] text-center font-normal text-[#5B5B58] !text-[16px] !leading-[1.5] mx-auto">
+        <p className="hero-subheadline relative z-10 mt-5 max-w-[560px] text-center font-normal text-[#5B5B58] !text-[16px] !leading-[1.5] mx-auto">
           Set a budget and we fix your rate per 1,000 verified views, so you know what it buys before you spend. Independent publishers post your videos from their own accounts.
         </p>
 
         {/* CTA Buttons Row — 8px radius corners */}
-        <div className="hero-cta-row relative z-10 flex w-full max-w-[420px] items-center justify-center gap-3 sm:w-auto mt-5 mx-auto">
+        <div className="hero-cta-row relative z-10 flex w-full max-w-[420px] items-center justify-center gap-3 sm:w-auto mt-8 mx-auto">
           <a
             href="#contact"
             className="pomera-btn-primary inline-flex items-center justify-center h-[52px] px-6 text-center font-medium text-[16px] leading-none whitespace-nowrap transition-all"

@@ -52,7 +52,7 @@
   border-radius: 100px;
   border: 1px solid rgba(17, 18, 16, 0.1);
   background: rgba(17, 18, 16, 0.04);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-play-state: paused;
 }
@@ -86,7 +86,7 @@
   color: var(--pomera-muted, #5b5b58);
   font-weight: 400;
   max-width: 580px;
-  margin: 8px auto 0;
+  margin: 18px auto 0;
   text-align: center;
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
   animation-play-state: paused;
@@ -97,7 +97,7 @@
     font-size: 17px;
     line-height: 1.55;
     max-width: 660px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
 
