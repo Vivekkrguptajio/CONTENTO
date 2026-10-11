@@ -102,7 +102,7 @@ export default function HeroSection() {
               </span>
               ,
             </span>
-          </span>
+          </span>{" "}
           <span className="hero-rot__l2" aria-hidden="true">billed only on verified views.</span>
         </p>
 

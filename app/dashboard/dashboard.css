@@ -308,3 +308,9 @@
 .db-embedtabs button { flex: none; height: 32px; padding: 0 14px; border: 1px solid var(--pm-c-line-strong); border-radius: 99px; background: var(--pm-c-surface); font-size: 13px; cursor: pointer; }
 .db-embedtabs button.is-active { background: var(--pm-c-btn-bg); color: var(--pm-c-btn-fg); border-color: var(--pm-c-btn-bg); }
 .db-app--embed .db-iconbtn { display: none; }
+
+/* phones: card header controls drop under the title instead of squeezing it */
+@media (max-width: 520px) {
+  .db-card__head { flex-wrap: wrap; padding: 16px 16px 0; }
+  .db-card__body { padding: 14px 16px 18px; }
+}

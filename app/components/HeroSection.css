@@ -267,6 +267,10 @@
 }
 .hero-rot__l1 { display: inline; white-space: nowrap; }
 .hero-rot__l2 { display: inline; }
+/* phones: two clean lines instead of one that wraps mid-phrase */
+@media (max-width: 640px) {
+  .hero-rot__l1, .hero-rot__l2 { display: block; }
+}
 .hero-slot { display: inline-grid; text-align: left; }
 .hero-slot > span { grid-area: 1 / 1; }
 .hero-slot__sizer { visibility: hidden; }
