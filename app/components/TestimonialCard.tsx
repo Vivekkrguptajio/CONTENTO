@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./TestimonialCard.css";
+import CountUp from "./CountUp";
 
 export default function TestimonialCard() {
   return (
@@ -36,7 +37,7 @@ export default function TestimonialCard() {
             </div>
             <div className="tc-spec-divider" />
             <div className="tc-spec-item">
-              <span className="tc-spec-val pm-num">₹10,000</span>
+              <CountUp className="tc-spec-val pm-num" value={10000} prefix="₹" />
               <span className="tc-spec-lbl">Minimum campaign after the pilot</span>
             </div>
           </div>

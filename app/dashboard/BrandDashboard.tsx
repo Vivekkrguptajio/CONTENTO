@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import "./dashboard.css";
 import Shell, { Icon, NavItem } from "./Shell";
 import { AreaChart } from "./charts";
+import CountUp from "../components/CountUp";
 
 /* All data below is SAMPLE data for a design preview. Pomera has no delivery data yet. */
 
@@ -55,22 +56,22 @@ function Overview() {
       <div className="db-kpis">
         <div className="db-card db-kpi">
           <span className="db-label">Verified views</span>
-          <span className="db-kpi__val">{inr(total)}</span>
+          <CountUp className="db-kpi__val" value={total} />
           <span className="db-kpi__note">Counted on day 7 after each post</span>
         </div>
         <div className="db-card db-kpi">
           <span className="db-label">Billed so far</span>
-          <span className="db-kpi__val">₹{inr(billed)}</span>
+          <CountUp className="db-kpi__val" value={billed} prefix="₹" />
           <span className="db-kpi__note">Verified views only</span>
         </div>
         <div className="db-card db-kpi">
           <span className="db-label">Achieved rate</span>
-          <span className="db-kpi__val">₹{RATE}<span style={{ fontSize: 14, color: "var(--pm-c-text-2)" }}> / 1K</span></span>
+          <span className="db-kpi__val"><CountUp value={RATE} prefix="₹" /><span style={{ fontSize: 14, color: "var(--pm-c-text-2)" }}> / 1K</span></span>
           <span className="db-kpi__note">Fixed before launch</span>
         </div>
         <div className="db-card db-kpi">
           <span className="db-label">Budget left</span>
-          <span className="db-kpi__val">₹{inr(BUDGET - billed)}</span>
+          <CountUp className="db-kpi__val" value={BUDGET - billed} prefix="₹" />
           <div className="db-meter"><i style={{ width: `${Math.round((billed / BUDGET) * 100)}%` }} /></div>
           <span className="db-kpi__note">of ₹{inr(BUDGET)} committed</span>
         </div>

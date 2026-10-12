@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { PomeraMark } from "./pomeraMark";
 import "./PublishersSection.css";
 import DashboardPreview from "./DashboardPreview";
+import CountUp from "./CountUp";
 
 /* Set this to your form-handler URL (Google Apps Script, Formspree, your API…). Empty = form shows a WhatsApp fallback. */
 const FORM_ENDPOINT = "";
@@ -351,7 +352,7 @@ export default function PublishersSection() {
 
               <div className="pb-calc__out">
                 <span>Your payout</span>
-                <strong>₹{inr(payout)}</strong>
+                <strong><CountUp value={payout} prefix="₹" duration={900} /></strong>
               </div>
 
               <div className="pb-calc__chat">

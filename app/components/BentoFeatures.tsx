@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./BentoFeatures.css";
+import CountUp from "./CountUp";
 
 /* ── Custom SVGs for Bento Cards ──────────────────────────────────── */
 const LockIcon = () => (
@@ -62,7 +63,7 @@ export default function BentoFeatures() {
                 <div className="bento-cpm-stat-row">
                   <div className="bento-cpm-val-wrap">
                     <span className="bento-cpm-curr">₹</span>
-                    <span className="bento-cpm-amount pm-num">50</span>
+                    <CountUp className="bento-cpm-amount pm-num" value={50} duration={1100} />
                     <span className="bento-cpm-unit">/ 1K views</span>
                   </div>
                   <span className="bento-cpm-badge">Example rate</span>
@@ -103,21 +104,21 @@ export default function BentoFeatures() {
                 {/* 1. Target views */}
                 <div className="bento-billing-card">
                   <span className="bento-billing-card__lbl">Target views</span>
-                  <span className="bento-billing-card__val pm-num">10,00,000</span>
+                  <CountUp className="bento-billing-card__val pm-num" value={1000000} duration={1800} />
                   <span className="bento-billing-card__sub">Example campaign target</span>
                 </div>
 
                 {/* 2. Verified views */}
                 <div className="bento-billing-card bento-billing-card--active">
                   <span className="bento-billing-card__lbl">Verified views</span>
-                  <span className="bento-billing-card__val pm-num">9,64,300</span>
+                  <CountUp className="bento-billing-card__val pm-num" value={964300} duration={1800} />
                   <span className="bento-billing-card__sub">Billed at the agreed rate</span>
                 </div>
 
                 {/* 3. Under-delivering */}
                 <div className="bento-billing-card">
                   <span className="bento-billing-card__lbl">Shortfall</span>
-                  <span className="bento-billing-card__val pm-num">35,700</span>
+                  <CountUp className="bento-billing-card__val pm-num" value={35700} duration={1800} />
                   <span className="bento-billing-card__sub">Extends, or the shortfall isn’t charged</span>
                 </div>
 

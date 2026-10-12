@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./dashboard.css";
 import Shell, { Icon, NavItem } from "./Shell";
 import { BarChart } from "./charts";
+import CountUp from "../components/CountUp";
 
 /* ClipperCircle by Pomera: the publisher's own dashboard. All data is SAMPLE data for a design preview. */
 
@@ -117,22 +118,22 @@ function Home({ go }: { go: (id: string) => void }) {
       <div className="db-kpis">
         <div className="db-card db-kpi">
           <span className="db-label">Paid so far</span>
-          <span className="db-kpi__val">₹{inr(paid)}</span>
+          <CountUp className="db-kpi__val" value={paid} prefix="₹" />
           <span className="db-kpi__note">Sent to your UPI, week by week</span>
         </div>
         <div className="db-card db-kpi db-kpi--ink">
           <span className="db-label">This week&apos;s payout</span>
-          <span className="db-kpi__val">₹{inr(WEEKLY[6])}</span>
+          <CountUp className="db-kpi__val" value={WEEKLY[6]} prefix="₹" />
           <span className="db-kpi__note">Scheduled by UPI</span>
         </div>
         <div className="db-card db-kpi">
           <span className="db-label">Counting to day 7</span>
-          <span className="db-kpi__val">₹{inr(WEEKLY[7])}</span>
+          <CountUp className="db-kpi__val" value={WEEKLY[7]} prefix="₹" />
           <span className="db-kpi__note">Paid once the views are verified</span>
         </div>
         <div className="db-card db-kpi">
           <span className="db-label">Verified views · 30 days</span>
-          <span className="db-kpi__val">{inr(59600)}</span>
+          <CountUp className="db-kpi__val" value={59600} />
           <span className="db-kpi__note">No follower minimum, ever</span>
         </div>
       </div>
