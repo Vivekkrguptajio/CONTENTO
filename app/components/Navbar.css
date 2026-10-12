@@ -869,8 +869,8 @@ svg.logo {
   .nav-discover--header .nav-discover__arrow { display: none; }
   .nav-link.nav-discover--header { padding: 0 11px 0 9px; font-size: 13px; }
 }
-/* narrow phones: icon only */
-@media (max-width: 350px) {
+/* phones: icon only, no word */
+@media (max-width: 767px) {
   .nav-discover--header .nav-discover__label { display: none; }
   .nav-link.nav-discover--header { width: 38px; padding: 0; justify-content: center; }
 }
