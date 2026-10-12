@@ -155,6 +155,17 @@ export default function Navbar() {
 
             {/* Right: Sign In & Action Buttons & Mobile Hamburger Toggle */}
             <div className="nav-right">
+              <a
+                href={DISCOVERY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link nav-discover nav-discover--header"
+                aria-label="Discovery"
+              >
+                <DiscoveryIcon />
+                <span className="nav-discover__label">Discovery</span>
+                <span className="nav-discover__arrow" aria-hidden="true">↗</span>
+              </a>
               <ThemeToggle />
               {isCreatorPage && !isLegalPage ? (
                 <a href="/clippercircle#join" className="nav-btn nav-btn--primary">

@@ -851,3 +851,26 @@ svg.logo {
   color: #C8F135;
 }
 .nav-mobile-drawer.is-dark .nav-mobile-large-link.nav-mobile-discover:hover { background: #C8F135; color: #111210; }
+
+/* header copy of Discovery: only where the desktop menu is hidden (tablet and phone) */
+.nav-link.nav-discover--header { display: none; }
+@media (max-width: 1024px) {
+  .nav-link.nav-discover--header {
+    display: inline-flex;
+    height: 38px;
+    padding: 0 12px 0 10px;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+}
+/* phones: no arrow, tighter spacing so logo, pill, theme and menu all fit */
+@media (max-width: 480px) {
+  .nav-container { gap: 8px; }
+  .nav-discover--header .nav-discover__arrow { display: none; }
+  .nav-link.nav-discover--header { padding: 0 11px 0 9px; font-size: 13px; }
+}
+/* narrow phones: icon only */
+@media (max-width: 400px) {
+  .nav-discover--header .nav-discover__label { display: none; }
+  .nav-link.nav-discover--header { width: 38px; padding: 0; justify-content: center; }
+}
