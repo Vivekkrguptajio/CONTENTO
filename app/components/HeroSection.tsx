@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import GlobePolaroids from "./GlobePolaroids";
+import ViralReelsMobile from "./ViralReelsMobile";
 import "./HeroSection.css";
 
 const AUDIENCES = [
@@ -129,10 +130,16 @@ export default function HeroSection() {
           </a>
         </div>
 
-        {/* Globe Visualization (Responsive vertical reels preview) */}
-        <div className="hero-globe-wrapper relative z-[3] mt-8 sm:mt-4 flex h-[380px] w-full justify-center md:h-[620px]">
-          <div className="relative h-full w-full max-w-[1040px] flex items-center justify-center">
-            <GlobePolaroids className="w-full max-w-[380px] sm:max-w-[460px] md:max-w-[620px] lg:max-w-[680px]" />
+        {/* Phones: a big swipeable "going viral" reel deck. Tablet and up: the rotating globe. */}
+        <div className="relative z-[3] mt-6 w-full md:hidden">
+          <ViralReelsMobile />
+        </div>
+
+        <div className="hidden w-full md:block">
+          <div className="hero-globe-wrapper relative z-[3] mt-8 sm:mt-4 flex h-[380px] w-full justify-center md:h-[620px]">
+            <div className="relative h-full w-full max-w-[1040px] flex items-center justify-center">
+              <GlobePolaroids className="w-full max-w-[380px] sm:max-w-[460px] md:max-w-[620px] lg:max-w-[680px]" />
+            </div>
           </div>
         </div>
 
