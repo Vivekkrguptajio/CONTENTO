@@ -380,7 +380,7 @@ export function GlobePolaroids({
               bottom: "anchor(top)",
               left: "anchor(center)",
               translate: "-50% 0",
-              marginBottom: 10,
+              marginBottom: isMobile ? 8 : 10,
               pointerEvents: "none" as const,
               opacity: `var(--cobe-visible-${m.id}, 0)`,
               willChange: "opacity",
@@ -395,10 +395,10 @@ export function GlobePolaroids({
             {/* Reels Phone-Style Vertical Card (9:16 Aspect Ratio) */}
             <div
               style={{
-                width: isMobile ? 48 : 55,
-                height: isMobile ? 84 : 96,
+                width: isMobile ? 42 : 55,
+                height: isMobile ? 74 : 96,
                 position: "relative",
-                borderRadius: isMobile ? "10px" : "12px",
+                borderRadius: isMobile ? "9px" : "12px",
                 overflow: "hidden",
                 background: "#050505",
                 boxShadow:
@@ -465,7 +465,7 @@ export function GlobePolaroids({
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  padding: isMobile ? "14px 2px 5px" : "19px 5px 6px",
+                  padding: isMobile ? "12px 2px 4px" : "19px 5px 6px",
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%)",
                   zIndex: 2,
@@ -477,7 +477,7 @@ export function GlobePolaroids({
                   style={{
                     display: "block",
                     fontFamily: "system-ui, -apple-system, sans-serif",
-                    fontSize: isMobile ? "7.8px" : "9px",
+                    fontSize: isMobile ? "7px" : "9px",
                     fontWeight: 600,
                     color: "#ffffff",
                     letterSpacing: "0.01em",
