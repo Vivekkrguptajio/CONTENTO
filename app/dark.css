@@ -37,10 +37,10 @@ html[data-theme="dark"] .hero-section > div[aria-hidden="true"] > div {
   background: radial-gradient(50% 50% at 50% 50%, rgba(200, 241, 53, 0.06) 0%, transparent 75%) !important;
 }
 html[data-theme="dark"] .hero-alt-badge {
-  border-color: rgba(200, 241, 53, 0.25);
-  background: rgba(200, 241, 53, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
 }
-html[data-theme="dark"] .hero-alt-badge__text { color: #C8F135; }
+html[data-theme="dark"] .hero-alt-badge__text { color: #A8A8A3; }
 html[data-theme="dark"] .hero-headline { color: var(--pm-c-text); }
 html[data-theme="dark"] .hero-subheadline,
 html[data-theme="dark"] .hero-eyebrow { color: var(--pm-c-text-2); }
