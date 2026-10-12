@@ -8,6 +8,17 @@ import ThemeToggle from "./ThemeToggle";
 import BrandLogo from "./BrandLogo";
 import { useTheme } from "../lib/theme";
 
+const DISCOVERY_URL = "https://contentrewards.com/c/discover";
+
+function DiscoveryIcon() {
+  return (
+    <svg className="nav-discover__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5" />
+      <polygon points="15.8 8.2 13.6 13.6 8.2 15.8 10.4 10.4 15.8 8.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const isCreatorPage = pathname === "/clippercircle" || pathname.startsWith("/clippercircle/");
@@ -111,6 +122,16 @@ export default function Navbar() {
                 className="nav-menu"
                 aria-label="Main Navigation"
               >
+                <a
+                  href={DISCOVERY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link nav-discover"
+                >
+                  <DiscoveryIcon />
+                  <span>Discovery</span>
+                  <span className="nav-discover__arrow" aria-hidden="true">↗</span>
+                </a>
                 <Link
                   href="/#hero"
                   className={`nav-link ${isBrandActive ? "is-active" : ""}`}
@@ -215,6 +236,17 @@ export default function Navbar() {
 
           {/* Large Clean Navigation Links */}
           <nav className="nav-mobile-links-list">
+            <a
+              href={DISCOVERY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-mobile-large-link nav-mobile-discover"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <DiscoveryIcon />
+              <span>Discovery</span>
+              <span className="nav-discover__arrow" aria-hidden="true">↗</span>
+            </a>
             <Link
               href="/#hero"
               className={`nav-mobile-large-link ${isBrandActive ? "is-active" : ""}`}

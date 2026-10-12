@@ -767,3 +767,87 @@ svg.logo {
   :root { --nav-announce-h: 44px; }
   .nav-announce { font-size: 10px; padding: 6px 12px; }
 }
+
+/* ── Discovery link: lime-tint pill with a compass that turns on hover ── */
+.nav-link.nav-discover {
+  position: relative;
+  overflow: hidden;
+  background: #F2FBD6;
+  border: 1px solid rgba(127, 160, 15, 0.35);
+  color: #111210;
+  padding: 5px 12px 5px 10px;
+}
+.nav-link.nav-discover:hover,
+.nav-link.nav-discover:focus-visible {
+  background: #C8F135;
+  border-color: #C8F135;
+  color: #111210;
+}
+.nav-menu:hover .nav-link.nav-discover:not(:hover) { background: #F2FBD6; }
+.nav-discover__icon { flex: none; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.nav-discover:hover .nav-discover__icon { transform: rotate(135deg); }
+.nav-discover__arrow {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.nav-discover:hover .nav-discover__arrow { transform: translate(2px, -2px); }
+.nav-link.nav-discover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: navDiscoverShine 4.5s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}
+@keyframes navDiscoverShine {
+  0%, 70% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-link.nav-discover::after { animation: none; display: none; }
+  .nav-discover__icon, .nav-discover__arrow { transition: none; }
+}
+
+/* dark: lime text on a faint lime wash */
+.nav-sticky-wrapper.nav-theme-dark .nav-link.nav-discover {
+  background: rgba(200, 241, 53, 0.1);
+  border-color: rgba(200, 241, 53, 0.35);
+  color: #C8F135;
+}
+.nav-sticky-wrapper.nav-theme-dark .nav-link.nav-discover:hover,
+.nav-sticky-wrapper.nav-theme-dark .nav-link.nav-discover:focus-visible {
+  background: #C8F135;
+  border-color: #C8F135;
+  color: #111210;
+}
+.nav-sticky-wrapper.nav-theme-dark .nav-menu:hover .nav-link.nav-discover:not(:hover) { background: rgba(200, 241, 53, 0.1); }
+.nav-sticky-wrapper.nav-theme-dark .nav-link.nav-discover::after {
+  background: linear-gradient(105deg, transparent 35%, rgba(200, 241, 53, 0.25) 50%, transparent 65%);
+}
+
+/* mobile drawer */
+.nav-mobile-large-link.nav-mobile-discover {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-bottom: 6px;
+  padding: 6px 16px 6px 14px;
+  border-radius: 999px;
+  background: #F2FBD6;
+  border: 1px solid rgba(127, 160, 15, 0.35);
+  color: #111210;
+  font-size: 22px;
+  line-height: 30px;
+}
+.nav-mobile-discover svg { width: 20px; height: 20px; flex: none; }
+.nav-mobile-discover:hover { opacity: 1; background: #C8F135; }
+.nav-mobile-drawer.is-dark .nav-mobile-large-link.nav-mobile-discover {
+  background: rgba(200, 241, 53, 0.1);
+  border-color: rgba(200, 241, 53, 0.35);
+  color: #C8F135;
+}
+.nav-mobile-drawer.is-dark .nav-mobile-large-link.nav-mobile-discover:hover { background: #C8F135; color: #111210; }
