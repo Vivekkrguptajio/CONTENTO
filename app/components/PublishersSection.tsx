@@ -66,6 +66,9 @@ export default function PublishersSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error" | "unconnected">("idle");
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
+  const [activeReel, setActiveReel] = useState(0);
+  const [hinted, setHinted] = useState(false);
+  const activeRef = useRef(0);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
 
   const payout = Math.round((views / 1000) * rate);
@@ -76,8 +79,9 @@ export default function PublishersSection() {
     const videos = Array.from(root.querySelectorAll("video"));
     const io = new IntersectionObserver(
       ([entry]) => {
-        videos.forEach((v) => {
-          if (entry.isIntersecting) v.play().catch(() => {});
+        const phone = window.matchMedia("(max-width: 767px)").matches;
+        videos.forEach((v, i) => {
+          if (entry.isIntersecting && (!phone || i === activeRef.current)) v.play().catch(() => {});
           else v.pause();
         });
       },
@@ -85,6 +89,34 @@ export default function PublishersSection() {
     );
     io.observe(root);
     return () => io.disconnect();
+  }, []);
+
+  /* Phones: the reels sit in a vertical "window"; the one in view plays, the rest pause */
+  useEffect(() => {
+    const el = reelsRef.current;
+    if (!el) return;
+    const phone = window.matchMedia("(max-width: 767px)");
+    const sync = () => {
+      const videos = Array.from(el.querySelectorAll("video"));
+      videos.forEach((v, i) => {
+        if (!phone.matches) return;
+        if (i === activeRef.current) v.play().catch(() => {});
+        else v.pause();
+      });
+    };
+    const onScroll = () => {
+      if (!phone.matches) return;
+      const i = Math.round(el.scrollTop / Math.max(el.clientHeight, 1));
+      if (i !== activeRef.current) {
+        activeRef.current = i;
+        setActiveReel(i);
+        setHinted(true);
+        sync();
+      }
+    };
+    sync();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
   /* Reels: left/right arrows, only shown when the row actually overflows */
@@ -168,6 +200,13 @@ export default function PublishersSection() {
           </div>
 
           <div className="pb-reels-wrap">
+            <div className="pb-win" aria-hidden="true">
+              <span className="pb-win__notch" />
+              <span className="pb-win__dots">
+                {REELS.map((r, i) => (<i key={r.src} className={i === activeReel ? "is-on" : ""} />))}
+              </span>
+              <span className={`pb-win__hint${hinted ? " is-gone" : ""}`}>Swipe up<b>↑</b></span>
+            </div>
             {canLeft && (
               <button type="button" className="pb-reels-arrow pb-reels-arrow--l" aria-label="Scroll reels left" onClick={() => scrollReels(-1)}>
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
