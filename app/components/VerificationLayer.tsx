@@ -47,7 +47,7 @@ export default function VerificationLayer() {
             {/* Station I: Platform Data Card */}
             <div className="vl-station vl-station--1">
               <div className="vl-station-mobile-header">
-                <span className="vl-station-mobile-num pm-num">I</span>
+                <span className="vl-station-mobile-num pm-num">1</span>
                 <span className="vl-station-mobile-lbl">Post data</span>
               </div>
               <div className="vl-modal-card">
@@ -80,7 +80,7 @@ export default function VerificationLayer() {
             {/* Station II: Concentric Radar Verification */}
             <div className="vl-station vl-station--2">
               <div className="vl-station-mobile-header">
-                <span className="vl-station-mobile-num pm-num">II</span>
+                <span className="vl-station-mobile-num pm-num">2</span>
                 <span className="vl-station-mobile-lbl vl-station-mobile-lbl--underlined">
                   Analytics check
                   <span className="vl-station-mobile-info">
@@ -108,7 +108,7 @@ export default function VerificationLayer() {
             {/* Station III: Fraud Analysis Staggered Notes */}
             <div className="vl-station vl-station--3">
               <div className="vl-station-mobile-header">
-                <span className="vl-station-mobile-num pm-num">III</span>
+                <span className="vl-station-mobile-num pm-num">3</span>
                 <span className="vl-station-mobile-lbl">Manual review</span>
               </div>
               <div className="vl-notes-stack">
@@ -142,7 +142,7 @@ export default function VerificationLayer() {
             {/* Station IV: Verified Reporting Flag Card */}
             <div className="vl-station vl-station--4">
               <div className="vl-station-mobile-header">
-                <span className="vl-station-mobile-num pm-num">IV</span>
+                <span className="vl-station-mobile-num pm-num">4</span>
                 <span className="vl-station-mobile-lbl">Reporting</span>
               </div>
               <div className="vl-flag-card">
@@ -164,12 +164,12 @@ export default function VerificationLayer() {
           <div className="vl-columns-bar">
             
             <div className="vl-col">
-              <span className="vl-col-num pm-num">I</span>
+              <span className="vl-col-num pm-num">1</span>
               <span className="vl-col-lbl">Post data</span>
             </div>
 
             <div className="vl-col">
-              <span className="vl-col-num pm-num">II</span>
+              <span className="vl-col-num pm-num">2</span>
               <span className="vl-col-lbl vl-col-lbl--underlined">
                 Analytics check
                 <span className="vl-col-info">ⓘ</span>
@@ -177,12 +177,12 @@ export default function VerificationLayer() {
             </div>
 
             <div className="vl-col">
-              <span className="vl-col-num pm-num">III</span>
+              <span className="vl-col-num pm-num">3</span>
               <span className="vl-col-lbl">Manual review</span>
             </div>
 
             <div className="vl-col">
-              <span className="vl-col-num pm-num">IV</span>
+              <span className="vl-col-num pm-num">4</span>
               <span className="vl-col-lbl">Reporting</span>
             </div>
 

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./dark.css";
 import PageLoader from "./components/PageLoader";
+import StickyCta from "./components/StickyCta";
 import { THEME_INIT_SCRIPT } from "./lib/theme-script";
 
 const geistSans = Geist({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col bg-white">
         <PageLoader />
         {children}
+        <StickyCta />
       </body>
     </html>
   );

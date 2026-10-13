@@ -874,3 +874,27 @@ svg.logo {
   .nav-discover--header .nav-discover__label { display: none; }
   .nav-link.nav-discover--header { width: 38px; padding: 0; justify-content: center; }
 }
+
+/* ── Phone menu: the link for the page you are on is highlighted, the rest step back ── */
+.nav-mobile-links-list .nav-mobile-large-link:not(.nav-mobile-discover) {
+  align-self: flex-start;
+  margin-left: -14px;
+  padding: 6px 14px;
+  border-radius: 14px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-mobile-links-list .nav-mobile-large-link.is-active:not(.nav-mobile-discover) {
+  background: #F3F2EE;
+  color: #111210;
+  opacity: 1;
+}
+.nav-mobile-links-list:has(.nav-mobile-large-link.is-active) .nav-mobile-large-link:not(.is-active):not(.nav-mobile-discover) {
+  color: #8A8A85;
+}
+.nav-mobile-drawer.is-dark .nav-mobile-links-list .nav-mobile-large-link.is-active:not(.nav-mobile-discover) {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+.nav-mobile-drawer.is-dark .nav-mobile-links-list:has(.nav-mobile-large-link.is-active) .nav-mobile-large-link:not(.is-active):not(.nav-mobile-discover) {
+  color: #8F8F8A;
+}

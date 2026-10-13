@@ -73,6 +73,9 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  /* On the agencies page neither switch tab is the current page, so neither is highlighted */
+  const drawerTab: "brands" | "creators" | null = isAgenciesPage ? null : mobileActiveTab;
+
   const theme = useTheme();
   const isLegalPage =
     currentHash.includes("term") ||
@@ -216,11 +219,11 @@ export default function Navbar() {
             <button
               type="button"
               role="tab"
-              aria-selected={mobileActiveTab === "brands"}
-              className={`nav-mobile-tab ${mobileActiveTab === "brands" ? "is-active" : ""}`}
+              aria-selected={drawerTab === "brands"}
+              className={`nav-mobile-tab ${drawerTab === "brands" ? "is-active" : ""}`}
               onClick={() => {
                 setMobileActiveTab("brands");
-                if (isCreatorPage) {
+                if (!isHomePage) {
                   setMobileMenuOpen(false);
                   window.location.href = "/";
                 }
@@ -231,8 +234,8 @@ export default function Navbar() {
             <button
               type="button"
               role="tab"
-              aria-selected={mobileActiveTab === "creators"}
-              className={`nav-mobile-tab ${mobileActiveTab === "creators" ? "is-active" : ""}`}
+              aria-selected={drawerTab === "creators"}
+              className={`nav-mobile-tab ${drawerTab === "creators" ? "is-active" : ""}`}
               onClick={() => {
                 setMobileActiveTab("creators");
                 if (!isCreatorPage) {

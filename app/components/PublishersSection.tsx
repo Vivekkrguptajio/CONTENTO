@@ -23,13 +23,13 @@ const STEPS = [
   { n: "01", t: "Join in 2 minutes", d: "Fill in the form below. It’s free.", tag: "2 min" },
   { n: "02", t: "Get the brief on WhatsApp", d: "Brand, clips, rules and the rate, all before you start.", tag: "WhatsApp" },
   { n: "03", t: "Edit and post", d: "Your own edit, on your own account, with the paid partnership label on.", tag: "Instagram · YouTube" },
-  { n: "04", t: "Get paid every week", d: "Verified views are counted on day 7 and paid by UPI.", tag: "Weekly · UPI" },
+  { n: "04", t: "Get paid on every verified view", d: "Verified views are counted on day 7 and paid by UPI.", tag: "Weekly · UPI" },
 ];
 
 const TICKS = [
   "Every brief shows the rate and the maximum per post before you start",
   "Views are counted on day 7 after you post",
-  "Paid every week by UPI, on time",
+  "Paid by UPI, on time",
   "The first campaign rates go to the founding cohort first",
 ];
 
@@ -42,7 +42,7 @@ const PROMISES = [
 ];
 
 const FAQS = [
-  { q: "What is a clipper?", a: "A video editor who posts brand videos on their own account and gets paid for every verified view. You edit and you publish; that’s what brands pay for." },
+  { q: "What is a publisher / clipper?", a: "A video editor who posts brand videos on their own account and gets paid for every verified view. You edit and you publish; that’s what brands pay for." },
   { q: "Do I have to pay anything?", a: "No. Joining is free, always. Pomera will never ask you for money." },
   { q: "How many followers do I need?", a: "None. There is no follower minimum. What matters is whether people watch your edits." },
   { q: "Will you post from my account or ask for my password?", a: "Never. You post yourself. We only need your post link. We pull the views for it ourselves." },
@@ -59,6 +59,34 @@ const NEXT_STEPS = [
 
 const inr = (n: number) => n.toLocaleString("en-IN");
 
+type Reel = (typeof REELS)[number];
+
+function ReelCard({ r, i }: { r: Reel; i: number }) {
+  return (
+    <div style={{ marginTop: r.mt }} className="pb-reel-wrap">
+      <div className={`pb-reel ${i % 2 ? "pb-reel--b" : ""}`} style={{ "--w": `${r.w}px`, "--h": `${r.h}px` } as CSSVars}>
+        <video className="pb-reel__video" src={r.src} autoPlay loop muted playsInline preload="metadata" />
+        <div className="pb-reel__shade" />
+        <div className="pb-reel__top">
+          <PomeraMark size={24} bg="#111210" radius={90} />
+          <div>@you<div className="pb-reel__pp">Paid partnership</div></div>
+          <span className="pb-reel__pp pb-reel__ex">Example</span>
+        </div>
+        <p className="pb-reel__ol">{r.text}</p>
+        <div className="pb-reel__bottom">
+          <span className="pb-reel__earn">
+            <span className="pb-ldot" />
+            <b>Paid per verified view</b>
+          </span>
+          <p className="pb-reel__cap">{r.cap}</p>
+        </div>
+        <span className="pb-reel__vf"><span className="pb-ldot" />Verified</span>
+        <div className="pb-reel__side"><i /><i style={{ borderRadius: 99 }} /><i /></div>
+      </div>
+    </div>
+  );
+}
+
 export default function PublishersSection() {
   const reelsRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState(0);
@@ -70,6 +98,8 @@ export default function PublishersSection() {
   const [activeReel, setActiveReel] = useState(0);
   const [hinted, setHinted] = useState(false);
   const activeRef = useRef(0);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
 
   const payout = Math.round((views / 1000) * rate);
@@ -118,6 +148,57 @@ export default function PublishersSection() {
     sync();
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* Phones: each side window starts on a neighbouring reel and plays only the reel in view */
+  useEffect(() => {
+    const phone = window.matchMedia("(max-width: 767px)");
+    const wins = [
+      { el: leftRef.current, start: REELS.length - 1 },
+      { el: rightRef.current, start: 1 },
+    ];
+    const cleanups: Array<() => void> = [];
+    wins.forEach(({ el, start }) => {
+      if (!el) return;
+      let cur = -1;
+      let raf = 0;
+      const sync = () => {
+        if (!phone.matches) return;
+        const i = Math.round(el.scrollTop / Math.max(el.clientHeight, 1));
+        if (i === cur) return;
+        cur = i;
+        el.querySelectorAll("video").forEach((v, k) => {
+          if (k === i) v.play().catch(() => {});
+          else v.pause();
+        });
+      };
+      const onScroll = () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(sync);
+      };
+      const init = requestAnimationFrame(() => {
+        if (!phone.matches) return;
+        el.scrollTop = start * el.clientHeight;
+        sync();
+      });
+      const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+          el.querySelectorAll("video").forEach((v) => v.pause());
+        } else {
+          cur = -1;
+          sync();
+        }
+      });
+      io.observe(el);
+      el.addEventListener("scroll", onScroll, { passive: true });
+      cleanups.push(() => {
+        cancelAnimationFrame(init);
+        cancelAnimationFrame(raf);
+        io.disconnect();
+        el.removeEventListener("scroll", onScroll);
+      });
+    });
+    return () => cleanups.forEach((fn) => fn());
   }, []);
 
   /* Reels: left/right arrows, only shown when the row actually overflows */
@@ -189,7 +270,10 @@ export default function PublishersSection() {
       <section className="pb-hero">
         <div className="pb-wrap">
           <div className="pb-hero__copy">
-            <h1 className="pb-h1">Paid per view, <span className="pb-mk">not</span> per follower.</h1>
+            <h1 className="pb-h1 pb-h1--split">
+              <span className="pb-h1__a">Paid per view,</span>
+              <span className="pb-h1__b"><span className="pb-mk">not</span> per follower.</span>
+            </h1>
             <p className="pb-lead">
               Edit brand videos, post them from your own Instagram or YouTube account, and get paid for every verified view. Weekly, by UPI.
             </p>
@@ -229,27 +313,19 @@ export default function PublishersSection() {
             onPointerCancel={onReelsUp}
           >
             {REELS.map((r, i) => (
-              <div key={r.src} style={{ marginTop: r.mt }} className="pb-reel-wrap">
-                <div className={`pb-reel ${i % 2 ? "pb-reel--b" : ""}`} style={{ "--w": `${r.w}px`, "--h": `${r.h}px` } as CSSVars}>
-                  <video className="pb-reel__video" src={r.src} autoPlay loop muted playsInline preload="metadata" />
-                  <div className="pb-reel__shade" />
-                  <div className="pb-reel__top">
-                    <PomeraMark size={24} bg="#111210" radius={90} />
-                    <div>@you<div className="pb-reel__pp">Paid partnership</div></div>
-                    <span className="pb-reel__pp pb-reel__ex">Example</span>
-                  </div>
-                  <p className="pb-reel__ol">{r.text}</p>
-                  <div className="pb-reel__bottom">
-                    <span className="pb-reel__earn">
-                      <span className="pb-ldot" />
-                      <b>Paid per verified view</b>
-                    </span>
-                    <p className="pb-reel__cap">{r.cap}</p>
-                  </div>
-                  <span className="pb-reel__vf"><span className="pb-ldot" />Verified</span>
-                  <div className="pb-reel__side"><i /><i style={{ borderRadius: 99 }} /><i /></div>
-                </div>
-              </div>
+              <ReelCard key={r.src} r={r} i={i} />
+            ))}
+          </div>
+
+          {/* Phones only: smaller copies on each side that scroll on their own, starting on the neighbouring reels */}
+          <div className="pb-reels-side pb-reels-side--l" ref={leftRef} aria-hidden="true">
+            {REELS.map((r, i) => (
+              <ReelCard key={r.src} r={r} i={i} />
+            ))}
+          </div>
+          <div className="pb-reels-side pb-reels-side--r" ref={rightRef} aria-hidden="true">
+            {REELS.map((r, i) => (
+              <ReelCard key={r.src} r={r} i={i} />
             ))}
           </div>
           </div>
@@ -280,9 +356,9 @@ export default function PublishersSection() {
         <div className="pb-wrap pb-split">
           <div className="pb-split__side">
             <p className="pb-eyebrow pb-eyebrow--left">How it works</p>
-            <h2 className="pb-h2 pb-h2--left">What’s a clipper?</h2>
+            <h2 className="pb-h2 pb-h2--left">What’s a publisher<span className="pb-h2__alt"> / clipper?</span></h2>
             <p className="pb-lead pb-lead--left">
-              A video editor who posts brand videos on their own account and gets paid for the views. You don’t need a big following. You need edits people watch.
+              A publisher is a video editor who posts brand videos on their own account and gets paid for the views. You don’t need a big following. You need edits people watch.
             </p>
           </div>
           <ol className="pb-tl">

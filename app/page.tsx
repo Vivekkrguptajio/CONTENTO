@@ -4,6 +4,7 @@ import VerificationLayer from "./components/VerificationLayer";
 import ProblemSection from "./components/ProblemSection";
 import SolutionSteps from "./components/SolutionSteps";
 import BentoFeatures from "./components/BentoFeatures";
+import BrandCalculator from "./components/BrandCalculator";
 import QuoteSection from "./components/QuoteSection";
 import TestimonialCard from "./components/TestimonialCard";
 import DashboardPreviewSection from "./components/DashboardPreviewSection";
@@ -21,6 +22,7 @@ export default function Home() {
         <SolutionSteps />
         <VerificationLayer />
         <BentoFeatures />
+        <BrandCalculator />
         <DashboardPreviewSection />
         <QuoteSection />
         <TestimonialCard />

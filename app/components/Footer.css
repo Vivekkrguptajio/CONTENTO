@@ -245,13 +245,16 @@
   font-weight: 600;
 }
 
-/* ── Floating WhatsApp Action Button ─────────────────────────────── */
-.cr-fab-chat {
+/* ── Floating action buttons: WhatsApp, with "back to top" stacked right above it ── */
+.cr-fab-chat,
+.cr-fab-top {
+  --fab-size: 48px;
+  --fab-edge: 24px;
+  --fab-gap: 10px;
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 50px;
-  height: 50px;
+  right: var(--fab-edge);
+  width: var(--fab-size);
+  height: var(--fab-size);
   border-radius: 12px;
   background-color: var(--pm-ink, #111210);
   color: var(--pm-lime, #C8F135);
@@ -263,12 +266,32 @@
   cursor: pointer;
   z-index: 50;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease, visibility 0.25s ease;
 }
+.cr-fab-chat { bottom: var(--fab-edge); }
+.cr-fab-top {
+  bottom: calc(var(--fab-edge) + var(--fab-size) + var(--fab-gap));
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+.cr-fab-top.is-on { opacity: 1; visibility: visible; transform: none; }
 
 .cr-fab-chat:hover {
   transform: scale(1.06) translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+.cr-fab-top.is-on:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 640px) {
+  .cr-fab-chat,
+  .cr-fab-top { --fab-size: 44px; --fab-edge: 16px; --fab-gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-fab-chat, .cr-fab-top { transition: none; }
 }
 
 /* ── Responsive adjustments ──────────────────────────────────────── */
@@ -328,13 +351,6 @@
     text-align: center;
   }
 
-  .cr-fab-chat {
-    bottom: 18px;
-    right: 18px;
-    width: 44px;
-    height: 44px;
-  border-radius: 12px;
-}
 }
 
 @media (max-width: 860px) {

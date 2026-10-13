@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import "./Footer.css";
 import BrandLogo from "./BrandLogo";
@@ -43,6 +43,16 @@ const WhatsAppDeskIcon = () => (
 );
 
 export default function Footer() {
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const on = () => setShowTop(window.scrollY > 700);
+    window.addEventListener("scroll", on, { passive: true });
+    const id = requestAnimationFrame(on);
+    return () => {
+      window.removeEventListener("scroll", on);
+      cancelAnimationFrame(id);
+    };
+  }, []);
   const pathname = usePathname() || "/";
   const isDark = useTheme() === "dark";
   const isPublisherPage = pathname === "/clippercircle" || pathname.startsWith("/clippercircle/");
@@ -159,6 +169,18 @@ export default function Footer() {
         </div>
       </footer>
 
+      {/* Back to top, sits just above the WhatsApp button */}
+      <button
+        type="button"
+        className={`cr-fab-top${showTop ? " is-on" : ""}`}
+        aria-label="Back to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <line x1="12" y1="19" x2="12" y2="5" />
+          <polyline points="5 12 12 5 19 12" />
+        </svg>
+      </button>
       {/* Floating WhatsApp Action Button */}
       <a
         href={whatsappLink("Hi Pomera Team, we have an inquiry regarding distribution.")}

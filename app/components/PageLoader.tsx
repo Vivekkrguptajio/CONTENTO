@@ -8,14 +8,14 @@ import { MARK_ARMS, MARK_CENTER } from "./pomeraMark";
 const CENTER = MARK_CENTER;
 const ARMS = MARK_ARMS;
 
-const MIN_VISIBLE_MS = 2200; // long enough to see the asterisk build smoothly and spin once
+const MIN_VISIBLE_MS = 2900; // the asterisk draws and spins exactly once (2.6s), then holds briefly before the page shows
 const FADE_MS = 700;
 
 export default function PageLoader() {
   const [phase, setPhase] = useState<"loading" | "leaving" | "gone">("loading");
 
   useEffect(() => {
-    const started = performance.now();
+    const started = 0; // measured from navigation start: the CSS animation begins as soon as the page paints
     let t1: ReturnType<typeof setTimeout>;
     let t2: ReturnType<typeof setTimeout>;
 

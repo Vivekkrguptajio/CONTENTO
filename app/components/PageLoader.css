@@ -26,7 +26,7 @@
 
 .pl-spin {
   transform-origin: 90px 94px;
-  animation: plSpin 2.6s cubic-bezier(0.6, 0, 0.25, 1) infinite;
+  animation: plSpin 2.6s cubic-bezier(0.6, 0, 0.25, 1) 1 forwards;
 }
 
 .pl-arm {
@@ -38,7 +38,8 @@
   opacity: 0;
   animation-duration: 2.6s;
   animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .pl-arm--0 { animation-name: plArm0, plTint; }
@@ -62,36 +63,31 @@
 @keyframes plArm0 {
   0%, 2% { stroke-dashoffset: 1; opacity: 0; }
   2.01% { opacity: 1; }
-  16%, 90% { stroke-dashoffset: 0; opacity: 1; }
-  97%, 100% { stroke-dashoffset: 0; opacity: 0; }
+  16%, 100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes plArm1 {
   0%, 10% { stroke-dashoffset: 1; opacity: 0; }
   10.01% { opacity: 1; }
-  24%, 90% { stroke-dashoffset: 0; opacity: 1; }
-  97%, 100% { stroke-dashoffset: 0; opacity: 0; }
+  24%, 100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes plArm2 {
   0%, 18% { stroke-dashoffset: 1; opacity: 0; }
   18.01% { opacity: 1; }
-  32%, 90% { stroke-dashoffset: 0; opacity: 1; }
-  97%, 100% { stroke-dashoffset: 0; opacity: 0; }
+  32%, 100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes plArm3 {
   0%, 26% { stroke-dashoffset: 1; opacity: 0; }
   26.01% { opacity: 1; }
-  40%, 90% { stroke-dashoffset: 0; opacity: 1; }
-  97%, 100% { stroke-dashoffset: 0; opacity: 0; }
+  40%, 100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes plArm4 {
   0%, 34% { stroke-dashoffset: 1; opacity: 0; }
   34.01% { opacity: 1; }
-  48%, 90% { stroke-dashoffset: 0; opacity: 1; }
-  97%, 100% { stroke-dashoffset: 0; opacity: 0; }
+  48%, 100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes plFailsafe {

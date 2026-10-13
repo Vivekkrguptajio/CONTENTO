@@ -67,6 +67,13 @@
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
+.pb-h1--split { display: flex; flex-direction: column; align-items: center; gap: 0.16em; margin-bottom: 4px; }
+.pb-h1__a { display: block; font-size: clamp(46px, 11vw, 64px); font-weight: 500; line-height: 1.02; letter-spacing: -0.04em; white-space: nowrap; }
+.pb-h1__b { display: block; font-size: clamp(24px, 5.6vw, 34px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; color: var(--pb-g600); white-space: nowrap; }
+@media (min-width: 1200px) {
+  .pb-h1__a { font-size: 76px; }
+  .pb-h1__b { font-size: 40px; }
+}
 .pb-h2 {
   font-size: clamp(28px, 3.4vw, 38px);
   line-height: 1.1;
@@ -75,6 +82,7 @@
   text-wrap: balance;
 }
 .pb-h2--left { margin-top: 14px; }
+.pb-h2__alt { font-size: 0.6em; font-weight: 500; letter-spacing: -0.02em; color: var(--pb-g500); white-space: nowrap; }
 .pb-lead {
   max-width: 620px;
   font-size: 18px;
@@ -130,8 +138,7 @@
   .pb-ctas { flex-wrap: nowrap; align-items: stretch; gap: 8px; width: 100%; }
   .pb-ctas .pb-btn { flex: 1 1 0; min-width: 0; height: auto; min-height: 48px; padding: 8px 10px; font-size: 14px; line-height: 1.2; text-align: center; white-space: normal; }
   .pb-ctas .pb-btn:first-child { flex: 1.5 1 0; }
-  .pb-hero__copy { gap: 16px; }
-  .pb-hero__copy .pb-h1 { line-height: 1.2; }
+  .pb-hero__copy { gap: 20px; }
   .pb-hero__copy .pb-lead { font-size: 16.5px; max-width: 330px; }
   .pb-hero__copy .pb-fine { max-width: 280px; }
 }
@@ -153,7 +160,7 @@
 
 .pb-hero__copy {
   display: grid;
-  gap: 18px;
+  gap: 22px;
   justify-items: center;
   text-align: center;
   max-width: 980px;
@@ -279,12 +286,18 @@
   .pb-hero__copy .pb-eyebrow > .pb-dot { align-self: center; margin-top: 0; }
 }
 
-/* ── Phones: the reels live inside a phone-shaped window; swipe up/down to move through all 5 ── */
+/* ── Phones: three phone-shaped windows side by side. The middle one is the big one; the two smaller ones
+   on each side are copies that start on the neighbouring reels. Every window scrolls up/down on its own. ── */
 .pb-win { display: none; }
+.pb-reels-side { display: none; }
 @media (max-width: 767px) {
   .pb-reels-wrap {
-    --win-w: min(252px, 68vw);
+    --win-w: min(212px, 50vw);
     --win-h: calc(var(--win-w) * 1.78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
     padding-top: 22px;
     padding-bottom: 30px;
   }
@@ -302,25 +315,48 @@
   }
   .pb-reels-arrow { display: none; }
 
-  .pb-reels {
+  .pb-reels,
+  .pb-reels-side {
     display: block;
     position: relative;
-    width: var(--win-w);
-    height: var(--win-h);
-    margin: 0 auto;
+    flex: none;
+    height: calc(var(--ww) * 1.78);
+    width: var(--ww);
+    margin: 0;
     padding: 0;
-    border: 6px solid #0c0c0b;
-    border-radius: 36px;
-    outline: 1.5px solid rgba(255, 255, 255, 0.2);
     background: #0c0c0b;
     box-shadow: 0 30px 50px -18px rgba(17, 18, 16, 0.55), 0 8px 18px rgba(17, 18, 16, 0.2);
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     overscroll-behavior-y: auto;
+    scrollbar-width: none;
     cursor: default;
   }
-  .pb-reels > .pb-reel-wrap {
+  .pb-reels::-webkit-scrollbar,
+  .pb-reels-side::-webkit-scrollbar { display: none; }
+  .pb-reels {
+    --ww: var(--win-w);
+    order: 2;
+    border: 6px solid #0c0c0b;
+    border-radius: 36px;
+    outline: 1.5px solid rgba(255, 255, 255, 0.2);
+  }
+  .pb-reels-side {
+    --ww: calc(var(--win-w) * 0.6);
+    border: 4px solid #0c0c0b;
+    border-radius: 24px;
+    outline: 1px solid rgba(255, 255, 255, 0.16);
+    opacity: 0.92;
+  }
+  /* the small windows tuck in behind the big one and peek out on each side */
+  .pb-reels { z-index: 3; }
+  .pb-reels-side { z-index: 1; height: calc(var(--ww) * 2.15); transform: translateY(10px); }
+  .pb-reels-side--l { order: 1; margin-right: calc(var(--ww) * -0.42); }
+  .pb-reels-side--r { order: 3; margin-left: calc(var(--ww) * -0.42); }
+
+  .pb-reels > .pb-reel-wrap,
+  .pb-reels-side > .pb-reel-wrap {
     display: block;
     width: 100%;
     height: 100%;
@@ -328,10 +364,10 @@
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-  .pb-reels > :first-child, .pb-reels > :last-child { margin: 0 !important; }
-  .pb-reels .pb-reel {
-    --w: calc(var(--win-w) - 12px) !important;
-    --h: calc(var(--win-h) - 12px) !important;
+  .pb-reels > :first-child, .pb-reels > :last-child,
+  .pb-reels-side > :first-child, .pb-reels-side > :last-child { margin: 0 !important; }
+  .pb-reels .pb-reel,
+  .pb-reels-side .pb-reel {
     width: 100%;
     height: 100%;
     border: 0;
@@ -340,11 +376,25 @@
     transform: none;
     box-shadow: none;
   }
-  .pb-reels .pb-reel:hover { transform: none; box-shadow: none; }
+  .pb-reels .pb-reel {
+    --w: calc(var(--ww) - 12px) !important;
+    --h: calc(var(--ww) * 1.78 - 12px) !important;
+  }
+  .pb-reels-side .pb-reel {
+    --w: calc(var(--ww) - 8px) !important;
+    --h: calc(var(--ww) * 1.78 - 8px) !important;
+  }
+  .pb-reels .pb-reel:hover,
+  .pb-reels-side .pb-reel:hover { transform: none; box-shadow: none; }
   .pb-reels .pb-reel__top { top: 26px; }
   .pb-reels .pb-reel__vf { top: 60px; }
+  .pb-reels-side .pb-reel__top,
+  .pb-reels-side .pb-reel__bottom,
+  .pb-reels-side .pb-reel__vf,
+  .pb-reels-side .pb-reel__side { display: none; }
+  .pb-reels-side .pb-reel__ol { top: 18%; left: 8px; right: 8px; }
 
-  /* overlay: notch, position dots, swipe hint (sits over the window, never blocks touches) */
+  /* overlay on the big window: notch, position dots, swipe hint (never blocks touches) */
   .pb-win {
     display: block;
     position: absolute;
@@ -360,9 +410,9 @@
     position: absolute;
     left: 50%;
     top: 12px;
-    width: 52px;
-    height: 13px;
-    margin-left: -26px;
+    width: 48px;
+    height: 12px;
+    margin-left: -24px;
     border-radius: 99px;
     background: #0c0c0b;
   }
@@ -386,17 +436,17 @@
   .pb-win__hint {
     position: absolute;
     left: 50%;
-    bottom: 64px;
+    bottom: 56px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 12px;
+    padding: 6px 11px;
     border-radius: 999px;
     background: rgba(12, 12, 11, 0.72);
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     color: #ffffff;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 500;
     line-height: 1;
     white-space: nowrap;
@@ -573,7 +623,7 @@
 .pb-calc input[type="range"]:focus-visible { outline: 2px solid #ffffff; outline-offset: 6px; }
 
 .pb-calc__out { display: grid; gap: 4px; padding: 20px 22px; border-radius: 12px; background: var(--pb-lime); color: var(--pb-ink); }
-.pb-calc__out span { font-size: 13px; font-weight: 600; }
+.pb-calc__out > span { font-size: 13px; font-weight: 600; }
 .pb-calc__out strong { font-family: var(--font-geist-mono), monospace; font-size: clamp(28px, 3.4vw, 36px); font-weight: 500; line-height: 1.05; letter-spacing: -0.04em; }
 
 .pb-calc__chat { display: flex; align-items: center; gap: 10px; width: fit-content; max-width: 100%; padding: 8px 14px 8px 8px; border-radius: 12px; background: rgba(255, 255, 255, 0.08); }
